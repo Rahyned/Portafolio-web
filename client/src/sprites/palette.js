@@ -22,7 +22,22 @@ export const PX = {
   H: "#C68958", // marrón claro
   E: "#6C757D", // gris
   F: "#B0B8C0", // gris claro
-  A: "#00C2C7"  // cian
+  A: "#00C2C7", // cian
+  "0": "#0E0E1A", // tinta profunda (outline)
+  "$": "#14141F", // tinta
+  "#": "#0A0A12", // negro
+  D: "#26324A",   // azul pizarra oscuro
+  "&": "#00C2C7", // cian brillante (visor)
+  "@": "#4C6A9C", // azul medio
+  "1": "#9FB4D8", // azul-gris claro
+  "2": "#C4CFE0", // gris azulado claro
+  "3": "#8E9BB3", // gris medio
+  "4": "#E8EDF5", // casi blanco
+  "5": "#3B5B8C", // azul medio
+  "6": "#2E6E8C", // azul/teal
+  "7": "#24576E", // teal oscuro
+  "8": "#1E3A52", // azul marino
+  "9": "#182C40"  // navy
 };
 
 // Convierte un array de filas de texto en una grilla de colores.

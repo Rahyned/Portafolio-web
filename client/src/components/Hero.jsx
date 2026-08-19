@@ -1,7 +1,6 @@
 import { useTypewriter } from "../hooks/useTypewriter";
 import { useSound } from "../context/SoundContext";
 import { useData } from "../context/DataContext";
-import PixelSprite from "./PixelSprite";
 import HeroParticles from "./HeroParticles";
 
 export default function Hero() {
@@ -18,7 +17,7 @@ export default function Hero() {
 
       <div className="hero-stage">
         <div className="hero-sprite">
-          <PixelSprite sprite="trainer" cell={9} className="hero-trainer" />
+          <img src="/sprites/sprite-body.svg" alt="Personaje pixelado" className="hero-trainer" />
           <div className="hero-shadow" aria-hidden="true" />
         </div>
 

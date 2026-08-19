@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { useTypewriter } from "../hooks/useTypewriter";
 import { useData } from "../context/DataContext";
 import { useSound } from "../context/SoundContext";
-import PixelSprite from "./PixelSprite";
 
 function BioTypewriter() {
   const { data } = useData();
@@ -50,23 +49,42 @@ export default function TrainerCard() {
     });
   }, [PROFILE.level, PROFILE.maxLevel]);
 
+  const stats = [
+    { label: "NIVEL", value: `${PROFILE.level} / ${PROFILE.maxLevel}` },
+    { label: "AÑOS DE EXP", value: PROFILE.expYears },
+    { label: "PROYECTOS", value: PROFILE.completedProjects },
+    { label: "UBICACIÓN", value: PROFILE.location }
+  ];
+
   return (
     <section className="trainer-section" id="ficha" aria-labelledby="trainerTitle">
-      <div className="trainer-card reveal visible">
-        <div className="trainer-top">
-          <div className="trainer-avatar" role="img" aria-label="Avatar pixelado de Lautaro">
-            <PixelSprite sprite="trainer" cell={4} className="trainer-sprite" />
+      <div className="trainer-card trainer-modal reveal visible">
+        <div className="trainer-modal-header">
+          <div className="trainer-avatar" role="img" aria-label="Foto pixelada de Lautaro">
+            <img src="/sprites/sprite-face.svg" alt="Foto pixelada de Lautaro" className="trainer-photo" />
           </div>
-          <div className="trainer-info">
-            <h2 className="trainer-name" id="trainerTitle">{PROFILE.name}</h2>
-            <p className="trainer-class">{PROFILE.class}</p>
+          <div className="trainer-modal-titleblock">
+            <h2 className="trainer-modal-title" id="trainerTitle">{PROFILE.name}</h2>
+            <p className="trainer-modal-meta">{PROFILE.class}</p>
+            <span className="trainer-modal-status">{PROFILE.status}</span>
+          </div>
+        </div>
+
+        <div className="trainer-modal-body">
+          <div className="trainer-modal-block">
+            <h3 className="trainer-modal-blocktitle">🎖️ DATOS DEL ENTRENADOR</h3>
             <ul className="trainer-stats">
-              <li className="trainer-stat"><span>CLASE</span><strong>{PROFILE.class}</strong></li>
-              <li className="trainer-stat"><span>NIVEL</span><strong>{PROFILE.level} / {PROFILE.maxLevel}</strong></li>
-              <li className="trainer-stat"><span>AÑOS DE EXP</span><strong>{PROFILE.expYears}</strong></li>
-              <li className="trainer-stat"><span>PROYECTOS</span><strong>{PROFILE.completedProjects}</strong></li>
-              <li className="trainer-stat"><span>UBICACIÓN</span><strong>{PROFILE.location}</strong></li>
+              {stats.map((s) => (
+                <li key={s.label} className="trainer-stat">
+                  <span>{s.label}</span>
+                  <strong>{s.value}</strong>
+                </li>
+              ))}
             </ul>
+          </div>
+
+          <div className="trainer-modal-block">
+            <h3 className="trainer-modal-blocktitle">⚡ EXPERIENCIA</h3>
             <div className="exp-bar-wrap">
               <div className="exp-bar-label">
                 <span>EXP</span>
@@ -83,23 +101,28 @@ export default function TrainerCard() {
               </div>
             </div>
           </div>
-        </div>
 
-        <h3 className="badges-title">MEDALLAS — STACK PRINCIPAL</h3>
-        <div className="badges" aria-label="Stack técnico principal">
-          {BADGES.map((badge, i) => (
-            <span
-              key={badge.name}
-              className="badge badge-owned"
-              style={{ animationDelay: `${i * 0.08}s` }}
-              onMouseEnter={() => sfx("hover")}
-            >
-              <span className="badge-icon" aria-hidden="true">{badge.icon}</span> {badge.name}
-            </span>
-          ))}
-        </div>
+          <div className="trainer-modal-block">
+            <h3 className="trainer-modal-blocktitle">🥇 MEDALLAS — STACK PRINCIPAL</h3>
+            <div className="badges" aria-label="Stack técnico principal">
+              {BADGES.map((badge, i) => (
+                <span
+                  key={badge.name}
+                  className="badge badge-owned"
+                  style={{ animationDelay: `${i * 0.08}s` }}
+                  onMouseEnter={() => sfx("hover")}
+                >
+                  <span className="badge-icon" aria-hidden="true">{badge.icon}</span> {badge.name}
+                </span>
+              ))}
+            </div>
+          </div>
 
-        <BioTypewriter />
+          <div className="trainer-modal-block">
+            <h3 className="trainer-modal-blocktitle">💬 SOBRE MÍ</h3>
+            <BioTypewriter />
+          </div>
+        </div>
       </div>
     </section>
   );

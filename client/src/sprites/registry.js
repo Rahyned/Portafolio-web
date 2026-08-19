@@ -1,4 +1,5 @@
 import { TRAINER, POKEBALL, COIN, STAR } from "./trainer";
+import { MI_SPRITE } from "./hero";
 import {
   ABSTRACT_SHOPP,
   FLORERIA_SUSI,
@@ -44,6 +45,7 @@ export const centerSprite = (grid) => {
 // Las claves de proyectos coinciden con project.id en data/projects.json.
 export const SPRITES = {
   trainer: centerSprite(TRAINER),
+  mi_sprite: centerSprite(MI_SPRITE),
   pokeball: centerSprite(POKEBALL),
   coin: centerSprite(COIN),
   star: centerSprite(STAR),

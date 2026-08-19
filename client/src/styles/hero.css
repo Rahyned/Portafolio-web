@@ -62,19 +62,8 @@
 }
 
 .hero-trainer {
-  width: 168px;
-  height: 168px;
-  animation: heroFloat 3s ease-in-out infinite;
-  filter: drop-shadow(0 6px 0 var(--shadow));
-}
-
-.hero-shadow {
-  width: 64px;
-  height: 12px;
-  margin: 8px auto 0;
-  background: var(--shadow);
-  border-radius: 50%;
-  animation: shadowPulse 3s ease-in-out infinite;
+  height: 600px;
+  width: auto;
 }
 
 /* Línea divisoria invisible entre las dos mitades verticales */
@@ -215,8 +204,8 @@
     min-height: 24px;
   }
   .hero-trainer {
-    width: 120px;
-    height: 120px;
+    height: 150px;
+    width: auto;
     transform-origin: center;
   }
   .hero-tagline {
