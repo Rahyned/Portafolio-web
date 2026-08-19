@@ -1,6 +1,6 @@
 /* ============================================================
    VARIABLES CSS - Paleta de colores y temas
-   ARCADE (default, brillante) | RED | BLUE | DARK | KONAMI
+   ARCADE (default, equilibrado) | RED | BLUE | DARK
    ============================================================ */
 
 :root {
@@ -15,122 +15,103 @@
 }
 
 /* ============================================================
-   THEME: ARCADE (default) - estilo Game Boy Color brillante
+   THEME: ARCADE (default) - brillante y equilibrado
+   Fondos neutros cálidos, tinta oscura y acentos coral/teal.
    ============================================================ */
 :root,
 .theme-arcade {
-  --bg-primary: #FFF6E5;
-  --bg-secondary: #FFEEC2;
-  --bg-tertiary: #FFD98E;
-  --text-primary: #1B1B2F;
-  --text-secondary: #6B5B7A;
-  --accent: #FF4D6D;
-  --accent-bright: #FFC53D;
-  --accent-text: #D62839;
-  --accent2: #00C2C7;
+  --bg-primary: #F7F4EF;
+  --bg-secondary: #ECE7DD;
+  --bg-tertiary: #DFD8CA;
+  --text-primary: #221F1A;
+  --text-secondary: #6E6559;
+  --accent: #FF4D5E;
+  --accent-bright: #FF8A4C;
+  --accent-text: #C2334A;
+  --accent2: #00B8C8;
   --accent-red: #E63946;
-  --success: #157A40;
-  --warn: #8A6200;
-  --border: #1B1B2F;
+  --success: #2E8B57;
+  --warn: #B8860B;
+  --border: #221F1A;
   --btn-bg: #FFFFFF;
-  --shadow: rgba(27, 27, 47, 0.2);
-  --glow: rgba(255, 77, 109, 0.45);
-  --glow2: rgba(0, 194, 199, 0.45);
-  --title-gradient: linear-gradient(90deg, #FF4D6D, #FF8C42, #FFC53D);
+  --shadow: rgba(34, 31, 26, 0.18);
+  --glow: rgba(255, 77, 94, 0.4);
+  --glow2: rgba(0, 184, 200, 0.4);
+  --title-gradient: linear-gradient(90deg, #FF4D5E, #FF8A4C, #FFC53D);
 }
 
 /* ============================================================
-   THEME: RED VERSION (brillante)
+   THEME: RED - brillante y equilibrado
+   Fondos neutros con tinte cálido, tinta vino y acento rojo.
    ============================================================ */
 .theme-red {
-  --bg-primary: #FFE7E9;
-  --bg-secondary: #FFCDD2;
-  --bg-tertiary: #FFA3AC;
-  --text-primary: #2A0A0E;
-  --text-secondary: #7A3B45;
-  --accent: #E63946;
-  --accent-bright: #FF8C42;
-  --accent-text: #B21E2F;
-  --accent2: #FF5D8F;
+  --bg-primary: #FAF0F0;
+  --bg-secondary: #F3DCDC;
+  --bg-tertiary: #E9C4C4;
+  --text-primary: #331111;
+  --text-secondary: #8A4A4A;
+  --accent: #D62828;
+  --accent-bright: #EF4444;
+  --accent-text: #A61E1E;
+  --accent2: #FF8C42;
   --accent-red: #C81D25;
-  --success: #157A40;
-  --warn: #8A6200;
-  --border: #2A0A0E;
+  --success: #2E8B57;
+  --warn: #B8860B;
+  --border: #331111;
   --btn-bg: #FFFFFF;
-  --shadow: rgba(42, 10, 14, 0.2);
-  --glow: rgba(230, 57, 70, 0.45);
-  --glow2: rgba(255, 93, 143, 0.45);
-  --title-gradient: linear-gradient(90deg, #E63946, #FF5D8F, #FF8C42);
+  --shadow: rgba(51, 17, 17, 0.18);
+  --glow: rgba(214, 40, 40, 0.4);
+  --glow2: rgba(255, 140, 66, 0.4);
+  --title-gradient: linear-gradient(90deg, #D62828, #EF4444, #FF8C42);
 }
 
 /* ============================================================
-   THEME: BLUE VERSION (brillante)
-   ============================================================ */
-.theme-blue {
-  --bg-primary: #E5F0FF;
-  --bg-secondary: #C7DDFF;
-  --bg-tertiary: #9CC4FF;
-  --text-primary: #081A3A;
-  --text-secondary: #3D5E8F;
-  --accent: #1E6FD9;
-  --accent-bright: #4DA3FF;
-  --accent-text: #0A4DA3;
-  --accent2: #00C2C7;
-  --accent-red: #E63946;
-  --success: #157A40;
-  --warn: #8A6200;
-  --border: #081A3A;
-  --btn-bg: #FFFFFF;
-  --shadow: rgba(8, 26, 58, 0.2);
-  --glow: rgba(30, 111, 217, 0.45);
-  --glow2: rgba(0, 194, 199, 0.45);
-  --title-gradient: linear-gradient(90deg, #1E6FD9, #4DA3FF, #00C2C7);
-}
-
-/* ============================================================
-   THEME: DARK MODE (pantalla nocturna)
+   THEME: DARK - nocturno con color
+   Fondo índigo/azul profundo en lugar de negro plano, con
+   acentos coral/cian que contrastan.
    ============================================================ */
 .theme-dark {
-  --bg-primary: #0D1117;
-  --bg-secondary: #161B22;
-  --bg-tertiary: #21262D;
-  --text-primary: #E6EDF3;
-  --text-secondary: #8B949E;
-  --accent: #58A6FF;
-  --accent-bright: #79C0FF;
-  --accent-text: #79C0FF;
-  --accent2: #00C2C7;
+  --bg-primary: #111827;
+  --bg-secondary: #1B2A4A;
+  --bg-tertiary: #26345C;
+  --text-primary: #EAF0FF;
+  --text-secondary: #9FB0D4;
+  --accent: #FF5C6C;
+  --accent-bright: #FF9A5A;
+  --accent-text: #FF9AA5;
+  --accent2: #22D3EE;
   --accent-red: #FF6B6B;
-  --success: #3FB950;
-  --warn: #D29922;
-  --border: #30363D;
-  --btn-bg: #21262D;
-  --shadow: rgba(0, 0, 0, 0.6);
-  --glow: rgba(88, 166, 255, 0.45);
-  --glow2: rgba(0, 194, 199, 0.45);
-  --title-gradient: linear-gradient(90deg, #58A6FF, #79C0FF, #00C2C7);
+  --success: #4ADE80;
+  --warn: #FBBF24;
+  --border: #33466B;
+  --btn-bg: #22304F;
+  --shadow: rgba(0, 0, 0, 0.55);
+  --glow: rgba(255, 92, 108, 0.45);
+  --glow2: rgba(34, 211, 238, 0.45);
+  --title-gradient: linear-gradient(90deg, #FF5C6C, #FF9A5A, #FBBF24);
 }
 
 /* ============================================================
-   THEME: KONAMI (sorpresa arcade verde)
+   THEME: BLUE - brillante y afinado
+   Fondos neutros azulados, tinta azul oscura y acento azul.
    ============================================================ */
-.theme-konami {
-  --bg-primary: #E6F9EC;
-  --bg-secondary: #C6F0D6;
-  --bg-tertiary: #97E3B6;
-  --text-primary: #06281A;
-  --text-secondary: #3B7052;
-  --accent: #00A86B;
-  --accent-bright: #00E676;
-  --accent-text: #007A50;
-  --accent2: #00C2C7;
-  --accent-red: #FFD740;
-  --success: #157A40;
-  --warn: #8A6200;
-  --border: #06281A;
+.theme-blue {
+  --bg-primary: #F0F5FC;
+  --bg-secondary: #DDE9F8;
+  --bg-tertiary: #C2D7F0;
+  --text-primary: #0E1E3A;
+  --text-secondary: #4A6487;
+  --accent: #1F6FEB;
+  --accent-bright: #4D9BFF;
+  --accent-text: #0B4C9E;
+  --accent2: #00B8C8;
+  --accent-red: #E63946;
+  --success: #2E8B57;
+  --warn: #B8860B;
+  --border: #0E1E3A;
   --btn-bg: #FFFFFF;
-  --shadow: rgba(6, 40, 26, 0.2);
-  --glow: rgba(0, 168, 107, 0.45);
-  --glow2: rgba(0, 194, 199, 0.45);
-  --title-gradient: linear-gradient(90deg, #00A86B, #00E676, #00C2C7);
+  --shadow: rgba(14, 30, 58, 0.18);
+  --glow: rgba(31, 111, 235, 0.4);
+  --glow2: rgba(0, 184, 200, 0.4);
+  --title-gradient: linear-gradient(90deg, #1F6FEB, #4D9BFF, #00B8C8);
 }

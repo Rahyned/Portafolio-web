@@ -18,9 +18,11 @@ export default function Hero() {
 
       <div className="hero-stage">
         <div className="hero-sprite">
-          <PixelSprite sprite="trainer" cell={5} className="hero-trainer" />
+          <PixelSprite sprite="trainer" cell={9} className="hero-trainer" />
           <div className="hero-shadow" aria-hidden="true" />
         </div>
+
+        <div className="hero-divider" aria-hidden="true" />
 
         <div className="hero-text">
           <h1 className="hero-tagline title-grad">
@@ -47,9 +49,7 @@ export default function Hero() {
       </button>
 
       <div className="hero-badges" aria-hidden="true">
-        <PixelSprite sprite="pokeball" cell={2} />
         <span className="hero-badges-text">EXP LOADING...</span>
-        <PixelSprite sprite="coin" cell={2} />
       </div>
     </section>
   );

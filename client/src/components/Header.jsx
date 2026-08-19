@@ -16,7 +16,7 @@ export default function Header() {
   const { muted, toggleMute, sfx } = useSound();
   const { crt, toggleCrt } = useUi();
 
-  const isActive = (t) => theme === t || (theme === "konami" && t === "arcade");
+  const isActive = (t) => theme === t;
 
   return (
     <header className="site-header" role="banner">

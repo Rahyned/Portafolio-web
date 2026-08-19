@@ -4,7 +4,7 @@ import { useSound } from "../context/SoundContext";
 import PixelSprite from "./PixelSprite";
 import ProjectModal from "./ProjectModal";
 
-const GRID_SLOTS = 15;
+const GRID_SLOTS = 16;
 const BOX_ICONS = ["box_web", "box_systems", "box_desktop"];
 const PROJECT_SPRITES = {
   "abstractoshopp": "abstractoshopp",
@@ -98,11 +98,14 @@ export default function PCStorage() {
                     setSelected(project);
                   }}
                 >
-                  {sprite ? (
-                    <PixelSprite sprite={sprite} cell={3} className="slot-sprite" />
-                  ) : (
-                    <span className="slot-emoji" aria-hidden="true">{project.sprite}</span>
-                  )}
+                  <span className="slot-sprite-wrap" aria-hidden="true">
+                    {sprite ? (
+                      <PixelSprite sprite={sprite} cell={6} className="slot-sprite" crop />
+                    ) : (
+                      <span className="slot-emoji">{project.sprite}</span>
+                    )}
+                  </span>
+                  <span className="slot-title">{project.title}</span>
                 </button>
               );
             })}

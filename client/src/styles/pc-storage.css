@@ -103,8 +103,8 @@
 /* Grilla de almacenamiento */
 .pc-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 12px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
   position: relative;
 }
 
@@ -122,9 +122,11 @@
   border: 2px solid var(--border);
   border-radius: var(--radius);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 34px;
+  gap: 6px;
+  padding: 10px;
   position: relative;
   transition: border-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
 }
@@ -137,7 +139,7 @@
 .pc-slot.empty::after {
   content: "";
   position: absolute;
-  inset: 8px;
+  inset: 10px;
   border: 2px dashed var(--border);
   border-radius: var(--radius);
 }
@@ -157,21 +159,59 @@
 .pc-slot.project::before {
   content: attr(data-idx);
   position: absolute;
-  top: 4px;
+  top: 6px;
   left: 6px;
+  z-index: 3;
   font-family: var(--font-mono);
   font-size: 9px;
-  color: var(--text-secondary);
-  z-index: 1;
+  line-height: 1;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 3px 4px;
 }
 
-.slot-sprite {
+/* Zona del sprite: se agranda y "se para" sobre un pedestal */
+.pc-slot .slot-sprite-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+}
+
+.pc-slot .slot-sprite {
+  width: min(66%, 132px);
+  height: auto;
   animation: slotBob 2.4s ease-in-out infinite;
   filter: drop-shadow(2px 3px 0 var(--shadow));
+  z-index: 2;
 }
 
-.slot-emoji {
-  font-size: 30px;
+/* Pedestal tipo plataforma Pokémon */
+.pc-slot .slot-sprite-wrap::before {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 62%;
+  max-width: 108px;
+  height: 14px;
+  background: var(--bg-primary);
+  border: 2px solid var(--border);
+  border-radius: 999px;
+  box-shadow: 0 3px 0 var(--shadow);
+}
+
+.pc-slot .slot-emoji {
+  font-size: 46px;
+  line-height: 1;
+  filter: drop-shadow(2px 3px 0 var(--shadow));
+  z-index: 2;
 }
 
 @keyframes slotBob {
@@ -179,26 +219,20 @@
   50% { transform: translateY(-4px); }
 }
 
-.pc-slot .slot-tooltip {
-  position: absolute;
-  bottom: 105%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--bg-primary);
-  border: 2px solid var(--accent);
-  padding: 4px 8px;
+/* Título del proyecto dentro de la ficha */
+.pc-slot .slot-title {
   font-family: var(--font-pixel);
-  font-size: 7px;
+  font-size: 8px;
+  line-height: 1.5;
+  text-align: center;
+  text-transform: uppercase;
   color: var(--text-primary);
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s ease;
-  z-index: 5;
-}
-
-.pc-slot.project:hover .slot-tooltip {
-  opacity: 1;
+  width: 100%;
+  padding: 2px 4px 4px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 /* Info bar inferior */
@@ -280,9 +314,9 @@
   background: var(--bg-secondary);
   border: 3px solid var(--border);
   border-radius: var(--radius);
-  max-width: 680px;
+  max-width: 960px;
   width: 100%;
-  max-height: 88vh;
+  max-height: 92vh;
   overflow-y: auto;
   box-shadow: 10px 10px 0 var(--border), 0 0 34px var(--glow);
   transform: scale(0.8);
@@ -296,8 +330,8 @@
 .modal-header {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 16px;
+  gap: 20px;
+  padding: 22px 24px;
   background: linear-gradient(180deg, var(--bg-tertiary), var(--bg-secondary));
   border-bottom: 2px solid var(--border);
   position: sticky;
@@ -316,21 +350,23 @@
 }
 
 .modal-sprite {
-  font-size: 40px;
+  font-size: 60px;
   background: var(--bg-primary);
   border: 2px solid var(--border);
   border-radius: var(--radius);
-  width: 56px;
-  height: 56px;
+  width: 108px;
+  height: 108px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 2px 2px 0 var(--border);
+  box-shadow: 3px 3px 0 var(--border);
+  overflow: hidden;
 }
 
 .modal-sprite svg {
-  animation: slotBob 2.4s ease-in-out infinite;
+  width: min(78%, 88px);
+  height: auto;
 }
 
 .modal-title-block {
@@ -340,32 +376,32 @@
 
 .modal-title {
   font-family: var(--font-pixel);
-  font-size: 13px;
+  font-size: 17px;
   color: var(--text-primary);
   word-break: break-word;
 }
 
 .modal-meta {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 13px;
   color: var(--text-secondary);
-  margin-top: 4px;
+  margin-top: 6px;
 }
 
 .modal-status {
   display: inline-block;
   font-family: var(--font-pixel);
-  font-size: 7px;
+  font-size: 9px;
   color: var(--accent-text);
   border: 1px solid var(--accent);
-  padding: 3px 6px;
-  margin-left: 8px;
+  padding: 4px 8px;
+  margin-left: 10px;
 }
 
 .modal-close {
-  font-size: 20px;
-  width: 36px;
-  height: 36px;
+  font-size: 24px;
+  width: 44px;
+  height: 44px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -384,23 +420,48 @@
 }
 
 .modal-body {
-  padding: 16px;
+  padding: 24px;
   display: grid;
-  gap: 16px;
+  gap: 20px;
+}
+
+/* Escritorio: detalles a la izquierda, stack + demo + timeline a la derecha */
+@media (min-width: 769px) {
+  .modal-body {
+    grid-template-columns: 1.5fr 1fr;
+    grid-template-rows: auto auto auto;
+    align-items: start;
+  }
+  .modal-body > .modal-block:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+  }
+  .modal-body > .modal-block:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .modal-body > .modal-block:nth-child(3) {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  .modal-body > .modal-timeline {
+    grid-column: 2;
+    grid-row: 3;
+  }
 }
 
 .modal-block {
   border: 2px solid var(--border);
   background: var(--bg-primary);
   border-radius: var(--radius);
-  padding: 14px;
+  padding: 18px;
 }
 
 .modal-block-title {
   font-family: var(--font-pixel);
-  font-size: 9px;
+  font-size: 11px;
   color: var(--accent-text);
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -408,12 +469,12 @@
 
 .modal-block p {
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-secondary);
 }
 
 .modal-block p + p {
-  margin-top: 8px;
+  margin-top: 10px;
 }
 
 .modal-block p strong {
@@ -429,12 +490,12 @@
 
 .modal-stack .stack-chip {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
   color: var(--bg-primary);
   background: var(--text-primary);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 6px 10px;
+  padding: 7px 11px;
 }
 
 .modal-actions {
@@ -445,12 +506,12 @@
 
 .btn-link {
   font-family: var(--font-pixel);
-  font-size: 9px;
+  font-size: 11px;
   color: var(--text-primary);
   background: var(--btn-bg);
   border: 2px solid var(--border);
   border-radius: var(--radius);
-  padding: 12px 16px;
+  padding: 14px 18px;
   text-transform: uppercase;
   transition: all 0.2s ease;
   display: inline-flex;
@@ -473,10 +534,10 @@
 
 .modal-timeline {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-secondary);
   border-top: 2px dashed var(--border);
-  padding-top: 12px;
+  padding-top: 14px;
 }
 
 .modal-timeline strong {
@@ -485,9 +546,15 @@
 }
 
 /* ---------- Mobile ---------- */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .pc-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .pc-grid {
+    grid-template-columns: repeat(2, 1fr);
     gap: 8px;
   }
   .pc-section {
@@ -497,13 +564,28 @@
     font-size: 8px;
     padding: 8px;
   }
+  .modal-header {
+    padding: 16px;
+    gap: 14px;
+  }
+  .modal-sprite {
+    width: 76px;
+    height: 76px;
+    font-size: 42px;
+  }
   .modal-title {
-    font-size: 11px;
+    font-size: 13px;
+  }
+  .modal-body {
+    padding: 16px;
   }
 }
 
 @media (max-width: 480px) {
   .pc-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .pc-slot .slot-emoji {
+    font-size: 38px;
   }
 }

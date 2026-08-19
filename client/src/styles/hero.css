@@ -3,14 +3,14 @@
    ============================================================ */
 
 .hero {
-  min-height: 420px;
-  padding: 48px 40px;
+  min-height: calc(100vh - var(--header-height));
+  padding: 56px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: 28px;
+  gap: 36px;
   position: relative;
   overflow: hidden;
 }
@@ -45,40 +45,56 @@
   z-index: 1;
 }
 
-/* Escenario: sprite + texto */
+/* Escenario: dos mitades verticales, avatar y texto centrados en su columna */
 .hero-stage {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: center;
-  gap: 36px;
-  flex-wrap: wrap;
+  justify-items: center;
+  gap: 0;
+  width: 100%;
+  max-width: 1080px;
 }
 
 .hero-sprite {
   position: relative;
+  justify-self: center;
 }
 
 .hero-trainer {
+  width: 168px;
+  height: 168px;
   animation: heroFloat 3s ease-in-out infinite;
   filter: drop-shadow(0 6px 0 var(--shadow));
 }
 
 .hero-shadow {
-  width: 56px;
-  height: 10px;
-  margin: 6px auto 0;
+  width: 64px;
+  height: 12px;
+  margin: 8px auto 0;
   background: var(--shadow);
   border-radius: 50%;
   animation: shadowPulse 3s ease-in-out infinite;
 }
 
+/* Línea divisoria invisible entre las dos mitades verticales */
+.hero-divider {
+  width: 1px;
+  height: 100%;
+  min-height: 220px;
+  align-self: center;
+  justify-self: center;
+  pointer-events: none;
+}
+
 .hero-text {
-  max-width: 680px;
+  max-width: 560px;
+  justify-self: center;
 }
 
 .hero-tagline {
   font-family: var(--font-pixel);
-  font-size: 15px;
+  font-size: 22px;
   line-height: 1.9;
   text-shadow:
     3px 3px 0 var(--shadow),
@@ -92,10 +108,10 @@
 
 .hero-sub {
   font-family: var(--font-mono);
-  font-size: 15px;
+  font-size: 17px;
   color: var(--text-secondary);
   min-height: 24px;
-  margin-top: 16px;
+  margin-top: 18px;
 }
 
 .hero-sub .typewriter-cursor {
@@ -146,6 +162,7 @@
 }
 
 .hero-cta {
+  margin-top: 40px;
   animation: ctaGlow 2.4s ease-in-out infinite;
 }
 
@@ -182,20 +199,31 @@
 @media (max-width: 640px) {
   .hero {
     padding: 40px 20px;
-    min-height: 380px;
-    gap: 22px;
+    min-height: calc(100vh - var(--header-height));
+    gap: 26px;
+  }
+  .hero-cta {
+    margin-top: 28px;
   }
   .hero-stage {
-    gap: 20px;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .hero-divider {
+    width: 1px;
+    height: 1px;
+    min-height: 24px;
   }
   .hero-trainer {
+    width: 120px;
+    height: 120px;
     transform-origin: center;
   }
   .hero-tagline {
-    font-size: 9px;
+    font-size: 13px;
   }
   .hero-sub {
-    font-size: 12px;
+    font-size: 13px;
   }
   .btn-retro {
     font-size: 9px;

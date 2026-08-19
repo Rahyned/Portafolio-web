@@ -50,7 +50,7 @@ export default function ProjectModal({ project, onClose }) {
       <div className="modal" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
           <div className="modal-sprite" aria-hidden="true">
-            {sprite ? <PixelSprite sprite={sprite} cell={3} /> : project.sprite}
+            {sprite ? <PixelSprite sprite={sprite} cell={5} crop /> : project.sprite}
           </div>
           <div className="modal-title-block">
             <h3 className="modal-title" id="modalTitle">{project.title}</h3>

@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useKonami } from "./hooks/useKonami";
-import { useTheme } from "./context/ThemeContext";
 import { useSound } from "./context/SoundContext";
 import { useData } from "./context/DataContext";
 import Header from "./components/Header";
@@ -25,13 +24,11 @@ const KONAMI = [
 
 export default function App() {
   const { data } = useData();
-  const { setTheme } = useTheme();
   const { sfx } = useSound();
   const [booted, setBooted] = useState(false);
   const [toast, setToast] = useState({ message: "", show: false });
   const [confettiKey, setConfettiKey] = useState(0);
   const timerRef = useRef(null);
-  const konamiActiveRef = useRef(false);
 
   // Inicialización de Google Analytics 4 (configurable en data/projects.json)
   useEffect(() => {
@@ -54,19 +51,10 @@ export default function App() {
   }, []);
 
   const onKonami = useCallback(() => {
-    konamiActiveRef.current = !konamiActiveRef.current;
     sfx("konami");
     setConfettiKey((k) => k + 1);
-
-    if (konamiActiveRef.current) {
-      setTheme("konami");
-      showToast("🎮 ¡MODO MISTERIO ACTIVADO!");
-    } else {
-      const saved = localStorage.getItem("portfolio_theme");
-      setTheme(saved && saved !== "konami" ? saved : "arcade");
-      showToast("🎮 ¡MODO MISTERIO DESACTIVADO!");
-    }
-  }, [sfx, setTheme, showToast]);
+    showToast("🎉 ¡MODO MISTERIO ACTIVADO!");
+  }, [sfx, showToast]);
 
   useKonami(KONAMI, onKonami);
 

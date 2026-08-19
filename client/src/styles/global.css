@@ -24,6 +24,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Fondo con profundidad para el tema oscuro (evita el negro plano) */
+.theme-dark body {
+  background: radial-gradient(1200px 700px at 15% -10%, var(--bg-secondary) 0%, var(--bg-primary) 55%, #0E1220 100%);
+  background-attachment: fixed;
+}
+
 img {
   max-width: 100%;
   display: block;
