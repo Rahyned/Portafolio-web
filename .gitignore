@@ -1,0 +1,8 @@
+node_modules/
+server/node_modules/
+client/node_modules/
+client/dist/
+server/.env
+server/inbox/
+*.log
+.DS_Store

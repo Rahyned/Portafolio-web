@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV — Lautaro</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/cv.css" />
+</head>
+<body>
+
+  <div class="cv-toolbar no-print">
+    <a href="index.html" class="cv-btn">← VOLVER AL PORTAFOLIO</a>
+    <button type="button" class="cv-btn" onclick="window.print()">🖨 DESCARGAR PDF</button>
+  </div>
+
+  <main class="cv-page" id="cvPage">
+
+    <header class="cv-header">
+      <div class="cv-name-wrap">
+        <h1 id="cvName" class="cv-name">[LAUTARO]</h1>
+        <p id="cvClass" class="cv-class">Desarrollador Web &amp; Sistemas</p>
+      </div>
+      <div class="cv-avatar no-print" aria-hidden="true">👾</div>
+      <p class="cv-tagline" id="cvTagline">Automatización • Arquitectura • APIs</p>
+    </header>
+
+    <section class="cv-section">
+      <h2 class="cv-section-title">PERFIL</h2>
+      <p id="cvBio" class="cv-bio"></p>
+      <dl class="cv-facts">
+        <div><dt>Ubicación</dt><dd id="cvLocation"></dd></div>
+        <div><dt>Experiencia</dt><dd id="cvExp"></dd></div>
+        <div><dt>Proyectos</dt><dd id="cvProjects"></dd></div>
+        <div><dt>Disponibilidad</dt><dd id="cvStatus"></dd></div>
+      </dl>
+    </section>
+
+    <section class="cv-section">
+      <h2 class="cv-section-title">STACK TÉCNICO</h2>
+      <ul id="cvSkills" class="cv-list"></ul>
+    </section>
+
+    <section class="cv-section">
+      <h2 class="cv-section-title">PROYECTOS DESTACADOS</h2>
+      <div id="cvProjectsList" class="cv-projects"></div>
+    </section>
+
+    <section class="cv-section">
+      <h2 class="cv-section-title">CONTACTO</h2>
+      <ul id="cvContact" class="cv-list cv-contact"></ul>
+    </section>
+
+    <footer class="cv-footer">
+      <p id="cvFooter"></p>
+    </footer>
+
+  </main>
+
+  <script src="data/projects.js"></script>
+  <script src="js/cv.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+/* ============================================================
+   FOOTER / CIERRE
+   ============================================================ */
+
+.site-footer {
+  background: var(--bg-secondary);
+  border-top: 2px solid var(--border);
+  padding: 24px 20px;
+  text-align: center;
+  display: grid;
+  gap: 8px;
+}
+
+.footer-text {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.footer-link {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: var(--text-secondary);
+}
+
+.footer-link:hover {
+  color: var(--accent);
+}
+
+.footer-pixel {
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--text-secondary);
+  opacity: 0.5;
+}

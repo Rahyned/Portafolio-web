@@ -1,0 +1,137 @@
+/* ============================================================
+   HEADER / BARRA DE ESTADO
+   ============================================================ */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: var(--header-height);
+  background: var(--bg-primary);
+  border-bottom: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 20px;
+  transition: background-color 0.3s ease;
+}
+
+.header-logo {
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  color: var(--text-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.header-logo span {
+  color: var(--accent);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.header-status {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: var(--accent-bright);
+  border: 1px solid var(--accent);
+  background: var(--bg-secondary);
+  padding: 6px 8px;
+  white-space: nowrap;
+  animation: blink 1.5s step-start infinite;
+}
+
+.icon-btn {
+  font-size: 18px;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--border-thick) solid var(--border);
+  background: var(--btn-bg);
+  color: var(--text-primary);
+  border-radius: var(--radius);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+}
+
+.icon-btn:hover {
+  border-color: var(--accent);
+  box-shadow: 2px 2px 0 var(--accent);
+}
+
+.icon-btn:active {
+  transform: translateY(2px);
+}
+
+/* Selector de tema */
+.theme-switcher {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.theme-btn {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  padding: 7px 8px;
+  border: 2px solid var(--border);
+  background: var(--btn-bg);
+  color: var(--text-secondary);
+  border-radius: var(--radius);
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.theme-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--accent);
+}
+
+.theme-btn.active {
+  color: var(--bg-primary);
+  background: var(--accent);
+  border-color: var(--accent-bright);
+  box-shadow: 2px 2px 0 var(--accent-bright);
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 900px) {
+  .header-status {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .header-logo {
+    font-size: 10px;
+  }
+  .theme-btn {
+    font-size: 7px;
+    padding: 6px;
+  }
+  .theme-switcher {
+    gap: 4px;
+  }
+  .icon-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 15px;
+  }
+  .site-header {
+    padding: 0 12px;
+    gap: 8px;
+  }
+  .header-right {
+    gap: 8px;
+  }
+}

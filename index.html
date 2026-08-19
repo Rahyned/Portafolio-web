@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es" class="theme-dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portafolio interactivo con estética retro tipo Pokémon: proyectos, stack técnico y contacto." />
+  <meta name="author" content="Lautaro" />
+  <meta name="theme-color" content="#0D1117" />
+
+  <!-- Tipografías -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/breadcrumb.css" />
+  <link rel="stylesheet" href="css/trainer-card.css" />
+  <link rel="stylesheet" href="css/pc-storage.css" />
+  <link rel="stylesheet" href="css/blog.css" />
+  <link rel="stylesheet" href="css/contact.css" />
+  <link rel="stylesheet" href="css/terminal.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+
+  <title>LAUTARO.DEV — Portafolio Retro</title>
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER / BARRA DE ESTADO
+  -->
+  <header class="site-header" role="banner">
+    <button type="button" class="header-logo" id="logoBtn" aria-label="Volver al inicio">
+      <span id="headerName">[LAUTARO.DEV]</span>
+    </button>
+
+    <div class="header-right">
+      <span class="header-status" id="statusBadge" aria-live="polite">⚡ DISPONIBLE PARA PROYECTOS</span>
+
+      <div class="theme-switcher" role="group" aria-label="Selector de tema">
+        <button type="button" class="theme-btn" data-theme="red" aria-label="Tema Red Version">RED</button>
+        <button type="button" class="theme-btn" data-theme="blue" aria-label="Tema Blue Version">BLUE</button>
+        <button type="button" class="theme-btn" data-theme="dark" aria-label="Tema Dark Mode">DARK</button>
+      </div>
+
+      <button type="button" class="icon-btn" id="muteBtn" aria-label="Silenciar o activar sonidos" aria-pressed="false">
+        <span aria-hidden="true">🔊</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============================================================
+         HERO / LANDING INICIAL
+    -->
+    <section class="hero" id="inicio" aria-label="Presentación">
+      <div class="hero-sprite" aria-hidden="true">👾</div>
+      <h1 class="hero-tagline">
+        Desarrollador Web &amp; Sistemas<br />
+        <span class="accent">Automatización • Arquitectura • APIs</span>
+      </h1>
+      <p class="hero-sub" aria-live="polite">
+        <span id="heroTypewriter"></span><span class="typewriter-cursor" aria-hidden="true">▌</span>
+      </p>
+      <button type="button" class="btn-retro btn-big" id="enterBtn">▶ ENTRAR A LA PC</button>
+    </section>
+
+    <!-- ============================================================
+         BREADCRUMB RETRO
+    -->
+    <nav class="breadcrumb" aria-label="Navegación principal">
+      <div class="container">
+        <a href="#inicio" class="breadcrumb-link" data-nav="inicio">INICIO</a>
+        <span class="breadcrumb-sep">&gt;</span>
+        <a href="#ficha" class="breadcrumb-link" data-nav="ficha">FICHA</a>
+        <span class="breadcrumb-sep">&gt;</span>
+        <a href="#pc" class="breadcrumb-link" data-nav="pc">PC</a>
+        <span class="breadcrumb-sep">&gt;</span>
+        <a href="#mochila" class="breadcrumb-link" data-nav="mochila">MOCHILA</a>
+        <span class="breadcrumb-sep">&gt;</span>
+        <a href="#contacto" class="breadcrumb-link" data-nav="contacto">CONTACTO</a>
+      </div>
+    </nav>
+
+    <!-- ============================================================
+         FICHA DE ENTRENADOR (SOBRE MÍ)
+    -->
+    <section class="trainer-section" id="ficha" aria-labelledby="trainerTitle">
+      <div class="trainer-card reveal">
+        <div class="trainer-top">
+          <div class="trainer-avatar" id="avatarSprite" role="img" aria-label="Avatar pixelado de Lautaro">🧑‍💻</div>
+          <div class="trainer-info">
+            <h2 class="trainer-name" id="trainerName">[LAUTARO]</h2>
+            <p class="trainer-class" id="trainerClass">Desarrollador Web &amp; Sistemas</p>
+            <ul class="trainer-stats">
+              <li class="trainer-stat"><span>CLASE</span><strong id="statClass">Desarrollador Web &amp; Sistemas</strong></li>
+              <li class="trainer-stat"><span>NIVEL</span><strong id="statLevel">[45] / 99</strong></li>
+              <li class="trainer-stat"><span>AÑOS DE EXP</span><strong id="statExp">[5+]</strong></li>
+              <li class="trainer-stat"><span>PROYECTOS</span><strong id="statProjects">[15+]</strong></li>
+              <li class="trainer-stat"><span>UBICACIÓN</span><strong id="statLocation">[Rosario, Argentina]</strong></li>
+            </ul>
+            <div class="exp-bar-wrap">
+              <div class="exp-bar-label"><span>EXP</span><span id="expLevelText">Nv. [45]/99</span></div>
+              <div class="exp-bar" role="progressbar" aria-valuemin="0" aria-valuemax="99" aria-valuenow="45" id="expBar">
+                <div class="exp-bar-fill" id="expBarFill"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="badges-title" id="badgesTitle">MEDALLAS — STACK PRINCIPAL</h3>
+        <div class="badges" id="badgesContainer" aria-label="Stack técnico principal"></div>
+
+        <div class="trainer-bio">
+          <p class="bio-text" id="bioText" aria-live="polite"></p><span class="typewriter-cursor" id="bioCursor" aria-hidden="true">▌</span>
+        </div>
+        <p class="bio-skip-hint" id="bioHint">PRESIONA CUALQUIER TECLA PARA CONTINUAR ▸</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PC DE ALMACENAMIENTO (PROYECTOS)
+    -->
+    <section class="pc-section" id="pc" aria-labelledby="pcTitle">
+      <h2 class="section-title" id="pcTitle">SISTEMA DE ALMACENAMIENTO PC</h2>
+      <p class="section-sub">Mis proyectos, guardados como en la PC de Bill.</p>
+
+      <div class="pc-frame reveal">
+        <div class="pc-titlebar">
+          <span class="pc-title">PC DE LAUTARO // PROYECTOS</span>
+          <span class="pc-led" aria-hidden="true"></span>
+        </div>
+
+        <div class="pc-tabs" id="pcTabs" role="tablist" aria-label="Cajas de proyectos"></div>
+
+        <div class="pc-grid" id="pcGrid" aria-live="polite"></div>
+
+        <p class="pc-hint">💡 PRESIONA [T] PARA ABRIR LA TERMINAL</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         MOCHILA / BLOG (notas técnicas)
+    -->
+    <section class="blog-section" id="mochila" aria-labelledby="blogTitle">
+      <h2 class="section-title" id="blogTitle">MOCHILA — NOTAS TÉCNICAS</h2>
+      <p class="section-sub">Artículos y anotaciones guardados en mi mochila.</p>
+      <div class="blog-grid" id="blogGrid" aria-live="polite"></div>
+    </section>
+
+    <!-- ============================================================
+         CONTACTO
+    -->
+    <section class="contact-section" id="contacto" aria-labelledby="contactTitle">
+      <h2 class="section-title" id="contactTitle">CONTACTO</h2>
+      <p class="section-sub">Elige un medio o inicia un intercambio.</p>
+
+      <div class="contact-grid">
+        <!-- PokéNav: contactos directos -->
+        <div class="panel reveal">
+          <h3 class="panel-title">📡 POKÉNAV — CONTACTOS</h3>
+          <div class="contact-list">
+            <div class="contact-item">
+              <p class="contact-item-label">📧 EMAIL</p>
+              <p class="contact-item-value" id="contactEmail">[lautaro@example.com]</p>
+              <div class="contact-item-actions">
+                <button type="button" class="btn-mini" data-action="email">ENVIAR</button>
+              </div>
+            </div>
+            <div class="contact-item">
+              <p class="contact-item-label">💼 LINKEDIN</p>
+              <p class="contact-item-value" id="contactLinkedin">[linkedin.com/in/lautaro-example]</p>
+              <div class="contact-item-actions">
+                <button type="button" class="btn-mini" data-action="linkedin">ABRIR</button>
+              </div>
+            </div>
+            <div class="contact-item">
+              <p class="contact-item-label">🔗 GITHUB</p>
+              <p class="contact-item-value" id="contactGithub">[@lautaro-example]</p>
+              <div class="contact-item-actions">
+                <button type="button" class="btn-mini" data-action="github">VER PERFIL</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Centro de intercambio: formulario -->
+        <div class="panel reveal">
+          <h3 class="panel-title" id="tradeTitle">🤝 ¿TIENES UN PROYECTO?<br />INICIA UN INTERCAMBIO</h3>
+          <div class="form-container" id="formContainer">
+
+            <form id="contactForm" novalidate>
+              <div class="form-group" data-field="name">
+                <label for="fieldName">NOMBRE</label>
+                <input type="text" id="fieldName" name="name" class="form-input" placeholder="Tu nombre" autocomplete="name" required />
+                <p class="form-error">Ingresá tu nombre.</p>
+              </div>
+
+              <div class="form-group" data-field="email">
+                <label for="fieldEmail">EMAIL</label>
+                <input type="email" id="fieldEmail" name="email" class="form-input" placeholder="tu@email.com" autocomplete="email" required />
+                <p class="form-error">Ingresá un email válido.</p>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group" data-field="type">
+                  <label for="fieldType">TIPO DE PROYECTO</label>
+                  <select id="fieldType" name="type" class="form-select">
+                    <option value="Web">Web</option>
+                    <option value="Sistema">Sistema</option>
+                    <option value="Automatización">Automatización</option>
+                    <option value="Otro">Otro</option>
+                  </select>
+                </div>
+                <div class="form-group" data-field="timeline">
+                  <label for="fieldTimeline">TIMELINE</label>
+                  <select id="fieldTimeline" name="timeline" class="form-select">
+                    <option value="ASAP">ASAP</option>
+                    <option value="2-4 semanas">2-4 semanas</option>
+                    <option value="1-3 meses">1-3 meses</option>
+                    <option value="Flexible">Flexible</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group" data-field="budget">
+                <span class="form-group-label">PRESUPUESTO</span>
+                <div class="radio-group" role="radiogroup" aria-label="Presupuesto">
+                  <label class="radio-option" data-budget="Pequeño"><input type="radio" name="budget" value="Pequeño" />PEQUEÑO</label>
+                  <label class="radio-option" data-budget="Mediano"><input type="radio" name="budget" value="Mediano" />MEDIANO</label>
+                  <label class="radio-option" data-budget="Grande"><input type="radio" name="budget" value="Grande" />GRANDE</label>
+                </div>
+              </div>
+
+              <div class="form-group" data-field="details">
+                <label for="fieldDetails">DESCRIPCIÓN / DETALLES</label>
+                <textarea id="fieldDetails" name="details" class="form-textarea" placeholder="Contame sobre tu proyecto..." required></textarea>
+                <p class="form-error">Contanos un poco sobre el proyecto.</p>
+              </div>
+
+              <button type="submit" class="btn-submit" id="submitBtn">✅ CONFIRMAR INTERCAMBIO</button>
+            </form>
+
+            <div class="form-success" id="formSuccess" role="status">
+              <span class="form-success-icon" aria-hidden="true">🎉</span>
+              <p class="form-success-text">¡INTERCAMBIO INICIADO!<br />Te responderé pronto a tu email.</p>
+              <button type="button" class="btn-mini" id="resetFormBtn" style="margin-top: 16px;">VOLVER</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  -->
+  <footer class="site-footer">
+    <p class="footer-text" id="footerText">© 2024 [Lautaro] | Diseño &amp; Código custom</p>
+    <nav class="footer-links" aria-label="Enlaces secundarios">
+      <a href="cv.html" class="footer-link" id="cvLink" target="_blank" rel="noopener">📄 CV DESCARGABLE</a>
+    </nav>
+    <p class="footer-pixel" aria-hidden="true">▚▚▚▚</p>
+  </footer>
+
+  <!-- ============================================================
+       MODAL DE PROYECTO
+  -->
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-sprite" id="modalSprite" aria-hidden="true">❔</div>
+        <div class="modal-title-block">
+          <h3 class="modal-title" id="modalTitle">PROYECTO</h3>
+          <p class="modal-meta" id="modalMeta"></p>
+          <span class="modal-status" id="modalStatus"></span>
+        </div>
+        <button type="button" class="modal-close" id="modalClose" aria-label="Cerrar detalles del proyecto">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-block">
+          <h4 class="modal-block-title">📦 VER DETALLES</h4>
+          <p><strong>Problema:</strong> <span id="modalProblem"></span></p>
+          <p><strong>Solución:</strong> <span id="modalSolution"></span></p>
+          <p><strong>Resultado:</strong> <span id="modalResult"></span></p>
+        </div>
+        <div class="modal-block">
+          <h4 class="modal-block-title">🧰 STACK / TECH</h4>
+          <div class="modal-stack" id="modalStack"></div>
+        </div>
+        <div class="modal-block">
+          <h4 class="modal-block-title">🚀 DEMO / CÓDIGO</h4>
+          <div class="modal-actions">
+            <a href="#" target="_blank" rel="noopener noreferrer" class="btn-link" id="modalDemo">🌐 LIVE DEMO</a>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="btn-link" id="modalGithub">💾 GITHUB</a>
+          </div>
+        </div>
+        <p class="modal-timeline">Completado: <strong id="modalTimeline"></strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       TERMINAL RETRO (easter egg)
+  -->
+  <div class="terminal-overlay" id="terminalOverlay" role="dialog" aria-modal="true" aria-label="Terminal retro">
+    <div class="terminal">
+      <div class="terminal-bar">
+        <span>RETRO_TERMINAL.EXE</span>
+        <button type="button" class="terminal-close" id="terminalClose" aria-label="Cerrar terminal">✕</button>
+      </div>
+      <div class="terminal-body" id="terminalBody" aria-live="polite"></div>
+      <div class="terminal-input-row">
+        <span class="term-prompt">$&gt;</span>
+        <input type="text" class="terminal-input" id="terminalInput" autocomplete="off" aria-label="Comando de terminal" placeholder="escribe 'help'..." />
+      </div>
+    </div>
+  </div>
+
+  <!-- Konami toast -->
+  <div class="konami-toast" id="konamiToast" role="status">🎮 ¡MODO MISTERIO ACTIVADO!</div>
+
+  <!-- ============================================================
+       ANALYTICS (GA4 configurable en data/projects.json → ANALYTICS.ga4Id)
+       Dejar vacío ("" ) para desactivar.
+  -->
+
+  <!-- ============================================================
+       SCRIPTS
+  -->
+  <script src="data/projects.js"></script>
+  <script src="js/data-loader.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/typewriter.js"></script>
+  <script src="js/pc-storage.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/contact.js"></script>
+  <script src="js/terminal.js"></script>
+  <script src="js/analytics.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

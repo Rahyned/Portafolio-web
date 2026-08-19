@@ -1,0 +1,29 @@
+/* ============================================================
+   CRT OVERLAY - Scanlines + viñeta (toggle en header)
+   ============================================================ */
+
+.crt-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 8000;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.06) 0 1px,
+      transparent 1px 3px
+    );
+}
+
+.crt-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.18) 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crt-overlay {
+    display: none;
+  }
+}

@@ -1,0 +1,76 @@
+/* ============================================================
+   VARIABLES CSS - Paleta de colores y temas
+   Dark Mode (default) | Red Version | Blue Version | Surprise
+   ============================================================ */
+
+:root {
+  --font-pixel: "Press Start 2P", "Courier New", monospace;
+  --font-mono: "JetBrains Mono", "Fira Code", "Courier New", monospace;
+  --font-body: "Inter", "Roboto", system-ui, sans-serif;
+
+  --header-height: 60px;
+  --max-width: 1200px;
+  --radius: 4px;
+  --border-thick: 2px;
+}
+
+/* ---------- THEME: DARK (default) ---------- */
+:root,
+.theme-dark {
+  --bg-primary: #0D1117;
+  --bg-secondary: #161B22;
+  --bg-tertiary: #21262D;
+  --text-primary: #E6EDF3;
+  --text-secondary: #8B949E;
+  --accent: #58A6FF;
+  --accent-bright: #79C0FF;
+  --accent-red: #FF6B6B;
+  --border: #30363D;
+  --btn-bg: #21262D;
+  --shadow: rgba(0, 0, 0, 0.6);
+}
+
+/* ---------- THEME: RED VERSION ---------- */
+.theme-red {
+  --bg-primary: #2A1515;
+  --bg-secondary: #3A1D1D;
+  --bg-tertiary: #4A2525;
+  --text-primary: #FFEDED;
+  --text-secondary: #D8A0A0;
+  --accent: #FF1744;
+  --accent-bright: #FF5252;
+  --accent-red: #FF6B6B;
+  --border: #7A2A2A;
+  --btn-bg: #4A2525;
+  --shadow: rgba(0, 0, 0, 0.6);
+}
+
+/* ---------- THEME: BLUE VERSION ---------- */
+.theme-blue {
+  --bg-primary: #0A1528;
+  --bg-secondary: #10203A;
+  --bg-tertiary: #16294A;
+  --text-primary: #EAF2FF;
+  --text-secondary: #93A8CC;
+  --accent: #1E90FF;
+  --accent-bright: #58A6FF;
+  --accent-red: #FF6B6B;
+  --border: #2A4A7A;
+  --btn-bg: #16294A;
+  --shadow: rgba(0, 0, 0, 0.6);
+}
+
+/* ---------- THEME: KONAMI SURPRISE ---------- */
+.theme-konami {
+  --bg-primary: #0B1B12;
+  --bg-secondary: #11281A;
+  --bg-tertiary: #173522;
+  --text-primary: #D9FFE0;
+  --text-secondary: #7FC98F;
+  --accent: #00E676;
+  --accent-bright: #69F0AE;
+  --accent-red: #FFD740;
+  --border: #2E6B40;
+  --btn-bg: #173522;
+  --shadow: rgba(0, 0, 0, 0.6);
+}

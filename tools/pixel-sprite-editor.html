@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pixel Sprite Editor — 16×16</title>
+  <style>
+    :root {
+      --bg: #12121a;
+      --panel: #1b1b2f;
+      --panel2: #232341;
+      --border: #333;
+      --text: #eee;
+      --muted: #aaa;
+      --accent: #00c2c7;
+      --danger: #ff4d6d;
+      --ok: #2a9d8f;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: ui-monospace, monospace;
+      background: var(--bg);
+      color: var(--text);
+      padding: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    h1 { font-size: 18px; margin: 0 0 4px; }
+    p.help { font-size: 13px; color: var(--muted); margin: 0 0 20px; line-height: 1.6; }
+    code { background: var(--panel2); padding: 2px 6px; border-radius: 3px; }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 320px 1fr 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+    @media (max-width: 1024px) { .layout { grid-template-columns: 1fr 1fr; } }
+
+    .panel {
+      background: var(--panel);
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+    }
+    .panel h2 { font-size: 13px; margin: 0 0 10px; color: var(--accent); letter-spacing: 0.5px; }
+
+    /* --- Canvas de pintado --- */
+    #editorWrap { position: relative; user-select: none; touch-action: none; }
+    canvas#editor {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      image-rendering: pixelated;
+      background:
+        repeating-conic-gradient(#262636 0% 25%, #1f1f2e 0% 50%) 0 0 / 20px 20px;
+    }
+    .editor-actions { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+    #status { margin-top: 10px; font-size: 12px; color: var(--muted); min-height: 18px; }
+
+    /* --- Paleta --- */
+    #palette { display: grid; grid-template-columns: repeat(8, 1fr); gap: 6px; }
+    .swatch {
+      aspect-ratio: 1 / 1;
+      border-radius: 4px;
+      border: 2px solid transparent;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: #1b1b2f;
+      transition: transform 0.05s;
+    }
+    .swatch:hover { transform: scale(1.1); }
+    .swatch.active { border-color: #fff; box-shadow: 0 0 0 2px var(--accent); }
+    .swatch.transparent { background:
+      repeating-conic-gradient(#555 0% 25%, #333 0% 50%) 0 0 / 14px 14px; color: #fff; }
+
+    /* --- Preview --- */
+    #preview { display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap; }
+    .preview-item { text-align: center; }
+    .preview-item figcaption { font-size: 11px; color: var(--muted); margin-top: 6px; }
+    .preview-item canvas {
+      image-rendering: pixelated;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background:
+        repeating-conic-gradient(#262636 0% 25%, #1f1f2e 0% 50%) 0 0 / 16px 16px;
+    }
+
+    /* --- Código --- */
+    .code-block {
+      background: #0f0f18;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 12px;
+      max-height: 560px;
+      overflow: auto;
+    }
+    pre { margin: 0; font-size: 12px; line-height: 1.5; white-space: pre; }
+
+    .btn {
+      font-family: ui-monospace, monospace;
+      background: var(--danger);
+      color: #1b1b2f;
+      border: 0;
+      border-radius: 4px;
+      padding: 9px 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .btn:hover { filter: brightness(1.1); }
+    .btn.secondary { background: var(--accent); }
+    .btn.ok { background: var(--ok); color: #fff; }
+
+    .field { margin-bottom: 12px; }
+    .field label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 5px; }
+    .field input, .field select {
+      width: 100%;
+      background: var(--panel2);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 8px 10px;
+      font-family: ui-monospace, monospace;
+      font-size: 13px;
+    }
+    .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+
+    /* Paleta de atajos */
+    .status-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #0f0f18;
+      border-top: 1px solid var(--border);
+      padding: 6px 16px;
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      gap: 20px;
+      z-index: 10;
+    }
+    .status-bar .ico { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <h1>🧷 Pixel Sprite Editor — 16×16</h1>
+  <p class="help">
+    Pintá un sprite de 16×16 para proyectos del portfolio. <b>Click</b> = pintar · <b>click derecho</b> = borrar ·
+    <b>arrastrar</b> = pintar seguido. El botón <b>Generar código</b> emite el array JS listo para pegar en
+    <code>client/src/sprites/projects.js</code>. Espejá con <b>↔ espejo</b> para hacer figuras simétricas.
+  </p>
+
+  <div class="layout">
+    <!-- Editor -->
+    <div class="panel">
+      <h2>1 · Editor</h2>
+      <div id="editorWrap">
+        <canvas id="editor" width="320" height="320"></canvas>
+      </div>
+      <div class="editor-actions">
+        <button class="btn secondary" id="mirrorH">↕ espejo vertical</button>
+        <button class="btn secondary" id="mirrorV">↔ espejo horizontal</button>
+        <button class="btn" id="clear">Limpiar</button>
+      </div>
+      <div id="status">Listo.</div>
+    </div>
+
+    <!-- Paleta + opciones -->
+    <div class="panel">
+      <h2>2 · Paleta & config</h2>
+      <div id="palette"></div>
+
+      <div style="height:16px"></div>
+
+      <div class="field">
+        <label>Nombre de la variable / clave</label>
+        <input id="name" value="MI_SPRITE" spellcheck="false" />
+      </div>
+      <div class="field">
+        <label>Emoji de preview (opcional)</label>
+        <input id="emoji" value="" maxlength="4" placeholder="p. ej. ⭐" style="max-width:80px" />
+      </div>
+      <div class="field">
+        <label>Escala de la preview grande (px)</label>
+        <input id="scale" type="number" value="16" min="8" max="32" step="2" style="max-width:90px" />
+      </div>
+
+      <div class="editor-actions">
+        <button class="btn ok" id="generate">⚙ Generar código</button>
+        <button class="btn secondary" id="copy">Copiar</button>
+      </div>
+
+      <div style="height:16px;border-bottom:1px solid var(--border);margin:16px 0"></div>
+      <h2>Importar sprite existente</h2>
+      <p class="help" style="margin-top:0">
+        Pegá el array <code>P([...])</code> de un sprite que ya exista en
+        <code>projects.js</code> / <code>boxes.js</code> para editarlo sin redibujarlo.
+      </p>
+      <textarea id="importText" rows="4" spellcheck="false"
+        style="width:100%;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:4px;padding:8px;font-family:ui-monospace,monospace;font-size:12px;resize:vertical"
+        placeholder='Pega acá: ["................", "....KK....KK....", ...]'></textarea>
+      <div class="editor-actions">
+        <button class="btn secondary" id="importBtn">⬆ Cargar en editor</button>
+      </div>
+    </div>
+
+    <!-- Preview + código -->
+    <div class="panel">
+      <h2>3 · Vista previa & código</h2>
+      <div id="preview">
+        <figure class="preview-item">
+          <canvas id="pvSmall" width="208" height="208"></canvas>
+          <figcaption>grilla (13px/px)</figcaption>
+        </figure>
+        <figure class="preview-item">
+          <canvas id="pvLarge" width="0" height="0"></canvas>
+          <figcaption>grande</figcaption>
+        </figure>
+      </div>
+      <div style="height:12px"></div>
+      <div class="code-block">
+        <pre id="code">// …</pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="status-bar">
+    <span><span class="ico">◼</span> izq pintar</span>
+    <span><span class="ico">◻</span> der borrar</span>
+    <span><span class="ico">⌨</span> 1-9 elegir color</span>
+    <span><span class="ico">Space</span> borrador</span>
+  </div>
+
+  <script>
+    /* ============ Paleta (misma que client/src/sprites/palette.js) ============ */
+    const PX = {
+      ".": "#00000000", // transparente
+      K: "#1B1B2F", W: "#FFFFFF", R: "#E63946", O: "#F8961E",
+      G: "#FFD166", Y: "#FFE66D", N: "#2A9D8F", L: "#7BD389",
+      B: "#3A86FF", C: "#90CAF9", P: "#FF7BAC", V: "#9B5DE5",
+      T: "#8B5A2B", H: "#C68958", E: "#6C757D", F: "#B0B8C0", A: "#00C2C7"
+    };
+    // Orden para la paleta visual (excluye transparente)
+    const PX_ORDER = ["K","W","R","O","G","Y","N","L","B","C","P","V","T","H","E","F","A"];
+
+    /* ============ Estado ============ */
+    const SIZE = 16;
+    // grilla[index] = clave de color o "." para transparente
+    let grid = [];
+    function initGrid() { grid = Array(SIZE * SIZE).fill("."); }
+    initGrid();
+
+    let currentColor = "K";
+    let eraserMode = false;
+
+    /* ============ Elementos ============ */
+    const editor = document.getElementById("editor");
+    const ectx = editor.getContext("2d");
+    const paletteEl = document.getElementById("palette");
+    const codeEl = document.getElementById("code");
+    const pvSmall = document.getElementById("pvSmall");
+    const pvLarge = document.getElementById("pvLarge");
+    const sctx = pvSmall.getContext("2d");
+    const lctx = pvLarge.getContext("2d");
+    const statusEl = document.getElementById("status");
+
+    /* ============ Paleta visual ============ */
+    function buildPalette() {
+      paletteEl.innerHTML = "";
+      // botón transparente
+      const t = document.createElement("div");
+      t.className = "swatch transparent" + (currentColor === "." ? " active" : "");
+      t.textContent = "·";
+      t.title = "Transparente (.)";
+      t.addEventListener("click", () => selectColor("."));
+      paletteEl.appendChild(t);
+
+      PX_ORDER.forEach((k, i) => {
+        const s = document.createElement("div");
+        s.className = "swatch" + (currentColor === k ? " active" : "");
+        s.style.background = PX[k];
+        s.textContent = k;
+        s.title = k + " · atajo " + (i + 1);
+        s.addEventListener("click", () => selectColor(k));
+        paletteEl.appendChild(s);
+      });
+    }
+    function selectColor(k) {
+      currentColor = k;
+      eraserMode = k === ".";
+      buildPalette();
+      statusEl.textContent = "Color: " + (k === "." ? "transparente (borrador)" : k + " " + PX[k]);
+    }
+
+    /* ============ Render del editor ============ */
+    function drawGrid() {
+      ectx.clearRect(0, 0, editor.width, editor.height);
+      const px = editor.width / SIZE;
+      for (let y = 0; y < SIZE; y++) {
+        for (let x = 0; x < SIZE; x++) {
+          const idx = y * SIZE + x;
+          const col = grid[idx];
+          if (col !== ".") {
+            ectx.fillStyle = PX[col];
+            ectx.fillRect(x * px, y * px, px, px);
+          }
+        }
+      }
+      // grilla fina
+      ectx.strokeStyle = "rgba(0,0,0,0.4)";
+      ectx.lineWidth = 1;
+      for (let i = 0; i <= SIZE; i++) {
+        ectx.beginPath();
+        ectx.moveTo(i * px, 0);
+        ectx.lineTo(i * px, editor.height);
+        ectx.stroke();
+        ectx.beginPath();
+        ectx.moveTo(0, i * px);
+        ectx.lineTo(editor.width, i * px);
+        ectx.stroke();
+      }
+    }
+
+    /* ============ Pintado ============ */
+    function cellFromEvent(e) {
+      const rect = editor.getBoundingClientRect();
+      const x = Math.floor((e.clientX - rect.left) / (rect.width / SIZE));
+      const y = Math.floor((e.clientY - rect.top) / (rect.height / SIZE));
+      if (x < 0 || x >= SIZE || y < 0 || y >= SIZE) return null;
+      return y * SIZE + x;
+    }
+    function paint(e) {
+      e.preventDefault();
+      const idx = cellFromEvent(e);
+      if (idx === null) return;
+      grid[idx] = currentColor;
+      drawGrid();
+      renderPreviews();
+    }
+    editor.addEventListener("mousedown", (e) => {
+      if (e.button === 2) {
+        const prev = currentColor;
+        selectColor(".");
+        paint(e);
+        // restaurar color anterior sin re-render de paleta pesado
+        currentColor = prev; eraserMode = false;
+        return;
+      }
+      paint(e);
+      const move = (ev) => paint(ev);
+      const up = () => {
+        window.removeEventListener("mousemove", move);
+        window.removeEventListener("mouseup", up);
+      };
+      window.addEventListener("mousemove", move);
+      window.addEventListener("mouseup", up);
+    });
+    editor.addEventListener("contextmenu", (e) => e.preventDefault());
+
+    /* ============ Previews ============ */
+    function renderPreviews() {
+      // pequeña (grilla 13px)
+      const ps = 13;
+      sctx.clearRect(0, 0, pvSmall.width, pvSmall.height);
+      for (let y = 0; y < SIZE; y++) {
+        for (let x = 0; x < SIZE; x++) {
+          const col = grid[y * SIZE + x];
+          if (col !== ".") {
+            sctx.fillStyle = PX[col];
+            sctx.fillRect(x * ps, y * ps, ps, ps);
+          }
+        }
+      }
+      // grande
+      const scale = parseInt(document.getElementById("scale").value, 10) || 16;
+      pvLarge.width = SIZE * scale;
+      pvLarge.height = SIZE * scale;
+      const gl = pvLarge.getContext("2d");
+      gl.clearRect(0, 0, pvLarge.width, pvLarge.height);
+      for (let y = 0; y < SIZE; y++) {
+        for (let x = 0; x < SIZE; x++) {
+          const col = grid[y * SIZE + x];
+          if (col !== ".") {
+            gl.fillStyle = PX[col];
+            gl.fillRect(x * scale, y * scale, scale, scale);
+          }
+        }
+      }
+    }
+
+    /* ============ Espejos ============ */
+    function mirror(horizontal) {
+      const copy = grid.slice();
+      for (let y = 0; y < SIZE; y++) {
+        for (let x = 0; x < SIZE; x++) {
+          const nx = horizontal ? (SIZE - 1 - x) : x;
+          const ny = horizontal ? y : (SIZE - 1 - y);
+          grid[y * SIZE + x] = copy[ny * SIZE + nx];
+        }
+      }
+      drawGrid();
+      renderPreviews();
+      statusEl.textContent = horizontal ? "Espejado horizontalmente (↔)" : "Espejado verticalmente (↕)";
+    }
+    document.getElementById("mirrorH").addEventListener("click", () => mirror(false));
+    document.getElementById("mirrorV").addEventListener("click", () => mirror(true));
+    document.getElementById("clear").addEventListener("click", () => {
+      initGrid();
+      drawGrid();
+      renderPreviews();
+      statusEl.textContent = "Sprite limpiado.";
+    });
+
+    document.getElementById("scale").addEventListener("input", renderPreviews);
+
+    /* ============ Generar código ============ */
+    function nameFromInput() {
+      let n = (document.getElementById("name").value || "MI_SPRITE")
+        .toUpperCase().replace(/[^A-Z0-9_]/g, "_");
+      if (/^[0-9]/.test(n)) n = "S_" + n;
+      return n || "MI_SPRITE";
+    }
+    function toRows() {
+      const rows = [];
+      for (let y = 0; y < SIZE; y++) {
+        let row = "";
+        for (let x = 0; x < SIZE; x++) {
+          row += grid[y * SIZE + x];
+        }
+        rows.push(row);
+      }
+      return rows;
+    }
+    function generateCode() {
+      const rows = toRows();
+      const name = nameFromInput();
+      const emoji = (document.getElementById("emoji").value || "").trim();
+      let out = "";
+      if (emoji) out += `// ${emoji} `;
+      out += `// ${name} — sprite 16x16.\n`;
+      out += `export const ${name} = P([\n`;
+      out += rows.map((r) => `  "${r}"`).join(",\n");
+      out += `\n]);\n`;
+      codeEl.textContent = out;
+      return out;
+    }
+    document.getElementById("generate").addEventListener("click", generateCode);
+
+    /* ============ Importar sprite existente ============ */
+    function parseSpriteArray(text) {
+      // Acepta: ["...","..."],   P(["..."]), o export const X = P([...]);
+      const m = text.match(/\[([\s\S]*?)\]/);
+      if (!m) throw new Error("No encontré el array de filas [ ... ].");
+      const inner = m[1];
+      // extrae todos los strings de 16 chars
+      const strings = [];
+      const re = /"([^"]{16})"/g;
+      let match;
+      while ((match = re.exec(inner)) !== null) strings.push(match[1]);
+      if (strings.length === 0) {
+        // quizá con comilla simple
+        const re2 = /'([^']{16})'/g;
+        while ((match = re2.exec(inner)) !== null) strings.push(match[1]);
+      }
+      if (strings.length !== 16) {
+        throw new Error("Necesito 16 filas de 16 chars (obtuve " + strings.length + ").");
+      }
+      // valida que los chars sean de la paleta o transparente
+      const valid = new Set(Object.keys(PX).concat(["."]));
+      for (const row of strings) {
+        for (const ch of row) {
+          if (!valid.has(ch)) throw new Error("Carácter inválido: '" + ch + "'. ¿Es de la paleta?");
+        }
+      }
+      return strings;
+    }
+    document.getElementById("importBtn").addEventListener("click", () => {
+      const text = document.getElementById("importText").value.trim();
+      if (!text) { statusEl.textContent = "Pegá antes un array de sprite."; return; }
+      try {
+        const rows = parseSpriteArray(text);
+        for (let y = 0; y < SIZE; y++) {
+          for (let x = 0; x < SIZE; x++) {
+            grid[y * SIZE + x] = rows[y][x];
+          }
+        }
+        drawGrid();
+        renderPreviews();
+        statusEl.textContent = "✓ Sprite importado (" + (rows.flat().filter(c => c !== ".").length) + " px).";
+      } catch (e) {
+        statusEl.textContent = "✗ " + e.message;
+      }
+    });
+
+    document.getElementById("copy").addEventListener("click", async () => {
+      const txt = codeEl.textContent === "// …" ? generateCode() : codeEl.textContent;
+      try {
+        await navigator.clipboard.writeText(txt);
+        statusEl.textContent = "¡Código copiado al portapapeles!";
+      } catch (e) {
+        statusEl.textContent = "No se pudo copiar automáticamente: seleccioná el texto manualmente.";
+      }
+    });
+
+    /* ============ Atajos de teclado ============ */
+    document.addEventListener("keydown", (e) => {
+      if (e.target.tagName === "INPUT") return;
+      // 1-9 seleccionan colores (índice sobre paleta: 1..9 -> K,W,R,O,G,Y,N,L,B)
+      const map = { 1:"K",2:"W",3:"R",4:"O",5:"G",6:"Y",7:"N",8:"L",9:"B" };
+      if (map[e.key]) { selectColor(map[e.key]); return; }
+      if (e.key === " ") { e.preventDefault(); selectColor("."); }
+    });
+
+    /* ============ Inicializar ============ */
+    buildPalette();
+    drawGrid();
+    renderPreviews();
+    statusEl.textContent = "Listo. Elegí un color y pintá.";
+  </script>
+</body>
+</html>

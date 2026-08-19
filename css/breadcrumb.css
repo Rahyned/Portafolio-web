@@ -1,0 +1,46 @@
+/* ============================================================
+   NAVEGACIÓN / BREADCRUMB RETRO
+   ============================================================ */
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 0;
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  border-top: 2px solid var(--border);
+  border-bottom: 2px solid var(--border);
+  background: var(--bg-secondary);
+}
+
+.breadcrumb .container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.breadcrumb-link {
+  color: var(--text-secondary);
+  padding: 4px 6px;
+  transition: color 0.2s ease;
+}
+
+.breadcrumb-link:hover,
+.breadcrumb-link.active {
+  color: var(--accent);
+  background: var(--bg-tertiary);
+}
+
+.breadcrumb-sep {
+  color: var(--accent);
+  user-select: none;
+}
+
+@media (max-width: 640px) {
+  .breadcrumb {
+    font-size: 8px;
+  }
+}

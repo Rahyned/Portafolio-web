@@ -1,0 +1,112 @@
+/* ============================================================
+   BOOT SCREEN - Encendido estilo consola retro
+   ============================================================ */
+
+.boot-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  background: #0D0D1A;
+  color: #E6EDF3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-pixel);
+  transition: opacity 0.45s ease, visibility 0.45s ease;
+}
+
+.boot-screen.leaving {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.boot-inner {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+  padding: 24px;
+  max-width: 90vw;
+}
+
+.boot-logo {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.boot-logo.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.boot-logo-sprite {
+  animation: bootBob 1.4s ease-in-out infinite;
+  filter: drop-shadow(0 4px 0 rgba(255, 77, 109, 0.35));
+}
+
+.boot-logo-text {
+  font-size: 26px;
+  color: #E6EDF3;
+  letter-spacing: 2px;
+  text-shadow:
+    3px 3px 0 #FF4D6D,
+    6px 6px 0 rgba(255, 77, 109, 0.35);
+}
+
+.boot-logo-text span {
+  color: #FF4D6D;
+}
+
+.boot-status {
+  font-size: 11px;
+  color: #79C0FF;
+  min-height: 18px;
+}
+
+.boot-blink {
+  animation: blink 0.8s step-start infinite;
+}
+
+.boot-bar {
+  width: min(420px, 80vw);
+  height: 22px;
+  background: #161B22;
+  border: 3px solid #E6EDF3;
+  box-shadow: 4px 4px 0 rgba(255, 77, 109, 0.4);
+  overflow: hidden;
+}
+
+.boot-bar-fill {
+  height: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    #FF4D6D 0 18px,
+    #FFC53D 18px 36px,
+    #00C2C7 36px 54px
+  );
+  transition: width 0.1s linear;
+  position: relative;
+}
+
+.boot-bar-seg {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(90deg, transparent 0 14px, rgba(0, 0, 0, 0.35) 14px 16px);
+}
+
+.boot-hint {
+  font-size: 8px;
+  color: #6E7681;
+  opacity: 0.8;
+}
+
+@keyframes bootBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}

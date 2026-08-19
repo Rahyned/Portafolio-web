@@ -1,0 +1,112 @@
+/* ============================================================
+   MOCHILA / BLOG - Notas técnicas
+   ============================================================ */
+
+.blog-section {
+  padding: 60px 40px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.blog-card {
+  background: var(--bg-secondary);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.blog-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: 4px 4px 0 var(--accent);
+}
+
+.blog-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.blog-icon {
+  font-size: 22px;
+}
+
+.blog-date {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.blog-title {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+.blog-excerpt {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text-secondary);
+  flex: 1;
+}
+
+.blog-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.blog-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--accent-bright);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 4px 8px;
+}
+
+.blog-footer {
+  border-top: 2px dashed var(--border);
+  padding-top: 10px;
+}
+
+.blog-link {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: var(--accent);
+  transition: color 0.2s ease;
+}
+
+.blog-link:hover {
+  color: var(--accent-bright);
+}
+
+.blog-link.disabled {
+  color: var(--text-secondary);
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 640px) {
+  .blog-section {
+    padding: 40px 20px;
+  }
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+}

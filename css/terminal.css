@@ -1,0 +1,135 @@
+/* ============================================================
+   TERMINAL RETRO (Easter egg - tecla T)
+   ============================================================ */
+
+.terminal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 3000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.terminal-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.terminal {
+  width: 100%;
+  max-width: 640px;
+  height: 70vh;
+  max-height: 500px;
+  background: #0A0A0A;
+  border: 3px solid #00E676;
+  border-radius: var(--radius);
+  box-shadow: 0 0 30px rgba(0, 230, 118, 0.3);
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-mono);
+}
+
+.terminal-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #111;
+  border-bottom: 1px solid #00E676;
+  padding: 8px 12px;
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: #00E676;
+}
+
+.terminal-close {
+  color: #00E676;
+  font-size: 16px;
+  border: 1px solid #00E676;
+  background: none;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.terminal-close:hover {
+  background: #00E676;
+  color: #000;
+}
+
+.terminal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+  font-size: 13px;
+  color: #C8FFE0;
+  line-height: 1.6;
+}
+
+.terminal-body .term-line {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.terminal-body .term-prompt {
+  color: #00E676;
+}
+
+.terminal-body .term-cmd {
+  color: #FFFFFF;
+}
+
+.terminal-body .term-ok {
+  color: #69F0AE;
+}
+
+.terminal-body .term-info {
+  color: #A7C0FF;
+}
+
+.terminal-body .term-warn {
+  color: #FFD740;
+}
+
+.terminal-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-top: 1px solid #00E676;
+  background: #0A0A0A;
+}
+
+.terminal-input-row .term-prompt {
+  color: #00E676;
+  font-size: 13px;
+}
+
+.terminal-input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: #FFF;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.terminal-body .term-blink {
+  animation: blink 0.9s step-start infinite;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 640px) {
+  .terminal {
+    height: 80vh;
+    max-height: none;
+  }
+}

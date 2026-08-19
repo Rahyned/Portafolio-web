@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recortar sprites — picker</title>
+  <style>
+    body {
+      font-family: ui-monospace, monospace;
+      background: #12121a;
+      color: #eee;
+      padding: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    h1 { font-size: 16px; }
+    p { font-size: 13px; color: #aaa; line-height: 1.6; }
+    code { background: #1b1b2f; padding: 2px 6px; border-radius: 3px; }
+    .main {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+    .panel {
+      background: #1b1b2f;
+      border: 2px solid #333;
+      border-radius: 6px;
+      padding: 14px;
+    }
+    .panel h2 { font-size: 13px; margin: 0 0 10px; color: #ff4d6d; }
+    .canvas-wrap {
+      position: relative;
+      width: 100%;
+      touch-action: none;
+    }
+    canvas {
+      display: block;
+      width: 100%;
+      border: 1px solid #444;
+      background:
+        repeating-conic-gradient(#262636 0% 25%, #1f1f2e 0% 50%) 0 0 / 20px 20px;
+      image-rendering: pixelated;
+    }
+    .sel {
+      position: absolute;
+      border: 2px solid #00c2c7;
+      background: rgba(0, 194, 199, 0.2);
+      pointer-events: none;
+      box-sizing: border-box;
+      display: none;
+    }
+    #info {
+      margin-top: 10px;
+      font-size: 13px;
+      background: #0f0f18;
+      border: 1px solid #333;
+      padding: 8px 10px;
+      border-radius: 4px;
+      min-height: 70px;
+      word-break: break-all;
+    }
+    .btn {
+      font-family: ui-monospace, monospace;
+      background: #ff4d6d;
+      color: #1b1b2f;
+      border: 0;
+      border-radius: 4px;
+      padding: 10px 14px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+    .btn:hover { background: #ff7bac; }
+    .btn.secondary { background: #00c2c7; margin-left: 8px; }
+    .out { display: flex; gap: 12px; align-items: flex-start; margin-top: 10px; flex-wrap: wrap; }
+    .out figure { margin: 0; text-align: center; }
+    .out figcaption { font-size: 11px; color: #888; margin-top: 4px; }
+    .out canvas {
+      width: auto;
+      max-width: 100%;
+      height: 180px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sprite picker — arrastrá para seleccionar y recortar</h1>
+  <p>
+    1. Arrastrá sobre el sheet para marcar el área exacta (ej: la cabeza o la figura).<br />
+    2. Se muestra la vista previa del recorte y las coordenadas.<br />
+    3. Clic en <b>DESCARGAR PNG</b> para guardarlo, o copiame las coordenadas <code>x,y,w,h</code>.
+  </p>
+
+  <div class="main">
+    <div class="panel">
+      <h2>1 · Sprite sheet</h2>
+      <div class="canvas-wrap">
+        <canvas id="sheet"></canvas>
+        <div class="sel" id="sel"></div>
+      </div>
+      <div id="info">Arrastrá sobre la imagen para seleccionar.</div>
+    </div>
+
+    <div class="panel">
+      <h2>2 · Recorte (4×)</h2>
+      <canvas id="crop" width="400" height="400"></canvas>
+      <div class="out">
+        <figure>
+          <canvas id="out" width="160" height="160"></canvas>
+          <figcaption>vista previa</figcaption>
+        </figure>
+      </div>
+      <button class="btn" id="download">⬇ DESCARGAR PNG</button>
+      <button class="btn secondary" id="clear">Limpiar</button>
+    </div>
+  </div>
+
+  <script>
+    const SRC = "../client/public/sprites/trainer-sheet.png";
+    const NAT_W = 1024, NAT_H = 1024;
+    const sheetCanvas = document.getElementById("sheet");
+    const ctx = sheetCanvas.getContext("2d");
+    sheetCanvas.width = NAT_W;
+    sheetCanvas.height = NAT_H;
+
+    const sel = document.getElementById("sel");
+    const info = document.getElementById("info");
+    const cropCanvas = document.getElementById("crop");
+    const outCanvas = document.getElementById("out");
+    const cctx = cropCanvas.getContext("2d");
+    const octx = outCanvas.getContext("2d");
+    octx.imageSmoothingEnabled = false;
+    cctx.imageSmoothingEnabled = false;
+
+    let img = null;
+    let drag = { x0: 0, y0: 0, x1: 0, y1: 0, active: false };
+    let cur = null; // {x0,y0,w,h} en px naturales
+
+    const wrap = document.querySelector(".canvas-wrap");
+
+    img = new Image();
+    img.onload = () => {
+      ctx.imageSmoothingEnabled = false;
+      ctx.drawImage(img, 0, 0, sheetCanvas.width, sheetCanvas.height);
+    };
+    img.src = SRC;
+
+    // Ratio real entre píxeles de pantalla y píxeles naturales (1024).
+    function ratio() {
+      const rect = wrap.getBoundingClientRect();
+      return rect.width / NAT_W;
+    }
+
+    // Convierte px de pantalla (CSS) a px naturales del sheet.
+    function toNatural(px) {
+      return Math.round(px / ratio());
+    }
+
+    function onDown(e) {
+      e.preventDefault();
+      const r = wrap.getBoundingClientRect();
+      const x = e.clientX - r.left;
+      const y = e.clientY - r.top;
+      drag = { x0: x, y0: y, x1: x, y1: y, active: true };
+      sel.style.display = "block";
+      updateSel();
+    }
+
+    function onMove(e) {
+      if (!drag.active) return;
+      const r = wrap.getBoundingClientRect();
+      drag.x1 = e.clientX - r.left;
+      drag.y1 = e.clientY - r.top;
+      updateSel();
+    }
+
+    function onUp() {
+      if (!drag.active) return;
+      drag.active = false;
+      const x0 = Math.min(drag.x0, drag.x1);
+      const y0 = Math.min(drag.y0, drag.y1);
+      const w = Math.abs(drag.x1 - drag.x0);
+      const h = Math.abs(drag.y1 - drag.y0);
+      if (w < 4 || h < 4) { sel.style.display = "none"; return; }
+      cur = { x0: toNatural(x0), y0: toNatural(y0), w: Math.max(1, toNatural(w)), h: Math.max(1, toNatural(h)) };
+      renderCrop();
+    }
+
+    function updateSel() {
+      const x0 = Math.min(drag.x0, drag.x1);
+      const y0 = Math.min(drag.y0, drag.y1);
+      const w = Math.abs(drag.x1 - drag.x0);
+      const h = Math.abs(drag.y1 - drag.y0);
+      sel.style.left = x0 + "px";
+      sel.style.top = y0 + "px";
+      sel.style.width = w + "px";
+      sel.style.height = h + "px";
+    }
+
+    function renderCrop() {
+      cctx.clearRect(0, 0, cropCanvas.width, cropCanvas.height);
+      cropCanvas.width = cur.w;
+      cropCanvas.height = cur.h;
+      cctx.imageSmoothingEnabled = false;
+      cctx.drawImage(img, cur.x0, cur.y0, cur.w, cur.h, 0, 0, cur.w, cur.h);
+
+      outCanvas.width = cur.w;
+      outCanvas.height = cur.h;
+      octx.drawImage(img, cur.x0, cur.y0, cur.w, cur.h, 0, 0, cur.w, cur.h);
+
+      info.innerHTML =
+        `<b>Coordenadas:</b> <code>x=${cur.x0}, y=${cur.y0}, w=${cur.w}, h=${cur.h}</code><br/>` +
+        `Tamaño: ${cur.w}×${cur.h}px`;
+    }
+
+    document.getElementById("clear").addEventListener("click", () => {
+      sel.style.display = "none";
+      cur = null;
+      info.innerHTML = "Arrastrá sobre la imagen para seleccionar.";
+    });
+
+    document.getElementById("download").addEventListener("click", () => {
+      if (!cur) return;
+      const out = document.createElement("canvas");
+      out.width = cur.w;
+      out.height = cur.h;
+      const octx2 = out.getContext("2d");
+      octx2.imageSmoothingEnabled = false;
+      octx2.drawImage(img, cur.x0, cur.y0, cur.w, cur.h, 0, 0, cur.w, cur.h);
+      out.toBlob((blob) => {
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = "sprite-recorte-" + cur.w + "x" + cur.h + ".png";
+        a.click();
+        setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+      }, "image/png");
+    });
+
+    wrap.addEventListener("mousedown", onDown);
+    wrap.addEventListener("mousemove", onMove);
+    window.addEventListener("mouseup", onUp);
+    wrap.addEventListener("touchstart", (e) => onDown(e.touches[0]), { passive: false });
+    wrap.addEventListener("touchmove", (e) => onMove(e.touches[0]), { passive: false });
+    wrap.addEventListener("touchend", onUp);
+  </script>
+</body>
+</html>
