@@ -42,8 +42,9 @@ export const FLORERIA_SUSI = P([
 
 // Laboratorio RioDent — diente.
 export const RIODENT = P([
-  "..FFFFFFKWWFF...",
-  "..FFWWKKWFWWWF..",
+  "....FFWWKWWF....",
+  "..FFFWWKWWWFF...",
+  "..FFWWWWWFWWWF..",
   ".FFWWWWWFFWWWW..",
   ".FWWWWWWWWWWWWW.",
   ".FWWWWWWWWWWFWW.",

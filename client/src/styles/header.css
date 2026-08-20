@@ -157,3 +157,24 @@
     gap: 6px;
   }
 }
+
+@media (max-width: 420px) {
+  .header-logo {
+    font-size: 8px;
+  }
+  .theme-btn {
+    font-size: 5px;
+    padding: 6px 4px;
+  }
+  .theme-switcher {
+    gap: 3px;
+  }
+  .icon-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+  .header-right {
+    gap: 4px;
+  }
+}

@@ -110,3 +110,20 @@
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-6px); }
 }
+
+/* ---------- Mobile ---------- */
+@media (max-width: 640px) {
+  .boot-logo {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .boot-logo-text {
+    font-size: 15px;
+  }
+  .boot-status {
+    font-size: 9px;
+  }
+  .boot-bar {
+    width: min(320px, 84vw);
+  }
+}

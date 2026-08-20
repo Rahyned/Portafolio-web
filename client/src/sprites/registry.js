@@ -1,14 +1,5 @@
 import { TRAINER, POKEBALL, COIN, STAR } from "./trainer";
 import { MI_SPRITE } from "./hero";
-import {
-  ABSTRACT_SHOPP,
-  FLORERIA_SUSI,
-  RIODENT,
-  SOLUTIONS_CARS,
-  STELLA,
-  BUTTERFLIES,
-  LIBRETA
-} from "./projects";
 import { BOX_WEB, BOX_SYSTEMS, BOX_DESKTOP } from "./boxes";
 
 // Recorta filas/columnas transparentes y recentra el contenido en la grilla
@@ -51,27 +42,23 @@ export const SPRITES = {
   star: centerSprite(STAR),
   box_web: centerSprite(BOX_WEB),
   box_systems: centerSprite(BOX_SYSTEMS),
-  box_desktop: centerSprite(BOX_DESKTOP),
-  abstractoshopp: centerSprite(ABSTRACT_SHOPP),
-  floreria_susi: centerSprite(FLORERIA_SUSI),
-  riodent: centerSprite(RIODENT),
-  solutionscars: centerSprite(SOLUTIONS_CARS),
-  stella: centerSprite(STELLA),
-  butterflies: centerSprite(BUTTERFLIES),
-  libreta: centerSprite(LIBRETA)
+  box_desktop: centerSprite(BOX_DESKTOP)
 };
 
 export const getSprite = (key) => SPRITES[key] || null;
 
-// Mapea project.id (data/projects.json) a la clave de sprite.
-const PROJECT_SPRITES = {
-  "abstractoshopp": "abstractoshopp",
-  "floreria-susi": "floreria_susi",
-  "riodent": "riodent",
-  "solutionscars": "solutionscars",
-  "stella": "stella",
-  "butterflies": "butterflies",
-  "libreta": "libreta"
-};
+// Los sprites de proyectos se cargan como SVG desde public/sprites/.
+// Cada archivo se llama sprite-<id>.svg (ej: sprite-riodent.svg).
+const PROJECT_IDS = [
+  "abstractoshopp",
+  "floreria-susi",
+  "riodent",
+  "solutionscars",
+  "stella",
+  "butterflies",
+  "libreta"
+];
 
-export const getProjectSprite = (id) => SPRITES[PROJECT_SPRITES[id]] ? PROJECT_SPRITES[id] : null;
+// Devuelve la ruta del SVG del proyecto, o null si no tiene sprite.
+export const getProjectSprite = (id) =>
+  PROJECT_IDS.includes(id) ? `/sprites/sprite-${id}.svg` : null;

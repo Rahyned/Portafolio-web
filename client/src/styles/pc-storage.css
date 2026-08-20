@@ -103,7 +103,7 @@
 /* Grilla de almacenamiento */
 .pc-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 14px;
   position: relative;
 }
@@ -181,11 +181,14 @@
   flex: 1;
   width: 100%;
   min-height: 0;
+  /* espacio para que el icono no choque con el pedestal */
+  padding-bottom: 26px;
 }
 
 .pc-slot .slot-sprite {
   width: min(66%, 132px);
   height: auto;
+  max-height: 100%;
   animation: slotBob 2.4s ease-in-out infinite;
   filter: drop-shadow(2px 3px 0 var(--shadow));
   z-index: 2;
@@ -257,6 +260,11 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
+}
+
+.pc-infobar .pc-infobar-sprite {
+  width: 16px;
+  height: 16px;
 }
 
 .pc-infobar-selection {
@@ -364,7 +372,8 @@
   overflow: hidden;
 }
 
-.modal-sprite svg {
+.modal-sprite svg,
+.modal-sprite .modal-sprite-img {
   width: min(78%, 88px);
   height: auto;
 }
@@ -546,16 +555,10 @@
 }
 
 /* ---------- Mobile ---------- */
-@media (max-width: 1024px) {
-  .pc-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
 @media (max-width: 768px) {
   .pc-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
+    gap: 10px;
   }
   .pc-section {
     padding: 40px 20px;
@@ -582,9 +585,6 @@
 }
 
 @media (max-width: 480px) {
-  .pc-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
   .pc-slot .slot-emoji {
     font-size: 38px;
   }

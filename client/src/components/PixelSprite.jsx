@@ -1,9 +1,4 @@
 import { getSprite } from "../sprites/registry";
-
-// Renderiza un sprite pixel art como SVG a partir de una grilla.
-// Si la clave no existe, devuelve null (el llamador decide el fallback).
-// Con crop=true recorta los márgenes transparentes al contenido para que
-// el icono llene la caja y quede centrado sin alterar el dibujo.
 export default function PixelSprite({ sprite, cell = 3, className = "", style, crop = false }) {
   const pixels = typeof sprite === "string" ? getSprite(sprite) : sprite;
   if (!pixels) return null;

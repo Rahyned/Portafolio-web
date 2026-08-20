@@ -2,20 +2,12 @@ import { useState } from "react";
 import { useData } from "../context/DataContext";
 import { useSound } from "../context/SoundContext";
 import PixelSprite from "./PixelSprite";
+import SpriteImage from "./SpriteImage";
+import { getProjectSprite } from "../sprites/registry";
 import ProjectModal from "./ProjectModal";
 
-const GRID_SLOTS = 16;
+const GRID_SLOTS = 9;
 const BOX_ICONS = ["box_web", "box_systems", "box_desktop"];
-const PROJECT_SPRITES = {
-  "abstractoshopp": "abstractoshopp",
-  "floreria-susi": "floreria_susi",
-  "riodent": "riodent",
-  "solutionscars": "solutionscars",
-  "stella": "stella",
-  "butterflies": "butterflies",
-  "libreta": "libreta"
-};
-const getProjectSprite = (id) => PROJECT_SPRITES[id] || null;
 
 export default function PCStorage() {
   const { data } = useData();
@@ -100,7 +92,7 @@ export default function PCStorage() {
                 >
                   <span className="slot-sprite-wrap" aria-hidden="true">
                     {sprite ? (
-                      <PixelSprite sprite={sprite} cell={6} className="slot-sprite" crop />
+                      <SpriteImage src={sprite} className="slot-sprite" />
                     ) : (
                       <span className="slot-emoji">{project.sprite}</span>
                     )}
@@ -119,7 +111,9 @@ export default function PCStorage() {
             <span className="pc-infobar-selection">
               {hovered
                 ? <>
-                    <PixelSprite sprite={getProjectSprite(hovered.id) || "star"} cell={2} />
+                    {getProjectSprite(hovered.id)
+                      ? <SpriteImage src={getProjectSprite(hovered.id)} className="pc-infobar-sprite" />
+                      : <PixelSprite sprite="star" cell={2} />}
                     {hovered.title}
                   </>
                 : "SELECCIONA UN PROYECTO ▸"}
