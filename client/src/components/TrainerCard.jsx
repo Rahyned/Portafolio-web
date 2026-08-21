@@ -61,7 +61,7 @@ export default function TrainerCard() {
       <div className="trainer-card trainer-modal reveal visible">
         <div className="trainer-modal-header">
           <div className="trainer-avatar" role="img" aria-label="Foto pixelada de Lautaro">
-            <img src="/sprites/sprite-face.svg" alt="Foto pixelada de Lautaro" className="trainer-photo" />
+            <img src="/sprites/sprite-face.svg" alt="Foto pixelada de Lautaro" className="trainer-photo" width="64" height="64" />
           </div>
           <div className="trainer-modal-titleblock">
             <h2 className="trainer-modal-title" id="trainerTitle">{PROFILE.name}</h2>
