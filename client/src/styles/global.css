@@ -27,6 +27,21 @@ body {
   min-height: 100vh;
   transition: background-color 0.3s ease, color 0.3s ease;
   -webkit-font-smoothing: antialiased;
+  /* Stacking context para que body::before quede detrás del contenido
+     pero encima del fondo. */
+  isolation: isolate;
+}
+
+/* Dot-grid pixelado global: detrás del contenido, encima del fondo */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: radial-gradient(var(--border) 1.5px, transparent 1.5px);
+  background-size: 32px 32px;
+  opacity: var(--dot-opacity);
 }
 
 /* Fondo con profundidad para el tema oscuro (evita el negro plano) */

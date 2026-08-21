@@ -23,21 +23,21 @@ export const TRAINER = P([
 // Pokébola decorativa.
 export const POKEBALL = P([
   "................",
-  "................",
-  "................",
-  "....KKKKKKKK....",
-  "..KKRRRRRRRRKK..",
+  "......KKKK......",
+  "....KKRRRRKK....",
+  "...KRRRRRRRRK...",
+  "..KRRWRRRRRRRK..",
+  "..KRWWRRRRRRRK..",
   ".KRRRRRRRRRRRRK.",
-  ".KRRRRRRRRRRRRK.",
-  "KRRRRRRRRRRRRRRK",
-  "KRRRRRRRRRRRRRRK",
-  "KRRRRRRKKKKRRRRK",
-  "KKKKKKKKKKKKKKKK",
-  ".KKKKKWWWWKKKKK.",
-  ".KKKKKWWWWKKKKK.",
-  ".KKKKKKKKKKKKKK.",
-  "..KKKKKKKKKKKK..",
-  "....KKKKKKKK...."
+  ".KRRRRRKKRRRRRK.",
+  ".KRRRR.WWKRRRRK.",
+  ".KKKKKKWWKKKKKK.",
+  ".KWWWWWKKWWWWWK.",
+  "..KWWWWWWWWWWK..",
+  "...KWWWWWWWWK...",
+  "....KKWWWWKK....",
+  "......KKKK......",
+  "................"
 ]);
 
 // Moneda dorada (partícula decorativa).

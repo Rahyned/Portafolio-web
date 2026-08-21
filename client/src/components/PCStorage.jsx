@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useData } from "../context/DataContext";
 import { useSound } from "../context/SoundContext";
 import PixelSprite from "./PixelSprite";
@@ -6,7 +6,6 @@ import SpriteImage from "./SpriteImage";
 import { getProjectSprite } from "../sprites/registry";
 import ProjectModal from "./ProjectModal";
 
-const GRID_SLOTS = 9;
 const BOX_ICONS = ["box_web", "box_systems", "box_desktop"];
 
 export default function PCStorage() {
@@ -16,6 +15,15 @@ export default function PCStorage() {
   const [phase, setPhase] = useState("idle"); // idle | out | in
   const [selected, setSelected] = useState(null);
   const [hovered, setHovered] = useState(null);
+  const [columns, setColumns] = useState(3);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 768px)");
+    const update = () => setColumns(mq.matches ? 2 : 3);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
 
   const box = data.PROJECT_BOXES[currentBox];
 
@@ -31,9 +39,13 @@ export default function PCStorage() {
     }, 300);
   };
 
-  const slots = Array.from({ length: GRID_SLOTS }, (_, i) => box.projects[i] || null);
-  const gridClass = phase === "out" ? " fade-out" : phase === "in" ? " fade-in" : "";
   const filled = box.projects.length;
+  // Desktop: 6 slots fijos (2 filas de 3). Móvil: corta en la última fila completa.
+  const slotCount = columns === 3
+    ? 6
+    : Math.max(columns, Math.ceil(filled / columns) * columns);
+  const slots = Array.from({ length: slotCount }, (_, i) => box.projects[i] || null);
+  const gridClass = phase === "out" ? " fade-out" : phase === "in" ? " fade-in" : "";
 
   return (
     <>
@@ -118,7 +130,7 @@ export default function PCStorage() {
                   </>
                 : "SELECCIONA UN PROYECTO ▸"}
             </span>
-            <span className="pc-infobar-count">{filled}/{GRID_SLOTS}</span>
+            <span className="pc-infobar-count">{filled}/{slotCount}</span>
           </div>
 
           <p className="pc-hint">💡 PRESIONA [T] PARA ABRIR LA TERMINAL</p>

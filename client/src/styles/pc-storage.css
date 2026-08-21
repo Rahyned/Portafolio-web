@@ -76,10 +76,10 @@
   border: 2px solid var(--border);
   border-radius: var(--radius);
   box-shadow: 2px 2px 0 var(--border);
-  padding: 8px 12px;
+  padding: 10px 14px;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   transition: all 0.2s ease;
   text-align: left;
 }
@@ -98,6 +98,15 @@
 
 .pc-tab svg {
   flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+}
+
+@media (max-width: 768px) {
+  .pc-tab svg {
+    width: 28px;
+    height: 28px;
+  }
 }
 
 /* Grilla de almacenamiento */
@@ -262,9 +271,14 @@
   gap: 8px;
 }
 
+.pc-infobar svg {
+  width: 32px;
+  height: 32px;
+}
+
 .pc-infobar .pc-infobar-sprite {
-  width: 16px;
-  height: 16px;
+  width: 24px;
+  height: 24px;
 }
 
 .pc-infobar-selection {

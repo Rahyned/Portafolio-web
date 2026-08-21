@@ -1,12 +1,21 @@
 // ============================================================
 // PALETA DE PÍXELES para sprites
-// Cada sprite es un array de strings de 16 chars; cada char es
-// una clave de color. "." = transparente.
+// Cada sprite es un array de strings; cada char es una clave de
+// color. "." = transparente.
 // ============================================================
 
 export const PX = {
   ".": 0,
-  K: "#1B1B2F", // negro / tinta
+  "0": "#2B2B33",
+  "1": "#ababab",
+  "2": "#4F4F5C",
+  "3": "#7C7C8C",
+  "4": "#A6A6B4",
+  "5": "#34517A",
+  "6": "#3E5E8C",
+  "7": "#54769F",
+  "8": "#6B8CB5",
+  K: "#000000", // negro / tinta
   W: "#FFFFFF", // blanco
   R: "#E63946", // rojo
   O: "#F8961E", // naranja
@@ -20,24 +29,24 @@ export const PX = {
   V: "#9B5DE5", // violeta
   T: "#8B5A2B", // marrón
   H: "#C68958", // marrón claro
-  E: "#6C757D", // gris
+  E: "#8f8f8f", // gris
   F: "#B0B8C0", // gris claro
   A: "#00C2C7", // cian
-  "0": "#0E0E1A", // tinta profunda (outline)
-  "$": "#14141F", // tinta
-  "#": "#0A0A12", // negro
-  D: "#26324A",   // azul pizarra oscuro
-  "&": "#00C2C7", // cian brillante (visor)
-  "@": "#4C6A9C", // azul medio
-  "1": "#9FB4D8", // azul-gris claro
-  "2": "#C4CFE0", // gris azulado claro
-  "3": "#8E9BB3", // gris medio
-  "4": "#E8EDF5", // casi blanco
-  "5": "#3B5B8C", // azul medio
-  "6": "#2E6E8C", // azul/teal
-  "7": "#24576E", // teal oscuro
-  "8": "#1E3A52", // azul marino
-  "9": "#182C40"  // navy
+  D: "#722F37",
+  I: "#FF0000",
+  J: "#FF8C00",
+  Q: "#FFD700",
+  U: "#9ACD32",
+  M: "#228B22",
+  X: "#00BFFF",
+  Z: "#4169E1",
+  S: "#FF69B4",
+  "%": "#800080",
+  "!": "#FF00FF",
+  "$": "#A0522D",
+  "&": "#F5DEB3",
+  "#": "#555555",
+  "@": "#C0C0C0"
 };
 
 // Convierte un array de filas de texto en una grilla de colores.

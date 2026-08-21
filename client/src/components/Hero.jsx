@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useTypewriter } from "../hooks/useTypewriter";
 import { useSound } from "../context/SoundContext";
 import { useData } from "../context/DataContext";
@@ -8,6 +9,27 @@ export default function Hero() {
   const { sfx } = useSound();
   const { displayed } = useTypewriter("Explora mis proyectos y servicios →", { speed: 38, start: true });
 
+  const [blinking, setBlinking] = useState(false);
+
+  useEffect(() => {
+    let blinkTimeout;
+    let hideTimeout;
+    const schedule = () => {
+      blinkTimeout = setTimeout(() => {
+        setBlinking(true);
+        hideTimeout = setTimeout(() => {
+          setBlinking(false);
+          schedule();
+        }, 300);
+      }, 2000 + Math.random() * 4000);
+    };
+    schedule();
+    return () => {
+      clearTimeout(blinkTimeout);
+      clearTimeout(hideTimeout);
+    };
+  }, []);
+
   const [head, ...tail] = data.PROFILE.tagline.split("|");
   const sub = tail.join("|");
 
@@ -16,8 +38,9 @@ export default function Hero() {
       <HeroParticles />
 
       <div className="hero-stage">
-        <div className="hero-sprite">
+        <div className={`hero-sprite${blinking ? " is-blink" : ""}`}>
           <img src="/sprites/sprite-body.svg" alt="Personaje pixelado" className="hero-trainer" />
+          <img src="/sprites/sprite-body-blink.svg" alt="" aria-hidden="true" className="hero-trainer hero-trainer--blink" />
           <div className="hero-shadow" aria-hidden="true" />
         </div>
 
