@@ -66,19 +66,6 @@
   width: auto;
 }
 
-.hero-trainer--blink {
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.08s ease;
-}
-
-.hero-sprite.is-blink .hero-trainer--blink {
-  opacity: 1;
-}
-
 /* Línea divisoria invisible entre las dos mitades verticales */
 .hero-divider {
   width: 1px;

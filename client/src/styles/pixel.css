@@ -10,7 +10,7 @@ html.pixel-cursor-on a,
 html.pixel-cursor-on button,
 html.pixel-cursor-on .pc-slot,
 html.pixel-cursor-on .radio-option,
-html.pixel-cursor-on .blog-card {
+html.pixel-cursor-on .service-card {
   cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Cpath d='M7 1h2v6h6v2H9v6H7V9H1V7h6z' fill='%23FF4D6D' stroke='%231B1B2F' stroke-width='1'/%3E%3C/svg%3E") 8 8, crosshair;
 }
 
@@ -212,12 +212,12 @@ html.pixel-cursor-on select {
   border-color: var(--accent);
 }
 
-/* ---------- Rarity (blog) ---------- */
-.blog-card.rarity-rare {
+/* ---------- Rarity (servicios) ---------- */
+.service-card.rarity-rare {
   border-color: var(--accent2);
 }
 
-.blog-card.rarity-epic {
+.service-card.rarity-epic {
   border-color: var(--accent);
   box-shadow: 0 0 18px var(--glow);
 }

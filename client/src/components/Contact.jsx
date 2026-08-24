@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useData } from "../context/DataContext";
 import { useSound } from "../context/SoundContext";
 
@@ -20,6 +20,17 @@ export default function Contact() {
   const [form, setForm] = useState(INITIAL_FORM);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState(null); // null | "sent" | "sent-mailto" | "saved"
+
+  // Un servicio de la sección SERVICIOS pre-selecciona el tipo de proyecto
+  useEffect(() => {
+    const onSelectService = (e) => {
+      const type = e.detail && e.detail.type;
+      if (!type) return;
+      setForm((f) => ({ ...f, type }));
+    };
+    window.addEventListener("portfolio:select-service", onSelectService);
+    return () => window.removeEventListener("portfolio:select-service", onSelectService);
+  }, []);
 
   const setField = (key, value) => {
     setForm((f) => ({ ...f, [key]: value }));

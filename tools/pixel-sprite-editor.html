@@ -257,6 +257,24 @@
     function initGrid() { grid = Array(SIZE * SIZE).fill("."); }
     initGrid();
 
+    /* ============ Autoguardado (localStorage) ============ */
+    const DRAFT_KEY = "pixel-sprite-editor-draft";
+    function persist() {
+      try { localStorage.setItem(DRAFT_KEY, JSON.stringify(grid)); } catch (e) { /* almacenamiento no disponible */ }
+    }
+    function restoreDraft() {
+      try {
+        const arr = JSON.parse(localStorage.getItem(DRAFT_KEY));
+        if (!Array.isArray(arr) || arr.length !== SIZE * SIZE) return false;
+        const valid = new Set(Object.keys(PX));
+        if (!arr.every((c) => c === "." || valid.has(c))) return false;
+        grid = arr;
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+
     let currentColor = "K";
     let eraserMode = false;
 
@@ -343,6 +361,7 @@
       grid[idx] = currentColor;
       drawGrid();
       renderPreviews();
+      persist();
     }
     editor.addEventListener("mousedown", (e) => {
       if (e.button === 2) {
@@ -407,6 +426,7 @@
       }
       drawGrid();
       renderPreviews();
+      persist();
       statusEl.textContent = horizontal ? "Espejado horizontalmente (↔)" : "Espejado verticalmente (↕)";
     }
     document.getElementById("mirrorH").addEventListener("click", () => mirror(false));
@@ -415,6 +435,7 @@
       initGrid();
       drawGrid();
       renderPreviews();
+      persist();
       statusEl.textContent = "Sprite limpiado.";
     });
 
@@ -493,6 +514,7 @@
         }
         drawGrid();
         renderPreviews();
+        persist();
         statusEl.textContent = "✓ Sprite importado (" + (rows.flat().filter(c => c !== ".").length) + " px).";
       } catch (e) {
         statusEl.textContent = "✗ " + e.message;
@@ -520,9 +542,12 @@
 
     /* ============ Inicializar ============ */
     buildPalette();
+    const restored = restoreDraft();
     drawGrid();
     renderPreviews();
-    statusEl.textContent = "Listo. Elegí un color y pintá.";
+    statusEl.textContent = restored
+      ? "✓ Borrador anterior restaurado automáticamente."
+      : "Listo. Elegí un color y pintá.";
   </script>
 </body>
 </html>

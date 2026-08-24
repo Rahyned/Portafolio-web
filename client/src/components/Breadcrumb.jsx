@@ -4,8 +4,8 @@ import { useSound } from "../context/SoundContext";
 const LINKS = [
   { id: "inicio", label: "INICIO" },
   { id: "ficha", label: "FICHA" },
+  { id: "servicios", label: "SERVICIOS" },
   { id: "pc", label: "PC" },
-  { id: "mochila", label: "MOCHILA" },
   { id: "contacto", label: "CONTACTO" }
 ];
 

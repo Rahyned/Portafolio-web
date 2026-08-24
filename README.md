@@ -1,6 +1,6 @@
 # LAUTARO.DEV — Portafolio Web Retro Pokémon
 
-Portafolio interactivo con estética de videojuego retro tipo Pokémon (8/16-bits). Combina nostalgia visual con funcionalidad profesional: proyectos en "PC de Almacenamiento", stack técnico como medallas, contacto lúdico, mochila de notas técnicas y CV imprimible.
+Portafolio interactivo con estética de videojuego retro tipo Pokémon (8/16-bits). Combina nostalgia visual con funcionalidad profesional: proyectos en "PC de Almacenamiento", stack técnico como medallas, sección de servicios conectada al contacto lúdico y CV imprimible.
 
 > ✅ **Frontend migrado a React + Vite** (carpeta `client/`) con **overhaul visual arcade brillante**: sprites pixel art, boot screen, CRT, partículas y tema ARCADE por defecto. La versión vanilla queda como respaldo en la raíz.
 
@@ -66,7 +66,7 @@ Todo el contenido se centraliza en **`data/projects.json`**. El frontend React l
 - `PROFILE` → nombre, nivel, experiencia, bio, estado
 - `BADGES` → medallas de stack
 - `PROJECT_BOXES` → cajas y proyectos (problema/solución/resultado, stack, demo, github)
-- `BLOG` → notas técnicas de la sección Mochila
+- `SERVICES` → servicios de la sección Servicios (el campo `type` pre-selecciona el formulario de contacto)
 - `CONTACT_INFO` → email, linkedin, github, CV
 - `SKILLS_LIST` → stack para la terminal y el CV
 
@@ -80,7 +80,7 @@ Reemplazá los valores entre `[]` manteniendo la estructura.
 - **Overlay CRT/scanlines** con toggle en el header (persistido)
 - **Hero vivo:** partículas flotantes, título con gradiente, sprite animado, botón bevel 3D
 - **PC de Almacenamiento:** 3 cajas, grilla 5x3, info bar, sprites animados, modal con detalles
-- **Mochila:** notas técnicas con cards de rareza
+- **Servicios:** cards con rareza + CTA "Iniciar intercambio" que scrollea a contacto y pre-selecciona el tipo de proyecto
 - **Contacto:** PokéNav (dispositivo) + máquina de intercambio (formulario validado + backend o mailto)
 - **CV en PDF:** `cv.html` imprimible
 - **Cursor pixelado** + hit-flash + scroll reveal con stagger
@@ -98,7 +98,7 @@ Reemplazá los valores entre `[]` manteniendo la estructura.
 - [x] Header funcional (4 temas, CRT, mute) + hero con partículas y título gradiente
 - [x] Ficha de entrenador con sprite animado, EXP shimmer y medallas
 - [x] PC de almacenamiento con info bar, sprites y modal dual-screen
-- [x] Mochila/blog con rarity + Contacto PokéNav/trade machine
+- [x] Sección Servicios conectada al formulario de contacto + Contacto PokéNav/trade machine
 - [x] Backend de contacto (Express + Nodemailer + fallback inbox + rate limit)
 - [x] Konami con confetti + terminal (`T`) + cursor pixel + hit-flash
 - [x] Datos dinámicos desde JSON + GA4 configurable

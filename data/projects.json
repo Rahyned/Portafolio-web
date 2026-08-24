@@ -145,30 +145,48 @@
       ]
     }
   ],
-  "BLOG": [
+  "SERVICES": [
     {
-      "id": "docker-devs",
-      "title": "Docker para devs web",
-      "date": "Ene 2024",
-      "tags": ["Docker", "DevOps"],
-      "excerpt": "Por qué Docker Compose cambió mi forma de levantar entornos de desarrollo y cómo lo uso en cada proyecto.",
-      "link": null
+      "id": "web",
+      "icon": "🌐",
+      "title": "DESARROLLO WEB",
+      "type": "Web",
+      "description": "Sitios y aplicaciones web rápidos y en producción: de la landing que convierte visitas en clientes a la tienda con catálogo completo.",
+      "includes": [
+        "Landing pages y sitios institucionales",
+        "Tiendas online con catálogo y carrito",
+        "WhatsApp, formularios e integraciones",
+        "SEO básico + deploy incluido"
+      ],
+      "stack": ["React", "Next.js", "Vite", "Tailwind CSS"]
     },
     {
-      "id": "sync-inventario",
-      "title": "Sincronizar inventario en 3 plataformas",
-      "date": "Feb 2024",
-      "tags": ["Python", "APIs"],
-      "excerpt": "Lección aprendida integrando Shopify, WooCommerce y una base local con webhooks y tareas periódicas.",
-      "link": null
+      "id": "sistemas",
+      "icon": "🖥️",
+      "title": "SISTEMAS DE GESTIÓN",
+      "type": "Sistema",
+      "description": "ERPs y apps de escritorio que reemplazan planillas y papel por control real de tu negocio, con reportes y auditoría.",
+      "includes": [
+        "Facturación electrónica AFIP",
+        "Inventario, clientes y cuentas corrientes",
+        "Reportes exportables PDF/Excel",
+        "Apps desktop offline para Windows"
+      ],
+      "stack": ["Python", "Flet / PyQt5", "Tauri (Rust)", "PostgreSQL / SQLite"]
     },
     {
-      "id": "fastify",
-      "title": "APIs REST con Fastify",
-      "date": "Mar 2024",
-      "tags": ["Node.js", "Backend"],
-      "excerpt": "Estructura que uso para APIs rápidas con validación, idempotencia y reintentos bien diseñados.",
-      "link": null
+      "id": "automatizaciones",
+      "icon": "⚙️",
+      "title": "AUTOMATIZACIONES & APIS",
+      "type": "Automatización",
+      "description": "Integraciones que eliminan tareas repetitivas y conectan tus herramientas entre sí para que nada dependa de copiar y pegar.",
+      "includes": [
+        "Avisos automáticos por WhatsApp API",
+        "Emails transaccionales (Brevo)",
+        "Sincronización entre plataformas vía webhooks",
+        "Backends y APIs REST a medida"
+      ],
+      "stack": ["FastAPI", "Node.js / Express", "Brevo", "CI/CD"]
     }
   ],
   "CONTACT_INFO": {
