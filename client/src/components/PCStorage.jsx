@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
 import { useData } from "../context/DataContext";
 import { useSound } from "../context/SoundContext";
-import PixelSprite from "./PixelSprite";
+import { useLanguage } from "../context/LanguageContext";
 import SpriteImage from "./SpriteImage";
 import { getProjectSprite } from "../sprites/registry";
 import ProjectModal from "./ProjectModal";
 
-const BOX_ICONS = ["box_web", "box_systems", "box_desktop"];
-
 export default function PCStorage() {
   const { data } = useData();
   const { sfx } = useSound();
+  const { t } = useLanguage();
   const [currentBox, setCurrentBox] = useState(0);
   const [phase, setPhase] = useState("idle"); // idle | out | in
   const [selected, setSelected] = useState(null);
@@ -51,13 +50,13 @@ export default function PCStorage() {
     <>
       <section className="pc-section" id="pc" aria-labelledby="pcTitle">
         <div className="section-banner">
-          <h2 className="section-title" id="pcTitle">SISTEMA DE ALMACENAMIENTO PC</h2>
-          <p className="section-sub">Mis proyectos, guardados como en la PC de Bill.</p>
+          <h2 className="section-title" id="pcTitle">{t("pc.title")}</h2>
+          <p className="section-sub">{t("pc.sub")}</p>
         </div>
 
         <div className="pc-frame marquee-frame reveal visible">
           <div className="pc-titlebar">
-            <span className="pc-title">PC DE LAUTARO // PROYECTOS</span>
+            <span className="pc-title">{t("pc.titlebar")}</span>
             <span className="pc-led" aria-hidden="true" />
           </div>
 
@@ -71,7 +70,7 @@ export default function PCStorage() {
                 aria-selected={i === currentBox}
                 onClick={() => switchBox(i)}
               >
-                <PixelSprite sprite={BOX_ICONS[i]} cell={2} />
+                <span className="pc-tab-icon" aria-hidden="true">{b.icon}</span>
                 {b.label}
               </button>
             ))}
@@ -82,7 +81,7 @@ export default function PCStorage() {
               const key = project ? project.id : `empty-${i}`;
               if (!project) {
                 return (
-                  <button key={key} type="button" className="pc-slot empty" aria-label="Slot vacío" disabled />
+                  <button key={key} type="button" className="pc-slot empty" aria-label={t("pc.aria.slotEmpty")} disabled />
                 );
               }
               const sprite = getProjectSprite(project.id);
@@ -92,7 +91,7 @@ export default function PCStorage() {
                   type="button"
                   className="pc-slot project"
                   data-idx={String(i + 1).padStart(2, "0")}
-                  aria-label={`Proyecto: ${project.title}`}
+                  aria-label={t("pc.aria.project", { title: project.title })}
                   onMouseEnter={() => { setHovered(project); sfx("hover"); }}
                   onMouseLeave={() => setHovered((h) => (h === project ? null : h))}
                   onFocus={() => setHovered(project)}
@@ -117,7 +116,7 @@ export default function PCStorage() {
 
           <div className="pc-infobar" aria-live="polite">
             <span className="pc-infobar-box">
-              <PixelSprite sprite={BOX_ICONS[currentBox]} cell={2} />
+              <span className="pc-infobar-icon" aria-hidden="true">{box.icon}</span>
               {box.label}
             </span>
             <span className="pc-infobar-selection">
@@ -125,15 +124,15 @@ export default function PCStorage() {
                 ? <>
                     {getProjectSprite(hovered.id)
                       ? <SpriteImage src={getProjectSprite(hovered.id)} className="pc-infobar-sprite" />
-                      : <PixelSprite sprite="star" cell={2} />}
+                      : <span className="pc-infobar-sprite" aria-hidden="true">⭐</span>}
                     {hovered.title}
                   </>
-                : "SELECCIONA UN PROYECTO ▸"}
+                : t("pc.select")}
             </span>
             <span className="pc-infobar-count">{filled}/{slotCount}</span>
           </div>
 
-          <p className="pc-hint">💡 PRESIONA [T] PARA ABRIR LA TERMINAL</p>
+          <p className="pc-hint">{t("pc.hint")}</p>
         </div>
       </section>
 

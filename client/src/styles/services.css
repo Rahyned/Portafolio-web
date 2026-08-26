@@ -107,13 +107,13 @@
 
 .service-cta {
   width: 100%;
-  background: var(--accent);
+  background: var(--action-bg);
   border-color: var(--border);
   color: #FFFFFF;
 }
 
 .service-cta:hover {
-  background: var(--accent-bright);
+  background: var(--action-bright);
   color: #FFFFFF;
 }
 

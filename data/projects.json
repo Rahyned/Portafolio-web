@@ -28,7 +28,7 @@
     {
       "id": "caja1",
       "label": "CAJA 1: DESARROLLO WEB",
-      "icon": "🖥️",
+      "icon": "🌐",
       "projects": [
         {
           "id": "abstractoshopp",
@@ -77,7 +77,7 @@
     {
       "id": "caja2",
       "label": "CAJA 2: SISTEMAS DE GESTIÓN & ERPs",
-      "icon": "⚙️",
+      "icon": "🖥️",
       "projects": [
         {
           "id": "solutionscars",
@@ -112,7 +112,7 @@
     {
       "id": "caja3",
       "label": "CAJA 3: APPS DE ESCRITORIO (TAURI)",
-      "icon": "🖱️",
+      "icon": "⚙️",
       "projects": [
         {
           "id": "butterflies",

@@ -91,7 +91,7 @@
 
 .pc-tab.active {
   color: #1B1B2F;
-  background: var(--accent);
+  background: var(--action-bg);
   border-color: var(--border);
   box-shadow: 2px 2px 0 var(--border), 0 0 14px var(--glow);
 }
@@ -102,10 +102,26 @@
   height: 36px;
 }
 
+.pc-tab-icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  line-height: 1;
+}
+
 @media (max-width: 768px) {
   .pc-tab svg {
     width: 28px;
     height: 28px;
+  }
+  .pc-tab-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 20px;
   }
 }
 
@@ -213,7 +229,7 @@
   width: 62%;
   max-width: 108px;
   height: 14px;
-  background: var(--bg-primary);
+  background: var(--pedestal);
   border: 2px solid var(--border);
   border-radius: 999px;
   box-shadow: 0 3px 0 var(--shadow);
@@ -276,9 +292,24 @@
   height: 32px;
 }
 
-.pc-infobar .pc-infobar-sprite {
+.pc-infobar-icon {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.pc-infobar-sprite {
   width: 24px;
   height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  line-height: 1;
 }
 
 .pc-infobar-selection {

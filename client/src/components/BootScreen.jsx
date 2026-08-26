@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react";
+import { useLanguage } from "../context/LanguageContext";
 import PixelSprite from "./PixelSprite";
 
 const DURATION = 1800; // ms total del boot (si hay movimiento permitido)
 
 export default function BootScreen({ onDone }) {
+  const { t } = useLanguage();
   const [progress, setProgress] = useState(0);
   const [leaving, setLeaving] = useState(false);
   const doneRef = useRef(false);
@@ -65,7 +67,7 @@ export default function BootScreen({ onDone }) {
         </div>
 
         <p className="boot-status" aria-live="polite">
-          {progress < 100 ? "POWER ON ▸ INICIANDO SISTEMA" : "¡SISTEMA LISTO!"}
+          {progress < 100 ? t("boot.status") : t("boot.ready")}
           <span className="boot-blink">▌</span>
         </p>
 
@@ -75,7 +77,7 @@ export default function BootScreen({ onDone }) {
           </div>
         </div>
 
-        <p className="boot-hint">CLIC O TECLA PARA SALTAR</p>
+        <p className="boot-hint">{t("boot.hint")}</p>
       </div>
     </div>
   );

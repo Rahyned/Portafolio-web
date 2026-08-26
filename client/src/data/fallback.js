@@ -35,7 +35,7 @@ export const FALLBACK_DATA = {
     {
       id: "caja1",
       label: "CAJA 1: DESARROLLO WEB",
-      icon: "🖥️",
+      icon: "🌐",
       projects: [
         {
           id: "abstractoshopp",
@@ -84,7 +84,7 @@ export const FALLBACK_DATA = {
     {
       id: "caja2",
       label: "CAJA 2: SISTEMAS DE GESTIÓN & ERPs",
-      icon: "⚙️",
+      icon: "🖥️",
       projects: [
         {
           id: "solutionscars",
@@ -119,7 +119,7 @@ export const FALLBACK_DATA = {
     {
       id: "caja3",
       label: "CAJA 3: APPS DE ESCRITORIO (TAURI)",
-      icon: "🖱️",
+      icon: "⚙️",
       projects: [
         {
           id: "butterflies",

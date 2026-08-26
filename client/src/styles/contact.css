@@ -271,8 +271,8 @@
 .radio-option.selected {
   border-color: var(--accent);
   color: var(--bg-primary);
-  background: var(--accent);
-  box-shadow: 2px 2px 0 var(--accent-bright);
+  background: var(--action-bg);
+  box-shadow: 2px 2px 0 var(--action-bright);
 }
 
 .radio-option input {
@@ -302,23 +302,23 @@
   font-family: var(--font-pixel);
   font-size: 10px;
   color: var(--bg-primary);
-  background: var(--accent);
-  border: 2px solid var(--accent-bright);
+  background: var(--action-bg);
+  border: 2px solid var(--action-bright);
   border-radius: var(--radius);
   padding: 16px;
-  box-shadow: 3px 3px 0 var(--accent-bright);
+  box-shadow: 3px 3px 0 var(--action-bright);
   text-transform: uppercase;
   transition: transform 0.1s ease, box-shadow 0.1s ease;
   margin-top: 4px;
 }
 
 .btn-submit:hover {
-  background: var(--accent-bright);
+  background: var(--action-bright);
 }
 
 .btn-submit:active {
   transform: translate(3px, 3px);
-  box-shadow: 0 0 0 var(--accent-bright);
+  box-shadow: 0 0 0 var(--action-bright);
 }
 
 .form-success {

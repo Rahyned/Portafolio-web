@@ -128,7 +128,7 @@
 }
 
 .btn-retro:hover {
-  background: var(--accent);
+  background: var(--action-bg);
   color: #1B1B2F;
   box-shadow:
     4px 4px 0 var(--border),

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useData } from "../context/DataContext";
 import { useSound } from "../context/SoundContext";
+import { useLanguage } from "../context/LanguageContext";
 
-const BUDGETS = ["Pequeño", "Mediano", "Grande"];
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const INITIAL_FORM = {
@@ -17,6 +17,7 @@ const INITIAL_FORM = {
 export default function Contact() {
   const { data } = useData();
   const { sfx } = useSound();
+  const { t } = useLanguage();
   const [form, setForm] = useState(INITIAL_FORM);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState(null); // null | "sent" | "sent-mailto" | "saved"
@@ -102,21 +103,35 @@ export default function Contact() {
   };
 
   const msg = {
-    sent: ["🎉", "¡INTERCAMBIO INICIADO!<br />Te responderé pronto a tu email."],
-    saved: ["🎉", "¡INTERCAMBIO INICIADO!<br />Tu mensaje fue guardado. Si configurás SMTP, llega por email."],
-    "sent-mailto": ["📧", "¡INTERCAMBIO INICIADO!<br />Tu email se abrió listo para enviar."]
+    sent: t("contact.success.sent"),
+    saved: t("contact.success.saved"),
+    "sent-mailto": t("contact.success.mailto")
   };
 
   const directActions = [
-    { id: "email", label: "📧 EMAIL", value: data.CONTACT_INFO.email, action: () => {
+    { id: "email", label: t("contact.email"), value: data.CONTACT_INFO.email, action: () => {
       window.location.href = `mailto:${data.CONTACT_INFO.email.replace(/[[\]]/g, "")}`;
     } },
-    { id: "linkedin", label: "💼 LINKEDIN", value: data.CONTACT_INFO.linkedin, action: () => {
+    { id: "linkedin", label: t("contact.linkedin"), value: data.CONTACT_INFO.linkedin, action: () => {
       window.open("https://www.linkedin.com/in/" + data.CONTACT_INFO.linkedin.replace(/[[\]]/g, ""), "_blank", "noopener");
     } },
-    { id: "github", label: "🔗 GITHUB", value: data.CONTACT_INFO.github, action: () => {
+    { id: "github", label: t("contact.github"), value: data.CONTACT_INFO.github, action: () => {
       window.open("https://github.com/" + data.CONTACT_INFO.github.replace(/[[\]]/g, "").replace(/^@/, ""), "_blank", "noopener");
     } }
+  ];
+
+  const BUDGETS = ["small", "medium", "large"];
+  const TYPES = [
+    { id: "Web", key: "contact.type.web" },
+    { id: "Sistema", key: "contact.type.system" },
+    { id: "Automatización", key: "contact.type.auto" },
+    { id: "Otro", key: "contact.type.other" }
+  ];
+  const TIMELINES = [
+    { id: "ASAP", key: "contact.timeline.asap" },
+    { id: "2-4 semanas", key: "contact.timeline.weeks" },
+    { id: "1-3 meses", key: "contact.timeline.months" },
+    { id: "Flexible", key: "contact.timeline.flexible" }
   ];
 
   const fieldClass = (key) => `form-group${errors[key] ? " has-error" : ""}`;
@@ -124,18 +139,18 @@ export default function Contact() {
   return (
     <section className="contact-section" id="contacto" aria-labelledby="contactTitle">
       <h2 className="section-title" id="contactTitle">CONTACTO</h2>
-      <p className="section-sub">Elige un medio o inicia un intercambio.</p>
+      <p className="section-sub">{t("contact.sub")}</p>
 
       <div className="contact-grid">
         {/* PokéNav */}
         <div className="panel pokenav reveal visible">
           <div className="pokenav-lid">
             <span className="pokenav-lid-led" aria-hidden="true" />
-            <span className="pokenav-lid-text">POKÉNAV v2</span>
+            <span className="pokenav-lid-text">{t("contact.pokenav.lid")}</span>
             <span className="pokenav-lid-led blue" aria-hidden="true" />
           </div>
           <div className="pokenav-screen">
-            <h3 className="panel-title">📡 CONTACTOS</h3>
+            <h3 className="panel-title">{t("contact.pokenav.title")}</h3>
             <div className="contact-list">
               {directActions.map((item) => (
                 <div key={item.id} className="contact-item">
@@ -143,7 +158,7 @@ export default function Contact() {
                   <p className="contact-item-value">{item.value}</p>
                   <div className="contact-item-actions">
                     <button type="button" className="btn-mini" onClick={() => { sfx("click"); item.action(); }}>
-                      {item.id === "email" ? "ENVIAR" : item.id === "linkedin" ? "ABRIR" : "VER PERFIL"}
+                      {item.id === "email" ? t("contact.action.email") : item.id === "linkedin" ? t("contact.action.linkedin") : t("contact.action.github")}
                     </button>
                   </div>
                 </div>
@@ -159,104 +174,104 @@ export default function Contact() {
 
         {/* Formulario */}
         <div className="panel trade-machine reveal visible">
-          <h3 className="panel-title trade-title">🤝 ¿TIENES UN PROYECTO?<br />INICIA UN INTERCAMBIO</h3>
+          <h3 className="panel-title trade-title" dangerouslySetInnerHTML={{ __html: t("contact.trade.title") }} />
           <div className="form-container trade-screen">
             {status && msg[status] ? (
               <div className="form-success show" role="status">
                 <span className="form-success-icon" aria-hidden="true">{msg[status][0]}</span>
                 <p className="form-success-text" dangerouslySetInnerHTML={{ __html: msg[status][1] }} />
-                <button type="button" className="btn-mini" onClick={resetForm} style={{ marginTop: "16px" }}>VOLVER</button>
+                <button type="button" className="btn-mini" onClick={resetForm} style={{ marginTop: "16px" }}>{t("contact.back")}</button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} noValidate>
                 <div className={fieldClass("name")}>
-                  <label htmlFor="fieldName">NOMBRE</label>
+                  <label htmlFor="fieldName">{t("contact.field.name")}</label>
                   <input
                     type="text"
                     id="fieldName"
                     className="form-input"
-                    placeholder="Tu nombre"
+                    placeholder={t("contact.field.name.ph")}
                     autoComplete="name"
                     value={form.name}
                     onChange={(e) => setField("name", e.target.value)}
                   />
-                  <p className="form-error">Ingresá tu nombre.</p>
+                  <p className="form-error">{t("contact.field.name.err")}</p>
                 </div>
 
                 <div className={fieldClass("email")}>
-                  <label htmlFor="fieldEmail">EMAIL</label>
+                  <label htmlFor="fieldEmail">{t("contact.field.email")}</label>
                   <input
                     type="email"
                     id="fieldEmail"
                     className="form-input"
-                    placeholder="tu@email.com"
+                    placeholder={t("contact.field.email.ph")}
                     autoComplete="email"
                     value={form.email}
                     onChange={(e) => setField("email", e.target.value)}
                   />
-                  <p className="form-error">Ingresá un email válido.</p>
+                  <p className="form-error">{t("contact.field.email.err")}</p>
                 </div>
 
                 <div className="form-row">
                   <div className="form-group">
-                    <label htmlFor="fieldType">TIPO DE PROYECTO</label>
+                    <label htmlFor="fieldType">{t("contact.field.type")}</label>
                     <select
                       id="fieldType"
                       className="form-select"
                       value={form.type}
                       onChange={(e) => setField("type", e.target.value)}
                     >
-                      {["Web", "Sistema", "Automatización", "Otro"].map((o) => (
-                        <option key={o} value={o}>{o}</option>
+                      {TYPES.map((o) => (
+                        <option key={o.id} value={o.id}>{t(o.key)}</option>
                       ))}
                     </select>
                   </div>
                   <div className="form-group">
-                    <label htmlFor="fieldTimeline">TIMELINE</label>
+                    <label htmlFor="fieldTimeline">{t("contact.field.timeline")}</label>
                     <select
                       id="fieldTimeline"
                       className="form-select"
                       value={form.timeline}
                       onChange={(e) => setField("timeline", e.target.value)}
                     >
-                      {["ASAP", "2-4 semanas", "1-3 meses", "Flexible"].map((o) => (
-                        <option key={o} value={o}>{o}</option>
+                      {TIMELINES.map((o) => (
+                        <option key={o.id} value={o.id}>{t(o.key)}</option>
                       ))}
                     </select>
                   </div>
                 </div>
 
                 <div className={`form-group${errors.budget ? " has-error" : ""}`}>
-                  <span className="form-group-label">PRESUPUESTO</span>
-                  <div className="radio-group" role="radiogroup" aria-label="Presupuesto">
+                  <span className="form-group-label">{t("contact.field.budget")}</span>
+                  <div className="radio-group" role="radiogroup" aria-label={t("contact.field.budget")}>
                     {BUDGETS.map((b) => (
                       <label
                         key={b}
-                        className={`radio-option${form.budget === b ? " selected" : ""}`}
-                        onClick={() => setField("budget", b)}
+                        className={`radio-option${form.budget === t(`contact.budget.${b}`) ? " selected" : ""}`}
+                        onClick={() => setField("budget", t(`contact.budget.${b}`))}
                       >
-                        <input type="radio" name="budget" value={b} checked={form.budget === b} readOnly />
-                        {b}
+                        <input type="radio" name="budget" value={t(`contact.budget.${b}`)} checked={form.budget === t(`contact.budget.${b}`)} readOnly />
+                        {t(`contact.budget.${b}`)}
                       </label>
                     ))}
                   </div>
-                  <p className="form-error">Elegí un presupuesto.</p>
+                  <p className="form-error">{t("contact.field.budget.err")}</p>
                 </div>
 
                 <div className={fieldClass("details")}>
-                  <label htmlFor="fieldDetails">DESCRIPCIÓN / DETALLES</label>
+                  <label htmlFor="fieldDetails">{t("contact.field.details")}</label>
                   <textarea
                     id="fieldDetails"
                     className="form-textarea"
-                    placeholder="Contame sobre tu proyecto..."
+                    placeholder={t("contact.field.details.ph")}
                     value={form.details}
                     onChange={(e) => setField("details", e.target.value)}
                   />
-                  <p className="form-error">Contanos un poco sobre el proyecto.</p>
+                  <p className="form-error">{t("contact.field.details.err")}</p>
                 </div>
 
                 <button type="submit" className="btn-submit" disabled={status === "sending"}>
-                  {status === "sending" ? "ENVIANDO..." : "✅ CONFIRMAR INTERCAMBIO"}
+                  {status === "sending" ? t("contact.submit.sending") : t("contact.submit")}
                 </button>
               </form>
             )}

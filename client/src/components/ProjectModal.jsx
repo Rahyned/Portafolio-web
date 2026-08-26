@@ -1,18 +1,20 @@
 import { useEffect, useRef } from "react";
 import { useSound } from "../context/SoundContext";
+import { useLanguage } from "../context/LanguageContext";
 import SpriteImage from "./SpriteImage";
 import { getProjectSprite } from "../sprites/registry";
 
 const statusSlug = (status) => {
   const s = (status || "").toLowerCase();
-  if (s.includes("completado")) return "s-completado";
-  if (s.includes("desarrollo")) return "s-en-desarrollo";
-  if (s.includes("curso")) return "s-en-curso";
+  if (s.includes("completado") || s.includes("completed")) return "s-completado";
+  if (s.includes("desarrollo") || s.includes("development")) return "s-en-desarrollo";
+  if (s.includes("curso") || s.includes("progress")) return "s-en-curso";
   return "";
 };
 
 export default function ProjectModal({ project, onClose }) {
   const { sfx } = useSound();
+  const { t } = useLanguage();
   const closeRef = useRef(null);
 
   useEffect(() => {
@@ -57,19 +59,19 @@ export default function ProjectModal({ project, onClose }) {
             <p className="modal-meta">{project.category} • {project.timeline}</p>
             <span className={`modal-status ${statusSlug(project.status)}`}>{project.status}</span>
           </div>
-          <button type="button" className="modal-close" ref={closeRef} onClick={close} aria-label="Cerrar detalles del proyecto">✕</button>
+          <button type="button" className="modal-close" ref={closeRef} onClick={close} aria-label={t("modal.aria.close")}>✕</button>
         </div>
 
         <div className="modal-body">
           <div className="modal-block">
-            <h4 className="modal-block-title">📦 VER DETALLES</h4>
-            <p><strong>Problema:</strong> {project.problem}</p>
-            <p><strong>Solución:</strong> {project.solution}</p>
-            <p><strong>Resultado:</strong> {project.result}</p>
+            <h4 className="modal-block-title">{t("modal.block.details")}</h4>
+            <p><strong>{t("modal.problem")}</strong> {project.problem}</p>
+            <p><strong>{t("modal.solution")}</strong> {project.solution}</p>
+            <p><strong>{t("modal.result")}</strong> {project.result}</p>
           </div>
 
           <div className="modal-block">
-            <h4 className="modal-block-title">🧰 STACK / TECH</h4>
+            <h4 className="modal-block-title">{t("modal.block.stack")}</h4>
             <div className="modal-stack">
               {project.stack.map((tech) => (
                 <span key={tech} className="stack-chip">{tech}</span>
@@ -78,18 +80,18 @@ export default function ProjectModal({ project, onClose }) {
           </div>
 
           <div className="modal-block">
-            <h4 className="modal-block-title">🚀 DEMO / CÓDIGO</h4>
+            <h4 className="modal-block-title">{t("modal.block.code")}</h4>
             <div className="modal-actions">
               {project.demo ? (
-                <a href={project.demo} target="_blank" rel="noopener noreferrer" className="btn-link" onClick={() => sfx("click")}>🌐 LIVE DEMO</a>
+                <a href={project.demo} target="_blank" rel="noopener noreferrer" className="btn-link" onClick={() => sfx("click")}>{t("modal.demo")}</a>
               ) : (
-                <button type="button" className="btn-link" disabled aria-disabled="true">🌐 LIVE DEMO</button>
+                <button type="button" className="btn-link" disabled aria-disabled="true">{t("modal.demo")}</button>
               )}
-              <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn-link" onClick={() => sfx("click")}>💾 GITHUB</a>
+              <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn-link" onClick={() => sfx("click")}>{t("modal.github")}</a>
             </div>
           </div>
 
-          <p className="modal-timeline">Completado: <strong>{project.timeline}</strong></p>
+          <p className="modal-timeline">{t("modal.completed")} <strong>{project.timeline}</strong></p>
         </div>
       </div>
     </div>

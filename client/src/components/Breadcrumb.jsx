@@ -1,20 +1,22 @@
 import { useActiveSection } from "../hooks/useActiveSection";
 import { useSound } from "../context/SoundContext";
+import { useLanguage } from "../context/LanguageContext";
 
 const LINKS = [
-  { id: "inicio", label: "INICIO" },
-  { id: "ficha", label: "FICHA" },
-  { id: "servicios", label: "SERVICIOS" },
-  { id: "pc", label: "PC" },
-  { id: "contacto", label: "CONTACTO" }
+  { id: "inicio", key: "nav.inicio" },
+  { id: "ficha", key: "nav.ficha" },
+  { id: "servicios", key: "nav.servicios" },
+  { id: "pc", key: "nav.pc" },
+  { id: "contacto", key: "nav.contacto" }
 ];
 
 export default function Breadcrumb() {
   const active = useActiveSection(LINKS.map((l) => l.id));
   const { sfx } = useSound();
+  const { t } = useLanguage();
 
   return (
-    <nav className="breadcrumb" aria-label="Navegación principal">
+    <nav className="breadcrumb" aria-label={t("nav.aria")}>
       <div className="container">
         {LINKS.map((link, i) => (
           <span key={link.id} style={{ display: "contents" }}>
@@ -24,7 +26,7 @@ export default function Breadcrumb() {
               className={`breadcrumb-link${active === link.id ? " active" : ""}`}
               onClick={() => sfx("click")}
             >
-              {link.label}
+              {t(link.key)}
             </a>
           </span>
         ))}

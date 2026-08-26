@@ -74,7 +74,7 @@ Reemplazá los valores entre `[]` manteniendo la estructura.
 
 ## 🎮 Funcionalidades
 
-- **Temas:** ARCADE (default, brillante) / Red / Blue / Dark / Konami (persistidos en LocalStorage)
+- **Temas:** ARCADE (default, brillante) / Blue / Dark / Konami (persistidos en LocalStorage)
 - **Boot screen** power-on con logo y barra de progreso al cargar
 - **Sprites pixel art propios** (SVG por grilla): entrenador, proyectos, cajas, partículas
 - **Overlay CRT/scanlines** con toggle en el header (persistido)
@@ -95,7 +95,7 @@ Reemplazá los valores entre `[]` manteniendo la estructura.
 
 - [x] Migración a **React + Vite** (componentes, context, hooks) — vanilla queda como respaldo
 - [x] **Overhaul visual arcade:** paleta brillante, sprites pixel art, boot screen, CRT toggle
-- [x] Header funcional (4 temas, CRT, mute) + hero con partículas y título gradiente
+- [x] Header funcional (3 temas, CRT, mute) + hero con partículas y título gradiente
 - [x] Ficha de entrenador con sprite animado, EXP shimmer y medallas
 - [x] PC de almacenamiento con info bar, sprites y modal dual-screen
 - [x] Sección Servicios conectada al formulario de contacto + Contacto PokéNav/trade machine

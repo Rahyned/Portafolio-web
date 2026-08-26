@@ -2,9 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import { useTypewriter } from "../hooks/useTypewriter";
 import { useData } from "../context/DataContext";
 import { useSound } from "../context/SoundContext";
+import { useLanguage } from "../context/LanguageContext";
 
 function BioTypewriter() {
   const { data } = useData();
+  const { t } = useLanguage();
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
 
@@ -30,7 +32,7 @@ function BioTypewriter() {
         {displayed}
         {!done && <span className="typewriter-cursor" aria-hidden="true">▌</span>}
       </div>
-      {done && <p className="bio-skip-hint">PRESIONA CUALQUIER TECLA PARA CONTINUAR ▸</p>}
+      {done && <p className="bio-skip-hint">{t("trainer.bio.skip")}</p>}
     </div>
   );
 }
@@ -38,6 +40,7 @@ function BioTypewriter() {
 export default function TrainerCard() {
   const { data } = useData();
   const { sfx } = useSound();
+  const { t } = useLanguage();
   const { PROFILE, BADGES } = data;
 
   const fillRef = useRef(null);
@@ -50,18 +53,18 @@ export default function TrainerCard() {
   }, [PROFILE.level, PROFILE.maxLevel]);
 
   const stats = [
-    { label: "NIVEL", value: `${PROFILE.level} / ${PROFILE.maxLevel}` },
-    { label: "AÑOS DE EXP", value: PROFILE.expYears },
-    { label: "PROYECTOS", value: PROFILE.completedProjects },
-    { label: "UBICACIÓN", value: PROFILE.location }
+    { label: t("trainer.stat.level"), value: `${PROFILE.level} / ${PROFILE.maxLevel}` },
+    { label: t("trainer.stat.exp"), value: PROFILE.expYears },
+    { label: t("trainer.stat.projects"), value: PROFILE.completedProjects },
+    { label: t("trainer.stat.location"), value: PROFILE.location }
   ];
 
   return (
     <section className="trainer-section" id="ficha" aria-labelledby="trainerTitle">
       <div className="trainer-card trainer-modal reveal visible">
         <div className="trainer-modal-header">
-          <div className="trainer-avatar" role="img" aria-label="Foto pixelada de Lautaro">
-            <img src="/sprites/sprite-face.svg" alt="Foto pixelada de Lautaro" className="trainer-photo" width="64" height="64" />
+          <div className="trainer-avatar" role="img" aria-label={t("trainer.avatar.alt")}>
+            <img src="/sprites/sprite-face.svg" alt={t("trainer.avatar.alt")} className="trainer-photo" width="64" height="64" />
           </div>
           <div className="trainer-modal-titleblock">
             <h2 className="trainer-modal-title" id="trainerTitle">{PROFILE.name}</h2>
@@ -72,7 +75,7 @@ export default function TrainerCard() {
 
         <div className="trainer-modal-body">
           <div className="trainer-modal-block">
-            <h3 className="trainer-modal-blocktitle">🎖️ DATOS DEL ENTRENADOR</h3>
+            <h3 className="trainer-modal-blocktitle">{t("trainer.block.data")}</h3>
             <ul className="trainer-stats">
               {stats.map((s) => (
                 <li key={s.label} className="trainer-stat">
@@ -84,11 +87,11 @@ export default function TrainerCard() {
           </div>
 
           <div className="trainer-modal-block">
-            <h3 className="trainer-modal-blocktitle">⚡ EXPERIENCIA</h3>
+            <h3 className="trainer-modal-blocktitle">{t("trainer.block.exp")}</h3>
             <div className="exp-bar-wrap">
               <div className="exp-bar-label">
-                <span>EXP</span>
-                <span className="exp-level-text">Nv. {PROFILE.level}/{PROFILE.maxLevel}</span>
+                <span>{t("trainer.exp.label")}</span>
+                <span className="exp-level-text">{t("trainer.exp.level", { level: PROFILE.level, max: PROFILE.maxLevel })}</span>
               </div>
               <div
                 className="exp-bar"
@@ -103,8 +106,8 @@ export default function TrainerCard() {
           </div>
 
           <div className="trainer-modal-block">
-            <h3 className="trainer-modal-blocktitle">🥇 MEDALLAS — STACK PRINCIPAL</h3>
-            <div className="badges" aria-label="Stack técnico principal">
+            <h3 className="trainer-modal-blocktitle">{t("trainer.block.badges")}</h3>
+            <div className="badges" aria-label={t("trainer.badges.aria")}>
               {BADGES.map((badge, i) => (
                 <span
                   key={badge.name}
@@ -119,7 +122,7 @@ export default function TrainerCard() {
           </div>
 
           <div className="trainer-modal-block">
-            <h3 className="trainer-modal-blocktitle">💬 SOBRE MÍ</h3>
+            <h3 className="trainer-modal-blocktitle">{t("trainer.block.about")}</h3>
             <BioTypewriter />
           </div>
         </div>

@@ -1,6 +1,6 @@
 /* ============================================================
    VARIABLES CSS - Paleta de colores y temas
-   ARCADE (default, equilibrado) | RED | BLUE | DARK
+   ARCADE (default, equilibrado) | BLUE | DARK
    ============================================================ */
 
 :root {
@@ -39,42 +39,24 @@
   --glow: rgba(255, 77, 94, 0.4);
   --glow2: rgba(0, 184, 200, 0.4);
   --title-gradient: linear-gradient(90deg, #FF4D5E, #FF8A4C, #FFC53D);
-}
-
-/* ============================================================
-   THEME: RED - brillante y equilibrado
-   Fondos neutros con tinte cálido, tinta vino y acento rojo.
-   ============================================================ */
-.theme-red {
-  --bg-primary: #FAF0F0;
-  --bg-secondary: #F3DCDC;
-  --bg-tertiary: #E9C4C4;
-  --text-primary: #331111;
-  --text-secondary: #8A4A4A;
-  --accent: #D62828;
-  --accent-bright: #EF4444;
-  --accent-text: #A61E1E;
-  --accent2: #FF8C42;
-  --accent-red: #C81D25;
-  --success: #2E8B57;
-  --warn: #B8860B;
-  --border: #331111;
-  --btn-bg: #FFFFFF;
-  --shadow: rgba(51, 17, 17, 0.18);
-  --glow: rgba(214, 40, 40, 0.4);
-  --glow2: rgba(255, 140, 66, 0.4);
-  --title-gradient: linear-gradient(90deg, #D62828, #EF4444, #FF8C42);
+  /* Botones de acción: por defecto usan el acento del tema */
+  --action-bg: var(--accent);
+  --action-bright: var(--accent-bright);
+  --header-bg: var(--bg-primary);
+  --pedestal: var(--bg-primary);
 }
 
 /* ============================================================
    THEME: DARK - nocturno con color
-   Fondo índigo/azul profundo en lugar de negro plano, con
+   Fondo índigo/azul más clarito que el negro plano, con
    acentos coral/cian que contrastan.
+   Header más claro, fichas/pc/servicios con fondo aclarado.
+   Botones de acción con acento apagado para no gritar.
    ============================================================ */
 .theme-dark {
-  --bg-primary: #111827;
-  --bg-secondary: #1B2A4A;
-  --bg-tertiary: #26345C;
+  --bg-primary: #1E2A45;
+  --bg-secondary: #2A3A5C;
+  --bg-tertiary: #364A73;
   --text-primary: #EAF0FF;
   --text-secondary: #9FB0D4;
   --accent: #FF5C6C;
@@ -84,17 +66,24 @@
   --accent-red: #FF6B6B;
   --success: #4ADE80;
   --warn: #FBBF24;
-  --border: #33466B;
-  --btn-bg: #22304F;
-  --shadow: rgba(0, 0, 0, 0.55);
+  --border: #4A5F8F;
+  --btn-bg: #2A3A5C;
+  --shadow: rgba(0, 0, 0, 0.5);
   --glow: rgba(255, 92, 108, 0.45);
   --glow2: rgba(34, 211, 238, 0.45);
   --title-gradient: linear-gradient(90deg, #FF5C6C, #FF9A5A, #FBBF24);
+  /* Acentos de acción apagados (menos chillones) */
+  --action-bg: #A84856;
+  --action-bright: #C96E78;
+  /* Header más clarito y base de los iconos de la pc más clara */
+  --header-bg: #33456E;
+  --pedestal: #44598A;
 }
 
 /* ============================================================
    THEME: BLUE - brillante y afinado
    Fondos neutros azulados, tinta azul oscura y acento azul.
+   Botones de acción con un tono más bajito y suave.
    ============================================================ */
 .theme-blue {
   --bg-primary: #F0F5FC;
@@ -115,4 +104,9 @@
   --glow: rgba(31, 111, 235, 0.4);
   --glow2: rgba(0, 184, 200, 0.4);
   --title-gradient: linear-gradient(90deg, #1F6FEB, #4D9BFF, #00B8C8);
+  /* Botones de acción: azul un tono más bajito */
+  --action-bg: #5A8FD0;
+  --action-bright: #7FA9E0;
+  --header-bg: var(--bg-primary);
+  --pedestal: var(--bg-primary);
 }

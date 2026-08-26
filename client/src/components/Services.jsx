@@ -1,11 +1,13 @@
 import { useData } from "../context/DataContext";
 import { useSound } from "../context/SoundContext";
+import { useLanguage } from "../context/LanguageContext";
 
 const RARITIES = ["rarity-common", "rarity-rare", "rarity-epic"];
 
 export default function Services() {
   const { data } = useData();
   const { sfx } = useSound();
+  const { t } = useLanguage();
 
   const startTrade = (service) => {
     sfx("click");
@@ -21,7 +23,7 @@ export default function Services() {
     <section className="services-section" id="servicios" aria-labelledby="servicesTitle">
       <div className="section-banner">
         <h2 className="section-title" id="servicesTitle">SERVICIOS</h2>
-        <p className="section-sub">Lo que puedo construir para vos.</p>
+        <p className="section-sub">{t("services.sub")}</p>
       </div>
 
       <div className="services-grid reveal-stagger visible" aria-live="polite">
@@ -56,7 +58,7 @@ export default function Services() {
                 className="btn-mini service-cta"
                 onClick={() => startTrade(service)}
               >
-                INICIAR INTERCAMBIO →
+                {t("services.cta")}
               </button>
             </footer>
           </article>

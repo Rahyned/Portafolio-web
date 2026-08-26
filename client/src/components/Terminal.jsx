@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { useData } from "../context/DataContext";
 import { useSound } from "../context/SoundContext";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Terminal() {
   const { data } = useData();
   const { sfx } = useSound();
+  const { t } = useLanguage();
   const [open, setOpen] = useState(false);
   const [lines, setLines] = useState([]);
   const inputRef = useRef(null);
@@ -28,18 +30,18 @@ export default function Terminal() {
     switch (cmd) {
       case "help":
         render([
-          { text: "COMANDOS DISPONIBLES:", cls: "ok" },
-          { text: "  help       - esta ayuda" },
-          { text: "  projects   - lista de proyectos" },
-          { text: "  skills     - stack técnico" },
-          { text: "  about      - sobre mí" },
-          { text: "  contact    - formas de contacto" },
-          { text: "  cv         - abrir CV imprimible" },
-          { text: "  clear      - limpiar terminal" }
+          { text: t("term.help.title"), cls: "ok" },
+          { text: t("term.help.help") },
+          { text: t("term.help.projects") },
+          { text: t("term.help.skills") },
+          { text: t("term.help.about") },
+          { text: t("term.help.contact") },
+          { text: t("term.help.cv") },
+          { text: t("term.help.clear") }
         ]);
         break;
       case "projects": {
-        const out = [{ text: "PROYECTOS:", cls: "ok" }];
+        const out = [{ text: t("term.projects.title"), cls: "ok" }];
         PROJECT_BOXES.forEach((box) => {
           out.push({ text: `[${box.label}]`, cls: "info" });
           box.projects.forEach((p) => {
@@ -51,37 +53,37 @@ export default function Terminal() {
       }
       case "skills":
         render([
-          { text: "STACK TÉCNICO:", cls: "ok" },
+          { text: t("term.skills.title"), cls: "ok" },
           ...SKILLS_LIST.map((s) => ({ text: `  ${s}` }))
         ]);
         break;
       case "about":
         render([
-          { text: `NOMBRE: ${PROFILE.name}` },
-          { text: `CLASE: ${PROFILE.class}` },
-          { text: `NIVEL: ${PROFILE.level}/${PROFILE.maxLevel}` },
-          { text: `EXP: ${PROFILE.expYears} años | ${PROFILE.completedProjects} proyectos` },
-          { text: `UBICACIÓN: ${PROFILE.location}` },
-          { text: `ESTADO: ${PROFILE.status}`, cls: "warn" }
+          { text: `${t("term.about.name")} ${PROFILE.name}` },
+          { text: `${t("term.about.class")} ${PROFILE.class}` },
+          { text: `${t("term.about.level")} ${PROFILE.level}/${PROFILE.maxLevel}` },
+          { text: t("term.about.exp", { years: PROFILE.expYears, projects: PROFILE.completedProjects }) },
+          { text: `${t("term.about.location")} ${PROFILE.location}` },
+          { text: `${t("term.about.status")} ${PROFILE.status}`, cls: "warn" }
         ]);
         break;
       case "contact":
         render([
-          { text: `EMAIL: ${CONTACT_INFO.email}` },
-          { text: `LINKEDIN: ${CONTACT_INFO.linkedin}` },
-          { text: `GITHUB: ${CONTACT_INFO.github}` },
-          { text: `TELÉFONO: ${CONTACT_INFO.phone}` }
+          { text: `${t("term.contact.email")} ${CONTACT_INFO.email}` },
+          { text: `${t("term.contact.linkedin")} ${CONTACT_INFO.linkedin}` },
+          { text: `${t("term.contact.github")} ${CONTACT_INFO.github}` },
+          { text: `${t("term.contact.phone")} ${CONTACT_INFO.phone}` }
         ]);
         break;
       case "cv":
         window.open(CONTACT_INFO.cvUrl || "cv.html", "_blank", "noopener");
-        render([{ text: "ABRIENDO CV (imprimible)...", cls: "ok" }]);
+        render([{ text: t("term.cv.opening"), cls: "ok" }]);
         break;
       case "clear":
         setLines([]);
         break;
       default:
-        render([{ text: `ERROR: '${command.trim()}' no es un comando válido. Usa 'help'.`, cls: "warn" }]);
+        render([{ text: t("term.error", { cmd: command.trim() }), cls: "warn" }]);
     }
   };
 
@@ -108,10 +110,10 @@ export default function Terminal() {
 
   useEffect(() => {
     if (open) {
-      setLines([{ text: "LAUTARO.SYS — TERMINAL RETRO v2.0", cls: "ok" }]);
+      setLines([{ text: t("term.boot"), cls: "ok" }]);
       setTimeout(() => inputRef.current?.focus(), 100);
     }
-  }, [open]);
+  }, [open, t]);
 
   useEffect(() => {
     if (bodyRef.current) bodyRef.current.scrollTop = bodyRef.current.scrollHeight;
@@ -129,13 +131,13 @@ export default function Terminal() {
       className={`terminal-overlay${open ? " open" : ""}`}
       role="dialog"
       aria-modal="true"
-      aria-label="Terminal retro"
+      aria-label={t("term.aria")}
       onClick={(e) => { if (e.target === e.currentTarget) closeTerminal(); }}
     >
       <div className="terminal">
         <div className="terminal-bar">
-          <span>RETRO_TERMINAL.EXE</span>
-          <button type="button" className="terminal-close" onClick={closeTerminal} aria-label="Cerrar terminal">✕</button>
+          <span>{t("term.title")}</span>
+          <button type="button" className="terminal-close" onClick={closeTerminal} aria-label={t("term.aria.close")}>✕</button>
         </div>
         <div className="terminal-body" ref={bodyRef} aria-live="polite">
           {lines.map((line, i) => (
@@ -151,8 +153,8 @@ export default function Terminal() {
             type="text"
             className="terminal-input"
             autoComplete="off"
-            aria-label="Comando de terminal"
-            placeholder="escribe 'help'..."
+            aria-label={t("term.aria.input")}
+            placeholder={t("term.placeholder")}
             onKeyDown={(e) => {
               if (e.key === "Enter") {
                 run(e.currentTarget.value);

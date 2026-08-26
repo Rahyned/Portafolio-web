@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useKonami } from "./hooks/useKonami";
 import { useSound } from "./context/SoundContext";
 import { useData } from "./context/DataContext";
+import { useLanguage } from "./context/LanguageContext";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Breadcrumb from "./components/Breadcrumb";
@@ -25,6 +26,7 @@ const KONAMI = [
 export default function App() {
   const { data } = useData();
   const { sfx } = useSound();
+  const { t } = useLanguage();
   const [booted, setBooted] = useState(false);
   const [toast, setToast] = useState({ message: "", show: false });
   const [confettiKey, setConfettiKey] = useState(0);
@@ -53,8 +55,8 @@ export default function App() {
   const onKonami = useCallback(() => {
     sfx("konami");
     setConfettiKey((k) => k + 1);
-    showToast("🎉 ¡MODO MISTERIO ACTIVADO!");
-  }, [sfx, showToast]);
+    showToast(t("toast.konami"));
+  }, [sfx, showToast, t]);
 
   useKonami(KONAMI, onKonami);
 

@@ -7,7 +7,7 @@
   top: 0;
   z-index: 1000;
   height: var(--header-height);
-  background: var(--bg-primary);
+  background: var(--header-bg);
   border-bottom: 2px solid var(--border);
   display: flex;
   align-items: center;
@@ -72,12 +72,17 @@
   transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease, background 0.2s ease;
 }
 
+.icon-btn.lang-btn {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+}
+
 .icon-btn:hover {
   box-shadow: 2px 2px 0 var(--border), 0 0 14px var(--glow);
 }
 
 .icon-btn.on {
-  background: var(--accent);
+  background: var(--action-bg);
   color: #1B1B2F;
 }
 
@@ -113,7 +118,7 @@
 
 .theme-btn.active {
   color: #1B1B2F;
-  background: var(--accent);
+  background: var(--action-bg);
   border-color: var(--border);
   box-shadow: 2px 2px 0 var(--border), 0 0 14px var(--glow);
 }

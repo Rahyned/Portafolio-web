@@ -1,18 +1,20 @@
 import { useTypewriter } from "../hooks/useTypewriter";
 import { useSound } from "../context/SoundContext";
 import { useData } from "../context/DataContext";
+import { useLanguage } from "../context/LanguageContext";
 import HeroParticles from "./HeroParticles";
 
 export default function Hero() {
   const { data, track } = useData();
   const { sfx } = useSound();
-  const { displayed } = useTypewriter("Explora mis proyectos y servicios →", { speed: 38, start: true });
+  const { t } = useLanguage();
+  const { displayed } = useTypewriter(t("hero.typewriter"), { speed: 38, start: true });
 
   const [head, ...tail] = data.PROFILE.tagline.split("|");
   const sub = tail.join("|");
 
   return (
-    <section className="hero" id="inicio" aria-label="Presentación">
+    <section className="hero" id="inicio" aria-label={t("hero.aria")}>
       <HeroParticles />
 
       <div className="hero-stage">
@@ -44,11 +46,11 @@ export default function Hero() {
           document.getElementById("ficha").scrollIntoView({ behavior: "smooth" });
         }}
       >
-        ▶ ENTRAR A LA PC
+        {t("hero.cta")}
       </button>
 
       <div className="hero-badges" aria-hidden="true">
-        <span className="hero-badges-text">EXP LOADING...</span>
+        <span className="hero-badges-text">{t("hero.exp")}</span>
       </div>
     </section>
   );
