@@ -45,46 +45,38 @@
   z-index: 1;
 }
 
-/* Escenario: dos mitades verticales, avatar y texto centrados en su columna */
+/* Escenario: título y subtítulo centrados */
 .hero-stage {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-items: center;
-  gap: 0;
+  gap: 20px;
   width: 100%;
   max-width: 1080px;
 }
 
-.hero-sprite {
-  position: relative;
-  justify-self: center;
-}
-
-.hero-trainer {
-  height: 600px;
-  width: auto;
-}
-
-/* Línea divisoria invisible entre las dos mitades verticales */
-.hero-divider {
-  width: 1px;
-  height: 100%;
-  min-height: 220px;
-  align-self: center;
-  justify-self: center;
-  pointer-events: none;
-}
-
 .hero-text {
-  max-width: 560px;
-  justify-self: center;
+  max-width: 760px;
+  text-align: center;
+}
+
+.hero-name {
+  font-family: var(--font-pixel);
+  font-size: 52px;
+  line-height: 1.4;
+  margin: 0;
+  text-shadow:
+    4px 4px 0 var(--shadow),
+    8px 8px 0 var(--glow);
 }
 
 .hero-tagline {
   font-family: var(--font-pixel);
-  font-size: 22px;
+  font-size: 20px;
   line-height: 1.9;
+  margin: 18px 0 0;
+  color: var(--text-primary);
   text-shadow:
     3px 3px 0 var(--shadow),
     6px 6px 0 var(--glow);
@@ -169,16 +161,6 @@
   animation: blink 1.6s step-start infinite;
 }
 
-@keyframes heroFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-@keyframes shadowPulse {
-  0%, 100% { transform: scaleX(1); opacity: 0.55; }
-  50% { transform: scaleX(0.82); opacity: 0.8; }
-}
-
 @keyframes ctaGlow {
   0%, 100% { box-shadow: 4px 4px 0 var(--border), 0 0 0 var(--glow); }
   50% { box-shadow: 4px 4px 0 var(--border), 0 0 26px var(--glow); }
@@ -190,20 +172,13 @@
     padding: 48px 24px;
   }
   .hero-stage {
-    grid-template-columns: 1fr;
-    gap: 0;
+    gap: 16px;
   }
-  .hero-divider {
-    width: 1px;
-    height: 1px;
-    min-height: 24px;
-  }
-  .hero-trainer {
-    height: 300px;
-    width: auto;
+  .hero-name {
+    font-size: 40px;
   }
   .hero-tagline {
-    font-size: 18px;
+    font-size: 16px;
   }
   .hero-sub {
     font-size: 15px;
@@ -221,21 +196,13 @@
     margin-top: 28px;
   }
   .hero-stage {
-    grid-template-columns: 1fr;
-    gap: 0;
+    gap: 14px;
   }
-  .hero-divider {
-    width: 1px;
-    height: 1px;
-    min-height: 24px;
-  }
-  .hero-trainer {
-    height: 150px;
-    width: auto;
-    transform-origin: center;
+  .hero-name {
+    font-size: 26px;
   }
   .hero-tagline {
-    font-size: 13px;
+    font-size: 11px;
   }
   .hero-sub {
     font-size: 13px;

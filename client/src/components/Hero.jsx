@@ -18,18 +18,12 @@ export default function Hero() {
       <HeroParticles />
 
       <div className="hero-stage">
-        <div className="hero-sprite">
-          <img src="/sprites/mi_sprite-f1.svg" alt="Personaje pixelado" className="hero-trainer" />
-          <div className="hero-shadow" aria-hidden="true" />
-        </div>
-
-        <div className="hero-divider" aria-hidden="true" />
-
         <div className="hero-text">
-          <h1 className="hero-tagline title-grad">
+          <h1 className="hero-name title-grad">Lautaro Rodriguez</h1>
+          <h2 className="hero-tagline">
             {head}
             {sub && <><br /><span className="accent">{sub}</span></>}
-          </h1>
+          </h2>
           <p className="hero-sub" aria-live="polite">
             {displayed}
             <span className="typewriter-cursor" aria-hidden="true">▌</span>
