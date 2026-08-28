@@ -9,7 +9,7 @@ const INITIAL_FORM = {
   name: "",
   email: "",
   type: "Web",
-  timeline: "ASAP",
+  timeline: "Flexible",
   budget: "",
   details: ""
 };
@@ -117,6 +117,9 @@ export default function Contact() {
     } },
     { id: "github", label: t("contact.github"), value: data.CONTACT_INFO.github, action: () => {
       window.open("https://github.com/" + data.CONTACT_INFO.github.replace(/[[\]]/g, "").replace(/^@/, ""), "_blank", "noopener");
+    } },
+    { id: "phone", label: t("contact.phone"), value: data.CONTACT_INFO.phone, action: () => {
+      window.open("https://wa.me/" + data.CONTACT_INFO.phone.replace(/[^0-9]/g, ""), "_blank", "noopener");
     } }
   ];
 
@@ -128,7 +131,6 @@ export default function Contact() {
     { id: "Otro", key: "contact.type.other" }
   ];
   const TIMELINES = [
-    { id: "ASAP", key: "contact.timeline.asap" },
     { id: "2-4 semanas", key: "contact.timeline.weeks" },
     { id: "1-3 meses", key: "contact.timeline.months" },
     { id: "Flexible", key: "contact.timeline.flexible" }
@@ -158,7 +160,7 @@ export default function Contact() {
                   <p className="contact-item-value">{item.value}</p>
                   <div className="contact-item-actions">
                     <button type="button" className="btn-mini" onClick={() => { sfx("click"); item.action(); }}>
-                      {item.id === "email" ? t("contact.action.email") : item.id === "linkedin" ? t("contact.action.linkedin") : t("contact.action.github")}
+                      {item.id === "email" ? t("contact.action.email") : item.id === "linkedin" ? t("contact.action.linkedin") : item.id === "phone" ? t("contact.action.whatsapp") : t("contact.action.github")}
                     </button>
                   </div>
                 </div>

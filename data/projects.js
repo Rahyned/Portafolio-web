@@ -14,14 +14,14 @@ const DEFAULT_DATA = {
     name: "Lautaro",
     displayName: "LAUTARO.DEV",
     class: "Desarrollador Web & Sistemas",
-    level: 45,
-    maxLevel: 99,
-    expYears: "[5+]",
+    level: 22,
+    maxLevel: 50,
+    expYears: "[2+]",
     completedProjects: "7",
     location: "[Rosario, Argentina]",
     status: "⚡ DISPONIBLE PARA PROYECTOS",
     tagline: "Desarrollador Web & Sistemas | Automatización • Arquitectura • APIs",
-    bio: "Soy desarrollador web & sistemas especializado en apps de escritorio (Tauri y Python), ERPs con facturación electrónica y sitios web en producción. Construyo soluciones de código limpio: automatizaciones, integraciones y desplegues. Presiona cualquier tecla para continuar."
+    bio: "Soy desarrollador web & sistemas especializado en apps de escritorio (Tauri y Python), ERPs con facturación electrónica y sitios web en producción. Construyo soluciones de código limpio: automatizaciones, integraciones y desplegues."
   },
 
   BADGES: [
@@ -189,7 +189,7 @@ const DEFAULT_DATA = {
     email: "laaau2406@gmail.com",
     linkedin: "[linkedin.com/in/lautaro]",
     github: "https://github.com/Rahyned",
-    phone: "[+54 ...]",
+    phone: "+54 341 6297638",
     cvUrl: "cv.html"
   },
 

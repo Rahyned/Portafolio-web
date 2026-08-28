@@ -7,7 +7,7 @@ export default function Footer() {
 
   return (
     <footer className="site-footer">
-      <p className="footer-text">© 2024 {data.PROFILE.name} | Diseño &amp; Código custom</p>
+      <p className="footer-text"> {data.PROFILE.name} © 2026  </p>
       <nav className="footer-links" aria-label="Enlaces secundarios">
         <a href="cv.html" className="footer-link" target="_blank" rel="noopener noreferrer">{t("footer.cv")}</a>
       </nav>

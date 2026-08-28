@@ -22,7 +22,7 @@ const PORT = process.env.PORT || 8080;
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const ALLOWED_TYPES = ["Web", "Sistema", "Automatización", "Otro"];
-const ALLOWED_TIMELINES = ["ASAP", "2-4 semanas", "1-3 meses", "Flexible"];
+const ALLOWED_TIMELINES = ["2-4 semanas", "1-3 meses", "Flexible"];
 const ALLOWED_BUDGETS = ["Pequeño", "Mediano", "Grande"];
 
 const smtpConfigured = Boolean(
