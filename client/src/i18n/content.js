@@ -43,6 +43,14 @@ export const CONTENT_EN = {
       solution: "Trilingual SPA (ES/EN/PT) with material catalogs, work order with interactive dental SVG map (11–48) and attachments (photos + STL), shade-matching form with PDF, searchable FAQ, courses and contact with map/WhatsApp. Express backend with transactional emails (Brevo).",
       result: "In production on Railway: orders and shade matches arrive by email with PDF and attachments, with rate limiting and CSP."
     },
+    "pixel-editor": {
+      category: "Web Development",
+      timeline: "Sep 2026",
+      status: "Completed",
+      problem: "I needed a tool to create animated pixel-art sprites directly in the browser, with no installs and no accounts.",
+      solution: "Sprite editor in React 19 + Vite 8 with brush, eraser, fill, line, rectangle, ellipse and selection; layers with blend modes, animated frames with onion skin and per-frame duration, preset palettes (Pico-8, C64, DB32…), PNG/JPG import, symmetry, undo/redo and autosave.",
+      result: "Deployed to GitHub Pages with CI (lint + unit + E2E) on every push; exports PNG, sprite sheet, animated GIF, SVG, JSON and copy-paste-ready JS code, plus a shareable link that embeds the project."
+    },
     solutionscars: {
       category: "Management Systems & ERPs",
       timeline: "2026",

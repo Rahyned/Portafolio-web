@@ -17,7 +17,7 @@ const DEFAULT_DATA = {
     level: 22,
     maxLevel: 50,
     expYears: "[2+]",
-    completedProjects: "7",
+    completedProjects: "8",
     location: "[Rosario, Argentina]",
     status: "⚡ DISPONIBLE PARA PROYECTOS",
     tagline: "Desarrollador Web & Sistemas | Automatización • Arquitectura • APIs",
@@ -81,6 +81,20 @@ const DEFAULT_DATA = {
           stack: ["React 19", "Vite", "MUI 7", "i18next", "Express 5", "Brevo", "Railway"],
           demo: null,
           github: "https://github.com/Rahyned/Laboratorio-RioDent"
+        },
+        {
+          id: "pixel-editor",
+          title: "Pixel Sprite Editor",
+          sprite: "🎨",
+          category: "Desarrollo Web",
+          timeline: "Sep 2026",
+          status: "Completado",
+          problem: "Necesitaba una herramienta para crear sprites pixel art con animación directamente en el navegador, sin instalar nada ni crear cuentas.",
+          solution: "Editor de sprites en React 19 + Vite 8 con pincel, borrador, relleno, línea, rectángulo, elipse y selección; capas con blend modes, frames animados con onion skin y duración por frame, paletas preset (Pico-8, C64, DB32…), importación de PNG/JPG, simetría, undo/redo y guardado automático.",
+          result: "Desplegado en GitHub Pages con CI (lint + unit + E2E) en cada push; exporta PNG, sprite-sheet, GIF animado, SVG, JSON y código JS listo para pegar, con link compartible que embebe el proyecto.",
+          stack: ["React 19", "Vite 8", "gifenc", "pako", "Vitest", "Playwright"],
+          demo: "https://rahyned.github.io/pixel-editor/",
+          github: "https://github.com/Rahyned/pixel-editor"
         }
       ]
     },

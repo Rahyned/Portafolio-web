@@ -53,6 +53,7 @@ const PROJECT_IDS = [
   "abstractoshopp",
   "floreria-susi",
   "riodent",
+  "pixel-editor",
   "solutionscars",
   "stella",
   "butterflies",
