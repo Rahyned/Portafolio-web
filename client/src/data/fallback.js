@@ -214,7 +214,7 @@ export const FALLBACK_DATA = {
   ],
 
   CONTACT_INFO: {
-    email: "laaau2406@gmail.com",
+    email: "rodriguez.samuel.lautaro@gmail.com",
     linkedin: "[linkedin.com/in/lautaro]",
     github: "https://github.com/Rahyned",
     phone: "+54 341 6297638",
