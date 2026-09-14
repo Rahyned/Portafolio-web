@@ -63,6 +63,15 @@ export default function ProjectModal({ project, onClose }) {
         </div>
 
         <div className="modal-body">
+          {project.video && (
+            <div className="modal-block modal-video">
+              <h4 className="modal-block-title">{t("modal.block.video")}</h4>
+              <video controls playsInline preload="metadata">
+                <source src={project.video} type="video/mp4" />
+              </video>
+            </div>
+          )}
+
           <div className="modal-block">
             <h4 className="modal-block-title">{t("modal.block.details")}</h4>
             <p><strong>{t("modal.problem")}</strong> {project.problem}</p>

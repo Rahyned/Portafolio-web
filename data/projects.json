@@ -69,7 +69,7 @@
           "solution": "SPA trilingüe (ES/EN/PT) con catálogos de materiales, orden de trabajo con mapa dental SVG interactivo (11–48) y adjuntos (fotos + STL), formulario de toma de color con PDF, FAQ buscable, cursos y contacto con mapa/WhatsApp. Backend Express con emails transaccionales (Brevo).",
           "result": "En producción en Railway: los pedidos y tomas de color llegan por email con PDF y adjuntos, con rate limiting y CSP.",
           "stack": ["React 19", "Vite", "MUI 7", "i18next", "Express 5", "Brevo", "Railway"],
-          "demo": null,
+          "demo": "https://www.riodent.com.ar",
           "github": "https://github.com/Rahyned/Laboratorio-RioDent"
         },
         {
@@ -154,6 +154,7 @@
           "result": "App funcional con backend Rust/SQLite local; comparación y estadísticas 'en pareja' implementadas.",
           "stack": ["Tauri 2", "Rust", "SQLite", "React 18", "TypeScript", "Tailwind", "Zustand", "Framer Motion"],
           "demo": null,
+          "video": null,
           "github": "https://github.com/Rahyned/Libreta"
         }
       ]

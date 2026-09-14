@@ -6,7 +6,6 @@ import { useLanguage } from "../context/LanguageContext";
 
 const THEME_BUTTONS = [
   { theme: "arcade", label: "ARCADE" },
-  { theme: "blue", label: "BLUE" },
   { theme: "dark", label: "DARK" }
 ];
 

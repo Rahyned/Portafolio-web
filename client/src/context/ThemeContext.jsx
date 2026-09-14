@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState, useCallback } from "rea
 
 const ThemeContext = createContext(null);
 
-const THEMES = ["arcade", "blue", "dark"];
+const THEMES = ["arcade", "dark"];
 const STORAGE_KEY = "portfolio_theme";
 
 export function ThemeProvider({ children }) {

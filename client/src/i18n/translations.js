@@ -104,6 +104,7 @@ export const translations = {
     // ProjectModal
     "modal.aria.close": "Cerrar detalles del proyecto",
     "modal.block.details": "📦 VER DETALLES",
+    "modal.block.video": "🎬 VIDEO DEMO",
     "modal.problem": "Problema:",
     "modal.solution": "Solución:",
     "modal.result": "Resultado:",
@@ -259,6 +260,7 @@ export const translations = {
     // ProjectModal
     "modal.aria.close": "Close project details",
     "modal.block.details": "📦 VIEW DETAILS",
+    "modal.block.video": "🎬 VIDEO DEMO",
     "modal.problem": "Problem:",
     "modal.solution": "Solution:",
     "modal.result": "Result:",
