@@ -1,0 +1,49 @@
+---
+description: Estándares de la app React 19 + Vite 8 en client/ (JS sin TS, oxlint, i18n, datos, sprites)
+globs: "client/src/**, client/*.js, client/*.json"
+alwaysApply: false
+---
+
+# React/Vite (`client/`)
+
+App de producción: **React 19 + Vite 8**, JavaScript **sin TypeScript**. Es la que se despliega
+(Vercel, root = `client/`).
+
+## Reglas duras
+
+1. **Nunca introducir TypeScript.** Sin `interface`, sin anotaciones, sin `tsconfig`. El linter es
+   oxlint y el proyecto es JS puro: una anotación de tipos rompe el build.
+2. **Linter = oxlint** (`npm run lint`, con workdir en `client/`). No ESLint, no Prettier.
+   Config en `client/.oxlintrc.json`: `react/rules-of-hooks` es **error** y
+   `react/only-export-components` es warning (con `allowConstantExport`).
+3. **Hooks**: solo al nivel superior de un componente o dentro de otro hook. Si el linter se queja
+   de la regla de hooks, el código está mal, no la regla.
+4. **Estilos**: CSS propio en `client/src/styles/`. **Prohibido Tailwind** (tampoco classnames
+   utilitarios). Los tokens de color están en los archivos de estilo, no hardcodeados.
+5. **Datos**: nunca importar el JSON a mano. `client/src/context/DataContext.jsx` hace
+   `fetch("/data/projects.json")` y cae al fallback `FALLBACK_DATA` de
+   `client/src/data/fallback.js`. Para leer datos, usá el contexto (`useData()`).
+
+## i18n (esto se rompe en silencio)
+
+- **Strings de interfaz** (botones, labels, aria) → `client/src/i18n/translations.js`, en **ES y EN**
+  a la vez. Nunca hardcodear texto visible en un componente.
+- **Prosa de contenido** (bio, descripciones de proyectos, servicios) → la versión EN va en
+  `client/src/i18n/content.js` (`CONTENT_EN`) y se fusiona en `localizeData()` por `id`. La ES vive
+  en `data/projects.json`.
+- Al agregar un proyecto o un bloque: la prosa EN va en `CONTENT_EN.PROJECTS.<id>` y las etiquetas
+  de caja en `CONTENT_EN.BOXES.<cajaN>`, con el mismo `id` que usa `PROJECT_BOXES` en los datos.
+  Si falta la entrada EN, en inglés se ve el campo vacío.
+
+## Sprites
+
+- Registro: `client/src/sprites/registry.js`. `centerSprite()` recorta filas/columnas transparentes y
+  recentra en la grilla: **nunca** editar a mano un SVG ya recortado.
+- Pipeline: `tools/pixel-sprite-editor.html` → exportar → `npm run crop-sprite` (con workdir en
+  `client/`) → registrar.
+
+## Build y deploy
+
+- `npm run build` = `vite build && node copy-dist.mjs` (copia a `dist/`). Verificar con
+  `npm run preview` antes de cualquier deploy.
+- No tocar `client/vercel.json` sin saber qué se rompe: el root directory del deploy es `client/`.

@@ -1,0 +1,41 @@
+---
+description: Disciplina de código — no afirmar sin evidencia, cambio mínimo, reportar lo que no se hizo
+globs: "**/*"
+alwaysApply: false
+---
+
+# Disciplina de código
+
+Regla transversal: **la confianza sin evidencia es un bug**. Aplica a todo el repo, y es la
+razón por la que el proyecto tiene subagent `verifier` y hooks automáticos de lint.
+
+## Evidencia, no afirmaciones
+
+1. **No digas que funciona algo que no ejecutaste.** "Compila", "funciona", "listo" son
+   afirmaciones: sostenelas con el comando real y su salida. Si no lo corriste, decí
+   *"no lo verifiqué"*.
+2. **Un proxy no es una prueba.** Que el linter pase no significa que la app ande; que el build
+   termine no significa que la función devuelva lo correcto. Verificá contra el artefacto real.
+3. **No inventes API ni archivos.** Antes de usar una función, un endpoint o una ruta, leela. Si
+   no existe, decilo en vez de suponerla.
+4. **Cifras y paths exactos.** Contar líneas, leer el valor real del JSON o el output del comando.
+   Nada de "aproximadamente N archivos" si lo podés contar.
+
+## Alcance del cambio
+
+5. **El cambio mínimo que resuelve el pedido.** Nada de refactors no solicitados, aunque el
+   código vecino sea feo: se menciona y se deja.
+6. **No toques trabajo ajeno.** Si el árbol ya tenía cambios sin commitear, son del usuario: no
+   revertirlos, no incluirlos en tu commit, no "limpiarlos".
+7. **Prohibido commitear sin pedido.** Mostrá el diff y que el usuario decida.
+8. **No amplíes el alcance de una regla.** Si una regla dice "verificá el build", no la
+   conviertas en "refactorizá el build".
+
+## Cuando algo falla
+
+9. **Reportá el fallo, no lo escondas.** Si un test, un lint o un comando falla, decilo con la
+   salida real, aunque seatu propio error.
+10. **No esconder el problema.** Un error que se tapa con `try/catch` vacío, un `// TODO` o un
+    `--force` es un bug diferido, no una solución.
+11. **Si no sabés, decí que no sabés.** Preferí una pregunta a una suposición silenciosa. Pedir
+    el dato que falta es más barato que reconstruir el trabajo entero sobre una conjetura.

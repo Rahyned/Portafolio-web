@@ -1,0 +1,37 @@
+---
+description: Estándares del servidor Express 4 (server/) — endpoint de contacto, nodemailer, dotenv
+globs: "server/**"
+alwaysApply: false
+---
+
+# Express (`server/`)
+
+Servidor mínimo: estático + API de contacto. **Express 4**, nodemailer, dotenv. Entrada única:
+`server.js`.
+
+## Reglas duras
+
+1. **Comandos** con workdir en `server/`: `npm run dev` (con `--watch`) y `npm start`.
+   No hay build: es Node directo.
+2. **Express 4, no 5.** La API de errores y el comportamiento de `next(err)` difieren; no asumir
+   semántica de v5.
+3. **Prohibido commitear secretos.** Todo credential viene de `process.env` con dotenv. `.env`
+   está en `.gitignore` y no se versiona (ni se escribe en logs ni en respuestas de error).
+4. **Validar la entrada del usuario en el servidor**, aunque el cliente también valide. El
+   endpoint de contacto expone un envío de mail: sin límite de longitud ni de tipo, es un abuse
+   vector.
+5. **Errores**: loguear en servidor, devolver mensajes genéricos al cliente. Nunca filtrar stack
+   traces ni texto de error de nodemailer/SMTP (filtran credenciales o configuración interna).
+
+## Endpoint de contacto
+
+- El cliente llama a `POST /api/contact` (`client/src/components/Contact.jsx`).
+- Nodemailer usa credenciales del `.env`; si faltan, el server debe degradar con un error claro
+  en log, no con un crash.
+- `server/inbox/` guarda la copia local de los envíos (está ignorada por git): no versionar.
+
+## Al tocar el servidor
+
+- El `.env` de desarrollo no se replica a Vercel: el deploy de `client/` es estático. La API de
+  contacto en producción necesita sus variables configuradas aparte.
+- Después de un cambio, probar de verdad el envío (no alcanza con que cargue el server).

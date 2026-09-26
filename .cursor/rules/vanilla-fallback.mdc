@@ -1,0 +1,38 @@
+---
+description: Estándares del sitio vanilla de la raíz (index.html, js/, css/) — IIFE sin bundler, fallback file://
+globs: "index.html, cv.html, js/**, css/**, assets/**"
+alwaysApply: false
+---
+
+# Sitio vanilla (raíz)
+
+La web original. **Sin bundler, sin framework, sin paso de build**: HTML + CSS + JS modular que
+tiene que seguir funcionando abriendo `index.html` por `file://`.
+
+## Reglas duras
+
+1. **JS en IIFE, sin módulos ES.** Los archivos de `js/` usan el patrón
+   `(function () { ... })()` con variables globales compartidas. No introducir
+   `import`/`export`: rompe el uso por `file://`.
+2. **`data/projects.json` es la fuente canónica**; `data/projects.js` es el **fallback embebido**.
+   `js/data-loader.js` hace el `fetch` y, si falla, el sitio queda con el fallback. Por eso
+   **cada cambio de contenido va en los dos archivos**: si solo se edita el JSON, la versión
+   `file://` muestra datos viejos.
+3. **CSS propio.** Tokens de color y variables en `css/variables.css`. **Prohibido Tailwind**,
+   CSS-in-JS y frameworks. Los estilos se reparten por archivo (header, hero, contact, cv...).
+4. **Sin dependencias de red.** Sin CDN, sin Google Fonts obligatorias, sin fetch a terceros: el
+   sitio tiene que andar offline.
+
+## Comportamiento a conservar
+
+- `js/theme.js` (temas), `js/terminal.js`, `js/pc-storage.js` (localStorage), `js/audio.js`,
+  `js/modal.js`, `js/analytics.js` (GA4 opcional, desactivado si `ANALYTICS.ga4Id` está vacío).
+- Cualquier texto visible que se agregue al sitio tiene que existir también en la versión EN
+  (ver `.cursor/rules/client-react.mdc` para el mapa de i18n: la ES vive en el JSON canónico).
+
+## Al tocar esta zona
+
+- Probar en los dos modos: servido por HTTP y abierto por `file://`. El modo `file://` es el que
+  usa la gente que se lo descarga, y es el que se rompe en silencio.
+- Si agregás un archivo nuevo en `js/`, incluirlo con `<script>` en `index.html` **y** en
+  `cv.html` si aplica.

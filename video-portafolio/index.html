@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>LAUTARO.DEV — Portfolio</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: "Press Start 2P";
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url("assets/fonts/pressstart2p.woff2") format("woff2");
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #0d0f1a;
+        color: #f4f4f5;
+        font-family: "Press Start 2P", monospace;
+      }
+
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background:
+          radial-gradient(1200px 700px at 50% 0%, #171b30 0%, #0d0f1a 70%);
+      }
+
+      .clip {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 70px 90px;
+      }
+
+      .scanlines {
+        position: absolute;
+        inset: 0;
+        z-index: 50;
+        pointer-events: none;
+        background: repeating-linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0.16) 0px,
+          rgba(0, 0, 0, 0.16) 1px,
+          transparent 1px,
+          transparent 3px
+        );
+      }
+
+      .vignette {
+        position: absolute;
+        inset: 0;
+        z-index: 49;
+        pointer-events: none;
+        background: radial-gradient(
+          ellipse at center,
+          transparent 55%,
+          rgba(0, 0, 0, 0.55) 100%
+        );
+      }
+
+      .eyebrow {
+        font-size: 20px;
+        letter-spacing: 4px;
+        color: #8b93b5;
+        text-transform: uppercase;
+      }
+
+      .intro-title {
+        margin-top: 40px;
+        font-size: 108px;
+        line-height: 1.1;
+        text-align: center;
+        color: #ffffff;
+        text-shadow: 6px 6px 0 #1d2440;
+      }
+      .intro-title .accent {
+        color: #58a6ff;
+      }
+
+      .intro-sub {
+        margin-top: 34px;
+        font-size: 26px;
+        color: #cdd6f0;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .loader {
+        margin-top: 60px;
+        width: 640px;
+        height: 30px;
+        border: 4px solid #2a3355;
+        background: #0a0c16;
+        padding: 3px;
+      }
+      .loader .fill {
+        width: 100%;
+        height: 100%;
+        background: #58a6ff;
+        transform-origin: left center;
+        transform: scaleX(0);
+      }
+
+      .intro-tag {
+        margin-top: 44px;
+        font-size: 20px;
+        color: #58a6ff;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+      }
+
+      .box-chip {
+        font-size: 18px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        padding: 12px 22px;
+        border: 3px solid currentColor;
+        margin-bottom: 26px;
+      }
+
+      .scene-title {
+        font-size: 44px;
+        text-align: center;
+        text-transform: uppercase;
+        line-height: 1.25;
+        margin-bottom: 54px;
+      }
+
+      .grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 40px;
+        width: 100%;
+      }
+
+      .card {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        background: #12162a;
+        border: 4px solid var(--accent);
+        box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.45);
+        padding: 28px 34px;
+        width: 840px;
+        min-height: 240px;
+      }
+      .grid.two .card {
+        width: 840px;
+        min-height: 340px;
+      }
+
+      .tile {
+        flex: 0 0 auto;
+        width: 120px;
+        height: 120px;
+        display: grid;
+        place-items: center;
+        font-size: 62px;
+        background: #0a0c16;
+        border: 4px solid var(--accent);
+      }
+
+      .card-title {
+        font-size: 30px;
+        color: #ffffff;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        line-height: 1.3;
+      }
+      .card-desc {
+        font-size: 18px;
+        color: #cdd6f0;
+        line-height: 1.6;
+        margin-bottom: 22px;
+      }
+      .card-stack {
+        font-size: 16px;
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        line-height: 1.7;
+      }
+
+      .inside-label {
+        font-size: 26px;
+        color: #cdd6f0;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+      .inside-label .hl {
+        color: var(--accent);
+      }
+      .browser {
+        width: 1320px;
+        background: #0a0c16;
+        border: 4px solid var(--accent);
+        box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.45);
+      }
+      .browser-bar {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        padding: 16px 22px;
+        border-bottom: 4px solid var(--accent);
+        background: #12162a;
+      }
+      .browser-dots {
+        display: flex;
+        gap: 10px;
+      }
+      .browser-dots .dot {
+        width: 22px;
+        height: 22px;
+      }
+      .browser-dots .dot.r { background: #ff5f56; }
+      .browser-dots .dot.y { background: #ffbd2e; }
+      .browser-dots .dot.g { background: #27c93f; }
+      .browser-url {
+        flex: 1;
+        background: #0a0c16;
+        border: 3px solid #2a3355;
+        padding: 12px 18px;
+        font-size: 17px;
+        color: #cdd6f0;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+      .browser-body {
+        position: relative;
+        overflow: hidden;
+        line-height: 0;
+      }
+      .browser-body img {
+        display: block;
+        width: 100%;
+        height: auto;
+        transform-origin: center center;
+      }
+
+      .cta-box {
+        border: 4px solid #58a6ff;
+        background: #12162a;
+        box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.45);
+        padding: 64px 90px;
+        text-align: center;
+      }
+      .cta-title {
+        font-size: 46px;
+        color: #ffffff;
+        text-transform: uppercase;
+        margin-bottom: 40px;
+      }
+      .cta-line {
+        font-size: 20px;
+        color: #cdd6f0;
+        line-height: 2.1;
+        text-transform: uppercase;
+      }
+      .cta-line.accent {
+        color: #58a6ff;
+        margin-top: 30px;
+        font-size: 18px;
+        letter-spacing: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="36.5"
+      data-width="1920"
+      data-height="1080"
+    >
+      <section id="scene-intro" class="clip intro" data-start="0" data-duration="4" data-track-index="0">
+        <div class="eyebrow" id="intro-eyebrow">PORTFOLIO · 2026</div>
+        <div class="intro-title" id="intro-title">LAUTARO<span class="accent">.DEV</span></div>
+        <div class="intro-sub" id="intro-sub">Web &amp; Systems Developer</div>
+        <div class="loader" id="intro-loader"><div class="fill"></div></div>
+        <div class="intro-tag" id="intro-tag">⚡ Available for projects</div>
+      </section>
+
+      <section id="scene-caja1" class="clip scene caja1" data-start="4" data-duration="6.5" data-track-index="1" style="--accent: #58a6ff">
+        <div class="box-chip" id="h1-chip">BOX 1</div>
+        <div class="scene-title" id="h1-title" style="color: #58a6ff">Web Development</div>
+        <div class="grid" id="g1">
+          <div class="card"><div class="tile">🛍️</div><div><div class="card-title">Abstractoshop</div><div class="card-desc">Next.js store, ready to deploy</div><div class="card-stack">Next.js · React · Tailwind</div></div></div>
+          <div class="card"><div class="tile">🌷</div><div><div class="card-title">Florería Susi</div><div class="card-desc">Landing + WhatsApp ordering</div><div class="card-stack">React · Vite · Tailwind</div></div></div>
+          <div class="card"><div class="tile">🦷</div><div><div class="card-title">RioDent</div><div class="card-desc">Trilingual SPA in production</div><div class="card-stack">React · MUI · Express</div></div></div>
+          <div class="card"><div class="tile">🎨</div><div><div class="card-title">Pixel Sprite Editor</div><div class="card-desc">Online pixel-art editor with CI</div><div class="card-stack">React · Vite · Vitest</div></div></div>
+        </div>
+      </section>
+
+      <section id="scene-inside-riodent" class="clip scene inside" data-start="10.5" data-duration="4" data-track-index="2" style="--accent: #58a6ff">
+        <div class="inside-label" id="in1-label">Inside <span class="hl">RioDent</span></div>
+        <div class="browser" id="browser-riodent">
+          <div class="browser-bar">
+            <div class="browser-dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div>
+            <div class="browser-url">riodent.com.ar</div>
+          </div>
+          <div class="browser-body"><img src="assets/screens/riodent-home.png" alt="RioDent home" /></div>
+        </div>
+      </section>
+
+      <section id="scene-inside-pixel" class="clip scene inside" data-start="14.5" data-duration="4" data-track-index="3" style="--accent: #f0a6ff">
+        <div class="inside-label" id="in2-label">Inside <span class="hl">Pixel Sprite Editor</span></div>
+        <div class="browser" id="browser-pixel">
+          <div class="browser-bar">
+            <div class="browser-dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div>
+            <div class="browser-url">rahyned.github.io/pixel-editor</div>
+          </div>
+          <div class="browser-body"><img src="assets/screens/pixel-editor-home.png" alt="Pixel Sprite Editor home" /></div>
+        </div>
+      </section>
+
+      <section id="scene-caja2" class="clip scene caja2" data-start="18.5" data-duration="6" data-track-index="4" style="--accent: #4ade80">
+        <div class="box-chip" id="h2-chip" style="color: #4ade80">BOX 2</div>
+        <div class="scene-title" id="h2-title" style="color: #4ade80">Management Systems &amp; ERPs</div>
+        <div class="grid two" id="g2">
+          <div class="card"><div class="tile">🔧</div><div><div class="card-title">SolutionsCars</div><div class="card-desc">In-use workshop ERP · 542 tests</div><div class="card-stack">Python · Flet · SQL</div></div></div>
+          <div class="card"><div class="tile">⭐</div><div><div class="card-title">STELLA</div><div class="card-desc">Dental-lab ERP · 1234 tests</div><div class="card-stack">Python · PyQt5 · FastAPI</div></div></div>
+        </div>
+      </section>
+
+      <section id="scene-caja3" class="clip scene caja3" data-start="24.5" data-duration="6" data-track-index="5" style="--accent: #ffb347">
+        <div class="box-chip" id="h3-chip" style="color: #ffb347">BOX 3</div>
+        <div class="scene-title" id="h3-title" style="color: #ffb347">Desktop Apps (Tauri)</div>
+        <div class="grid two" id="g3">
+          <div class="card"><div class="tile">✏️</div><div><div class="card-title">Butterflies</div><div class="card-desc">Offline vector editor (.exe)</div><div class="card-stack">Tauri · Rust · React</div></div></div>
+          <div class="card"><div class="tile">🎬</div><div><div class="card-title">Libreta</div><div class="card-desc">Private movie &amp; series diary</div><div class="card-stack">Tauri · Rust · SQLite</div></div></div>
+        </div>
+      </section>
+
+      <section id="scene-cta" class="clip scene cta" data-start="30.5" data-duration="6" data-track-index="6">
+        <div class="cta-box" id="cta-box">
+          <div class="cta-title" id="cta-title">Have a project?</div>
+          <div class="cta-line" id="cta-email">rodriguez.samuel.lautaro@gmail.com</div>
+          <div class="cta-line" id="cta-gh">github.com/Rahyned</div>
+          <div class="cta-line" id="cta-phone">+54 341 6297638 · Rosario, Argentina</div>
+          <div class="cta-line accent" id="cta-tag">⚡ Available for projects</div>
+        </div>
+      </section>
+    </div>
+
+    <audio id="bgm" src="assets/audio/chiptune.wav" data-start="0" data-volume="0.45"></audio>
+
+    <div class="vignette"></div>
+    <div class="scanlines"></div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+
+      // Intro
+      tl.fromTo("#intro-eyebrow", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out", immediateRender: true }, 0.1);
+      tl.fromTo("#intro-title", { opacity: 0, scale: 0.9, y: 40 }, { opacity: 1, scale: 1, y: 0, duration: 0.7, ease: "power3.out", immediateRender: true }, 0.25);
+      tl.fromTo("#intro-sub", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out", immediateRender: true }, 0.85);
+      tl.fromTo("#intro-loader .fill", { scaleX: 0 }, { scaleX: 1, duration: 2.1, ease: "power1.inOut", immediateRender: true }, 0.9);
+      tl.fromTo("#intro-tag", { opacity: 0 }, { opacity: 1, duration: 0.5, immediateRender: true }, 2.4);
+      tl.to("#intro-tag", { opacity: 0.35, duration: 0.4, yoyo: true, repeat: 1 }, 3.1);
+
+      // Caja 1
+      tl.fromTo("#h1-chip", { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out", immediateRender: true }, 4.1);
+      tl.fromTo("#h1-title", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out", immediateRender: true }, 4.25);
+      tl.fromTo("#g1 .card", { opacity: 0, scale: 0.85, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "back.out(1.6)", stagger: 0.16, immediateRender: true }, 4.6);
+
+      // Inside RioDent
+      tl.fromTo("#in1-label", { opacity: 0, y: -18 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out", immediateRender: true }, 10.6);
+      tl.fromTo("#browser-riodent", { opacity: 0, y: 40, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "power3.out", immediateRender: true }, 10.8);
+      tl.fromTo("#browser-riodent img", { scale: 1.08 }, { scale: 1, duration: 3.1, ease: "power1.out", immediateRender: true }, 10.8);
+
+      // Inside Pixel Editor
+      tl.fromTo("#in2-label", { opacity: 0, y: -18 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out", immediateRender: true }, 14.6);
+      tl.fromTo("#browser-pixel", { opacity: 0, y: 40, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "power3.out", immediateRender: true }, 14.8);
+      tl.fromTo("#browser-pixel img", { scale: 1.08 }, { scale: 1, duration: 3.1, ease: "power1.out", immediateRender: true }, 14.8);
+
+      // Caja 2
+      tl.fromTo("#h2-chip", { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out", immediateRender: true }, 18.6);
+      tl.fromTo("#h2-title", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out", immediateRender: true }, 18.75);
+      tl.fromTo("#g2 .card", { opacity: 0, scale: 0.85, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "back.out(1.6)", stagger: 0.2, immediateRender: true }, 18.9);
+
+      // Caja 3
+      tl.fromTo("#h3-chip", { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out", immediateRender: true }, 24.6);
+      tl.fromTo("#h3-title", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out", immediateRender: true }, 24.75);
+      tl.fromTo("#g3 .card", { opacity: 0, scale: 0.85, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "back.out(1.6)", stagger: 0.2, immediateRender: true }, 24.9);
+
+      // CTA
+      tl.fromTo("#cta-box", { opacity: 0, scale: 0.92 }, { opacity: 1, scale: 1, duration: 0.55, ease: "power2.out", immediateRender: true }, 30.8);
+      tl.fromTo(["#cta-title", "#cta-email", "#cta-gh", "#cta-phone", "#cta-tag"], { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out", stagger: 0.12, immediateRender: true }, 31.4);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

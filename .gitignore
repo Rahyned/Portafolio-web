@@ -6,3 +6,9 @@ server/.env
 server/inbox/
 *.log
 .DS_Store
+
+# artefactos de la skill /brag (videos de launch, no se versionan)
+brag-output-*/
+
+# Windows: "nul" es un nombre reservado, un redirect fallido lo crea y cuelga git
+/nul
