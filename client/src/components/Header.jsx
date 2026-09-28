@@ -50,6 +50,16 @@ export default function Header() {
 
         <button
           type="button"
+          className="icon-btn oak-btn"
+          onClick={() => { sfx("click"); window.dispatchEvent(new CustomEvent("oak:open")); }}
+          aria-label={t("aria.oak")}
+          title={t("aria.oak")}
+        >
+          <span aria-hidden="true">💬</span>
+        </button>
+
+        <button
+          type="button"
           className="icon-btn lang-btn"
           onClick={() => { sfx("click"); setLang(lang === "es" ? "en" : "es"); }}
           aria-label={t("aria.lang")}

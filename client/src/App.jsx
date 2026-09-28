@@ -12,6 +12,7 @@ import Services from "./components/Services";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Terminal from "./components/Terminal";
+import OakChat from "./components/OakChat";
 import Toast from "./components/Toast";
 import BootScreen from "./components/BootScreen";
 import CrtOverlay from "./components/CrtOverlay";
@@ -93,6 +94,7 @@ export default function App() {
       </main>
       <Footer />
       {!IS_NOT_FOUND && <Terminal />}
+      {!IS_NOT_FOUND && <OakChat />}
       <Toast message={toast.message} show={toast.show} />
 
       {!booted && !IS_NOT_FOUND && <BootScreen onDone={() => setBooted(true)} />}

@@ -1,6 +1,7 @@
 import { TRAINER, POKEBALL, COIN, STAR } from "./trainer";
 import { MI_SPRITE } from "./hero";
 import { BOX_WEB, BOX_SYSTEMS, BOX_DESKTOP } from "./boxes";
+import { OAK } from "./oak";
 
 // Recorta filas/columnas transparentes y recentra el contenido en la grilla
 // original, para que cada icono quede con margen igual en los 4 bordes.
@@ -42,7 +43,8 @@ export const SPRITES = {
   star: centerSprite(STAR),
   box_web: centerSprite(BOX_WEB),
   box_systems: centerSprite(BOX_SYSTEMS),
-  box_desktop: centerSprite(BOX_DESKTOP)
+  box_desktop: centerSprite(BOX_DESKTOP),
+  oak: centerSprite(OAK)
 };
 
 export const getSprite = (key) => SPRITES[key] || null;

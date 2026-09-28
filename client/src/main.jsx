@@ -18,6 +18,7 @@ import "./styles/pc-storage.css";
 import "./styles/services.css";
 import "./styles/contact.css";
 import "./styles/terminal.css";
+import "./styles/oak.css";
 import "./styles/footer.css";
 import "./styles/animations.css";
 import "./styles/boot.css";

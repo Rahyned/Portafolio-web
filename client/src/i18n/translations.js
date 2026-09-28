@@ -143,6 +143,25 @@ export const translations = {
     "term.contact.phone": "TELEFONO:",
     "term.cv.opening": "ABRIENDO CV (imprimible)...",
     "term.error": "ERROR: '{cmd}' no es un comando válido. Usa 'help'.",
+    "term.help.oak": "  oak        - chat con el Profesor Oak",
+    "term.oak.opening": "ABRIENDO CHAT CON EL PROFESOR OAK...",
+
+    // Oak chat
+    "aria.oak": "Abrir chat con el Profesor Oak",
+    "oak.aria": "Chat con el Profesor Oak",
+    "oak.aria.input": "Mensaje para el Profesor Oak",
+    "oak.title": "PROF. OAK",
+    "oak.sub": "Asistente del portafolio",
+    "oak.close": "Cerrar chat",
+    "oak.intro": "¡Hola, entrenador! Soy el Profesor Oak. Preguntame sobre los proyectos, skills o servicios de Lautaro.",
+    "oak.placeholder": "Preguntame sobre Lautaro...",
+    "oak.send": "Enviar",
+    "oak.thinking": "Pensando",
+    "oak.hint": "Tip: también abrime con el comando `oak` en la terminal (tecla T).",
+    "oak.contact": "Escribir a Lautaro",
+    "oak.error.unavailable": "Todavía no estoy listo para responder. ¡Volvé pronto!",
+    "oak.error.rate": "Demasiadas consultas seguidas. Esperá un minuto y probá de nuevo.",
+    "oak.error.generic": "Ups, algo salió mal. Probá de nuevo en un momento.",
 
     // App / Konami
     "toast.konami": "🎉 ¡MODO MISTERIO ACTIVADO!",
@@ -305,6 +324,25 @@ export const translations = {
     "term.contact.phone": "PHONE:",
     "term.cv.opening": "OPENING CV (printable)...",
     "term.error": "ERROR: '{cmd}' is not a valid command. Use 'help'.",
+    "term.help.oak": "  oak        - chat with Professor Oak",
+    "term.oak.opening": "OPENING PROFESSOR OAK CHAT...",
+
+    // Oak chat
+    "aria.oak": "Open chat with Professor Oak",
+    "oak.aria": "Professor Oak chat",
+    "oak.aria.input": "Message to Professor Oak",
+    "oak.title": "PROF. OAK",
+    "oak.sub": "Portfolio assistant",
+    "oak.close": "Close chat",
+    "oak.intro": "Hello, trainer! I'm Professor Oak. Ask me about Lautaro's projects, skills or services.",
+    "oak.placeholder": "Ask me about Lautaro...",
+    "oak.send": "Send",
+    "oak.thinking": "Thinking",
+    "oak.hint": "Tip: you can also open me with the `oak` command in the terminal (T key).",
+    "oak.contact": "Email Lautaro",
+    "oak.error.unavailable": "I'm not ready to answer yet. Come back soon!",
+    "oak.error.rate": "Too many requests in a row. Wait a minute and try again.",
+    "oak.error.generic": "Oops, something went wrong. Try again in a moment.",
 
     // App / Konami
     "toast.konami": "🎉 MYSTERY MODE ACTIVATED!",

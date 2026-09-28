@@ -1,0 +1,30 @@
+import { P } from "./palette";
+
+// OAK — retrato pixel-art del Profesor Oak (24x24).
+// Pelo blanco/gris, campana de laboratorio blanca con remera marrón.
+export const OAK = P([
+  "........................",
+  "....KKKKKKKKKKKKKKKK....",
+  "...KKFFFFFFFFFFFFFFKK...",
+  "..KKFFFFFFFFFFFFFFFFKK..",
+  "..KKFFFFFFFFFFFFFFFFKK..",
+  "..KFFHHHHHHHHHHHHHHFFK..",
+  "..KFFHHHHKKHHKKHHHHFFK..",
+  "..KFFHHHHHHHHHHHHHHFFK..",
+  "..KFFHHHHHHKKHHHHHHFFK..",
+  "..KFFHHHHHHHHHHHHHHFFK..",
+  "..KFFHHHHKKKKKKHHHHFFK..",
+  "..KFFHHHHHHHHHHHHHHFFK..",
+  "..KFFHHHHHHHHHHHHHHFFK..",
+  "...KFFHHHHHHHHHHHHFFK...",
+  "....KFFHHHHHHHHHHFFK....",
+  "......KHHHHHHHHHHK......",
+  ".......HHHHHHHHHH.......",
+  ".KKWWWWDDDDDDDDDDWWWWKK.",
+  ".KKWWWWWWDDDDDDWWWWWWKK.",
+  ".KKWWWWWWWDDDDWWWWWWWKK.",
+  ".KKWWWWWWWWKKWWWWWWWWKK.",
+  ".KKWWWWWWWWKKWWWWWWWWKK.",
+  ".KKWWWWWWWWKKWWWWWWWWKK.",
+  ".KKKKKKKKKKKKKKKKKKKKKK."
+]);

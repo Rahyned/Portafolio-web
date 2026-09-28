@@ -37,6 +37,7 @@ export default function Terminal() {
           { text: t("term.help.about") },
           { text: t("term.help.contact") },
           { text: t("term.help.cv") },
+          { text: t("term.help.oak") },
           { text: t("term.help.clear") }
         ]);
         break;
@@ -78,6 +79,14 @@ export default function Terminal() {
       case "cv":
         window.open(CONTACT_INFO.cvUrl || "cv.html", "_blank", "noopener");
         render([{ text: t("term.cv.opening"), cls: "ok" }]);
+        break;
+      case "oak":
+        render([{ text: t("term.oak.opening"), cls: "ok" }]);
+        setTimeout(() => {
+          setOpen(false);
+          sfx("close");
+          window.dispatchEvent(new CustomEvent("oak:open"));
+        }, 350);
         break;
       case "clear":
         setLines([]);
