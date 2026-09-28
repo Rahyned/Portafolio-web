@@ -98,7 +98,7 @@
 .hero-sub .typewriter-cursor {
   display: inline-block;
   width: 10px;
-  color: var(--accent);
+  color: var(--accent-text);
   animation: blink 0.8s step-start infinite;
 }
 
@@ -121,7 +121,7 @@
 
 .btn-retro:hover {
   background: var(--action-bg);
-  color: #1B1B2F;
+  color: var(--action-text);
   box-shadow:
     4px 4px 0 var(--border),
     inset -3px -3px 0 rgba(27, 27, 47, 0.35),
@@ -192,6 +192,11 @@
     min-height: calc(100vh - var(--header-height));
     gap: 26px;
   }
+  .hero-name,
+  .hero-tagline {
+    max-width: 100%;
+    overflow-wrap: break-word;
+  }
   .hero-cta {
     margin-top: 28px;
   }
@@ -208,6 +213,6 @@
     font-size: 13px;
   }
   .btn-retro {
-    font-size: 9px;
+    font-size: 11px;
   }
 }

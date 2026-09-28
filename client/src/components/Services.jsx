@@ -22,7 +22,7 @@ export default function Services() {
   return (
     <section className="services-section" id="servicios" aria-labelledby="servicesTitle">
       <div className="section-banner">
-        <h2 className="section-title" id="servicesTitle">SERVICIOS</h2>
+        <h2 className="section-title" id="servicesTitle">{t("nav.servicios")}</h2>
         <p className="section-sub">{t("services.sub")}</p>
       </div>
 

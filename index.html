@@ -62,7 +62,7 @@
       <div class="hero-sprite" aria-hidden="true">👾</div>
       <h1 class="hero-tagline">
         Desarrollador Web &amp; Sistemas<br />
-        <span class="accent">Automatización • Arquitectura • APIs</span>
+        <span class="accent">AUTOMATIZACION • ARQUITECTURA • APIS</span>
       </h1>
       <p class="hero-sub" aria-live="polite">
         <span id="heroTypewriter"></span><span class="typewriter-cursor" aria-hidden="true">▌</span>
@@ -100,9 +100,9 @@
             <ul class="trainer-stats">
               <li class="trainer-stat"><span>CLASE</span><strong id="statClass">Desarrollador Web &amp; Sistemas</strong></li>
               <li class="trainer-stat"><span>NIVEL</span><strong id="statLevel">[22] / 30</strong></li>
-              <li class="trainer-stat"><span>AÑOS DE EXP</span><strong id="statExp">[2+]</strong></li>
-              <li class="trainer-stat"><span>PROYECTOS</span><strong id="statProjects">[15+]</strong></li>
-              <li class="trainer-stat"><span>UBICACIÓN</span><strong id="statLocation">[Rosario, Argentina]</strong></li>
+              <li class="trainer-stat"><span>EXPERIENCIA</span><strong id="statExp">2+</strong></li>
+              <li class="trainer-stat"><span>PROYECTOS</span><strong id="statProjects">8</strong></li>
+              <li class="trainer-stat"><span>ZONA</span><strong id="statLocation">Rosario, Argentina</strong></li>
             </ul>
             <div class="exp-bar-wrap">
               <div class="exp-bar-label"><span>EXP</span><span id="expLevelText">Nv. [22]/30</span></div>
@@ -148,7 +148,7 @@
          MOCHILA / BLOG (notas técnicas)
     -->
     <section class="blog-section" id="mochila" aria-labelledby="blogTitle">
-      <h2 class="section-title" id="blogTitle">MOCHILA — NOTAS TÉCNICAS</h2>
+      <h2 class="section-title" id="blogTitle">MOCHILA — NOTAS TECNICAS</h2>
       <p class="section-sub">Artículos y anotaciones guardados en mi mochila.</p>
       <div class="blog-grid" id="blogGrid" aria-live="polite"></div>
     </section>
@@ -163,7 +163,7 @@
       <div class="contact-grid">
         <!-- PokéNav: contactos directos -->
         <div class="panel reveal">
-          <h3 class="panel-title">📡 POKÉNAV — CONTACTOS</h3>
+          <h3 class="panel-title">📡 POKENAV — CONTACTOS</h3>
           <div class="contact-list">
             <div class="contact-item">
               <p class="contact-item-label">📧 EMAIL</p>
@@ -174,14 +174,14 @@
             </div>
             <div class="contact-item">
               <p class="contact-item-label">💼 LINKEDIN</p>
-              <p class="contact-item-value" id="contactLinkedin">[linkedin.com/in/lautaro-example]</p>
+              <p class="contact-item-value" id="contactLinkedin">linkedin.com/in/lautaro-rodriguez-96a42b389</p>
               <div class="contact-item-actions">
                 <button type="button" class="btn-mini" data-action="linkedin">ABRIR</button>
               </div>
             </div>
             <div class="contact-item">
               <p class="contact-item-label">🔗 GITHUB</p>
-              <p class="contact-item-value" id="contactGithub">[@lautaro-example]</p>
+              <p class="contact-item-value" id="contactGithub">github.com/Rahyned</p>
               <div class="contact-item-actions">
                 <button type="button" class="btn-mini" data-action="github">VER PERFIL</button>
               </div>
@@ -230,19 +230,25 @@
               <div class="form-group" data-field="budget">
                 <span class="form-group-label">PRESUPUESTO</span>
                 <div class="radio-group" role="radiogroup" aria-label="Presupuesto">
-                  <label class="radio-option" data-budget="Pequeño"><input type="radio" name="budget" value="Pequeño" />PEQUEÑO</label>
+                  <label class="radio-option" data-budget="Pequeño"><input type="radio" name="budget" value="Pequeño" />PEQUENO</label>
                   <label class="radio-option" data-budget="Mediano"><input type="radio" name="budget" value="Mediano" />MEDIANO</label>
                   <label class="radio-option" data-budget="Grande"><input type="radio" name="budget" value="Grande" />GRANDE</label>
                 </div>
               </div>
 
               <div class="form-group" data-field="details">
-                <label for="fieldDetails">DESCRIPCIÓN / DETALLES</label>
+                <label for="fieldDetails">DESCRIPCION / DETALLES</label>
                 <textarea id="fieldDetails" name="details" class="form-textarea" placeholder="Contame sobre tu proyecto..." required></textarea>
                 <p class="form-error">Contanos un poco sobre el proyecto.</p>
               </div>
 
               <button type="submit" class="btn-submit" id="submitBtn">✅ CONFIRMAR INTERCAMBIO</button>
+
+              <!-- Honeypot: oculto a humanos, los bots lo llenan -->
+              <div style="position: absolute; left: -9999px; height: 0; overflow: hidden;" aria-hidden="true">
+                <label for="fieldCompany">Company</label>
+                <input type="text" id="fieldCompany" name="company" tabindex="-1" autocomplete="off" />
+              </div>
             </form>
 
             <div class="form-success" id="formSuccess" role="status">
@@ -262,7 +268,7 @@
        FOOTER
   -->
   <footer class="site-footer">
-    <p class="footer-text" id="footerText">© 2024 [Lautaro Rodriguez] </p>
+    <p class="footer-text" id="footerText">© 2026 [Lautaro Rodriguez] </p>
     <nav class="footer-links" aria-label="Enlaces secundarios">
       <a href="cv.html" class="footer-link" id="cvLink" target="_blank" rel="noopener">📄 CV DESCARGABLE</a>
     </nav>
@@ -295,7 +301,7 @@
           <div class="modal-stack" id="modalStack"></div>
         </div>
         <div class="modal-block">
-          <h4 class="modal-block-title">🚀 DEMO / CÓDIGO</h4>
+          <h4 class="modal-block-title">🚀 DEMO / CODIGO</h4>
           <div class="modal-actions">
             <a href="#" target="_blank" rel="noopener noreferrer" class="btn-link" id="modalDemo">🌐 LIVE DEMO</a>
             <a href="#" target="_blank" rel="noopener noreferrer" class="btn-link" id="modalGithub">💾 GITHUB</a>

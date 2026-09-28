@@ -31,7 +31,7 @@ const Terminal = (() => {
       return lines;
     },
     skills: () => {
-      const lines = [{ text: "STACK TÉCNICO:", cls: "term-ok" }];
+      const lines = [{ text: "STACK TECNICO:", cls: "term-ok" }];
       SKILLS_LIST.forEach((s) => lines.push({ text: `  ${s}`, cls: "" }));
       return lines;
     },
@@ -40,14 +40,14 @@ const Terminal = (() => {
       { text: `CLASE: ${PROFILE.class}`, cls: "" },
       { text: `NIVEL: ${PROFILE.level}/${PROFILE.maxLevel}`, cls: "" },
       { text: `EXP: ${PROFILE.expYears} años | ${PROFILE.completedProjects} proyectos`, cls: "" },
-      { text: `UBICACIÓN: ${PROFILE.location}`, cls: "" },
+      { text: `ZONA: ${PROFILE.location}`, cls: "" },
       { text: `ESTADO: ${PROFILE.status}`, cls: "term-warn" }
     ],
     contact: () => [
       { text: `EMAIL: ${CONTACT_INFO.email}`, cls: "" },
-      { text: `LINKEDIN: ${CONTACT_INFO.linkedin}`, cls: "" },
-      { text: `GITHUB: ${CONTACT_INFO.github}`, cls: "" },
-      { text: `TELÉFONO: ${CONTACT_INFO.phone}`, cls: "" }
+      { text: `LINKEDIN: ${String(CONTACT_INFO.linkedin).replace(/^https?:\/\//i, "")}`, cls: "" },
+      { text: `GITHUB: ${String(CONTACT_INFO.github).replace(/^https?:\/\//i, "")}`, cls: "" },
+      { text: `TELEFONO: ${CONTACT_INFO.phone}`, cls: "" }
     ],
     cv: () => {
       window.open(CONTACT_INFO.cvUrl || "cv.html", "_blank", "noopener");

@@ -104,7 +104,7 @@
   position: fixed;
   bottom: 24px;
   left: 50%;
-  transform: translateX(-50%) translateY(80px);
+  transform: translateX(-50%) translateY(calc(100% + 40px));
   font-family: var(--font-pixel);
   font-size: 10px;
   color: var(--bg-primary);

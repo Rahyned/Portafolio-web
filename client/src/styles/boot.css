@@ -101,7 +101,7 @@
 }
 
 .boot-hint {
-  font-size: 8px;
+  font-size: 10px;
   color: #FFFFFF;
   opacity: 0.8;
 }
@@ -121,7 +121,7 @@
     font-size: 15px;
   }
   .boot-status {
-    font-size: 9px;
+    font-size: 11px;
   }
   .boot-bar {
     width: min(320px, 84vw);

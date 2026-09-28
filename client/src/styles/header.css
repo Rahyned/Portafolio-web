@@ -31,7 +31,7 @@
 }
 
 .header-logo span {
-  color: var(--accent);
+  color: var(--accent-text);
 }
 
 .header-logo:hover {
@@ -48,7 +48,7 @@
 
 .header-status {
   font-family: var(--font-pixel);
-  font-size: 8px;
+  font-size: 10px;
   color: var(--accent-text);
   border: 1px solid var(--border);
   background: var(--bg-secondary);
@@ -74,7 +74,7 @@
 
 .icon-btn.lang-btn {
   font-family: var(--font-pixel);
-  font-size: 9px;
+  font-size: 10px;
 }
 
 .icon-btn:hover {
@@ -83,7 +83,7 @@
 
 .icon-btn.on {
   background: var(--action-bg);
-  color: #1B1B2F;
+  color: var(--action-text);
 }
 
 .icon-btn:active {
@@ -100,7 +100,7 @@
 
 .theme-btn {
   font-family: var(--font-pixel);
-  font-size: 8px;
+  font-size: 10px;
   padding: 7px 9px;
   border: 2px solid var(--border);
   background: var(--btn-bg);
@@ -117,7 +117,7 @@
 }
 
 .theme-btn.active {
-  color: #1B1B2F;
+  color: var(--action-text);
   background: var(--action-bg);
   border-color: var(--border);
   box-shadow: 2px 2px 0 var(--border), 0 0 14px var(--glow);
@@ -143,11 +143,15 @@
     padding: 8px 10px;
     gap: 6px 10px;
   }
+  .header-right {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
   .header-logo {
-    font-size: 9px;
+    font-size: 11px;
   }
   .theme-btn {
-    font-size: 6px;
+    font-size: 11px;
     padding: 6px 5px;
   }
   .theme-switcher {
@@ -165,10 +169,10 @@
 
 @media (max-width: 420px) {
   .header-logo {
-    font-size: 8px;
+    font-size: 11px;
   }
   .theme-btn {
-    font-size: 5px;
+    font-size: 11px;
     padding: 6px 4px;
   }
   .theme-switcher {

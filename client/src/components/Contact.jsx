@@ -11,7 +11,8 @@ const INITIAL_FORM = {
   type: "Web",
   timeline: "Flexible",
   budget: "",
-  details: ""
+  details: "",
+  company: ""
 };
 
 export default function Contact() {
@@ -79,7 +80,8 @@ export default function Contact() {
       type: form.type,
       timeline: form.timeline,
       budget: form.budget,
-      details: form.details.trim()
+      details: form.details.trim(),
+      company: form.company
     };
 
     const result = await submitToBackend(payload);
@@ -108,15 +110,20 @@ export default function Contact() {
     "sent-mailto": t("contact.success.mailto")
   };
 
+  const externalUrl = (value, base) => {
+    const v = String(value).replace(/[[\]]/g, "").trim();
+    return /^https?:\/\//i.test(v) ? v : base + v.replace(/^@/, "");
+  };
+
   const directActions = [
     { id: "email", label: t("contact.email"), value: data.CONTACT_INFO.email, action: () => {
       window.location.href = `mailto:${data.CONTACT_INFO.email.replace(/[[\]]/g, "")}`;
     } },
     { id: "linkedin", label: t("contact.linkedin"), value: data.CONTACT_INFO.linkedin, action: () => {
-      window.open("https://www.linkedin.com/in/" + data.CONTACT_INFO.linkedin.replace(/[[\]]/g, ""), "_blank", "noopener");
+      window.open(externalUrl(data.CONTACT_INFO.linkedin, "https://www.linkedin.com/in/"), "_blank", "noopener");
     } },
     { id: "github", label: t("contact.github"), value: data.CONTACT_INFO.github, action: () => {
-      window.open("https://github.com/" + data.CONTACT_INFO.github.replace(/[[\]]/g, "").replace(/^@/, ""), "_blank", "noopener");
+      window.open(externalUrl(data.CONTACT_INFO.github, "https://github.com/"), "_blank", "noopener");
     } },
     { id: "phone", label: t("contact.phone"), value: data.CONTACT_INFO.phone, action: () => {
       window.open("https://wa.me/" + data.CONTACT_INFO.phone.replace(/[^0-9]/g, ""), "_blank", "noopener");
@@ -140,7 +147,7 @@ export default function Contact() {
 
   return (
     <section className="contact-section" id="contacto" aria-labelledby="contactTitle">
-      <h2 className="section-title" id="contactTitle">CONTACTO</h2>
+      <h2 className="section-title" id="contactTitle">{t("nav.contacto")}</h2>
       <p className="section-sub">{t("contact.sub")}</p>
 
       <div className="contact-grid">
@@ -157,7 +164,7 @@ export default function Contact() {
               {directActions.map((item) => (
                 <div key={item.id} className="contact-item">
                   <p className="contact-item-label">{item.label}</p>
-                  <p className="contact-item-value">{item.value}</p>
+                  <p className="contact-item-value">{String(item.value).replace(/^https?:\/\//i, "")}</p>
                   <div className="contact-item-actions">
                     <button type="button" className="btn-mini" onClick={() => { sfx("click"); item.action(); }}>
                       {item.id === "email" ? t("contact.action.email") : item.id === "linkedin" ? t("contact.action.linkedin") : item.id === "phone" ? t("contact.action.whatsapp") : t("contact.action.github")}
@@ -275,6 +282,20 @@ export default function Contact() {
                 <button type="submit" className="btn-submit" disabled={status === "sending"}>
                   {status === "sending" ? t("contact.submit.sending") : t("contact.submit")}
                 </button>
+
+                {/* Honeypot: oculto a humanos, los bots lo llenan */}
+                <div style={{ position: "absolute", left: "-9999px", height: 0, overflow: "hidden" }} aria-hidden="true">
+                  <label htmlFor="fieldCompany">Company</label>
+                  <input
+                    type="text"
+                    id="fieldCompany"
+                    name="company"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={form.company}
+                    onChange={(e) => setField("company", e.target.value)}
+                  />
+                </div>
               </form>
             )}
           </div>

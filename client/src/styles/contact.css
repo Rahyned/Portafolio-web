@@ -52,7 +52,7 @@
 
 .pokenav-lid-text {
   font-family: var(--font-pixel);
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 2px;
 }
 
@@ -144,7 +144,7 @@
 
 .contact-item-label {
   font-family: var(--font-pixel);
-  font-size: 8px;
+  font-size: 10px;
   color: var(--text-secondary);
   margin-bottom: 8px;
 }
@@ -165,7 +165,7 @@
 
 .btn-mini {
   font-family: var(--font-pixel);
-  font-size: 8px;
+  font-size: 10px;
   color: var(--text-primary);
   background: var(--btn-bg);
   border: 2px solid var(--border);
@@ -196,7 +196,7 @@
 .form-group label {
   display: block;
   font-family: var(--font-pixel);
-  font-size: 8px;
+  font-size: 10px;
   color: var(--text-secondary);
   margin-bottom: 6px;
 }
@@ -204,7 +204,7 @@
 .form-group-label {
   display: block;
   font-family: var(--font-pixel);
-  font-size: 8px;
+  font-size: 10px;
   color: var(--text-secondary);
   margin-bottom: 6px;
 }
@@ -250,7 +250,7 @@
 
 .radio-option {
   font-family: var(--font-pixel);
-  font-size: 8px;
+  font-size: 10px;
   color: var(--text-secondary);
   border: 2px solid var(--border);
   border-radius: var(--radius);
@@ -270,7 +270,7 @@
 
 .radio-option.selected {
   border-color: var(--accent);
-  color: var(--bg-primary);
+  color: var(--action-text);
   background: var(--action-bg);
   box-shadow: 2px 2px 0 var(--action-bright);
 }
@@ -301,7 +301,7 @@
   width: 100%;
   font-family: var(--font-pixel);
   font-size: 10px;
-  color: var(--bg-primary);
+  color: var(--action-text);
   background: var(--action-bg);
   border: 2px solid var(--action-bright);
   border-radius: var(--radius);

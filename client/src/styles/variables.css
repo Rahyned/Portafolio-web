@@ -25,11 +25,11 @@
   --bg-secondary: #ECE7DD;
   --bg-tertiary: #DFD8CA;
   --text-primary: #221F1A;
-  --text-secondary: #6E6559;
+  --text-secondary: #5A5248;
   --accent: #FF4D5E;
   --accent-bright: #FF8A4C;
-  --accent-text: #C2334A;
-  --accent2: #00B8C8;
+  --accent-text: #A82639;
+  --accent2: #116E7A;
   --accent-red: #E63946;
   --success: #2E8B57;
   --warn: #B8860B;
@@ -41,6 +41,7 @@
   --title-gradient: linear-gradient(90deg, #FF4D5E, #FF8A4C, #FFC53D);
   /* Botones de acción: por defecto usan el acento del tema */
   --action-bg: var(--accent);
+  --action-text: #1B1B1A;
   --action-bright: var(--accent-bright);
   --header-bg: var(--bg-primary);
   --pedestal: var(--bg-primary);
@@ -58,10 +59,10 @@
   --bg-secondary: #2A3A5C;
   --bg-tertiary: #364A73;
   --text-primary: #EAF0FF;
-  --text-secondary: #9FB0D4;
+  --text-secondary: #B4C2E0;
   --accent: #FF5C6C;
   --accent-bright: #FF9A5A;
-  --accent-text: #FF9AA5;
+  --accent-text: #FFB3BA;
   --accent2: #22D3EE;
   --accent-red: #FF6B6B;
   --success: #4ADE80;
@@ -74,7 +75,8 @@
   --title-gradient: linear-gradient(90deg, #FF5C6C, #FF9A5A, #FBBF24);
   /* Acentos de acción apagados (menos chillones) */
   --action-bg: #A84856;
-  --action-bright: #C96E78;
+  --action-bright: #9A4450;
+  --action-text: #FFFFFF;
   /* Header más clarito y base de los iconos de la pc más clara */
   --header-bg: #33456E;
   --pedestal: #44598A;

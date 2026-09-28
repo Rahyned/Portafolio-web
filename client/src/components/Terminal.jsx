@@ -70,8 +70,8 @@ export default function Terminal() {
       case "contact":
         render([
           { text: `${t("term.contact.email")} ${CONTACT_INFO.email}` },
-          { text: `${t("term.contact.linkedin")} ${CONTACT_INFO.linkedin}` },
-          { text: `${t("term.contact.github")} ${CONTACT_INFO.github}` },
+          { text: `${t("term.contact.linkedin")} ${String(CONTACT_INFO.linkedin).replace(/^https?:\/\//i, "")}` },
+          { text: `${t("term.contact.github")} ${String(CONTACT_INFO.github).replace(/^https?:\/\//i, "")}` },
           { text: `${t("term.contact.phone")} ${CONTACT_INFO.phone}` }
         ]);
         break;

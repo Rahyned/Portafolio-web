@@ -41,7 +41,7 @@
 
 .header-status {
   font-family: var(--font-pixel);
-  font-size: 8px;
+  font-size: 10px;
   color: var(--accent-bright);
   border: 1px solid var(--accent);
   background: var(--bg-secondary);
@@ -82,7 +82,7 @@
 
 .theme-btn {
   font-family: var(--font-pixel);
-  font-size: 8px;
+  font-size: 10px;
   padding: 7px 8px;
   border: 2px solid var(--border);
   background: var(--btn-bg);
@@ -116,7 +116,7 @@
     font-size: 10px;
   }
   .theme-btn {
-    font-size: 7px;
+    font-size: 11px;
     padding: 6px;
   }
   .theme-switcher {
@@ -128,10 +128,15 @@
     font-size: 15px;
   }
   .site-header {
-    padding: 0 12px;
+    height: auto;
+    min-height: var(--header-height);
+    flex-wrap: wrap;
+    padding: 8px 12px;
     gap: 8px;
   }
   .header-right {
     gap: 8px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
   }
 }

@@ -16,6 +16,15 @@ import Toast from "./components/Toast";
 import BootScreen from "./components/BootScreen";
 import CrtOverlay from "./components/CrtOverlay";
 import KonamiConfetti from "./components/KonamiConfetti";
+import NotFound from "./components/NotFound";
+
+// Rutas que la SPA conoce: home y archivos estáticos (con extensión).
+// Todo lo demás (catch-all rewrite de Vercel) es un 404 in-app.
+const IS_NOT_FOUND = (() => {
+  const p = window.location.pathname;
+  if (p === "/" || p === "/index.html") return false;
+  return !/\.[a-z0-9]+$/i.test(p);
+})();
 
 const KONAMI = [
   "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown",
@@ -69,18 +78,24 @@ export default function App() {
 
       <Header />
       <main id="main">
-        <Hero />
-        <Breadcrumb />
-        <TrainerCard />
-        <Services />
-        <PCStorage />
-        <Contact />
+        {IS_NOT_FOUND ? (
+          <NotFound />
+        ) : (
+          <>
+            <Hero />
+            <Breadcrumb />
+            <TrainerCard />
+            <Services />
+            <PCStorage />
+            <Contact />
+          </>
+        )}
       </main>
       <Footer />
-      <Terminal />
+      {!IS_NOT_FOUND && <Terminal />}
       <Toast message={toast.message} show={toast.show} />
 
-      {!booted && <BootScreen onDone={() => setBooted(true)} />}
+      {!booted && !IS_NOT_FOUND && <BootScreen onDone={() => setBooted(true)} />}
     </>
   );
 }

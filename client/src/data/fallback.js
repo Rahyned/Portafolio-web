@@ -13,11 +13,11 @@ export const FALLBACK_DATA = {
     class: "Desarrollador Web & Sistemas",
     level: 22,
     maxLevel: 50,
-    expYears: "[2+]",
+    expYears: "2+",
     completedProjects: "8",
-    location: "[Rosario, Argentina]",
+    location: "Rosario, Argentina",
     status: "⚡ DISPONIBLE PARA PROYECTOS",
-    tagline: "Desarrollador Web & Sistemas | Automatización • Arquitectura • APIs",
+    tagline: "Desarrollador Web & Sistemas | AUTOMATIZACION • ARQUITECTURA • APIS",
     bio: "Soy desarrollador web & sistemas especializado en apps de escritorio (Tauri y Python), ERPs con facturación electrónica y sitios web en producción. Construyo soluciones de código limpio: automatizaciones, integraciones y desplegues."
   },
 
@@ -49,7 +49,7 @@ export const FALLBACK_DATA = {
           result: "Tienda v1.1.0 completa y lista para desplegar; pagos reales (MercadoPago) y feed de Instagram quedaron como roadmap.",
           stack: ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS", "Sharp"],
           demo: null,
-          github: "https://github.com/Rahyned/Abstractoshopp"
+          github: "https://github.com/Rahyned"
         },
         {
           id: "floreria-susi",
@@ -63,7 +63,7 @@ export const FALLBACK_DATA = {
           result: "Landing lista para publicar con canal de pedidos y consultas por WhatsApp integrado; SEO básico y estética acorde a la marca.",
           stack: ["React 18", "Vite", "Tailwind CSS 4"],
           demo: null,
-          github: "https://github.com/Rahyned/Florer-a-Susi"
+          github: "https://github.com/Rahyned"
         },
         {
           id: "riodent",
@@ -77,7 +77,7 @@ export const FALLBACK_DATA = {
           result: "En producción en Railway: los pedidos y tomas de color llegan por email con PDF y adjuntos, con rate limiting y CSP.",
           stack: ["React 19", "Vite", "MUI 7", "i18next", "Express 5", "Brevo", "Railway"],
           demo: "https://www.riodent.com.ar",
-          github: "https://github.com/Rahyned/Laboratorio-RioDent"
+          github: "https://github.com/Rahyned"
         },
         {
           id: "pixel-editor",
@@ -97,7 +97,7 @@ export const FALLBACK_DATA = {
     },
     {
       id: "caja2",
-      label: "CAJA 2: SISTEMAS DE GESTIÓN & ERPs",
+      label: "CAJA 2: SISTEMAS DE GESTION & ERPs",
       icon: "🖥️",
       projects: [
         {
@@ -112,7 +112,7 @@ export const FALLBACK_DATA = {
           result: "En uso real en el taller: 298 tests con CI automatizado; facturación, inventario, vencimientos y avisos digitalizados.",
           stack: ["Python", "Flet", "SQLAlchemy", "PostgreSQL/SQLite", "ReportLab", "PyAFIPWS", "WhatsApp API"],
           demo: null,
-          github: "https://github.com/Rahyned/SolutionsCars"
+          github: "https://github.com/Rahyned"
         },
         {
           id: "stella",
@@ -126,7 +126,7 @@ export const FALLBACK_DATA = {
           result: "Sistema integral del laboratorio: 148 tests + 15 E2E pasando, con módulos de estación maestra, consulta y recepción.",
           stack: ["Python", "PyQt5", "FastAPI", "SQLModel", "SQLite", "JWT", "ReportLab"],
           demo: null,
-          github: "https://github.com/Rahyned/STELLA"
+          github: "https://github.com/Rahyned"
         }
       ]
     },
@@ -147,7 +147,7 @@ export const FALLBACK_DATA = {
           result: "Ejecutable .exe generado y verificado; app 100% local con temas claro/oscuro y atajos de teclado completos.",
           stack: ["Tauri 2", "Rust", "React 19", "TypeScript", "rough.js", "Vite"],
           demo: null,
-          github: "https://github.com/Rahyned/butterflies"
+          github: "https://github.com/Rahyned"
         },
         {
           id: "libreta",
@@ -162,7 +162,7 @@ export const FALLBACK_DATA = {
           stack: ["Tauri 2", "Rust", "SQLite", "React 18", "TypeScript", "Tailwind", "Zustand", "Framer Motion"],
           demo: null,
           video: null,
-          github: "https://github.com/Rahyned/Libreta"
+          github: "https://github.com/Rahyned"
         }
       ]
     }
@@ -186,7 +186,7 @@ export const FALLBACK_DATA = {
     {
       id: "sistemas",
       icon: "🖥️",
-      title: "SISTEMAS DE GESTIÓN",
+      title: "SISTEMAS DE GESTION",
       type: "Sistema",
       description: "ERPs y apps de escritorio que reemplazan planillas y papel por control real de tu negocio, con reportes y auditoría.",
       includes: [
@@ -215,7 +215,7 @@ export const FALLBACK_DATA = {
 
   CONTACT_INFO: {
     email: "rodriguez.samuel.lautaro@gmail.com",
-    linkedin: "[linkedin.com/in/lautaro]",
+    linkedin: "https://www.linkedin.com/in/lautaro-rodriguez-96a42b389/",
     github: "https://github.com/Rahyned",
     phone: "+54 341 6297638",
     cvUrl: "cv.html"

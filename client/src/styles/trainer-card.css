@@ -62,7 +62,7 @@
 .trainer-modal-status {
   display: inline-block;
   font-family: var(--font-pixel);
-  font-size: 9px;
+  font-size: 10px;
   color: var(--accent-text);
   border: 1px solid var(--accent);
   padding: 4px 8px;
@@ -187,7 +187,7 @@
 
 .trainer-stat span {
   font-family: var(--font-pixel);
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 0.5px;
   color: var(--text-secondary);
 }
@@ -205,7 +205,7 @@
 
 .exp-bar-label {
   font-family: var(--font-pixel);
-  font-size: 8px;
+  font-size: 10px;
   color: var(--text-secondary);
   display: flex;
   justify-content: space-between;
@@ -262,7 +262,7 @@
   align-items: center;
   gap: 6px;
   font-family: var(--font-pixel);
-  font-size: 9px;
+  font-size: 10px;
   color: var(--text-primary);
   background: var(--btn-bg);
   border: 2px solid var(--border);
@@ -312,13 +312,13 @@
 }
 
 .trainer-bio .typewriter-cursor {
-  color: var(--accent);
+  color: var(--accent-text);
   animation: blink 0.8s step-start infinite;
 }
 
 .bio-skip-hint {
   font-family: var(--font-pixel);
-  font-size: 8px;
+  font-size: 10px;
   color: var(--text-secondary);
   margin-top: 10px;
   opacity: 0.7;

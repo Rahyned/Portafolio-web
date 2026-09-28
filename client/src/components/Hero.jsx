@@ -37,7 +37,7 @@ export default function Hero() {
         onClick={() => {
           sfx("click");
           track("enter_pc_click");
-          document.getElementById("ficha").scrollIntoView({ behavior: "smooth" });
+          document.getElementById("pc").scrollIntoView({ behavior: "smooth" });
         }}
       >
         {t("hero.cta")}

@@ -11,7 +11,32 @@
   let konamiIndex = 0;
   let konamiActive = false;
 
+  // Rutas que la web conoce: home y archivos estáticos (con extensión).
+  function isKnownPath() {
+    const p = window.location.pathname;
+    if (p === "/" || p === "/index.html" || p === "/index.htm") return true;
+    return /\.[a-z0-9]+$/i.test(p);
+  }
+
+  function renderNotFound() {
+    document.title = "404 — PÁGINA NO ENCONTRADA — LAUTARO.DEV";
+    document.getElementById("main").innerHTML = `
+      <section class="hero" id="notfound" aria-label="Página no encontrada">
+        <div class="hero-sprite" aria-hidden="true">👾</div>
+        <h1 class="hero-tagline">404<br /><span class="accent">PAGINA NO ENCONTRADA</span></h1>
+        <p class="hero-sub">La ruta que buscás no existe en este portafolio.</p>
+        <a class="btn-retro btn-big" href="/">◀ VOLVER AL INICIO</a>
+      </section>
+    `;
+  }
+
   document.addEventListener("DOMContentLoaded", async () => {
+    // 404 in-app: rutas desconocidas (sin extensión) no son parte de la web
+    if (!isKnownPath()) {
+      renderNotFound();
+      return;
+    }
+
     await DataLoader.load();
     Analytics.init();
     ThemeManager.init();
@@ -43,7 +68,7 @@
     document.getElementById("expLevelText").textContent = `Nv. ${PROFILE.level}/${PROFILE.maxLevel}`;
     document.getElementById("statusBadge").textContent = PROFILE.status;
     document.getElementById("headerName").textContent = PROFILE.displayName;
-    document.getElementById("footerText").textContent = `© 2024 ${PROFILE.name} | Diseño & Código custom`;
+    document.getElementById("footerText").textContent = `© ${new Date().getFullYear()} ${PROFILE.name} | Diseño & Código custom`;
 
     const fill = document.getElementById("expBarFill");
     requestAnimationFrame(() => {
@@ -66,8 +91,8 @@
   // ---------- Datos de contacto ----------
   function populateContact() {
     document.getElementById("contactEmail").textContent = CONTACT_INFO.email;
-    document.getElementById("contactLinkedin").textContent = CONTACT_INFO.linkedin;
-    document.getElementById("contactGithub").textContent = CONTACT_INFO.github;
+    document.getElementById("contactLinkedin").textContent = String(CONTACT_INFO.linkedin).replace(/^https?:\/\//i, "");
+    document.getElementById("contactGithub").textContent = String(CONTACT_INFO.github).replace(/^https?:\/\//i, "");
   }
 
   // ---------- Mochila / Blog ----------
@@ -84,7 +109,7 @@
       const tags = post.tags.map((t) => `<span class="blog-tag">${t}</span>`).join("");
       const link = post.link
         ? `<a class="blog-link" href="${post.link}" target="_blank" rel="noopener noreferrer">LEER NOTA →</a>`
-        : `<span class="blog-link disabled">PRÓXIMAMENTE</span>`;
+        : `<span class="blog-link disabled">PROXIMAMENTE</span>`;
 
       card.innerHTML = `
         <div class="blog-card-top">
@@ -113,7 +138,7 @@
     document.getElementById("enterBtn").addEventListener("click", () => {
       SoundManager.sfx.click();
       Analytics.track("enter_pc_click");
-      document.getElementById("ficha").scrollIntoView({ behavior: "smooth" });
+      document.getElementById("pc").scrollIntoView({ behavior: "smooth" });
     });
   }
 

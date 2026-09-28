@@ -35,14 +35,14 @@ export const translations = {
     "trainer.avatar.alt": "Foto pixelada de Lautaro",
     "trainer.block.data": "🎖️ DATOS DEL ENTRENADOR",
     "trainer.stat.level": "NIVEL",
-    "trainer.stat.exp": "AÑOS DE EXP",
+    "trainer.stat.exp": "EXPERIENCIA",
     "trainer.stat.projects": "PROYECTOS",
-    "trainer.stat.location": "UBICACIÓN",
+    "trainer.stat.location": "ZONA",
     "trainer.block.exp": "⚡ EXPERIENCIA",
     "trainer.exp.label": "EXP",
     "trainer.exp.level": "Nv. {level}/{max}",
     "trainer.block.badges": "🥇 MEDALLAS — STACK PRINCIPAL",
-    "trainer.block.about": "💬 SOBRE MÍ",
+    "trainer.block.about": "💬 SOBRE MI",
     "trainer.badges.aria": "Stack técnico principal",
 
     // Services
@@ -61,7 +61,7 @@ export const translations = {
     // Contact
     "contact.sub": "Elige un medio o inicia un intercambio.",
     "contact.pokenav.title": "📡 CONTACTOS",
-    "contact.pokenav.lid": "POKÉNAV v2",
+    "contact.pokenav.lid": "POKENAV v2",
     "contact.email": "📧 EMAIL",
     "contact.linkedin": "💼 LINKEDIN",
     "contact.github": "🔗 GITHUB",
@@ -81,14 +81,14 @@ export const translations = {
     "contact.field.timeline": "TIMELINE",
     "contact.field.budget": "PRESUPUESTO",
     "contact.field.budget.err": "Elegí un presupuesto.",
-    "contact.field.details": "DESCRIPCIÓN / DETALLES",
+    "contact.field.details": "DESCRIPCION / DETALLES",
     "contact.field.details.ph": "Contame sobre tu proyecto...",
     "contact.field.details.err": "Contanos un poco sobre el proyecto.",
     "contact.submit": "✅ CONFIRMAR INTERCAMBIO",
     "contact.submit.sending": "ENVIANDO...",
     "contact.back": "VOLVER",
     "contact.success.sent": ["🎉", "¡INTERCAMBIO INICIADO!<br />Te responderé pronto a tu email."],
-    "contact.success.saved": ["🎉", "¡INTERCAMBIO INICIADO!<br />Tu mensaje fue guardado. Si configurás SMTP, llega por email."],
+    "contact.success.saved": ["🎉", "¡INTERCAMBIO INICIADO!<br />Tu mensaje fue guardado."],
     "contact.success.mailto": ["📧", "¡INTERCAMBIO INICIADO!<br />Tu email se abrió listo para enviar."],
     "contact.type.web": "Web",
     "contact.type.system": "Sistema",
@@ -109,7 +109,7 @@ export const translations = {
     "modal.solution": "Solución:",
     "modal.result": "Resultado:",
     "modal.block.stack": "🧰 STACK / TECH",
-    "modal.block.code": "🚀 DEMO / CÓDIGO",
+    "modal.block.code": "🚀 DEMO / CODIGO",
     "modal.demo": "🌐 LIVE DEMO",
     "modal.github": "💾 GITHUB",
     "modal.completed": "Completado:",
@@ -130,17 +130,17 @@ export const translations = {
     "term.help.cv": "  cv         - abrir CV imprimible",
     "term.help.clear": "  clear      - limpiar terminal",
     "term.projects.title": "PROYECTOS:",
-    "term.skills.title": "STACK TÉCNICO:",
+    "term.skills.title": "STACK TECNICO:",
     "term.about.name": "NOMBRE:",
     "term.about.class": "CLASE:",
     "term.about.level": "NIVEL:",
     "term.about.exp": "EXP: {years} años | {projects} proyectos",
-    "term.about.location": "UBICACIÓN:",
+    "term.about.location": "ZONA:",
     "term.about.status": "ESTADO:",
     "term.contact.email": "EMAIL:",
     "term.contact.linkedin": "LINKEDIN:",
     "term.contact.github": "GITHUB:",
-    "term.contact.phone": "TELÉFONO:",
+    "term.contact.phone": "TELEFONO:",
     "term.cv.opening": "ABRIENDO CV (imprimible)...",
     "term.error": "ERROR: '{cmd}' no es un comando válido. Usa 'help'.",
 
@@ -151,6 +151,12 @@ export const translations = {
     "boot.status": "POWER ON ▸ INICIANDO SISTEMA",
     "boot.ready": "¡SISTEMA LISTO!",
     "boot.hint": "CLIC O TECLA PARA SALTAR",
+
+    // 404
+    "notfound.aria": "Página no encontrada",
+    "notfound.title": "PAGINA NO ENCONTRADA",
+    "notfound.text": "La ruta que buscás no existe en este portafolio. Volvé a la pantalla principal.",
+    "notfound.cta": "◀ VOLVER AL INICIO",
 
     // Footer
     "footer.cv": "📄 CV DESCARGABLE"
@@ -217,7 +223,7 @@ export const translations = {
     // Contact
     "contact.sub": "Choose a channel or start a trade.",
     "contact.pokenav.title": "📡 CONTACTS",
-    "contact.pokenav.lid": "POKÉNAV v2",
+    "contact.pokenav.lid": "POKENAV v2",
     "contact.email": "📧 EMAIL",
     "contact.linkedin": "💼 LINKEDIN",
     "contact.github": "🔗 GITHUB",
@@ -244,7 +250,7 @@ export const translations = {
     "contact.submit.sending": "SENDING...",
     "contact.back": "BACK",
     "contact.success.sent": ["🎉", "TRADE STARTED!<br />I'll get back to you soon."],
-    "contact.success.saved": ["🎉", "TRADE STARTED!<br />Your message was saved. If you configure SMTP, it arrives by email."],
+    "contact.success.saved": ["🎉", "TRADE STARTED!<br />Your message was saved."],
     "contact.success.mailto": ["📧", "TRADE STARTED!<br />Your email opened, ready to send."],
     "contact.type.web": "Web",
     "contact.type.system": "System",
@@ -307,6 +313,12 @@ export const translations = {
     "boot.status": "POWER ON ▸ BOOTING SYSTEM",
     "boot.ready": "SYSTEM READY!",
     "boot.hint": "CLICK OR KEY TO SKIP",
+
+    // 404
+    "notfound.aria": "Page not found",
+    "notfound.title": "PAGE NOT FOUND",
+    "notfound.text": "The route you're looking for doesn't exist in this portfolio. Head back to the main screen.",
+    "notfound.cta": "◀ BACK TO HOME",
 
     // Footer
     "footer.cv": "📄 DOWNLOADABLE CV"

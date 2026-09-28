@@ -12,7 +12,7 @@
     document.getElementById("cvBio").textContent = PROFILE.bio.replace(/ Presiona cualquier tecla para continuar\.?/i, "");
     document.getElementById("cvLocation").textContent = PROFILE.location;
     document.getElementById("cvExp").textContent = `${PROFILE.expYears} años`;
-    document.getElementById("cvProjects").textContent = `${PROFILE.completedProjects} completados`;
+    document.getElementById("cvProjects").textContent = `${PROFILE.completedProjects} proyectos`;
     document.getElementById("cvStatus").textContent = PROFILE.status;
 
     // Skills
@@ -46,8 +46,8 @@
     const contactEl = document.getElementById("cvContact");
     const items = [
       ["Email", CONTACT_INFO.email],
-      ["LinkedIn", CONTACT_INFO.linkedin],
-      ["GitHub", CONTACT_INFO.github],
+      ["LinkedIn", String(CONTACT_INFO.linkedin).replace(/^https?:\/\//i, "")],
+      ["GitHub", String(CONTACT_INFO.github).replace(/^https?:\/\//i, "")],
       ["Teléfono", CONTACT_INFO.phone]
     ];
     items.forEach(([label, value]) => {
@@ -56,6 +56,6 @@
       contactEl.appendChild(li);
     });
 
-    document.getElementById("cvFooter").textContent = `© 2024 ${PROFILE.name.replace(/[[\]]/g, "")} | Diseño & Código custom`;
+    document.getElementById("cvFooter").textContent = `© ${new Date().getFullYear()} ${PROFILE.name.replace(/[[\]]/g, "")} | Diseño & Código custom`;
   });
 })();

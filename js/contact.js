@@ -88,7 +88,8 @@ const ContactManager = (() => {
       type: document.getElementById("fieldType").value,
       timeline: document.getElementById("fieldTimeline").value,
       budget: document.querySelector('input[name="budget"]:checked').value,
-      details: document.getElementById("fieldDetails").value.trim()
+      details: document.getElementById("fieldDetails").value.trim(),
+      company: document.getElementById("fieldCompany").value
     };
 
     const result = await submitToBackend(data);
@@ -99,7 +100,7 @@ const ContactManager = (() => {
     const successText = successBox.querySelector(".form-success-text");
     if (result.ok) {
       successText.innerHTML = result.simulated
-        ? "¡INTERCAMBIO INICIADO!<br />Tu mensaje fue guardado. Si configurás SMTP, llega por email."
+        ? "¡INTERCAMBIO INICIADO!<br />Tu mensaje fue guardado."
         : "¡INTERCAMBIO INICIADO!<br />Te responderé pronto a tu email.";
     } else {
       const subject = encodeURIComponent("Proyecto freelance: " + data.type);
@@ -134,6 +135,11 @@ const ContactManager = (() => {
   }
 
   // PokéNav: acciones directas
+  function externalUrl(value, base) {
+    const v = String(value).replace(/[[\]]/g, "").trim();
+    return /^https?:\/\//i.test(v) ? v : base + v.replace(/^@/, "");
+  }
+
   function initDirectActions() {
     document.querySelectorAll("[data-action]").forEach((btn) => {
       btn.addEventListener("click", () => {
@@ -146,10 +152,10 @@ const ContactManager = (() => {
             break;
           }
           case "linkedin":
-            window.open("https://www.linkedin.com/in/" + CONTACT_INFO.linkedin.replace(/[[\]]/g, ""), "_blank", "noopener");
+            window.open(externalUrl(CONTACT_INFO.linkedin, "https://www.linkedin.com/in/"), "_blank", "noopener");
             break;
           case "github":
-            window.open("https://github.com/" + CONTACT_INFO.github.replace(/[[\]]/g, "").replace(/^@/, ""), "_blank", "noopener");
+            window.open(externalUrl(CONTACT_INFO.github, "https://github.com/"), "_blank", "noopener");
             break;
         }
       });

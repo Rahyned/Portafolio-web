@@ -47,7 +47,7 @@
 
 .pc-title {
   font-family: var(--font-pixel);
-  font-size: 9px;
+  font-size: 10px;
   color: var(--accent-text);
 }
 
@@ -70,7 +70,7 @@
 
 .pc-tab {
   font-family: var(--font-pixel);
-  font-size: 9px;
+  font-size: 10px;
   color: var(--text-secondary);
   background: var(--btn-bg);
   border: 2px solid var(--border);
@@ -90,7 +90,7 @@
 }
 
 .pc-tab.active {
-  color: #1B1B2F;
+  color: var(--action-text);
   background: var(--action-bg);
   border-color: var(--border);
   box-shadow: 2px 2px 0 var(--border), 0 0 14px var(--glow);
@@ -188,7 +188,7 @@
   left: 6px;
   z-index: 3;
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 10px;
   line-height: 1;
   color: var(--text-primary);
   background: var(--bg-primary);
@@ -250,10 +250,9 @@
 /* Título del proyecto dentro de la ficha */
 .pc-slot .slot-title {
   font-family: var(--font-pixel);
-  font-size: 8px;
+  font-size: 10px;
   line-height: 1.5;
   text-align: center;
-  text-transform: uppercase;
   color: var(--text-primary);
   width: 100%;
   padding: 2px 4px 4px;
@@ -275,7 +274,7 @@
   background: var(--bg-primary);
   border: 2px solid var(--border);
   font-family: var(--font-pixel);
-  font-size: 8px;
+  font-size: 10px;
   color: var(--text-primary);
 }
 
@@ -325,7 +324,7 @@
 
 .pc-hint {
   font-family: var(--font-pixel);
-  font-size: 8px;
+  font-size: 10px;
   color: var(--text-secondary);
   margin-top: 14px;
   text-align: center;
@@ -445,7 +444,7 @@
 .modal-status {
   display: inline-block;
   font-family: var(--font-pixel);
-  font-size: 9px;
+  font-size: 10px;
   color: var(--accent-text);
   border: 1px solid var(--accent);
   padding: 4px 8px;
@@ -622,7 +621,7 @@
     padding: 40px 20px;
   }
   .pc-tab {
-    font-size: 8px;
+    font-size: 11px;
     padding: 8px;
   }
   .modal-header {
