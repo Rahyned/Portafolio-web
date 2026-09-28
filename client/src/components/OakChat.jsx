@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useData } from "../context/DataContext";
 import { useLanguage } from "../context/LanguageContext";
 import { useSound } from "../context/SoundContext";
@@ -7,6 +7,16 @@ import PixelSprite from "./PixelSprite";
 const MAX_HISTORY = 10;
 const TYPE_MS = 16;
 const TYPE_STEP = 2;
+
+const MENU = [
+  { key: "exp", n: 1 },
+  { key: "projects", n: 2 },
+  { key: "stack", n: 3 },
+  { key: "contact", n: 4 }
+];
+
+const fill = (tpl, map) =>
+  tpl.replace(/\{(\w+)\}/g, (_, k) => String(map[k] ?? ""));
 
 export default function OakChat() {
   const { data } = useData();
@@ -23,6 +33,66 @@ export default function OakChat() {
 
   const bodyRef = useRef(null);
   const inputRef = useRef(null);
+
+  // Respuesta determinista del menú (sin IA): compuesta desde los datos localizados
+  const choose = useCallback(
+    (key) => {
+      if (busy || answer) return;
+      const opt = MENU.find((o) => o.key === key);
+      if (!opt) return;
+
+      const build = () => {
+        const p = data.PROFILE;
+        const again = t("oak.menu.again");
+        if (key === "exp") {
+          const afip = data.SKILLS_LIST.find((s) => s.includes("AFIP")) || "";
+          const header = fill(t("oak.exp.header"), {
+            class: p.class,
+            level: p.level,
+            max: p.maxLevel,
+            years: p.expYears,
+            done: p.completedProjects
+          });
+          return [header, p.bio, afip, p.status]
+            .filter(Boolean)
+            .join("\n\n") + `\n\n${again}`;
+        }
+        if (key === "projects") {
+          const blocks = data.PROJECT_BOXES.map(
+            (b) =>
+              `${b.label}:\n` +
+              b.projects
+                .map((pr) => `• ${pr.sprite || ""} ${pr.title} — ${pr.category}`)
+                .join("\n")
+          );
+          return `${blocks.join("\n\n")}\n\n${again}`;
+        }
+        if (key === "stack") {
+          const skills = data.SKILLS_LIST.map((s) => `• ${s}`).join("\n");
+          const badges = data.BADGES.map((b) => `${b.icon} ${b.name}`).join(" · ");
+          return `${skills}\n\n${t("oak.medallas")}: ${badges}\n\n${again}`;
+        }
+        const c = data.CONTACT_INFO;
+        return [
+          `✉ ${c.email}`,
+          `in ${c.linkedin}`,
+          `gh ${c.github}`,
+          `☎ ${c.phone}`,
+          `▶ ${c.cvUrl}`
+        ].join("\n") + `\n\n${again}`;
+      };
+
+      setMessages((m) => [
+        ...m,
+        { role: "user", content: `[${opt.n}] ${t(`oak.menu.${key}`)}` }
+      ]);
+      setError(null);
+      setRevealed(0);
+      setAnswer(build());
+      sfx("box");
+    },
+    [busy, answer, data, t, sfx]
+  );
 
   // Apertura global: header y terminal dispatchan "oak:open"
   useEffect(() => {
@@ -50,6 +120,18 @@ export default function OakChat() {
     return () => document.removeEventListener("keydown", onKey);
   }, [open, sfx]);
 
+  // Teclas 1-4 eligen opción del menú (si el input no tiene el foco)
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e) => {
+      if (e.key < "1" || e.key > "4") return;
+      if (document.activeElement === inputRef.current) return;
+      choose(MENU[Number(e.key) - 1].key);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open, choose]);
+
   // Máquina de escribir
   useEffect(() => {
     if (revealed >= answer.length) return;
@@ -76,7 +158,7 @@ export default function OakChat() {
 
   const send = async () => {
     const text = input.trim();
-    if (!text || busy) return;
+    if (!text || busy || answer) return;
 
     const next = [...messages, { role: "user", content: text }];
     setMessages(next);
@@ -171,7 +253,7 @@ export default function OakChat() {
           {(answer || busy) && (
             <p className="oak-msg assistant streaming">
               {answer ? answer.slice(0, revealed) : t("oak.thinking")}
-              {busy && <span className="oak-cursor">▌</span>}
+              {(busy || revealed < answer.length) && <span className="oak-cursor">▌</span>}
             </p>
           )}
 
@@ -185,6 +267,24 @@ export default function OakChat() {
           {messages.length > 0 && !busy && !answer && !error && (
             <p className="oak-hint">{t("oak.hint")}</p>
           )}
+        </div>
+
+        <div className="oak-menu-wrap">
+          <div className="oak-menu" role="group" aria-label={t("oak.menu.aria")}>
+            {MENU.map((opt) => (
+              <button
+                key={opt.key}
+                type="button"
+                className="oak-choice"
+                disabled={busy || Boolean(answer)}
+                onClick={() => choose(opt.key)}
+              >
+                <span className="oak-choice-n">[{opt.n}]</span>
+                <span>{t(`oak.menu.${opt.key}`)}</span>
+              </button>
+            ))}
+          </div>
+          <p className="oak-ai-note">{t("oak.ai.note")}</p>
         </div>
 
         <form
@@ -201,12 +301,12 @@ export default function OakChat() {
             aria-label={t("oak.aria.input")}
             maxLength={500}
             autoComplete="off"
-            disabled={busy}
+            disabled={busy || Boolean(answer)}
           />
           <button
             type="submit"
             className="oak-send"
-            disabled={busy || !input.trim()}
+            disabled={busy || Boolean(answer) || !input.trim()}
             aria-label={t("oak.send")}
           >
             ▶

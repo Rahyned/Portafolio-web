@@ -186,6 +186,64 @@
   cursor: not-allowed;
 }
 
+/* ---- Menú determinista ---- */
+.oak-menu-wrap {
+  border-top: 2px solid var(--border);
+  background: var(--bg-secondary);
+}
+
+.oak-menu {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  padding: 10px 10px 6px;
+}
+
+.oak-choice {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  padding: 7px 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.3;
+  text-align: left;
+  color: var(--text-primary);
+  background: var(--btn-bg);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.oak-choice:hover:not(:disabled) {
+  background: var(--accent);
+  color: var(--action-text);
+}
+
+.oak-choice:hover:not(:disabled) .oak-choice-n {
+  color: var(--action-text);
+}
+
+.oak-choice:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.oak-choice-n {
+  flex-shrink: 0;
+  color: var(--accent-text);
+  font-weight: 700;
+}
+
+.oak-ai-note {
+  margin: 0;
+  padding: 0 10px 8px;
+  font-size: 10px;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
 @media (max-width: 640px) {
   .oak-overlay {
     padding: 10px;
