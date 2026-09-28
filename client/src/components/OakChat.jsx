@@ -5,8 +5,12 @@ import { useSound } from "../context/SoundContext";
 import PixelSprite from "./PixelSprite";
 
 const MAX_HISTORY = 10;
-const TYPE_MS = 16;
-const TYPE_STEP = 2;
+// Ritmo Game Boy: ~40 caracteres por segundo. Si la IA (stream)
+// acumula mucha ventaja, acelera para no quedarse atrás.
+const TYPE_MS = 25;
+const TYPE_STEP = 1;
+const CATCHUP_BACKLOG = 240;
+const CATCHUP_MAX = 6;
 
 const MENU = [
   { key: "exp", n: 1 },
@@ -14,6 +18,8 @@ const MENU = [
   { key: "stack", n: 3 },
   { key: "contact", n: 4 }
 ];
+
+const CHIPS = ["afip", "python", "contact"];
 
 const fill = (tpl, map) =>
   tpl.replace(/\{(\w+)\}/g, (_, k) => String(map[k] ?? ""));
@@ -28,6 +34,7 @@ export default function OakChat() {
   const [answer, setAnswer] = useState("");
   const [revealed, setRevealed] = useState(0);
   const [busy, setBusy] = useState(false);
+  const [streamed, setStreamed] = useState(false); // la respuesta actual vino por IA (stream)
   const [error, setError] = useState(null); // "unavailable" | "rate" | "generic"
   const [input, setInput] = useState("");
 
@@ -88,6 +95,7 @@ export default function OakChat() {
       ]);
       setError(null);
       setRevealed(0);
+      setStreamed(false);
       setAnswer(build());
       sfx("box");
     },
@@ -132,15 +140,20 @@ export default function OakChat() {
     return () => document.removeEventListener("keydown", onKey);
   }, [open, choose]);
 
-  // Máquina de escribir
+  // Máquina de escribir (acelera si el stream IA va muy adelante)
   useEffect(() => {
     if (revealed >= answer.length) return;
+    const backlog = answer.length - revealed;
+    const step =
+      streamed && backlog > CATCHUP_BACKLOG
+        ? Math.min(CATCHUP_MAX, Math.ceil(backlog / 60))
+        : TYPE_STEP;
     const id = setTimeout(
-      () => setRevealed((r) => Math.min(r + TYPE_STEP, answer.length)),
+      () => setRevealed((r) => Math.min(r + step, answer.length)),
       TYPE_MS
     );
     return () => clearTimeout(id);
-  }, [revealed, answer]);
+  }, [revealed, answer, streamed]);
 
   // Cuando terminó de escribirse y ya no hay stream, se consolida en el historial
   useEffect(() => {
@@ -148,6 +161,7 @@ export default function OakChat() {
       setMessages((m) => [...m, { role: "assistant", content: answer }]);
       setAnswer("");
       setRevealed(0);
+      setStreamed(false);
     }
   }, [busy, answer, revealed]);
 
@@ -156,16 +170,19 @@ export default function OakChat() {
     if (bodyRef.current) bodyRef.current.scrollTop = bodyRef.current.scrollHeight;
   }, [messages, answer, revealed, error]);
 
-  const send = async () => {
-    const text = input.trim();
+  // send() sin argumento envía lo tipeado; con string envía un chip
+  const send = async (preset) => {
+    const fromInput = typeof preset !== "string";
+    const text = (fromInput ? input : preset).trim();
     if (!text || busy || answer) return;
 
     const next = [...messages, { role: "user", content: text }];
     setMessages(next);
-    setInput("");
+    if (fromInput) setInput("");
     setError(null);
     setAnswer("");
     setRevealed(0);
+    setStreamed(true);
     setBusy(true);
     sfx("click");
 
@@ -208,21 +225,29 @@ export default function OakChat() {
     }
   };
 
-  if (!open) return null;
+  if (!open) {
+    return (
+      <button
+        type="button"
+        className="oak-fab"
+        onClick={() => {
+          setOpen(true);
+          sfx("open");
+          setTimeout(() => inputRef.current?.focus(), 80);
+        }}
+        aria-label={t("aria.oak")}
+        title={t("aria.oak")}
+      >
+        <PixelSprite sprite="oak" cell={1.5} />
+      </button>
+    );
+  }
 
   const skipReveal = () => setRevealed(answer.length);
 
   return (
-    <div
-      className="oak-overlay"
-      onClick={(e) => { if (e.target === e.currentTarget) { setOpen(false); sfx("close"); } }}
-    >
-      <div
-        className="oak-box"
-        role="dialog"
-        aria-modal="true"
-        aria-label={t("oak.aria")}
-      >
+    <div className="oak-overlay">
+      <div className="oak-box" role="dialog" aria-label={t("oak.aria")}>
         <div className="oak-header">
           <PixelSprite sprite="oak" cell={2} className="oak-portrait" />
           <div className="oak-head-text">
@@ -237,6 +262,20 @@ export default function OakChat() {
           >
             ✕
           </button>
+        </div>
+
+        <div className="oak-chips">
+          {CHIPS.map((key) => (
+            <button
+              key={key}
+              type="button"
+              className="oak-chip"
+              disabled={busy || Boolean(answer)}
+              onClick={() => send(t(`oak.chip.${key}`))}
+            >
+              {t(`oak.chip.${key}`)}
+            </button>
+          ))}
         </div>
 
         <div className="oak-body" ref={bodyRef} onClick={skipReveal} aria-live="polite">
