@@ -46,7 +46,10 @@ export const PX = {
   "$": "#A0522D",
   "&": "#F5DEB3",
   "#": "#555555",
-  "@": "#C0C0C0"
+  "@": "#C0C0C0",
+  "9": "#000101",
+  "^": "#D2D2E6",
+  "=": "#8282A8"
 };
 
 // Convierte un array de filas de texto en una grilla de colores.

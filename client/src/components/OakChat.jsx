@@ -5,6 +5,9 @@ import { useSound } from "../context/SoundContext";
 import PixelSprite from "./PixelSprite";
 
 const MAX_HISTORY = 10;
+// El server rechaza content > 500: las respuestas del menú local
+// pueden superarlo, así que se recorta el historial al enviarlo.
+const MAX_CONTENT = 500;
 // Ritmo Game Boy: ~40 caracteres por segundo. Si la IA (stream)
 // acumula mucha ventaja, acelera para no quedarse atrás.
 const TYPE_MS = 25;
@@ -18,8 +21,6 @@ const MENU = [
   { key: "stack", n: 3 },
   { key: "contact", n: 4 }
 ];
-
-const CHIPS = ["afip", "python", "contact"];
 
 const fill = (tpl, map) =>
   tpl.replace(/\{(\w+)\}/g, (_, k) => String(map[k] ?? ""));
@@ -165,9 +166,13 @@ export default function OakChat() {
     }
   }, [busy, answer, revealed]);
 
-  // Auto-scroll al final
+  // Auto-scroll al final (solo si ya estás cerca del fondo: si scrolleaste
+  // arriba mientras escribe, te deja donde estás)
   useEffect(() => {
-    if (bodyRef.current) bodyRef.current.scrollTop = bodyRef.current.scrollHeight;
+    const el = bodyRef.current;
+    if (!el) return;
+    const nearBottom = el.scrollHeight - el.scrollTop - el.clientHeight < 60;
+    if (nearBottom) el.scrollTop = el.scrollHeight;
   }, [messages, answer, revealed, error]);
 
   // send() sin argumento envía lo tipeado; con string envía un chip
@@ -190,7 +195,12 @@ export default function OakChat() {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: next.slice(-MAX_HISTORY), lang })
+        body: JSON.stringify({
+          messages: next
+            .slice(-MAX_HISTORY)
+            .map((m) => ({ ...m, content: m.content.slice(0, MAX_CONTENT) })),
+          lang
+        })
       });
 
       if (res.status === 429) { setError("rate"); return; }
@@ -238,7 +248,7 @@ export default function OakChat() {
         aria-label={t("aria.oak")}
         title={t("aria.oak")}
       >
-        <PixelSprite sprite="oak" cell={1.5} />
+        <PixelSprite sprite="oak" cell={1.5} crop />
       </button>
     );
   }
@@ -249,7 +259,7 @@ export default function OakChat() {
     <div className="oak-overlay">
       <div className="oak-box" role="dialog" aria-label={t("oak.aria")}>
         <div className="oak-header">
-          <PixelSprite sprite="oak" cell={2} className="oak-portrait" />
+          <PixelSprite sprite="oak" cell={2} crop className="oak-portrait" />
           <div className="oak-head-text">
             <span className="oak-title">{t("oak.title")}</span>
             <span className="oak-sub">{t("oak.sub")}</span>
@@ -262,20 +272,6 @@ export default function OakChat() {
           >
             ✕
           </button>
-        </div>
-
-        <div className="oak-chips">
-          {CHIPS.map((key) => (
-            <button
-              key={key}
-              type="button"
-              className="oak-chip"
-              disabled={busy || Boolean(answer)}
-              onClick={() => send(t(`oak.chip.${key}`))}
-            >
-              {t(`oak.chip.${key}`)}
-            </button>
-          ))}
         </div>
 
         <div className="oak-body" ref={bodyRef} onClick={skipReveal} aria-live="polite">
