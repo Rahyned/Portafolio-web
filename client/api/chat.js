@@ -238,7 +238,7 @@ export default async function handler(req, res) {
         model: process.env.LLM_MODEL,
         messages,
         temperature: 0.6,
-        max_tokens: 600,
+        max_tokens: 2048,
         stream: true
       }),
       signal: AbortSignal.timeout(UPSTREAM_TIMEOUT_MS)
