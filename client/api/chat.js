@@ -54,7 +54,9 @@ function upstashConfigured() {
 
 // INCR + EXPIRE en pipeline REST de Upstash. Devuelve el contador del INCR.
 async function upstashIncr(key, ttlSec) {
-  const res = await fetch(process.env.UPSTASH_REDIS_REST_URL, {
+  const base = process.env.UPSTASH_REDIS_REST_URL.replace(/\/+$/, "");
+  const url = base.endsWith("/pipeline") ? base : `${base}/pipeline`;
+  const res = await fetch(url, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${process.env.UPSTASH_REDIS_REST_TOKEN}`,
