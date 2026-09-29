@@ -3,7 +3,8 @@
    ============================================================ */
 
 .contact-section {
-  padding: 60px 40px;
+  /* Bottom duplicado: doble de separación con el footer */
+  padding: 60px 40px 120px;
   max-width: var(--max-width);
   margin: 0 auto;
 }
@@ -353,7 +354,7 @@
 
 @media (max-width: 640px) {
   .contact-section {
-    padding: 40px 20px;
+    padding: 40px 20px 80px;
   }
   .form-row {
     grid-template-columns: 1fr;

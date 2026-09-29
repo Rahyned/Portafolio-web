@@ -3,12 +3,16 @@
    ============================================================ */
 
 .site-footer {
-  background: var(--bg-secondary);
+  background-color: var(--bg-secondary);
+  background-image: linear-gradient(var(--panel-veil), var(--panel-veil)),
+    url("../assets/tx_sum_tile_wall_wallpaper_02_bc.webp");
+  background-size: auto, var(--wall-size) var(--wall-size);
+  background-repeat: repeat, repeat;
   border-top: 2px solid var(--border);
-  padding: 24px 20px;
+  padding: 44px 20px;
   text-align: center;
   display: grid;
-  gap: 8px;
+  gap: 14px;
 }
 
 .footer-text {

@@ -3,7 +3,8 @@
    ============================================================ */
 
 .trainer-section {
-  padding: 60px 40px;
+  /* Top duplicado: doble de separación con el breadcrumb */
+  padding: 120px 40px 60px;
   max-width: var(--max-width);
   margin: 0 auto;
 }
@@ -327,7 +328,7 @@
 /* ---------- Mobile ---------- */
 @media (max-width: 640px) {
   .trainer-section {
-    padding: 40px 20px;
+    padding: 80px 20px 40px;
   }
   .trainer-modal-header {
     flex-direction: column;

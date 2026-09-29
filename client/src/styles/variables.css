@@ -8,11 +8,20 @@
   --font-mono: "JetBrains Mono", "Fira Code", "Courier New", monospace;
   --font-body: "Inter", "Roboto", system-ui, sans-serif;
 
-  --header-height: 60px;
+  --header-height: 76px;
   --max-width: 1200px;
   --radius: 4px;
   --border-thick: 2px;
   --dot-opacity: 0.05;
+  /* Tamaño de baldosa del fondo de textura (mosaico) */
+  --tile-size: 512px;
+  /* Textura de pared (tapiz) en header/breadcrumb/footer */
+  --wall-size: 256px;
+  /* % del color de tema en la capa velo: 100 = textura invisible.
+     85 => 15% de textura visible. */
+  --wall-veil: 85%;
+  --header-veil: color-mix(in srgb, var(--header-bg) var(--wall-veil), transparent);
+  --panel-veil: color-mix(in srgb, var(--bg-secondary) var(--wall-veil), transparent);
 }
 
 /* ============================================================
@@ -45,6 +54,8 @@
   --action-bright: var(--accent-bright);
   --header-bg: var(--bg-primary);
   --pedestal: var(--bg-primary);
+  /* Textura de fondo: mármol claro sobre fondo claro, opacidad media */
+  --texture-opacity: 0.3;
 }
 
 /* ============================================================
@@ -80,4 +91,7 @@
   /* Header más clarito y base de los iconos de la pc más clara */
   --header-bg: #33456E;
   --pedestal: #44598A;
+  /* Textura de fondo: mármol muy claro sobre índigo, fuertemente atenuada
+     para no pisar la legibilidad */
+  --texture-opacity: 0.08;
 }

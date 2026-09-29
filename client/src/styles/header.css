@@ -7,7 +7,11 @@
   top: 0;
   z-index: 1000;
   height: var(--header-height);
-  background: var(--header-bg);
+  background-color: var(--header-bg);
+  background-image: linear-gradient(var(--header-veil), var(--header-veil)),
+    url("../assets/tx_sum_tile_wall_wallpaper_02_bc.webp");
+  background-size: auto, var(--wall-size) var(--wall-size);
+  background-repeat: repeat, repeat;
   border-bottom: 2px solid var(--border);
   display: flex;
   align-items: center;

@@ -40,6 +40,11 @@
   pointer-events: none;
 }
 
+/* Tema claro: sin resplandor celeste, no pega con la paleta cálida */
+.theme-arcade .hero::after {
+  display: none;
+}
+
 .hero > * {
   position: relative;
   z-index: 1;

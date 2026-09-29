@@ -44,6 +44,20 @@ body::before {
   opacity: var(--dot-opacity);
 }
 
+/* Textura de mármol en mosaico: detrás del dot-grid, encima del fondo.
+   Tamaño de baldosa y opacidad salen de variables (por tema). */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background-image: url("../assets/art_tile_floor_01_bc.webp");
+  background-size: var(--tile-size) var(--tile-size);
+  background-repeat: repeat;
+  opacity: var(--texture-opacity);
+}
+
 /* Fondo con profundidad para el tema oscuro (evita el negro plano) */
 .theme-dark body {
   background: radial-gradient(1200px 700px at 15% -10%, var(--bg-secondary) 0%, var(--bg-primary) 55%, #26334F 100%);
