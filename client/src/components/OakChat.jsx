@@ -15,6 +15,36 @@ const TYPE_STEP = 1;
 const CATCHUP_BACKLOG = 240;
 const CATCHUP_MAX = 6;
 
+// Cuota diaria de consultas IA: solo cuenta mensajes que van al LLM;
+// las opciones del menú son locales y no descuentan. (En cliente es un
+// límite blando — cualquiera puede limpiar storage — pero alienta el
+// uso razonable; con Upstash el server aplica el mismo tope.)
+const DAILY_LIMIT = 10;
+const QUOTA_KEY = "oak.chat.quota";
+
+const quotaDay = () => {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+};
+
+const readQuota = () => {
+  try {
+    const q = JSON.parse(localStorage.getItem(QUOTA_KEY) || "null");
+    if (q && q.d === quotaDay() && Number.isFinite(q.n)) return q.n;
+  } catch {
+    // sin storage (modo privado): la cuenta vive solo en el estado
+  }
+  return 0;
+};
+
+const writeQuota = (n) => {
+  try {
+    localStorage.setItem(QUOTA_KEY, JSON.stringify({ d: quotaDay(), n }));
+  } catch {
+    // sin storage: se ignora
+  }
+};
+
 const MENU = [
   { key: "exp", n: 1 },
   { key: "projects", n: 2 },
@@ -36,8 +66,10 @@ export default function OakChat() {
   const [revealed, setRevealed] = useState(0);
   const [busy, setBusy] = useState(false);
   const [streamed, setStreamed] = useState(false); // la respuesta actual vino por IA (stream)
-  const [error, setError] = useState(null); // "unavailable" | "rate" | "generic"
+  const [error, setError] = useState(null); // "unavailable" | "rate" | "generic" | "quota"
   const [input, setInput] = useState("");
+  const [used, setUsed] = useState(readQuota);
+  const left = Math.max(0, DAILY_LIMIT - used);
 
   const bodyRef = useRef(null);
   const inputRef = useRef(null);
@@ -180,6 +212,10 @@ export default function OakChat() {
     const fromInput = typeof preset !== "string";
     const text = (fromInput ? input : preset).trim();
     if (!text || busy || answer) return;
+    if (left <= 0) {
+      setError("quota");
+      return;
+    }
 
     const next = [...messages, { role: "user", content: text }];
     setMessages(next);
@@ -190,6 +226,12 @@ export default function OakChat() {
     setStreamed(true);
     setBusy(true);
     sfx("click");
+
+    // Se descuenta por intento (antes del fetch): protege la cuota
+    // del LLM de reintentos forzados.
+    const usedNow = used + 1;
+    setUsed(usedNow);
+    writeQuota(usedNow);
 
     try {
       const res = await fetch("/api/chat", {
@@ -292,9 +334,9 @@ export default function OakChat() {
             </p>
           )}
 
-          {error && (
+          {(error || left <= 0) && (
             <p className="oak-error">
-              {t(`oak.error.${error}`)}{" "}
+              {t(error ? `oak.error.${error}` : "oak.error.quota")}{" "}
               <a href={`mailto:${data.CONTACT_INFO.email}`}>{t("oak.contact")}</a>
             </p>
           )}
@@ -320,6 +362,9 @@ export default function OakChat() {
             ))}
           </div>
           <p className="oak-ai-note">{t("oak.ai.note")}</p>
+          {left > 0 && left <= 5 && (
+            <p className="oak-ai-note">{fill(t("oak.quota.left"), { n: left })}</p>
+          )}
         </div>
 
         <form
@@ -336,12 +381,12 @@ export default function OakChat() {
             aria-label={t("oak.aria.input")}
             maxLength={500}
             autoComplete="off"
-            disabled={busy || Boolean(answer)}
+            disabled={busy || Boolean(answer) || left <= 0}
           />
           <button
             type="submit"
             className="oak-send"
-            disabled={busy || Boolean(answer) || !input.trim()}
+            disabled={busy || Boolean(answer) || !input.trim() || left <= 0}
             aria-label={t("oak.send")}
           >
             ▶

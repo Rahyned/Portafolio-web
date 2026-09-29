@@ -174,6 +174,8 @@ export const translations = {
     "oak.error.unavailable": "Las consultas libres con IA están pausadas. Usá el menú de abajo.",
     "oak.error.rate": "Demasiadas consultas seguidas. Esperá un minuto y probá de nuevo.",
     "oak.error.generic": "Ups, algo salió mal. Probá de nuevo en un momento.",
+    "oak.error.quota": "Llegaste al límite de 10 consultas IA por día. Volvé mañana o usá el menú de abajo.",
+    "oak.quota.left": "Te quedan {n} consultas IA para hoy.",
 
     // App / Konami
     "toast.konami": "🎉 ¡MODO MISTERIO ACTIVADO!",
@@ -367,6 +369,8 @@ export const translations = {
     "oak.error.unavailable": "Free-form AI replies are paused. Use the menu below.",
     "oak.error.rate": "Too many requests in a row. Wait a minute and try again.",
     "oak.error.generic": "Oops, something went wrong. Try again in a moment.",
+    "oak.error.quota": "You've hit the 10 AI questions per day limit. Come back tomorrow or use the menu below.",
+    "oak.quota.left": "You have {n} AI questions left today.",
 
     // App / Konami
     "toast.konami": "🎉 MYSTERY MODE ACTIVATED!",
