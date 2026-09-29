@@ -245,13 +245,17 @@ export default async function handler(req, res) {
     });
   } catch (err) {
     console.error("Error conectando con el LLM:", err.message);
-    return res.status(502).json({ ok: false, error: "El asistente no respondió." });
+    return res.status(502).json({ ok: false, error: "El asistente no respondió.", debug: `fetch: ${err.message}`.slice(0, 250) });
   }
 
   if (!upstreamRes.ok || !upstreamRes.body) {
     const detail = await upstreamRes.text().catch(() => "");
     console.error(`LLM upstream ${upstreamRes.status}:`, detail.slice(0, 300));
-    return res.status(502).json({ ok: false, error: "El asistente no respondió." });
+    return res.status(502).json({
+      ok: false,
+      error: "El asistente no respondió.",
+      debug: `upstream ${upstreamRes.status}: ${detail.slice(0, 250)}`
+    });
   }
 
   res.writeHead(200, {
