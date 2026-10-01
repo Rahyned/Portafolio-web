@@ -111,6 +111,7 @@ export const translations = {
     "modal.block.stack": "🧰 STACK / TECH",
     "modal.block.code": "🚀 DEMO / CODIGO",
     "modal.demo": "🌐 LIVE DEMO",
+    "modal.assistant": "🤖 ASISTENTE RAG",
     "modal.github": "💾 GITHUB",
     "modal.completed": "Completado:",
 
@@ -306,6 +307,7 @@ export const translations = {
     "modal.block.stack": "🧰 STACK / TECH",
     "modal.block.code": "🚀 DEMO / CODE",
     "modal.demo": "🌐 LIVE DEMO",
+    "modal.assistant": "🤖 RAG ASSISTANT",
     "modal.github": "💾 GITHUB",
     "modal.completed": "Completed:",
 

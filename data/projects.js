@@ -129,6 +129,7 @@ const DEFAULT_DATA = {
           result: "Sistema integral del laboratorio: 1234 tests pasando, con módulos de estación maestra, consulta y recepción.",
           stack: ["Python", "PyQt5", "FastAPI", "SQLModel", "SQLite", "JWT", "ReportLab"],
           demo: null,
+          assistant: "/asistente/",
           github: "https://github.com/Rahyned"
         }
       ]

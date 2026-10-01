@@ -96,6 +96,9 @@ export default function ProjectModal({ project, onClose }) {
               ) : (
                 <button type="button" className="btn-link" disabled aria-disabled="true">{t("modal.demo")}</button>
               )}
+              {project.assistant ? (
+                <a href={project.assistant} target="_blank" rel="noopener noreferrer" className="btn-link" onClick={() => sfx("click")}>{t("modal.assistant")}</a>
+              ) : null}
               <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn-link" onClick={() => sfx("click")}>{t("modal.github")}</a>
             </div>
           </div>

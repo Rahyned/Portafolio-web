@@ -26,6 +26,14 @@ const Modal = (() => {
 
     const demoBtn = document.getElementById("modalDemo");
     const githubBtn = document.getElementById("modalGithub");
+    const assistantBtn = document.getElementById("modalAssistant");
+
+    if (project.assistant) {
+      assistantBtn.href = project.assistant;
+      assistantBtn.hidden = false;
+    } else {
+      assistantBtn.hidden = true;
+    }
 
     if (project.demo) {
       demoBtn.href = project.demo;

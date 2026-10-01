@@ -126,6 +126,7 @@ export const FALLBACK_DATA = {
           result: "Sistema integral del laboratorio: 148 tests + 15 E2E pasando, con módulos de estación maestra, consulta y recepción.",
           stack: ["Python", "PyQt5", "FastAPI", "SQLModel", "SQLite", "JWT", "ReportLab"],
           demo: null,
+          assistant: "/asistente/",
           github: "https://github.com/Rahyned"
         }
       ]
