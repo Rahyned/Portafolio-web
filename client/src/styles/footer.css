@@ -9,7 +9,7 @@
   background-size: auto, var(--wall-size) var(--wall-size);
   background-repeat: repeat, repeat;
   border-top: 2px solid var(--border);
-  padding: 44px 20px;
+  padding: 66px 20px 44px;
   text-align: center;
   display: grid;
   gap: 14px;

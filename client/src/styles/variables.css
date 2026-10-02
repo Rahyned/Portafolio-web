@@ -18,8 +18,8 @@
   /* Textura de pared (tapiz) en header/breadcrumb/footer */
   --wall-size: 256px;
   /* % del color de tema en la capa velo: 100 = textura invisible.
-     85 => 15% de textura visible. */
-  --wall-veil: 85%;
+      79 => 21% de textura visible. */
+  --wall-veil: 79%;
   --header-veil: color-mix(in srgb, var(--header-bg) var(--wall-veil), transparent);
   --panel-veil: color-mix(in srgb, var(--bg-secondary) var(--wall-veil), transparent);
 }
@@ -57,6 +57,7 @@
   /* Textura de fondo: mármol claro sobre fondo claro, opacidad media */
   --texture-opacity: 0.3;
 }
+
 
 /* ============================================================
    THEME: DARK - nocturno con color
