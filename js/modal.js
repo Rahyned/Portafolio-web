@@ -29,7 +29,9 @@ const Modal = (() => {
     const assistantBtn = document.getElementById("modalAssistant");
 
     if (project.assistant) {
-      assistantBtn.href = project.assistant;
+      const isLocal =
+        !location.hostname || location.hostname === "localhost" || location.hostname === "127.0.0.1";
+      assistantBtn.href = isLocal ? "https://rag-proyectos.vercel.app/" : project.assistant;
       assistantBtn.hidden = false;
     } else {
       assistantBtn.hidden = true;

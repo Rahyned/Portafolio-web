@@ -12,6 +12,12 @@ const statusSlug = (status) => {
   return "";
 };
 
+const assistantHref = (p) => {
+  const h = typeof window !== "undefined" ? window.location.hostname : "";
+  const isLocal = !h || h === "localhost" || h === "127.0.0.1";
+  return isLocal ? "https://rag-proyectos.vercel.app/" : p.assistant;
+};
+
 export default function ProjectModal({ project, onClose }) {
   const { sfx } = useSound();
   const { t } = useLanguage();
@@ -97,7 +103,7 @@ export default function ProjectModal({ project, onClose }) {
                 <button type="button" className="btn-link" disabled aria-disabled="true">{t("modal.demo")}</button>
               )}
               {project.assistant ? (
-                <a href={project.assistant} target="_blank" rel="noopener noreferrer" className="btn-link" onClick={() => sfx("click")}>{t("modal.assistant")}</a>
+                <a href={assistantHref(project)} target="_blank" rel="noopener noreferrer" className="btn-link" onClick={() => sfx("click")}>{t("modal.assistant")}</a>
               ) : null}
               <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn-link" onClick={() => sfx("click")}>{t("modal.github")}</a>
             </div>
