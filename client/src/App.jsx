@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useKonami } from "./hooks/useKonami";
+import { useScrollReveal } from "./hooks/useScrollReveal";
 import { useSound } from "./context/SoundContext";
 import { useData } from "./context/DataContext";
 import { useLanguage } from "./context/LanguageContext";
@@ -70,6 +71,10 @@ export default function App() {
 
   useKonami(KONAMI, onKonami);
 
+  // El reveal espera a que termine el boot: mientras la pantalla de arranque
+  // tapa la página, las secciones no deben marcarse como vistas.
+  useScrollReveal(booted || IS_NOT_FOUND);
+
   useEffect(() => () => clearTimeout(timerRef.current), []);
 
   return (
@@ -83,7 +88,7 @@ export default function App() {
           <NotFound />
         ) : (
           <>
-            <Hero />
+            <Hero ready={booted} />
             <Breadcrumb />
             <TrainerCard />
             <Services />

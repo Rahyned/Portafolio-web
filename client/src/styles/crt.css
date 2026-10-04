@@ -7,12 +7,30 @@
   inset: 0;
   z-index: 8000;
   pointer-events: none;
+  /* Power-on: solo al montarse (encender el toggle). React conserva el
+     nodo, así que no se repite en re-renders. */
+  animation: crtPowerOn 0.5s ease-out;
   background:
     repeating-linear-gradient(
       0deg,
       rgba(0, 0, 0, 0.06) 0 1px,
       transparent 1px 3px
     );
+}
+
+@keyframes crtPowerOn {
+  0% {
+    opacity: 0;
+    transform: scaleY(0.02);
+  }
+  35% {
+    opacity: 1;
+    transform: scaleY(0.02);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
 }
 
 .crt-overlay::after {

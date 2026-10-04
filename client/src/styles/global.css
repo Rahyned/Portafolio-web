@@ -158,8 +158,12 @@ h1, h2, h3 {
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    /* Todos los delays del repo son stagger estético: sin esto, las
+       líneas/columnas tardarían en aparecer aunque ya no se muevan. */
+    transition-delay: 0s !important;
   }
 }
 

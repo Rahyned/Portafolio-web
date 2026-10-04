@@ -20,6 +20,62 @@
   overflow: hidden;
 }
 
+/* Laminado: brillo especular lineal + bisel de 1.5px.
+   Los tonos vienen por tema desde variables.css (los mismos valores fijos
+   no sirven: en crema el blanco no se nota y en índigo deja un blob).
+   pointer-events: none para no robar los hover de stats/badges/avatar. */
+.trainer-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      115deg,
+      var(--card-gloss-hi) -6%,
+      var(--card-gloss-mid) 30%,
+      var(--card-gloss-lo) 68%
+    ),
+    linear-gradient(315deg, var(--card-shade) 0%, transparent 45%);
+  box-shadow:
+    inset 0 1.5px 0 var(--card-bevel-top),
+    inset 0 -1.5px 0 var(--card-bevel-bottom);
+}
+
+/* Barrido: la franja de luz cruza la tarjeta al interactuar.
+   background-size 250% + position 0%→100% desplaza la franja
+   de fuera-derecha (125%) a fuera-izquierda (-25%). */
+.trainer-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    transparent 46%,
+    var(--card-sweep) 50%,
+    transparent 54%
+  );
+  background-size: 250% 100%;
+  background-position: 0% 0;
+  opacity: 0;
+  transition: background-position 1.6s ease, opacity 0.5s ease;
+}
+
+@media (hover: hover) {
+  .trainer-card:hover::after {
+    background-position: 100% 0;
+    opacity: 1;
+  }
+}
+
+.trainer-card:active::after {
+  background-position: 100% 0;
+  opacity: 1;
+}
+
 /* Header estilo ficha de proyecto */
 .trainer-modal-header {
   display: flex;

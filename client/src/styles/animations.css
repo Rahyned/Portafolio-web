@@ -83,8 +83,13 @@
 /* Scroll reveal */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: translateY(18px);
+  /* Duraciones separadas: el fade termina antes que el slide, así el
+     bloque no se arrastra entero a la misma velocidad (se siente más
+     liviano y menos "laggy"). */
+  transition:
+    opacity 0.5s var(--ease-out),
+    transform 0.85s var(--ease-out);
 }
 
 .reveal.visible {
@@ -121,4 +126,76 @@
 
 .konami-toast.show {
   transform: translateX(-50%) translateY(0);
+}
+
+/* ============================================================
+   THEME TRANSITION - Crossfade del documento al cambiar de tema.
+   El fundido lo hace el navegador con View Transitions API (snapshots
+   del DOM viejo y del nuevo), así que nada tapa la pantalla y no hay
+   capa que mantener: es una textura por lado, no un repaint total.
+   El toque batalla lo pone el destello que cruza una vez (.theme-glint).
+   ThemeContext decide: si no hay API o hay reduced-motion, cambio
+   directo (el destello tampoco se monta).
+   ============================================================ */
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.42s;
+  animation-timing-function: var(--ease-out, cubic-bezier(0.33, 1, 0.68, 1));
+}
+
+/* El viejo se va de frente; el nuevo entra un punto más brillante y se
+   asienta. El brightness va sobre la textura del snapshot, no sobre cada
+   elemento, así que no cuesta repaint. */
+::view-transition-old(root) {
+  animation-name: themeFadeOut;
+}
+
+::view-transition-new(root) {
+  animation-name: themeFlashIn;
+}
+
+@keyframes themeFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes themeFlashIn {
+  from {
+    opacity: 0.55;
+    filter: brightness(1.7) saturate(1.3);
+  }
+  to {
+    opacity: 1;
+    filter: brightness(1) saturate(1);
+  }
+}
+
+/* Destello: una banda fina y translúcida que cruza una sola vez.
+   No tapa nada (22vw con los bordes a transparente, tope 0.42 de
+   opacidad) y solo anima transform. */
+.theme-glint {
+  position: fixed;
+  top: -20%;
+  bottom: -20%;
+  left: 0;
+  width: 22vw;
+  z-index: 9500;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.42), transparent);
+  transform: translateX(-40vw) skewX(-14deg);
+  animation: themeGlint 0.52s ease-out both;
+}
+
+@keyframes themeGlint {
+  from {
+    transform: translateX(-40vw) skewX(-14deg);
+  }
+  to {
+    transform: translateX(140vw) skewX(-14deg);
+  }
 }

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useTypewriter } from "../hooks/useTypewriter";
+import { useCountUp } from "../hooks/useCountUp";
 import { useData } from "../context/DataContext";
 import { useSound } from "../context/SoundContext";
 import { useLanguage } from "../context/LanguageContext";
@@ -44,7 +45,9 @@ export default function TrainerCard() {
   const { PROFILE, BADGES } = data;
 
   const fillRef = useRef(null);
+  const cardRef = useRef(null);
   const [expPct, setExpPct] = useState(0);
+  const [inView, setInView] = useState(false);
 
   useEffect(() => {
     requestAnimationFrame(() => {
@@ -52,16 +55,39 @@ export default function TrainerCard() {
     });
   }, [PROFILE.level, PROFILE.maxLevel]);
 
+  // El count-up arranca cuando la ficha entra en pantalla, no al montar
+  // (si no, la animación se perdería bajo el BootScreen).
+  useEffect(() => {
+    const el = cardRef.current;
+    if (!el) return undefined;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setInView(true);
+          io.disconnect();
+        }
+      },
+      // threshold 0 + rootMargin negativo: la ficha puede ser más alta
+      // que el viewport, y un porcentaje alto nunca se alcanzaría.
+      { threshold: 0, rootMargin: "0px 0px -60px 0px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  const years = useCountUp(PROFILE.expYears, inView);
+  const projects = useCountUp(PROFILE.completedProjects, inView);
+
   const stats = [
     { label: t("trainer.stat.level"), value: `${PROFILE.level} / ${PROFILE.maxLevel}` },
-    { label: t("trainer.stat.exp"), value: PROFILE.expYears },
-    { label: t("trainer.stat.projects"), value: PROFILE.completedProjects },
+    { label: t("trainer.stat.exp"), value: years },
+    { label: t("trainer.stat.projects"), value: projects },
     { label: t("trainer.stat.location"), value: PROFILE.location }
   ];
 
   return (
     <section className="trainer-section" id="ficha" aria-labelledby="trainerTitle">
-      <div className="trainer-card trainer-modal reveal visible">
+      <div ref={cardRef} className="trainer-card trainer-modal reveal">
         <div className="trainer-modal-header">
           <div className="trainer-avatar" role="img" aria-label={t("trainer.avatar.alt")}>
             <img src="/sprites/sprite-face.svg" alt={t("trainer.avatar.alt")} className="trainer-photo" width="64" height="64" />

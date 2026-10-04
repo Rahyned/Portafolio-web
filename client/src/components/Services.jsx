@@ -21,12 +21,12 @@ export default function Services() {
 
   return (
     <section className="services-section" id="servicios" aria-labelledby="servicesTitle">
-      <div className="section-banner">
+      <div className="section-banner reveal">
         <h2 className="section-title" id="servicesTitle">{t("nav.servicios")}</h2>
         <p className="section-sub">{t("services.sub")}</p>
       </div>
 
-      <div className="services-grid reveal-stagger visible" aria-live="polite">
+      <div className="services-grid reveal-stagger" aria-live="polite">
         {data.SERVICES.map((service, i) => (
           <article
             key={service.id}

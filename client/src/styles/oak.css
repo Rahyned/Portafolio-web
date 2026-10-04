@@ -84,11 +84,21 @@
   color: var(--text-primary);
   font-size: 15px;
   border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+    transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .oak-close:hover {
   background: var(--accent);
   color: var(--action-text);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 2px 2px 0 var(--shadow), 0 0 12px var(--glow);
+}
+
+.oak-close:active {
+  transform: translateY(0);
 }
 
 .oak-body {
@@ -117,6 +127,8 @@
   color: var(--text-primary);
   white-space: pre-wrap;
   word-break: break-word;
+  /* Reutiliza el mismo entra-de-golpe que la caja, por mensaje nuevo. */
+  animation: oak-in 0.18s ease;
 }
 
 .oak-msg.user {
@@ -166,11 +178,13 @@
   background: var(--bg-primary);
   border: 2px solid var(--border);
   border-radius: var(--radius);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .oak-input:focus {
   outline: none;
   border-color: var(--accent);
+  box-shadow: 0 0 12px var(--glow);
 }
 
 .oak-input:disabled {
@@ -184,6 +198,18 @@
   color: var(--action-text);
   font-size: 15px;
   border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.oak-send:hover:not(:disabled) {
+  background: var(--accent-bright);
+  transform: translateY(-2px);
+  box-shadow: 2px 2px 0 var(--shadow), 0 0 12px var(--glow);
+}
+
+.oak-send:active:not(:disabled) {
+  transform: translateY(0);
 }
 
 .oak-send:disabled {
@@ -219,11 +245,16 @@
   border: 2px solid var(--border);
   border-radius: var(--radius);
   cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+    transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .oak-choice:hover:not(:disabled) {
   background: var(--accent);
   color: var(--action-text);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 3px 3px 0 var(--shadow);
 }
 
 .oak-choice:hover:not(:disabled) .oak-choice-n {

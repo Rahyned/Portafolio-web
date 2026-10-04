@@ -171,6 +171,80 @@
   50% { box-shadow: 4px 4px 0 var(--border), 0 0 26px var(--glow); }
 }
 
+/* ---------- Entrada escalonada ----------
+   App agrega .hero-in cuando termina el BootScreen (onDone cae 450ms
+   después de arrancar el fade, así que sin esta regla el hero se vería
+   detrás del boot que se desvanece, y luego "desaparecería" para re-entrar
+   con la animación).
+
+   Mientras no hay .hero-in, los elementos quedan en opacity 0. Con
+   `backwards` la animación arranca desde ese mismo estado → nunca hay
+   frame visible de más. Si .hero-in nunca llegara (imposible: el boot
+   tiene failsafe), el hero quedaría oculto — preferimos eso a parpadear. */
+.hero:not(.hero-in) .hero-name,
+.hero:not(.hero-in) .hero-tagline,
+.hero:not(.hero-in) .hero-sub,
+.hero:not(.hero-in) .hero-cta,
+.hero:not(.hero-in) .hero-badges {
+  opacity: 0;
+}
+
+@keyframes heroIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-in .hero-name {
+  animation: heroIn 0.7s var(--ease-out) backwards;
+}
+
+.hero-in .hero-tagline {
+  animation: heroIn 0.7s 0.14s var(--ease-out) backwards;
+}
+
+.hero-in .hero-sub {
+  animation: heroIn 0.7s 0.28s var(--ease-out) backwards;
+}
+
+/* El CTA ya tiene ctaGlow de base: se lista en la misma regla para
+   que la entrada no lo pise y pierda el glow ambiente. */
+.hero-in .hero-cta {
+  animation:
+    heroIn 0.7s 0.42s var(--ease-out) backwards,
+    ctaGlow 2.4s 1.2s ease-in-out infinite;
+}
+
+.hero-in .hero-badges {
+  animation: heroIn 0.7s 0.56s var(--ease-out) backwards;
+}
+
+/* Con reduced-motion el fade del boot es instantáneo pero onDone sigue
+   esperando 450ms: sin esto, el hero estaría oculto ese rato. Directamente
+   no lo animamos (tampoco hace falta: ya no hay movimiento). */
+@media (prefers-reduced-motion: reduce) {
+  .hero:not(.hero-in) .hero-name,
+  .hero:not(.hero-in) .hero-tagline,
+  .hero:not(.hero-in) .hero-sub,
+  .hero:not(.hero-in) .hero-cta,
+  .hero:not(.hero-in) .hero-badges {
+    opacity: 1;
+  }
+
+  .hero-in .hero-name,
+  .hero-in .hero-tagline,
+  .hero-in .hero-sub,
+  .hero-in .hero-cta,
+  .hero-in .hero-badges {
+    animation: none;
+  }
+}
+
 /* ---------- Tablet ---------- */
 @media (max-width: 1100px) {
   .hero {

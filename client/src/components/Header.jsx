@@ -41,7 +41,11 @@ export default function Header() {
               data-theme={b.theme}
               aria-label={t("aria.theme", { label: b.label })}
               aria-pressed={isActive(b.theme)}
-              onClick={() => { sfx("click"); setTheme(b.theme); }}
+              onClick={() => {
+                /* Cambiar de tema suena a "encendido"; repetir el actual, click. */
+                sfx(b.theme !== theme ? "open" : "click");
+                setTheme(b.theme);
+              }}
             >
               {b.label}
             </button>

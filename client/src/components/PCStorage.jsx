@@ -49,12 +49,12 @@ export default function PCStorage() {
   return (
     <>
       <section className="pc-section" id="pc" aria-labelledby="pcTitle">
-        <div className="section-banner">
+        <div className="section-banner reveal">
           <h2 className="section-title" id="pcTitle">{t("pc.title")}</h2>
           <p className="section-sub">{t("pc.sub")}</p>
         </div>
 
-        <div className="pc-frame marquee-frame reveal visible">
+        <div className="pc-frame marquee-frame reveal">
           <div className="pc-titlebar">
             <span className="pc-title">{t("pc.titlebar")}</span>
             <span className="pc-led" aria-hidden="true" />

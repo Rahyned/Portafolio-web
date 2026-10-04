@@ -147,12 +147,12 @@ export default function Contact() {
 
   return (
     <section className="contact-section" id="contacto" aria-labelledby="contactTitle">
-      <h2 className="section-title" id="contactTitle">{t("nav.contacto")}</h2>
-      <p className="section-sub">{t("contact.sub")}</p>
+      <h2 className="section-title reveal" id="contactTitle">{t("nav.contacto")}</h2>
+      <p className="section-sub reveal">{t("contact.sub")}</p>
 
       <div className="contact-grid">
         {/* PokéNav */}
-        <div className="panel pokenav reveal visible">
+        <div className="panel pokenav reveal">
           <div className="pokenav-lid">
             <span className="pokenav-lid-led" aria-hidden="true" />
             <span className="pokenav-lid-text">{t("contact.pokenav.lid")}</span>
@@ -182,7 +182,7 @@ export default function Contact() {
         </div>
 
         {/* Formulario */}
-        <div className="panel trade-machine reveal visible">
+        <div className="panel trade-machine reveal">
           <h3 className="panel-title trade-title" dangerouslySetInnerHTML={{ __html: t("contact.trade.title") }} />
           <div className="form-container trade-screen">
             {status && msg[status] ? (

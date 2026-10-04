@@ -180,8 +180,10 @@ html.pixel-cursor-on select {
 /* ---------- Stagger reveal ---------- */
 .reveal-stagger > * {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: translateY(18px);
+  transition:
+    opacity 0.5s var(--ease-out),
+    transform 0.85s var(--ease-out);
 }
 
 .reveal-stagger.visible > * {

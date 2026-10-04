@@ -29,13 +29,17 @@
 }
 
 .footer-link {
+  display: inline-block;
   font-family: var(--font-pixel);
   font-size: 10px;
   color: var(--text-secondary);
+  transition: color 0.2s ease, transform 0.2s ease, text-shadow 0.2s ease;
 }
 
 .footer-link:hover {
   color: var(--accent-text);
+  transform: translateY(-2px);
+  text-shadow: 0 0 10px var(--glow);
 }
 
 .footer-pixel {

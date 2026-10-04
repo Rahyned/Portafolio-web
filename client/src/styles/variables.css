@@ -13,6 +13,11 @@
   --radius: 4px;
   --border-thick: 2px;
   --dot-opacity: 0.05;
+
+  /* Easing compartido para reveals/hero/modal: easeOutCubic. Sale con
+     energía pero asienta sin la "meseta pegajosa" de `ease` (que es lo
+     que hace que un reveal se sienta lagueado). */
+  --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
   /* Tamaño de baldosa del fondo de textura (mosaico) */
   --tile-size: 512px;
   /* Textura de pared (tapiz) en header/breadcrumb/footer */
@@ -56,6 +61,16 @@
   --pedestal: var(--bg-primary);
   /* Textura de fondo: mármol claro sobre fondo claro, opacidad media */
   --texture-opacity: 0.3;
+
+  /* Laminado de la ficha: sobre fondo crema el blanco casi no mueve el
+     valor, así que el brillo va fuerte y el peso lo lleva la sombra. */
+  --card-gloss-hi: rgba(255, 255, 255, 0.42);
+  --card-gloss-mid: rgba(255, 255, 255, 0.16);
+  --card-gloss-lo: transparent;
+  --card-shade: rgba(34, 31, 26, 0.16);
+  --card-bevel-top: rgba(255, 255, 255, 0.95);
+  --card-bevel-bottom: rgba(34, 31, 26, 0.3);
+  --card-sweep: rgba(255, 255, 255, 0.7);
 }
 
 
@@ -95,4 +110,14 @@
   /* Textura de fondo: mármol muy claro sobre índigo, fuertemente atenuada
      para no pisar la legibilidad */
   --texture-opacity: 0.08;
+
+  /* Laminado de la ficha: sobre índigo el blanco pega fuerte, así que el
+     brillo va muy suave y difuso para que no quede como un blob. */
+  --card-gloss-hi: rgba(255, 255, 255, 0.13);
+  --card-gloss-mid: rgba(255, 255, 255, 0.05);
+  --card-gloss-lo: transparent;
+  --card-shade: rgba(0, 0, 0, 0.2);
+  --card-bevel-top: rgba(255, 255, 255, 0.3);
+  --card-bevel-bottom: rgba(0, 0, 0, 0.32);
+  --card-sweep: rgba(255, 255, 255, 0.5);
 }

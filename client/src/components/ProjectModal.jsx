@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useSound } from "../context/SoundContext";
 import { useLanguage } from "../context/LanguageContext";
 import SpriteImage from "./SpriteImage";
@@ -22,34 +22,59 @@ export default function ProjectModal({ project, onClose }) {
   const { sfx } = useSound();
   const { t } = useLanguage();
   const closeRef = useRef(null);
+  const closeTimer = useRef(null);
+  // El overlay debe montarse SIN .open y ganarlo en el siguiente frame:
+  // si nace con .open, el navegador no tiene estado inicial que animar y el
+  // modal aparece de golpe (el bounce de pc-storage.css:375 queda dormido).
+  const [entered, setEntered] = useState(false);
+  const [closing, setClosing] = useState(false);
+
+  // useCallback: si no, `close` cambia en cada render y el effect de abajo
+  // re-registraría el listener y re-enfocaría el botón todo el tiempo.
+  const close = useCallback(() => {
+    if (closeTimer.current) return;
+    sfx("close");
+    setClosing(true);
+    // Espera a que termine la salida (opacity .3s / scale .4s) antes
+    // de desmontar, si no el cierre también aparece de golpe.
+    closeTimer.current = setTimeout(() => {
+      closeTimer.current = null;
+      onClose();
+    }, 380);
+  }, [sfx, onClose]);
 
   useEffect(() => {
-    if (!project) return;
+    if (!project) return undefined;
+    setEntered(false);
+    setClosing(false);
+    const id = requestAnimationFrame(() => setEntered(true));
+    return () => cancelAnimationFrame(id);
+  }, [project]);
+
+  useEffect(() => {
+    if (!project) return undefined;
     document.body.style.overflow = "hidden";
     closeRef.current?.focus();
 
     const onKey = (e) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") close();
     };
     document.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = "";
       document.removeEventListener("keydown", onKey);
     };
-  }, [project, onClose]);
+  }, [project, close]);
+
+  useEffect(() => () => clearTimeout(closeTimer.current), []);
 
   if (!project) return null;
-
-  const close = () => {
-    sfx("close");
-    onClose();
-  };
 
   const sprite = getProjectSprite(project.id);
 
   return (
     <div
-      className="modal-overlay open"
+      className={entered && !closing ? "modal-overlay open" : "modal-overlay"}
       role="dialog"
       aria-modal="true"
       aria-labelledby="modalTitle"

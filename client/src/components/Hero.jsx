@@ -4,7 +4,7 @@ import { useData } from "../context/DataContext";
 import { useLanguage } from "../context/LanguageContext";
 import HeroParticles from "./HeroParticles";
 
-export default function Hero() {
+export default function Hero({ ready = false }) {
   const { data, track } = useData();
   const { sfx } = useSound();
   const { t } = useLanguage();
@@ -14,7 +14,7 @@ export default function Hero() {
   const sub = tail.join("|");
 
   return (
-    <section className="hero" id="inicio" aria-label={t("hero.aria")}>
+    <section className={`hero${ready ? " hero-in" : ""}`} id="inicio" aria-label={t("hero.aria")}>
       <HeroParticles />
 
       <div className="hero-stage">

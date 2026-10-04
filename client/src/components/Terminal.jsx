@@ -18,13 +18,14 @@ export default function Terminal() {
 
     setLines((prev) => [
       ...prev,
-      { text: command.trim(), cls: "cmd" }
+      { text: command.trim(), cls: "cmd", d: 0 }
     ]);
 
     if (!cmd) return;
 
+    // `d` = índice dentro del batch: alimenta el escalonado del CSS (--d).
     const render = (nextLines) => {
-      setLines((prev) => [...prev, ...nextLines]);
+      setLines((prev) => [...prev, ...nextLines.map((line, i) => ({ ...line, d: i }))]);
     };
 
     switch (cmd) {
@@ -150,7 +151,11 @@ export default function Terminal() {
         </div>
         <div className="terminal-body" ref={bodyRef} aria-live="polite">
           {lines.map((line, i) => (
-            <div key={i} className={`term-line ${lineCls[line.cls] || ""}`}>
+            <div
+              key={i}
+              className={`term-line ${lineCls[line.cls] || ""}`}
+              style={{ "--d": `${(line.d || 0) * 0.05}s` }}
+            >
               {line.cls === "cmd" ? <><span className="term-prompt">$&gt;</span> {line.text}</> : line.text}
             </div>
           ))}
