@@ -9,7 +9,7 @@ export const CONTENT_EN = {
     class: "Web & Systems Developer",
     status: "⚡ AVAILABLE FOR PROJECTS",
     tagline: "Web & Systems Developer | Automation • Architecture • APIs",
-    bio: "I'm a web & systems developer specialized in desktop apps (Tauri and Python), e-invoicing ERPs and production websites. I build clean-code solutions: automations, integrations and deployments. Press any key to continue."
+    bio: "I'm a web & systems developer specialized in desktop apps (Tauri and Python), e-invoicing ERPs and production websites. I build clean-code solutions: automations, integrations and deployments."
   },
 
   BOXES: {
@@ -57,7 +57,7 @@ export const CONTENT_EN = {
       status: "In use",
       problem: "Mechanic/GNC/lubricenter workshop without digital management: uncontrolled inventory, manual invoicing and receipts, no control over GNC/P.H. sticker expirations or customer notifications.",
       solution: "Desktop ERP with customer and vehicle management, inventory with stock alerts, AFIP invoicing, vehicle intake, expirations, PDF/Excel export, WhatsApp/mail notification engine and role-based auditing.",
-      result: "In real use at the workshop: 298 tests with automated CI; invoicing, inventory, expirations and notifications digitized."
+      result: "In real use at the workshop: 542 tests with automated CI; invoicing, inventory, expirations and notifications digitized."
     },
     stella: {
       category: "Management Systems & ERPs",
@@ -65,7 +65,7 @@ export const CONTENT_EN = {
       status: "In development",
       problem: "Dental laboratory with paper work orders, no traceability, no control over current accounts or suppliers/products.",
       solution: "Desktop ERP (PyQt5) with REST API (FastAPI): customers, suppliers, products with differentiated pricing, jobs with states, current accounts, metrics dashboard and PDF generation (order, ticket, receipt), with roles and JWT.",
-      result: "Comprehensive laboratory system: 148 tests + 15 E2E passing, with master station, query and reception modules."
+      result: "Comprehensive laboratory system: 1234 tests passing, with master station, query and reception modules."
     },
     butterflies: {
       category: "Desktop Apps (Tauri)",

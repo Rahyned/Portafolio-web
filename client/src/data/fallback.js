@@ -8,7 +8,7 @@ export const FALLBACK_DATA = {
   ANALYTICS: { ga4Id: "" },
 
   PROFILE: {
-    name: "Lautaro Rodriguez",
+    name: "Lautaro",
     displayName: "LAUTARO.DEV",
     class: "Desarrollador Web & Sistemas",
     level: 22,
@@ -109,7 +109,7 @@ export const FALLBACK_DATA = {
           status: "En uso",
           problem: "Taller mecánico/GNC/lubricentro sin gestión digital: inventario descontrolado, facturación y recibos manuales, sin control de vencimientos de obleas GNC/P.H. ni avisos a clientes.",
           solution: "ERP de escritorio con gestión de clientes y vehículos, inventario con alertas de stock, facturación AFIP, recepción de vehículos, vencimientos, exportación PDF/Excel, motor de avisos por WhatsApp/mail y auditoría con roles.",
-          result: "En uso real en el taller: 298 tests con CI automatizado; facturación, inventario, vencimientos y avisos digitalizados.",
+          result: "En uso real en el taller: 542 tests con CI automatizado; facturación, inventario, vencimientos y avisos digitalizados.",
           stack: ["Python", "Flet", "SQLAlchemy", "PostgreSQL/SQLite", "ReportLab", "PyAFIPWS", "WhatsApp API"],
           demo: null,
           github: "https://github.com/Rahyned"
@@ -123,7 +123,7 @@ export const FALLBACK_DATA = {
           status: "En desarrollo",
           problem: "Laboratorio odontológico con órdenes de trabajo en papel, sin trazabilidad, sin control de cuentas corrientes ni de proveedores/productos.",
           solution: "ERP de escritorio (PyQt5) con API REST (FastAPI): clientes, proveedores, productos con precios diferenciados, trabajos con estados, cuentas corrientes, dashboard de métricas y generación de PDFs (comanda, ticket, comprobante), con roles y JWT.",
-          result: "Sistema integral del laboratorio: 148 tests + 15 E2E pasando, con módulos de estación maestra, consulta y recepción.",
+          result: "Sistema integral del laboratorio: 1234 tests pasando, con módulos de estación maestra, consulta y recepción.",
           stack: ["Python", "PyQt5", "FastAPI", "SQLModel", "SQLite", "JWT", "ReportLab"],
           demo: null,
           assistant: "/asistente/",

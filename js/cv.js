@@ -9,7 +9,7 @@
     document.getElementById("cvName").textContent = PROFILE.name;
     document.getElementById("cvClass").textContent = PROFILE.class;
     document.getElementById("cvTagline").textContent = PROFILE.tagline;
-    document.getElementById("cvBio").textContent = PROFILE.bio.replace(/ Presiona cualquier tecla para continuar\.?/i, "");
+    document.getElementById("cvBio").textContent = PROFILE.bio;
     document.getElementById("cvLocation").textContent = PROFILE.location;
     document.getElementById("cvExp").textContent = `${PROFILE.expYears} años`;
     document.getElementById("cvProjects").textContent = `${PROFILE.completedProjects} proyectos`;

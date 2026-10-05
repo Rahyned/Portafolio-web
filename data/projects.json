@@ -13,7 +13,7 @@
     "location": "Rosario, Argentina",
     "status": "⚡ DISPONIBLE PARA PROYECTOS",
     "tagline": "Desarrollador Web & Sistemas | AUTOMATIZACION • ARQUITECTURA • APIS",
-    "bio": "Soy desarrollador web & sistemas especializado en apps de escritorio (Tauri y Python), ERPs con facturación electrónica y sitios web en producción. Construyo soluciones de código limpio: automatizaciones, integraciones y desplegues. Presiona cualquier tecla para continuar."
+    "bio": "Soy desarrollador web & sistemas especializado en apps de escritorio (Tauri y Python), ERPs con facturación electrónica y sitios web en producción. Construyo soluciones de código limpio: automatizaciones, integraciones y desplegues."
   },
   "BADGES": [
     { "name": "Python", "icon": "🐍" },
@@ -159,6 +159,32 @@
           "github": "https://github.com/Rahyned"
         }
       ]
+    }
+  ],
+  "BLOG": [
+    {
+      "id": "docker-devs",
+      "title": "Docker para devs web",
+      "date": "Ene 2024",
+      "tags": ["Docker", "DevOps"],
+      "excerpt": "Por qué Docker Compose cambió mi forma de levantar entornos de desarrollo y cómo lo uso en cada proyecto.",
+      "link": null
+    },
+    {
+      "id": "sync-inventario",
+      "title": "Sincronizar inventario en 3 plataformas",
+      "date": "Feb 2024",
+      "tags": ["Python", "APIs"],
+      "excerpt": "Lección aprendida integrando Shopify, WooCommerce y una base local con webhooks y tareas periódicas.",
+      "link": null
+    },
+    {
+      "id": "fastify",
+      "title": "APIs REST con Fastify",
+      "date": "Mar 2024",
+      "tags": ["Node.js", "Backend"],
+      "excerpt": "Estructura que uso para APIs rápidas con validación, idempotencia y reintentos bien diseñados.",
+      "link": null
     }
   ],
   "SERVICES": [
