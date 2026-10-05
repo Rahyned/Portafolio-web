@@ -14,5 +14,19 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
+    rollupOptions: {
+      output: {
+        // Vendor de React aparte: cache estable entre deploys
+        // (el resto del bundle cambia con cada cambio de código).
+        manualChunks(id) {
+          if (
+            id.includes('node_modules/react') ||
+            id.includes('node_modules/scheduler')
+          ) {
+            return 'vendor-react'
+          }
+        },
+      },
+    },
   },
 })

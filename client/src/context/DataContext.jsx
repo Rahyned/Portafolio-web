@@ -46,7 +46,9 @@ function localizeData(data, lang) {
 
 export function DataProvider({ children }) {
   const { lang } = useLanguage();
-  const [data, setData] = useState(null);
+  // Semilla con el fallback embebido: la app pinta al instante y el fetch
+  // reemplaza los datos en segundo plano (sin pantalla de carga en el medio).
+  const [data, setData] = useState(FALLBACK_DATA);
 
   useEffect(() => {
     let active = true;
@@ -70,26 +72,6 @@ export function DataProvider({ children }) {
   }, []);
 
   const localizedData = useMemo(() => localizeData(data, lang), [data, lang]);
-
-  if (!localizedData) {
-    return (
-      <div style={{
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        flexDirection: "column",
-        gap: "16px",
-        background: "var(--bg-primary)",
-        color: "var(--text-primary)",
-        fontFamily: "var(--font-pixel)",
-        fontSize: "12px"
-      }}>
-        <span style={{ fontSize: "40px" }} aria-hidden="true">👾</span>
-        <span>CARGANDO...</span>
-      </div>
-    );
-  }
 
   return <DataContext.Provider value={{ data: localizedData, track }}>{children}</DataContext.Provider>;
 }

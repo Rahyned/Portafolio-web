@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, lazy, Suspense } from "react";
 import { useKonami } from "./hooks/useKonami";
 import { useScrollReveal } from "./hooks/useScrollReveal";
 import { useSound } from "./context/SoundContext";
@@ -12,13 +12,16 @@ import PCStorage from "./components/PCStorage";
 import Services from "./components/Services";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-import Terminal from "./components/Terminal";
-import OakChat from "./components/OakChat";
 import Toast from "./components/Toast";
 import BootScreen from "./components/BootScreen";
 import CrtOverlay from "./components/CrtOverlay";
 import KonamiConfetti from "./components/KonamiConfetti";
 import NotFound from "./components/NotFound";
+
+// Overlays pesados: van en su propio chunk y se montan después del boot,
+// para que no frenen el primer paint ni queden en el DOM durante el arranque.
+const Terminal = lazy(() => import("./components/Terminal"));
+const OakChat = lazy(() => import("./components/OakChat"));
 
 // Rutas que la SPA conoce: home y archivos estáticos (con extensión).
 // Todo lo demás (catch-all rewrite de Vercel) es un 404 in-app.
@@ -43,10 +46,13 @@ export default function App() {
   const [confettiKey, setConfettiKey] = useState(0);
   const timerRef = useRef(null);
 
-  // Inicialización de Google Analytics 4 (configurable en data/projects.json)
+  // Inicialización de Google Analytics 4 (configurable en data/projects.json).
+  // Guard con ref: los datos pasan de fallback a JSON y el effect corre dos veces.
+  const gaIdRef = useRef("");
   useEffect(() => {
     const id = (data.ANALYTICS && data.ANALYTICS.ga4Id) || "";
-    if (!id || id.indexOf("G-") !== 0) return;
+    if (!id || id.indexOf("G-") !== 0 || gaIdRef.current === id) return;
+    gaIdRef.current = id;
     window.dataLayer = window.dataLayer || [];
     window.gtag = function () { dataLayer.push(arguments); };
     gtag("js", new Date());
@@ -98,8 +104,12 @@ export default function App() {
         )}
       </main>
       <Footer />
-      {!IS_NOT_FOUND && <Terminal />}
-      {!IS_NOT_FOUND && <OakChat />}
+      {booted && !IS_NOT_FOUND && (
+        <Suspense fallback={null}>
+          <Terminal />
+          <OakChat />
+        </Suspense>
+      )}
       <Toast message={toast.message} show={toast.show} />
 
       {!booted && !IS_NOT_FOUND && <BootScreen onDone={() => setBooted(true)} />}

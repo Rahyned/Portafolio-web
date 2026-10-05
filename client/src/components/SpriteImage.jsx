@@ -8,6 +8,8 @@ export default function SpriteImage({ src, className = "", style }) {
       alt=""
       className={className}
       style={{ imageRendering: "pixelated", flexShrink: 0, ...style }}
+      loading="lazy"
+      decoding="async"
       draggable={false}
     />
   );

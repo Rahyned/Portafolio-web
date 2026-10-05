@@ -90,7 +90,7 @@ export default function TrainerCard() {
       <div ref={cardRef} className="trainer-card trainer-modal reveal">
         <div className="trainer-modal-header">
           <div className="trainer-avatar" role="img" aria-label={t("trainer.avatar.alt")}>
-            <img src="/sprites/sprite-face.svg" alt={t("trainer.avatar.alt")} className="trainer-photo" width="64" height="64" />
+            <img src="/sprites/sprite-face.svg" alt={t("trainer.avatar.alt")} className="trainer-photo" width="64" height="64" loading="lazy" decoding="async" />
           </div>
           <div className="trainer-modal-titleblock">
             <h2 className="trainer-modal-title" id="trainerTitle">{PROFILE.name}</h2>

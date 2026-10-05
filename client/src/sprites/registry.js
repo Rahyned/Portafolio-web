@@ -1,7 +1,8 @@
-import { TRAINER, POKEBALL, COIN, STAR } from "./trainer";
-import { MI_SPRITE } from "./hero";
-import { BOX_WEB, BOX_SYSTEMS, BOX_DESKTOP } from "./boxes";
+import { POKEBALL, COIN, STAR } from "./trainer";
 import { OAK } from "./oak";
+
+// Nota: hero.js (MI_SPRITE) y boxes.js (BOX_*) no se importan a propósito:
+// no se usan en ningún componente y solo engordarían el bundle.
 
 // Recorta filas/columnas transparentes y recentra el contenido en la grilla
 // original, para que cada icono quede con margen igual en los 4 bordes.
@@ -36,14 +37,9 @@ export const centerSprite = (grid) => {
 // Registro global: clave -> grilla de píxeles.
 // Las claves de proyectos coinciden con project.id en data/projects.json.
 export const SPRITES = {
-  trainer: centerSprite(TRAINER),
-  mi_sprite: centerSprite(MI_SPRITE),
   pokeball: centerSprite(POKEBALL),
   coin: centerSprite(COIN),
   star: centerSprite(STAR),
-  box_web: centerSprite(BOX_WEB),
-  box_systems: centerSprite(BOX_SYSTEMS),
-  box_desktop: centerSprite(BOX_DESKTOP),
   oak: centerSprite(OAK)
 };
 

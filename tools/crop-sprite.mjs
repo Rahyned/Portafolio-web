@@ -1,6 +1,6 @@
 // Recorta el viewBox de un sprite SVG exportado (256x256 con padding)
 // al bounding box real del contenido. Uso:
-//   node tools/crop-sprite.mjs [ruta]  (default: client/public/sprites/mi_sprite-f1.svg)
+//   node tools/crop-sprite.mjs [ruta]  (default: tools/sprites-source/mi_sprite-f1.svg)
 import { readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 
@@ -8,7 +8,7 @@ const root = new URL("..", import.meta.url);
 const arg = process.argv[2];
 const path = arg
   ? fileURLToPath(new URL(arg, root))
-  : fileURLToPath(new URL("client/public/sprites/mi_sprite-f1.svg", root));
+  : fileURLToPath(new URL("tools/sprites-source/mi_sprite-f1.svg", root));
 let s = readFileSync(path, "utf8");
 
 if (!s.trimEnd().endsWith("</svg>")) {
