@@ -23,7 +23,7 @@
 
 .header-logo {
   font-family: var(--font-pixel);
-  font-size: 13px;
+  font-size: 16px;
   color: var(--text-primary);
   background: none;
   border: none;
@@ -152,7 +152,7 @@
     justify-content: flex-end;
   }
   .header-logo {
-    font-size: 11px;
+    font-size: 13px;
   }
   .theme-btn {
     font-size: 11px;

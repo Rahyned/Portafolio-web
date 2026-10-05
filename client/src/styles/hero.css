@@ -68,7 +68,7 @@
 
 .hero-name {
   font-family: var(--font-pixel);
-  font-size: 52px;
+  font-size: 64px;
   line-height: 1.4;
   margin: 0;
   text-shadow:
@@ -254,7 +254,7 @@
     gap: 16px;
   }
   .hero-name {
-    font-size: 40px;
+    font-size: 48px;
   }
   .hero-tagline {
     font-size: 16px;
@@ -283,7 +283,7 @@
     gap: 14px;
   }
   .hero-name {
-    font-size: 26px;
+    font-size: 30px;
   }
   .hero-tagline {
     font-size: 11px;
