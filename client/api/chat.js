@@ -13,6 +13,8 @@
 
 import { FALLBACK_DATA } from "../src/data/fallback.js";
 import { CONTENT_EN } from "../src/i18n/content.js";
+import { originAllowed } from "./_lib/origin.js";
+import { checkDailyLimit, checkWindowLimit, upstashConfigured } from "./_lib/rateLimit.js";
 
 const MAX_MESSAGES = 10;
 const MAX_CONTENT = 500;
@@ -20,89 +22,15 @@ const RATE_WINDOW_MS = 60_000;
 const RATE_MAX = 8;
 const DAILY_MAX = 10;
 const UPSTREAM_TIMEOUT_MS = 60_000;
-const UPSTASH_TIMEOUT_MS = 4_000;
-
-// Solo el sitio propio puede llamar a la API desde un navegador
-// (defensa en profundidad contra CSRF: los navegadores siempre mandan
-// Origin en POST). Peticiones sin Origin (curl, tests, server-side)
-// se permiten.
-const ALLOWED_ORIGINS = new Set([
-  "https://portafolio-web-three-gamma.vercel.app",
-  "http://localhost:5173"
-]);
-function originAllowed(req) {
-  const origin = req.headers.origin;
-  if (!origin) return true;
-  return ALLOWED_ORIGINS.has(origin);
-}
-
-// Fallback en memoria (por instancia serverless): RATE_MAX por ventana por IP
-const rateLimit = new Map();
-function memoryRateLimit(ip) {
-  const now = Date.now();
-  const hits = (rateLimit.get(ip) || []).filter((t) => now - t < RATE_WINDOW_MS);
-  if (hits.length >= RATE_MAX) return false;
-  hits.push(now);
-  rateLimit.set(ip, hits);
-  if (rateLimit.size > 5000) rateLimit.clear();
-  return true;
-}
-
-function upstashConfigured() {
-  return Boolean(process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN);
-}
-
-// INCR + EXPIRE en pipeline REST de Upstash. Devuelve el contador del INCR.
-async function upstashIncr(key, ttlSec) {
-  const base = process.env.UPSTASH_REDIS_REST_URL.replace(/\/+$/, "");
-  const url = base.endsWith("/pipeline") ? base : `${base}/pipeline`;
-  const res = await fetch(url, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${process.env.UPSTASH_REDIS_REST_TOKEN}`,
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify([["INCR", key], ["EXPIRE", key, ttlSec]]),
-    signal: AbortSignal.timeout(UPSTASH_TIMEOUT_MS)
-  });
-  if (!res.ok) throw new Error(`upstash ${res.status}`);
-  const data = await res.json();
-  const count = Array.isArray(data) ? data[0]?.result : undefined;
-  if (typeof count !== "number") throw new Error("respuesta inesperada de Upstash");
-  return count;
-}
-
-// Rate limit: global con Upstash (ventana fija por minuto) si hay
-// credenciales; si no, en memoria. Si Upstash falla no se cae el chat:
-// se degrada a memoria.
-async function checkRateLimit(ip) {
-  if (!upstashConfigured()) return memoryRateLimit(ip);
-  try {
-    const minute = Math.floor(Date.now() / RATE_WINDOW_MS);
-    const count = await upstashIncr(`chat:min:${ip}:${minute}`, (RATE_WINDOW_MS / 1000) * 2);
-    return count <= RATE_MAX;
-  } catch (err) {
-    console.error("Upstash rate limit no disponible, uso memoria:", err.message);
-    return memoryRateLimit(ip);
-  }
-}
-
-// Cuota diaria (DAILY_MAX por IP): solo con Upstash. Sin ella, la cuota
-// diaria vive únicamente en el cliente (localStorage).
-async function checkDailyQuota(ip) {
-  if (!upstashConfigured()) return true;
-  try {
-    const day = new Date().toISOString().slice(0, 10);
-    const count = await upstashIncr(`chat:day:${ip}:${day}`, 60 * 60 * 48);
-    return count <= DAILY_MAX;
-  } catch (err) {
-    console.error("Upstash cuota diaria no disponible:", err.message);
-    return true;
-  }
-}
+// Límite de salida del LLM (costo); el prompt del sistema ya acota la respuesta ~120 palabras.
+const MAX_TOKENS = 700;
 
 function llmConfigured() {
   return Boolean(process.env.LLM_BASE_URL && process.env.LLM_API_KEY && process.env.LLM_MODEL);
+}
+
+function isProduction() {
+  return process.env.VERCEL_ENV === "production";
 }
 
 function getClientIp(req) {
@@ -232,8 +160,6 @@ function systemPrompt(lang) {
   ].join("\n");
 }
 
-// Reenvía el streaming del upstream (formato OpenAI SSE) hacia el
-// cliente, extrayendo solo los deltas de contenido.
 async function pipeUpstream(upstreamRes, res) {
   const reader = upstreamRes.body.getReader();
   const decoder = new TextDecoder();
@@ -273,6 +199,22 @@ async function pipeUpstream(upstreamRes, res) {
   }
 }
 
+/** @returns {{ allowed: boolean, unavailable?: boolean }} */
+async function checkDailyQuota(ip) {
+  if (!upstashConfigured()) {
+    if (isProduction()) return { allowed: false, unavailable: true };
+    return { allowed: true };
+  }
+  try {
+    const allowed = await checkDailyLimit(ip, { keyPrefix: "chat", maxPerDay: DAILY_MAX });
+    return { allowed };
+  } catch (err) {
+    console.error("Upstash cuota diaria no disponible:", err.message);
+    if (isProduction()) return { allowed: false, unavailable: true };
+    return { allowed: true };
+  }
+}
+
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
@@ -283,13 +225,17 @@ export default async function handler(req, res) {
     return res.status(403).json({ ok: false, error: "Origen no permitido" });
   }
 
+  if (isProduction() && !upstashConfigured()) {
+    return res.status(503).json({ ok: false, error: "Asistente no disponible todavía." });
+  }
+
   const errors = validateBody(req.body);
   if (errors.length > 0) {
     return res.status(400).json({ ok: false, errors });
   }
 
   const ip = getClientIp(req);
-  if (!(await checkRateLimit(ip))) {
+  if (!(await checkWindowLimit(ip, { keyPrefix: "chat:min", windowMs: RATE_WINDOW_MS, max: RATE_MAX }))) {
     return res.status(429).json({ ok: false, error: "Demasiadas consultas. Esperá un momento." });
   }
 
@@ -297,7 +243,11 @@ export default async function handler(req, res) {
     return res.status(503).json({ ok: false, error: "Asistente no disponible todavía." });
   }
 
-  if (!(await checkDailyQuota(ip))) {
+  const daily = await checkDailyQuota(ip);
+  if (!daily.allowed) {
+    if (daily.unavailable) {
+      return res.status(503).json({ ok: false, error: "Asistente no disponible todavía." });
+    }
     return res.status(429).json({ ok: false, error: "Llegaste al límite diario de consultas." });
   }
 
@@ -306,6 +256,11 @@ export default async function handler(req, res) {
     { role: "system", content: systemPrompt(lang) },
     ...req.body.messages.map((m) => ({ role: m.role, content: m.content.trim() }))
   ];
+
+  const abortController = new AbortController();
+  const timeoutId = setTimeout(() => abortController.abort(), UPSTREAM_TIMEOUT_MS);
+  const onClose = () => abortController.abort();
+  req.on("close", onClose);
 
   let upstreamRes;
   try {
@@ -319,14 +274,17 @@ export default async function handler(req, res) {
         model: process.env.LLM_MODEL,
         messages,
         temperature: 0.6,
-        max_tokens: 2048,
+        max_tokens: MAX_TOKENS,
         stream: true
       }),
-      signal: AbortSignal.timeout(UPSTREAM_TIMEOUT_MS)
+      signal: abortController.signal
     });
   } catch (err) {
     console.error("Error conectando con el LLM:", err.message);
     return res.status(502).json({ ok: false, error: "El asistente no respondió." });
+  } finally {
+    clearTimeout(timeoutId);
+    req.off("close", onClose);
   }
 
   if (!upstreamRes.ok || !upstreamRes.body) {
