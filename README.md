@@ -4,11 +4,38 @@ Portafolio interactivo con estética de videojuego retro tipo Pokémon (8/16-bit
 
 > ✅ **Frontend migrado a React + Vite** (carpeta `client/`) con **overhaul visual arcade brillante**: sprites pixel art, boot screen, CRT, partículas y tema ARCADE por defecto. La versión vanilla queda como respaldo en la raíz.
 
-> ⚠️ **Todos los datos son PLACEHOLDER.** Se editan en **`data/projects.json`** sin tocar código.
+> ✏️ El contenido editable vive en **`data/projects.json`** (y el fallback `data/projects.js` para `file://`).
 
 ## 🚀 Cómo ejecutar
 
-### Con servidor (recomendado, incluye API de contacto)
+### Producción (Vercel)
+
+El deploy usa **root directory = `client/`**. Las funciones serverless están en `client/api/`:
+
+| Ruta | Archivo | Función |
+|---|---|---|
+| `POST /api/contact` | `client/api/contact.js` | Formulario de contacto (SMTP vía nodemailer) |
+| `POST /api/chat` | `client/api/chat.js` | Chat "Profesor Oak" (LLM compatible OpenAI + SSE) |
+
+Variables de entorno en Vercel (ver `client/.env.example`):
+
+- **Contacto:** `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE`, `SMTP_USER`, `SMTP_PASS`, `CONTACT_EMAIL`
+- **Chat:** `LLM_BASE_URL`, `LLM_API_KEY`, `LLM_MODEL`
+- **Rate limit global (recomendado en producción):** `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`
+
+Sin SMTP, `/api/contact` responde **503** y el frontend ofrece `mailto:`. Sin LLM o sin Upstash en producción, el chat responde **503** y la UI muestra el asistente pausado.
+
+### Desarrollo local (React + HMR)
+
+```bash
+cd client
+npm install
+npm run dev        # http://localhost:5173
+```
+
+En local, `/api/*` se puede probar con `vercel dev` desde `client/` o apuntando el proxy de Vite al backend legacy (ver abajo).
+
+### Servidor Express (legacy / solo local)
 
 ```bash
 cd server
@@ -16,102 +43,50 @@ npm install
 npm start          # http://localhost:8080
 ```
 
-El servidor sirve automáticamente el **build de React** (`client/dist`) si existe; si no, cae a la versión vanilla de la raíz.
-
-### Desarrollo (React con HMR + proxy al backend)
+Sirve el **build de React** (`client/dist`) si existe; si no, la versión vanilla de la raíz. Útil para probar contacto con el mismo stack SMTP que antes; **no es el runtime de Vercel**.
 
 ```bash
-cd client
-npm install
-npm run dev        # http://localhost:5173 (proxy /data y /api → :8080)
-cd ../server
-npm start          # backend en paralelo
+cd client && npm run build
+cd ../server && npm start
 ```
+
+Con `npm run dev` en `client/`, Vite hace proxy de `/data` y `/api` a `:8080` si levantás `server` en paralelo.
 
 ### Sin backend (estático)
 
 ```bash
-cd client && npm run build   # genera client/dist
-# luego abrí client/dist/index.html o servilo con cualquier estático
+cd client && npm run build
+# abrí client/dist/index.html o servilo como estático
 ```
 
-En este modo el formulario abre un `mailto:` con los datos precargados (sin envío real).
-
-#### Configurar email (SMTP)
-
-```bash
-cd server
-cp .env.example .env
-# completar SMTP_HOST, SMTP_USER, SMTP_PASS, CONTACT_EMAIL
-```
-
-Sin configuración, la web sigue funcionando con el fallback de inbox.
+El formulario cae en `mailto:` si la API no está disponible.
 
 ## 📁 Estructura
 
 ```
-├── client/                 # ⭐ Frontend React + Vite (componentes, context, hooks, styles)
-├── server/                 # Node.js (Express + Nodemailer) — API + sirve el build
+├── client/                 # ⭐ React + Vite + api/ (Vercel)
+├── server/                 # Express legacy (local)
 ├── data/
-│   └── projects.json       # ⭐ FUENTE CANÓNICA DE DATOS (editar acá)
-├── index.html, css/, js/   # Versión vanilla (respaldo, sin React)
-└── cv.html                 # CV imprimible (compartido por ambos frontends)
+│   └── projects.json       # ⭐ Fuente canónica de datos
+├── index.html, css/, js/   # Versión vanilla (respaldo)
+└── cv.html                 # CV imprimible
 ```
 
 ## ✏️ Cómo editar los datos
 
-Todo el contenido se centraliza en **`data/projects.json`**. El frontend React lo carga vía `fetch` y usa `client/src/data/fallback.js` si no hay servidor. La versión vanilla usa `data/projects.js` como fallback.
-
-- `ANALYTICS.ga4Id` → ID de Google Analytics 4. `""` = desactivado.
-- `PROFILE` → nombre, nivel, experiencia, bio, estado
-- `BADGES` → medallas de stack
-- `PROJECT_BOXES` → cajas y proyectos (problema/solución/resultado, stack, demo, github)
-- `SERVICES` → servicios de la sección Servicios (el campo `type` pre-selecciona el formulario de contacto)
-- `CONTACT_INFO` → email, linkedin, github, CV
-- `SKILLS_LIST` → stack para la terminal y el CV
-
-Reemplazá los valores entre `[]` manteniendo la estructura.
+Todo el contenido se centraliza en **`data/projects.json`**. React carga vía `fetch` con fallback `client/src/data/fallback.js`. La vanilla usa `data/projects.js`.
 
 ## 🎮 Funcionalidades
 
-- **Temas:** ARCADE (default, brillante) / Blue / Dark / Konami (persistidos en LocalStorage)
-- **Boot screen** power-on con logo y barra de progreso al cargar
-- **Sprites pixel art propios** (SVG por grilla): entrenador, proyectos, cajas, partículas
-- **Overlay CRT/scanlines** con toggle en el header (persistido)
-- **Hero vivo:** partículas flotantes, título con gradiente, sprite animado, botón bevel 3D
-- **PC de Almacenamiento:** 3 cajas, grilla 5x3, info bar, sprites animados, modal con detalles
-- **Servicios:** cards con rareza + CTA "Iniciar intercambio" que scrollea a contacto y pre-selecciona el tipo de proyecto
-- **Contacto:** PokéNav (dispositivo) + máquina de intercambio (formulario validado + backend o mailto)
-- **CV en PDF:** `cv.html` imprimible
-- **Cursor pixelado** + hit-flash + scroll reveal con stagger
-- **Easter eggs:**
-  - Presioná `T` para abrir la terminal retro (`help | projects | skills | about | contact | cv | clear`)
-  - Código Konami `↑ ↑ ↓ ↓ ← → ← → B A`: tema sorpresa + **confetti pixelado**
-- Sonidos 8-bit con mute + persistencia
-- Google Analytics 4 configurable (`ANALYTICS.ga4Id`)
-- Responsive (375px → 1920px) + `prefers-reduced-motion`
+- Temas ARCADE / Blue / Dark / Konami, boot screen, sprites, CRT, contacto PokéNav + trade machine
+- Chat Profesor Oak (`/api/chat`) con cuota y rate limit
+- Backend de contacto en Vercel (`/api/contact`) o Express local en `server/`
+- Konami, terminal (`T`), GA4 configurable, responsive y `prefers-reduced-motion`
 
-## ✅ Checklist de entrega
+## ✅ CI (client/)
 
-- [x] Migración a **React + Vite** (componentes, context, hooks) — vanilla queda como respaldo
-- [x] **Overhaul visual arcade:** paleta brillante, sprites pixel art, boot screen, CRT toggle
-- [x] Header funcional (3 temas, CRT, mute) + hero con partículas y título gradiente
-- [x] Ficha de entrenador con sprite animado, EXP shimmer y medallas
-- [x] PC de almacenamiento con info bar, sprites y modal dual-screen
-- [x] Sección Servicios conectada al formulario de contacto + Contacto PokéNav/trade machine
-- [x] Backend de contacto (Express + Nodemailer + fallback inbox + rate limit)
-- [x] Konami con confetti + terminal (`T`) + cursor pixel + hit-flash
-- [x] Datos dinámicos desde JSON + GA4 configurable
-- [x] CV imprimible/PDF
-- [x] Responsive + `prefers-reduced-motion` + accesibilidad
-
-## 🔮 Próximos pasos
-
-- CMS para editar `projects.json` desde una interfaz
-- Suscripción/contacto persistido en base de datos
-- Blog con artículos completos
-- TypeScript + testing (Vitest) sobre el frontend React
+En push/PR que toquen `client/`: `npm ci`, `npm run lint`, `npm test`, `npm run build` (ver `.github/workflows/client.yml`).
 
 ---
 
-© 2024 [Lautaro] | Diseño & Código custom
+© 2026 Lautaro Rodríguez | Diseño y código propio

@@ -59,6 +59,13 @@ La skill `/deploy` tiene la secuencia exacta.
 Conventional Commits **en español**: `feat(portafolio):`, `fix(contacto):`, `docs(README):`,
 `chore(deps):`. No commitear trabajo ajeno que ya esté sin commitear en el árbol.
 
+## Cambios y entrega
+
+- Todo PR agrega su entrada en **`CHANGELOG.md`** (formato STELLA: fecha, Added / Changed / Fixed /
+  Files / Tests).
+- El agente termina en **commit local**; **nunca hace `git push`**. Lautaro hace el push desde
+  PowerShell.
+
 ## Herramientas del proyecto (no están en el repo global)
 
 - **Skills de deploy / i18n**: `.cursor/skills/` (en el repo).
