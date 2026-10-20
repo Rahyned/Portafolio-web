@@ -13,9 +13,9 @@ export const CONTENT_EN = {
   },
 
   BOXES: {
-    caja1: { label: "CAJA 1: DESARROLLO WEB" },
-    caja2: { label: "CAJA 2: SISTEMAS & APPS" },
-    caja3: { label: "CAJA 3: APPS DE ESCRITORIO (TAURI)" }
+    caja1: { label: "Web" },
+    caja2: { label: "Systems" },
+    caja3: { label: "Desktop" }
   },
 
   PROJECTS: {

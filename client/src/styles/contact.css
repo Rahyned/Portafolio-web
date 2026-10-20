@@ -389,6 +389,15 @@
   line-height: 1.8;
 }
 
+/* Honeypot anti-spam: fuera de pantalla, sin texto visible */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 /* ---------- Mobile ---------- */
 @media (max-width: 900px) {
   .contact-grid {
