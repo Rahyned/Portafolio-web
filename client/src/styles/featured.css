@@ -39,7 +39,7 @@
 .featured-card-meta {
   color: var(--accent-text);
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 14px;
   text-transform: none;
 }
 
@@ -67,9 +67,10 @@
 
 .featured-block h4 {
   font-family: var(--font-pixel);
-  font-size: 10px;
+  font-size: 14px;
   color: var(--accent2);
   margin-bottom: 8px;
+  line-height: 1.5;
 }
 
 .featured-block p {
@@ -87,7 +88,7 @@
 
 .featured-chip {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 14px;
   padding: 4px 8px;
   border: 1px solid var(--border);
   background: var(--bg-primary);

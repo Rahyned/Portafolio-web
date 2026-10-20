@@ -47,7 +47,7 @@
 
 .service-name {
   font-family: var(--font-pixel);
-  font-size: 11px;
+  font-size: 14px;
   color: var(--text-primary);
   line-height: 1.6;
 }
@@ -81,7 +81,7 @@
 .service-include::before {
   content: "▸";
   color: var(--accent2);
-  font-size: 11px;
+  font-size: 14px;
 }
 
 .service-stack {

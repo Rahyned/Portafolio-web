@@ -155,12 +155,13 @@
 
 .trainer-modal-blocktitle {
   font-family: var(--font-pixel);
-  font-size: 11px;
+  font-size: 14px;
   color: var(--accent-text);
   margin-bottom: 14px;
   display: flex;
   align-items: center;
   gap: 8px;
+  line-height: 1.6;
 }
 
 /* Marco exterior tipo foto (NO TOCAR) */
@@ -222,7 +223,7 @@
 
 .trainer-stat {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 14px;
   color: var(--text-secondary);
   display: flex;
   justify-content: space-between;

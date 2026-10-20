@@ -17,7 +17,7 @@
 
 .footer-text {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 14px;
   color: var(--text-secondary);
 }
 
@@ -31,7 +31,8 @@
 .footer-link {
   display: inline-block;
   font-family: var(--font-pixel);
-  font-size: 10px;
+  font-size: 14px;
+  line-height: 1.5;
   color: var(--text-secondary);
   transition: color 0.2s ease, transform 0.2s ease, text-shadow 0.2s ease;
 }
