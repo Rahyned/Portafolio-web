@@ -210,7 +210,22 @@ export const translations = {
     "notfound.cta": "◀ VOLVER AL INICIO",
 
     // Footer
-    "footer.cv": "Descargar CV (PDF)"
+    "footer.cv": "Descargar CV (PDF)",
+
+    // Caso de estudio
+    "case.back": "← Volver a proyectos",
+    "case.capture": "Captura próximamente",
+    "case.kicker": "Caso de estudio",
+    "case.summary": "Resumen",
+    "case.role": "Mi rol",
+    "case.problem": "El problema",
+    "case.built": "Qué construí",
+    "case.architecture": "Arquitectura",
+    "case.decisions": "Decisiones",
+    "case.problems": "Qué salió mal (y cómo lo resolví)",
+    "case.learned": "Qué aprendí",
+    "case.next": "Próximos pasos",
+    "case.captures": "Capturas"
   },
   en: {
     // Header
@@ -423,6 +438,21 @@ export const translations = {
     "notfound.cta": "◀ BACK TO HOME",
 
     // Footer
-    "footer.cv": "Download CV (PDF)"
+    "footer.cv": "Download CV (PDF)",
+
+    // Case study
+    "case.back": "← Back to projects",
+    "case.capture": "Screenshot coming soon",
+    "case.kicker": "Case study",
+    "case.summary": "Summary",
+    "case.role": "My role",
+    "case.problem": "The problem",
+    "case.built": "What I built",
+    "case.architecture": "Architecture",
+    "case.decisions": "Decisions",
+    "case.problems": "What went wrong (and how I fixed it)",
+    "case.learned": "What I learned",
+    "case.next": "Next steps",
+    "case.captures": "Screenshots"
   }
 };

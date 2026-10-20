@@ -1,94 +1,97 @@
 import { CASE_STUDIES } from "../data/caseStudies";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function CaseStudy({ id = "solutionscars" }) {
-  const study = CASE_STUDIES[id];
+  const { lang, t } = useLanguage();
+  const entry = CASE_STUDIES[id];
+  const cs = entry?.[lang] ?? entry?.es;
 
-  if (!study) return null;
+  if (!cs) return null;
 
   return (
     <main className="case-study" id="main">
       <article className="case-wrap">
-        <a className="case-back" href="/#proyectos">← Volver a proyectos</a>
+        <a className="case-back" href="/#proyectos">{t("case.back")}</a>
 
         <header className="case-header">
-          <p className="case-kicker">Caso de estudio</p>
-          <h1 className="case-title">{study.title}</h1>
+          <p className="case-kicker">{t("case.kicker")}</p>
+          <h1 className="case-title">{cs.title}</h1>
         </header>
 
         <section className="case-section">
-          <h2>Resumen</h2>
-          <p>{study.summary}</p>
+          <h2>{t("case.summary")}</h2>
+          <p>{cs.summary}</p>
         </section>
 
         <section className="case-section">
-          <h2>Mi rol</h2>
-          <p>{study.role}</p>
+          <h2>{t("case.role")}</h2>
+          <p>{cs.role}</p>
         </section>
 
         <section className="case-section">
-          <h2>El problema</h2>
-          <p>{study.problem}</p>
+          <h2>{t("case.problem")}</h2>
+          <p>{cs.problem}</p>
         </section>
 
         <section className="case-section">
-          <h2>Qué construí</h2>
-          <p>{study.built}</p>
+          <h2>{t("case.built")}</h2>
+          <p>{cs.built}</p>
         </section>
 
         <section className="case-section">
-          <h2>Arquitectura</h2>
+          <h2>{t("case.architecture")}</h2>
           <ul className="case-arch">
-            {study.architecture.map((item) => (
+            {cs.architecture.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
         </section>
 
         <section className="case-section">
-          <h2>Decisiones</h2>
+          <h2>{t("case.decisions")}</h2>
           <ul>
-            {study.decisions.map((item) => (
+            {cs.decisions.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
         </section>
 
         <section className="case-section">
-          <h2>Qué salió mal (y cómo lo resolví)</h2>
+          <h2>{t("case.problems")}</h2>
           <ul>
-            {study.problems.map((item) => (
+            {cs.problems.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
         </section>
 
         <section className="case-section">
-          <h2>Qué aprendí</h2>
+          <h2>{t("case.learned")}</h2>
           <ul>
-            {study.learned.map((item) => (
+            {cs.learned.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
         </section>
 
         <section className="case-section">
-          <h2>Próximos pasos</h2>
+          <h2>{t("case.next")}</h2>
           <ul>
-            {study.next.map((item) => (
+            {cs.next.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
         </section>
 
         <section className="case-section">
-          <h2>Capturas</h2>
+          <h2>{t("case.captures")}</h2>
           <div className="case-captures">
-            <div className="case-capture">Captura próximamente</div>
-            <div className="case-capture">Captura próximamente</div>
+            <div className="case-capture">{t("case.capture")}</div>
+            <div className="case-capture">{t("case.capture")}</div>
           </div>
         </section>
 
-        <a className="case-back" href="/#proyectos">← Volver a proyectos</a>
+        <a className="case-back" href="/#proyectos">{t("case.back")}</a>
       </article>
     </main>
   );
