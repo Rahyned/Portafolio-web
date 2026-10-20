@@ -62,8 +62,6 @@
     document.getElementById("trainerName").textContent = PROFILE.name;
     document.getElementById("statClass").textContent = PROFILE.class;
     document.getElementById("statLevel").textContent = `${PROFILE.level} / ${PROFILE.maxLevel}`;
-    document.getElementById("statExp").textContent = PROFILE.expYears;
-    document.getElementById("statProjects").textContent = PROFILE.completedProjects;
     document.getElementById("statLocation").textContent = PROFILE.location;
     document.getElementById("expLevelText").textContent = `Nv. ${PROFILE.level}/${PROFILE.maxLevel}`;
     document.getElementById("statusBadge").textContent = PROFILE.status;

@@ -16,8 +16,6 @@
       `<a href="${PORTFOLIO_URL}">${PORTFOLIO_LABEL}</a>`;
     document.getElementById("cvBio").textContent = PROFILE.bio;
     document.getElementById("cvLocation").textContent = PROFILE.location;
-    document.getElementById("cvExp").textContent = `${PROFILE.expYears} años`;
-    document.getElementById("cvProjects").textContent = `${PROFILE.completedProjects} proyectos`;
     document.getElementById("cvStatus").textContent = PROFILE.status;
 
     // Skills

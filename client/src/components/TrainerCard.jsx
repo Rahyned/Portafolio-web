@@ -19,8 +19,6 @@ export default function TrainerCard() {
 
   const stats = [
     { label: t("trainer.stat.level"), value: `${PROFILE.level} / ${PROFILE.maxLevel}` },
-    { label: t("trainer.stat.exp"), value: PROFILE.expYears },
-    { label: t("trainer.stat.projects"), value: PROFILE.completedProjects },
     { label: t("trainer.stat.location"), value: PROFILE.location }
   ];
 
