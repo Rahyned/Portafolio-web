@@ -24,6 +24,7 @@ export const translations = {
     "hero.ctaTeam": "Busco sumarte al equipo",
     "hero.ctaCv": "Descargar CV",
     "hero.exp": "EXP LOADING...",
+    "hero.level": "Nivel {level}/{max}",
 
     // Breadcrumb
     "nav.aria": "Navegación principal",
@@ -36,12 +37,12 @@ export const translations = {
     // TrainerCard
     "trainer.bio.skip": "PRESIONA CUALQUIER TECLA PARA CONTINUAR ▸",
     "trainer.avatar.alt": "Foto pixelada de Lautaro",
-    "trainer.block.data": "🎖️ DATOS DEL ENTRENADOR",
+    "trainer.block.data": "🎖️ DATOS",
     "trainer.stat.level": "NIVEL",
     "trainer.stat.exp": "EXPERIENCIA",
     "trainer.stat.projects": "PROYECTOS",
     "trainer.stat.location": "ZONA",
-    "trainer.block.exp": "⚡ EXPERIENCIA",
+    "trainer.block.exp": "⚡ BARRA DE EXP",
     "trainer.exp.label": "EXP",
     "trainer.exp.level": "Nv. {level}/{max}",
     "trainer.block.badges": "🥇 MEDALLAS — STACK PRINCIPAL",
@@ -232,10 +233,11 @@ export const translations = {
     "hero.aria": "Introduction",
     "hero.typewriter": "Explore my projects and services →",
     "hero.cta": "▶ ENTER THE PC",
-    "hero.ctaSystem": "Necesito un sistema",
-    "hero.ctaTeam": "Busco sumarte al equipo",
-    "hero.ctaCv": "Descargar CV",
+    "hero.ctaSystem": "I need a system",
+    "hero.ctaTeam": "I want to join your team",
+    "hero.ctaCv": "Download CV",
     "hero.exp": "EXP LOADING...",
+    "hero.level": "Level {level}/{max}",
 
     // Breadcrumb
     "nav.aria": "Main navigation",
@@ -248,12 +250,12 @@ export const translations = {
     // TrainerCard
     "trainer.bio.skip": "PRESS ANY KEY TO CONTINUE ▸",
     "trainer.avatar.alt": "Pixel photo of Lautaro",
-    "trainer.block.data": "🎖️ TRAINER DATA",
+    "trainer.block.data": "🎖️ PROFILE",
     "trainer.stat.level": "LEVEL",
     "trainer.stat.exp": "YEARS OF EXP",
     "trainer.stat.projects": "PROJECTS",
     "trainer.stat.location": "LOCATION",
-    "trainer.block.exp": "⚡ EXPERIENCE",
+    "trainer.block.exp": "⚡ XP BAR",
     "trainer.exp.label": "EXP",
     "trainer.exp.level": "Lv. {level}/{max}",
     "trainer.block.badges": "🥇 BADGES — MAIN STACK",
@@ -264,20 +266,20 @@ export const translations = {
     "services.sub": "What I can build for you.",
     "services.cta": "START TRADE →",
 
-    // Proyectos destacados
-    "featured.title": "Proyectos destacados",
-    "featured.sub": "Sistemas y productos que ya usan personas reales.",
-    "featured.problem": "Problema",
-    "featured.built": "Qué hice",
+    // Featured projects
+    "featured.title": "Featured projects",
+    "featured.sub": "Systems and products people already use.",
+    "featured.problem": "Problem",
+    "featured.built": "What I built",
     "featured.stack": "Stack",
-    "featured.result": "Resultado",
+    "featured.result": "Result",
     "featured.links": "Links",
-    "featured.repoPrivate": "Repo privado",
-    "featured.clientPrivate": "privado: datos de cliente",
+    "featured.repoPrivate": "Private repo",
+    "featured.clientPrivate": "private: client data",
 
     // PCStorage
-    "pc.title": "Otros proyectos",
-    "pc.sub": "Más trabajos, experimentos y herramientas.",
+    "pc.title": "Other projects",
+    "pc.sub": "More work, experiments, and tools.",
     "pc.titlebar": "LAUTARO'S PC // PROJECTS",
     "pc.aria.slotEmpty": "Empty slot",
     "pc.aria.project": "Project: {title}",
@@ -421,6 +423,6 @@ export const translations = {
     "notfound.cta": "◀ BACK TO HOME",
 
     // Footer
-    "footer.cv": "Descargar CV (PDF)"
+    "footer.cv": "Download CV (PDF)"
   }
 };

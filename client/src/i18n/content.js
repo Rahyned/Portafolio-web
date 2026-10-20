@@ -6,16 +6,85 @@
 
 export const CONTENT_EN = {
   PROFILE: {
-    class: "Desarrollador de software",
-    status: "⚡ DISPONIBLE PARA PROYECTOS",
-    tagline: "Construyo sistemas que negocios reales usan todos los días, y aprendo a sacarles valor a sus datos.",
-    bio: "Empecé a programar por los videojuegos: quería entender cómo funcionaban por dentro. Soy curioso y creativo, así que arranqué haciendo páginas web y de ahí pasé a proyectos cada vez más grandes. Mis primeros clientes llegaron casi de casualidad, pero confiaron en mí, y hoy un taller mecánico y un laboratorio dental usan todos los días los sistemas que hice para ellos. Me gusta tanto construir software como trabajar con datos, y la IA me atrapó: hoy la mayoría de mis proyectos pasan por ahí. Por eso en 2027 empiezo Ciencia de Datos en la UNR. Lo de Pokémon en este portfolio no es casualidad: es de donde viene todo."
+    class: "Software developer",
+    status: "⚡ OPEN TO PROJECTS",
+    tagline: "I build systems that real businesses run on every day, and I'm learning how to get more out of their data.",
+    quickFacts: [
+      "2 systems in daily use (auto shop and dental lab)",
+      "Rosario or remote",
+      "Open to projects and internships"
+    ],
+    bio: "I got into coding because of video games. I wanted to see how they worked under the hood. Curiosity pulled me in: I started with websites and kept taking on bigger builds. My first clients found me almost by accident, trusted me anyway, and today a mechanic shop and a dental lab run every day on systems I made for them. I like building software as much as working with data, and AI hooked me. Most of what I ship now goes through there. That's why I'm starting a Data Science degree at UNR in 2027. The Pokémon look of this portfolio isn't a gimmick. It's where the whole thing started."
   },
 
   BOXES: {
     caja1: { label: "Web" },
     caja2: { label: "Systems" },
     caja3: { label: "Desktop" }
+  },
+
+  FEATURED_PROJECTS: {
+    solutionscars: {
+      status: "In use",
+      since: "since Mar 2026",
+      problem: "An auto shop that also does CNG and lube work was tracking stock, invoices, and expirations by hand.",
+      built: "A desktop system for customers and vehicles, inventory, intake, sticker expirations, WhatsApp and email alerts, and electronic invoicing through ARCA.",
+      stack: [
+        "Python",
+        "Flet",
+        "SQLAlchemy + Alembic",
+        "SQLite (optional PostgreSQL)",
+        "pyafipws",
+        "ReportLab",
+        "pytest",
+        "GitHub Actions (100% coverage)"
+      ],
+      result: "In daily use at the shop; invoices live in production with ARCA.",
+      links: [
+        { label: "Releases", url: "https://github.com/Rahyned/SolutionsCars-releases-" },
+        { label: "View case study", url: "/proyectos/solutionscars" }
+      ],
+      media: { alt: "Screenshots and video coming soon" }
+    },
+    stella: {
+      status: "In use at RioDent",
+      since: "since Jan 2026",
+      problem: "A dental lab tracked jobs on paper, with no status follow-up or customer accounts.",
+      built: "A PyQt5 desktop app with a FastAPI backend: job statuses, running accounts, JWT roles, PDFs, and Google Drive backups.",
+      result: "The lab uses it every day to track every job.",
+      media: { alt: "Screenshots and video coming soon" }
+    },
+    rag: {
+      title: "RAG Assistant",
+      status: "Demo",
+      problem: "SolutionsCars and STELLA clients kept asking questions that were already answered in the docs.",
+      built: "An assistant that answers from the documentation with hybrid FAISS + BM25 search fused via RRF, cites the PDF page, says when nothing fits, streams replies (SSE), and includes fallbacks and rate limiting.",
+      result: "Public demo up and running.",
+      links: [
+        { label: "Demo", url: "https://rag-proyectos.vercel.app" },
+        { label: "GitHub", url: "https://github.com/Rahyned/Rag-Proyectos-" }
+      ],
+      media: { alt: "Demo of the assistant answering with citations" }
+    },
+    panel: {
+      status: "Personal use",
+      problem: "Notes, study tools, site monitoring, and data experiments were scattered across too many apps.",
+      built: "A control center with Markdown + KaTeX notes, a site monitor with Discord alerts, a study plan with SM-2 flashcards and Pomodoro, an in-browser pandas lab (Pyodide), the RAG assistant built in, and a forecasting section.",
+      result: "I use it every day.",
+      media: { alt: "Video coming soon (private app with login)" }
+    },
+    pronostico: {
+      title: "Car transfer forecast",
+      status: "Deployed",
+      problem: "I wanted to estimate how many cars get transferred each month in Santa Fe.",
+      built: "Using monthly DNRPA Santa Fe transfers (2000–2026), I compared a seasonal baseline, SARIMA, and Prophet. SARIMA(1,1,2)(1,1,1,12) won with 5.29% MAPE against 6.62% for the baseline. The model is 9 KB and served through a FastAPI API in Docker on Render.",
+      result: "Public API with interactive docs.",
+      links: [
+        { label: "API (/docs)", url: "https://pronostico-autos.onrender.com/docs" },
+        { label: "GitHub", url: "https://github.com/Rahyned/pronostico-autos" }
+      ],
+      media: { alt: "Forecast vs. real data" }
+    }
   },
 
   PROJECTS: {
@@ -103,12 +172,12 @@ export const CONTENT_EN = {
   },
 
   SKILLS: [
-    "Lenguajes: Python, JavaScript, SQL",
-    "Backend: FastAPI, Node.js (Express), APIs REST",
+    "Languages: Python, JavaScript, SQL",
+    "Backend: FastAPI, Node.js (Express), REST APIs",
     "Frontend: React, Vite, Tailwind CSS, MUI",
-    "Escritorio: Tauri (Rust), Flet, PyQt5",
-    "IA & datos: IA / RAG, FAISS, BM25, pandas, Prophet",
-    "Bases de datos: PostgreSQL, SQLite, SQLModel, Supabase",
-    "Deploy: Railway, Render y Vercel; Docker, GitHub Actions"
+    "Desktop: Tauri (Rust), Flet, PyQt5",
+    "AI & data: AI / RAG, FAISS, BM25, pandas, Prophet",
+    "Databases: PostgreSQL, SQLite, SQLModel, Supabase",
+    "Deploy: Railway, Render and Vercel; Docker, GitHub Actions"
   ]
 };

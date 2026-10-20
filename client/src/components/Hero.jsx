@@ -47,7 +47,7 @@ export default function Hero({ ready = false }) {
         </div>
 
         <div className="hero-badges" aria-hidden="true">
-          <span className="hero-badges-text">Nivel {PROFILE.level}/{PROFILE.maxLevel}</span>
+          <span className="hero-badges-text">{t("hero.level", { level: PROFILE.level, max: PROFILE.maxLevel })}</span>
         </div>
       </div>
     </section>
