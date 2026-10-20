@@ -66,9 +66,21 @@ Conventional Commits **en español**: `feat(portafolio):`, `fix(contacto):`, `do
 - El agente termina en **commit local**; **nunca hace `git push`**. Lautaro hace el push desde
   PowerShell.
 
+## Agentes y configuración compartida
+
+- **Skills compartidas**: `.agents/skills/` (`brag`, `deploy`, `i18n-check`,
+  `revisar-antes-de-push`). `.cursor/skills/` sigue existiendo como fuente original de Cursor.
+- **Subagentes OpenCode**: `.opencode/agents/` — `investigador` (solo lee y busca, sin bash ni
+  edición), `revisor` (lee y corre lint/tests/build, sin editar) y `programador` (principal, edita,
+  con push prohibido).
+- **Config**: `opencode.json` define el modelo por defecto, registra `.agents/skills` y deniega
+  `git push*` y la lectura de `.env*`.
+- **Memoria**: `MEMORIA.md` guarda las decisiones del proyecto y los errores a no repetir. Leelo
+  antes de empezar una tarea.
+
 ## Herramientas del proyecto (no están en el repo global)
 
-- **Skills de deploy / i18n**: `.cursor/skills/` (en el repo).
+- **Skills de deploy / i18n**: `.cursor/skills/` (original) y `.agents/skills/` (compartida).
 - **Subagents**: `.cursor/agents/` — `verifier` (audita sin tocar), `code-reviewer`,
   `pixel-art` (sprites).
 - **Hooks**: `.cursor/hooks.json` — lint (oxlint) y validación de JSON corren solos tras cada
