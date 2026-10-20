@@ -90,9 +90,9 @@ button {
 }
 
 h1, h2, h3 {
-  font-family: var(--font-body);
-  font-weight: 700;
-  line-height: 1.15;
+  font-family: var(--font-pixel);
+  font-weight: 400;
+  line-height: 1.4;
 }
 
 p {
