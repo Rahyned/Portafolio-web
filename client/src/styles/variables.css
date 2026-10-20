@@ -4,7 +4,7 @@
    ============================================================ */
 
 :root {
-  --font-pixel: "Press Start 2P", "Courier New", monospace;
+  --font-pixel: "JetBrains Mono", "Fira Code", "Courier New", monospace;
   --font-mono: "JetBrains Mono", "Fira Code", "Courier New", monospace;
   --font-body: "Inter", "Roboto", system-ui, sans-serif;
 
@@ -39,7 +39,7 @@
   --bg-secondary: #ECE7DD;
   --bg-tertiary: #DFD8CA;
   --text-primary: #221F1A;
-  --text-secondary: #5A5248;
+  --text-secondary: #4A4238;
   --accent: #FF4D5E;
   --accent-bright: #FF8A4C;
   --accent-text: #A82639;

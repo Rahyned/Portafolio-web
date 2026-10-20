@@ -358,7 +358,7 @@
 
 .trainer-bio {
   font-family: var(--font-body);
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.7;
   color: var(--text-secondary);
 }
@@ -390,6 +390,6 @@
     padding: 16px;
   }
   .trainer-bio {
-    font-size: 12px;
+    font-size: 16px;
   }
 }

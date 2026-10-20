@@ -9,8 +9,9 @@
 }
 
 .section-title {
-  font-family: var(--font-pixel);
-  font-size: 16px;
+  font-family: var(--font-body);
+  font-size: 24px;
+  font-weight: 700;
   color: var(--text-primary);
   text-align: center;
   margin-bottom: 8px;
@@ -18,7 +19,7 @@
 
 .section-sub {
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-secondary);
   text-align: center;
   margin-bottom: 28px;
