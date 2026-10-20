@@ -18,18 +18,20 @@ import BootScreen from "./components/BootScreen";
 import CrtOverlay from "./components/CrtOverlay";
 import KonamiConfetti from "./components/KonamiConfetti";
 import NotFound from "./components/NotFound";
+import CaseStudy from "./components/CaseStudy";
 
 // Overlays pesados: van en su propio chunk y se montan después del boot,
 // para que no frenen el primer paint ni queden en el DOM durante el arranque.
 const Terminal = lazy(() => import("./components/Terminal"));
 const OakChat = lazy(() => import("./components/OakChat"));
 
-// Rutas que la SPA conoce: home y archivos estáticos (con extensión).
+// Rutas que la SPA conoce: home, caso de estudio y archivos estáticos.
 // Todo lo demás (catch-all rewrite de Vercel) es un 404 in-app.
+const PATH = window.location.pathname.replace(/\/$/, "");
+const IS_CASE_STUDY = PATH === "/proyectos/solutionscars";
 const IS_NOT_FOUND = (() => {
-  const p = window.location.pathname;
-  if (p === "/" || p === "/index.html") return false;
-  return !/\.[a-z0-9]+$/i.test(p);
+  if (PATH === "" || PATH === "/index.html" || IS_CASE_STUDY) return false;
+  return !/\.[a-z0-9]+$/i.test(PATH);
 })();
 
 const KONAMI = [
@@ -90,23 +92,27 @@ export default function App() {
       {confettiKey > 0 && <KonamiConfetti key={confettiKey} />}
 
       <Header />
-      <main id="main">
-        {IS_NOT_FOUND ? (
-          <NotFound />
-        ) : (
-          <>
-            <Hero ready={booted} />
-            <Breadcrumb />
-            <TrainerCard />
-            <Services />
-            <FeaturedProjects />
-            <PCStorage />
-            <Contact />
-          </>
-        )}
-      </main>
+      {IS_CASE_STUDY ? (
+        <CaseStudy />
+      ) : (
+        <main id="main">
+          {IS_NOT_FOUND ? (
+            <NotFound />
+          ) : (
+            <>
+              <Hero ready={booted} />
+              <Breadcrumb />
+              <TrainerCard />
+              <Services />
+              <FeaturedProjects />
+              <PCStorage />
+              <Contact />
+            </>
+          )}
+        </main>
+      )}
       <Footer />
-      {booted && !IS_NOT_FOUND && (
+      {!IS_CASE_STUDY && booted && !IS_NOT_FOUND && (
         <Suspense fallback={null}>
           <Terminal />
           <OakChat />
@@ -114,7 +120,7 @@ export default function App() {
       )}
       <Toast message={toast.message} show={toast.show} />
 
-      {!booted && !IS_NOT_FOUND && <BootScreen onDone={() => setBooted(true)} />}
+      {!IS_CASE_STUDY && !booted && !IS_NOT_FOUND && <BootScreen onDone={() => setBooted(true)} />}
     </>
   );
 }
