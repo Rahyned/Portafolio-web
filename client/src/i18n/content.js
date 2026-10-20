@@ -6,16 +6,16 @@
 
 export const CONTENT_EN = {
   PROFILE: {
-    class: "Web & Systems Developer",
-    status: "⚡ AVAILABLE FOR PROJECTS",
-    tagline: "Web & Systems Developer | Automation • Architecture • APIs",
-    bio: "I'm a web & systems developer specialized in desktop apps (Tauri and Python), e-invoicing ERPs and production websites. I build clean-code solutions: automations, integrations and deployments."
+    class: "Desarrollador de software",
+    status: "⚡ DISPONIBLE PARA PROYECTOS",
+    tagline: "Construyo sistemas que negocios reales usan todos los días, y aprendo a sacarles valor a sus datos.",
+    bio: "Empecé a programar por los videojuegos: quería entender cómo funcionaban por dentro. Soy curioso y creativo, así que arranqué haciendo páginas web y de ahí pasé a proyectos cada vez más grandes. Mis primeros clientes llegaron casi de casualidad, pero confiaron en mí, y hoy un taller mecánico y un laboratorio dental usan todos los días los sistemas que hice para ellos. Me gusta tanto construir software como trabajar con datos, y la IA me atrapó: hoy la mayoría de mis proyectos pasan por ahí. Por eso en 2027 empiezo Ciencia de Datos en la UNR. Lo de Pokémon en este portfolio no es casualidad: es de donde viene todo."
   },
 
   BOXES: {
-    caja1: { label: "BOX 1: WEB DEVELOPMENT" },
-    caja2: { label: "BOX 2: MANAGEMENT SYSTEMS & ERPs" },
-    caja3: { label: "BOX 3: DESKTOP APPS (TAURI)" }
+    caja1: { label: "CAJA 1: DESARROLLO WEB" },
+    caja2: { label: "CAJA 2: SISTEMAS & APPS" },
+    caja3: { label: "CAJA 3: APPS DE ESCRITORIO (TAURI)" }
   },
 
   PROJECTS: {
@@ -50,22 +50,6 @@ export const CONTENT_EN = {
       problem: "I needed a tool to create animated pixel-art sprites directly in the browser, with no installs and no accounts.",
       solution: "Sprite editor in React 19 + Vite 8 with brush, eraser, fill, line, rectangle, ellipse and selection; layers with blend modes, animated frames with onion skin and per-frame duration, preset palettes (Pico-8, C64, DB32…), PNG/JPG import, symmetry, undo/redo and autosave.",
       result: "Deployed to GitHub Pages with CI (lint + unit + E2E) on every push; exports PNG, sprite sheet, animated GIF, SVG, JSON and copy-paste-ready JS code, plus a shareable link that embeds the project."
-    },
-    solutionscars: {
-      category: "Management Systems & ERPs",
-      timeline: "2026",
-      status: "In use",
-      problem: "Mechanic/GNC/lubricenter workshop without digital management: uncontrolled inventory, manual invoicing and receipts, no control over GNC/P.H. sticker expirations or customer notifications.",
-      solution: "Desktop ERP with customer and vehicle management, inventory with stock alerts, AFIP invoicing, vehicle intake, expirations, PDF/Excel export, WhatsApp/mail notification engine and role-based auditing.",
-      result: "In real use at the workshop: 542 tests with automated CI; invoicing, inventory, expirations and notifications digitized."
-    },
-    stella: {
-      category: "Management Systems & ERPs",
-      timeline: "In progress (2026)",
-      status: "In development",
-      problem: "Dental laboratory with paper work orders, no traceability, no control over current accounts or suppliers/products.",
-      solution: "Desktop ERP (PyQt5) with REST API (FastAPI): customers, suppliers, products with differentiated pricing, jobs with states, current accounts, metrics dashboard and PDF generation (order, ticket, receipt), with roles and JWT.",
-      result: "Comprehensive laboratory system: 1234 tests passing, with master station, query and reception modules."
     },
     butterflies: {
       category: "Desktop Apps (Tauri)",
@@ -119,11 +103,12 @@ export const CONTENT_EN = {
   },
 
   SKILLS: [
-    "Frontend: React, Next.js, Vite, Tailwind CSS, MUI, TypeScript, HTML5/CSS3",
-    "Desktop: Tauri (Rust), Flet, PyQt5",
-    "Backend: Python (FastAPI), Node.js (Express), REST APIs",
-    "Databases: PostgreSQL, SQLite, SQLAlchemy, SQLModel",
-    "Systems: AFIP invoicing, transactional emails (Brevo), WhatsApp API, PDF/Excel",
-    "DevOps: Git/GitHub Actions, Railway, Vercel, PyInstaller/Inno Setup, pytest + CI"
+    "Lenguajes: Python, JavaScript, SQL",
+    "Backend: FastAPI, Node.js (Express), APIs REST",
+    "Frontend: React, Vite, Tailwind CSS, MUI",
+    "Escritorio: Tauri (Rust), Flet, PyQt5",
+    "IA & datos: IA / RAG, FAISS, BM25, pandas, Prophet",
+    "Bases de datos: PostgreSQL, SQLite, SQLModel, Supabase",
+    "Deploy: Railway, Render y Vercel; Docker, GitHub Actions"
   ]
 };
