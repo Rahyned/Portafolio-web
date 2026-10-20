@@ -209,7 +209,7 @@ export const translations = {
     "notfound.cta": "◀ VOLVER AL INICIO",
 
     // Footer
-    "footer.cv": "📄 CV DESCARGABLE"
+    "footer.cv": "Descargar CV (PDF)"
   },
   en: {
     // Header
@@ -421,6 +421,6 @@ export const translations = {
     "notfound.cta": "◀ BACK TO HOME",
 
     // Footer
-    "footer.cv": "📄 DOWNLOADABLE CV"
+    "footer.cv": "Descargar CV (PDF)"
   }
 };

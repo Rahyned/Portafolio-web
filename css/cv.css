@@ -29,8 +29,8 @@ body {
 }
 
 .cv-btn {
-  font-family: "Press Start 2P", monospace;
-  font-size: 10px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
   color: #E6EDF3;
   background: #21262D;
   border: 2px solid #58A6FF;
@@ -66,30 +66,29 @@ body {
 }
 
 .cv-name {
-  font-family: "Press Start 2P", monospace;
-  font-size: 26px;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
   color: #E6EDF3;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 
 .cv-class {
   font-family: "JetBrains Mono", monospace;
   font-size: 14px;
   color: #58A6FF;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
-.cv-tagline {
+.cv-meta {
   font-family: "JetBrains Mono", monospace;
   font-size: 12px;
   color: #8B949E;
+  line-height: 1.7;
 }
 
-.cv-avatar {
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-size: 48px;
+.cv-meta a {
+  color: #E6EDF3;
 }
 
 /* ---------- Secciones ---------- */
@@ -98,8 +97,10 @@ body {
 }
 
 .cv-section-title {
-  font-family: "Press Start 2P", monospace;
-  font-size: 12px;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   color: #58A6FF;
   margin-bottom: 12px;
   padding-bottom: 6px;
@@ -120,7 +121,7 @@ body {
 }
 
 .cv-facts dt {
-  font-family: "Press Start 2P", monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 10px;
   color: #8B949E;
   margin-bottom: 2px;
@@ -151,9 +152,56 @@ body {
   color: #58A6FF;
 }
 
+.cv-job {
+  border-left: 3px solid #58A6FF;
+  padding-left: 14px;
+}
+
+.cv-job-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.cv-job-title {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #E6EDF3;
+}
+
+.cv-job-role {
+  font-size: 13px;
+  color: #8B949E;
+  margin-bottom: 8px;
+}
+
+.cv-job-list {
+  list-style: none;
+  display: grid;
+  gap: 5px;
+}
+
+.cv-job-list li {
+  font-size: 13px;
+  color: #C9D1D9;
+  line-height: 1.55;
+  padding-left: 14px;
+  position: relative;
+}
+
+.cv-job-list li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: #58A6FF;
+}
+
 .cv-projects {
   display: grid;
-  gap: 14px;
+  gap: 12px;
 }
 
 .cv-project {
@@ -182,16 +230,16 @@ body {
   white-space: nowrap;
 }
 
+.cv-project-context {
+  font-size: 13px;
+  color: #C9D1D9;
+  margin-bottom: 3px;
+}
+
 .cv-project-result {
   font-size: 13px;
   color: #C9D1D9;
-  margin-bottom: 4px;
-}
-
-.cv-project-stack {
-  font-family: "JetBrains Mono", monospace;
-  font-size: 11px;
-  color: #58A6FF;
+  margin-bottom: 0;
 }
 
 .cv-contact li {
@@ -211,11 +259,18 @@ body {
 /* ============================================================
    PRINT / PDF
    ============================================================ */
+@page {
+  size: A4;
+  margin: 12mm;
+}
+
 @media print {
   body {
     background: #fff;
     color: #000;
     padding: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
   .no-print {
@@ -226,11 +281,12 @@ body {
     max-width: 100%;
     background: #fff;
     border: none;
-    padding: 8mm;
+    padding: 0;
   }
 
   .cv-name,
-  .cv-project-title {
+  .cv-project-title,
+  .cv-job-title {
     color: #000;
   }
 
@@ -240,27 +296,36 @@ body {
   }
 
   .cv-class,
-  .cv-project-stack {
+  .cv-meta a {
     color: #333;
   }
 
-  .cv-tagline,
+  .cv-meta,
+  .cv-job-role,
   .cv-project-date,
   .cv-facts dt,
   .cv-footer,
-  .cv-list li::before {
+  .cv-list li::before,
+  .cv-job-list li::before {
     color: #555;
   }
 
   .cv-bio,
   .cv-facts dd,
   .cv-list li,
+  .cv-job-list li,
+  .cv-project-context,
   .cv-project-result {
     color: #111;
   }
 
   .cv-header {
     border-bottom: 3px solid #000;
+  }
+
+  .cv-project,
+  .cv-job {
+    break-inside: avoid;
   }
 
   .cv-project {
