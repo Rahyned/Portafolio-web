@@ -20,6 +20,9 @@ export const translations = {
     "hero.aria": "Presentación",
     "hero.typewriter": "Explora mis proyectos y servicios →",
     "hero.cta": "▶ ENTRAR A LA PC",
+    "hero.ctaSystem": "Necesito un sistema",
+    "hero.ctaTeam": "Busco sumarte al equipo",
+    "hero.ctaCv": "Descargar CV",
     "hero.exp": "EXP LOADING...",
 
     // Breadcrumb
@@ -218,6 +221,9 @@ export const translations = {
     "hero.aria": "Introduction",
     "hero.typewriter": "Explore my projects and services →",
     "hero.cta": "▶ ENTER THE PC",
+    "hero.ctaSystem": "Necesito un sistema",
+    "hero.ctaTeam": "Busco sumarte al equipo",
+    "hero.ctaCv": "Descargar CV",
     "hero.exp": "EXP LOADING...",
 
     // Breadcrumb
