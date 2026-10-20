@@ -64,7 +64,6 @@ export default function Terminal() {
           { text: `${t("term.about.name")} ${PROFILE.name}` },
           { text: `${t("term.about.class")} ${PROFILE.class}` },
           { text: `${t("term.about.level")} ${PROFILE.level}/${PROFILE.maxLevel}` },
-          { text: t("term.about.exp", { years: PROFILE.expYears, projects: PROFILE.completedProjects }) },
           { text: `${t("term.about.location")} ${PROFILE.location}` },
           { text: `${t("term.about.status")} ${PROFILE.status}`, cls: "warn" }
         ]);

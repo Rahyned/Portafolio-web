@@ -62,13 +62,14 @@
 
 .oak-title {
   font-family: var(--font-pixel);
-  font-size: 13px;
+  font-size: 12px;
+  line-height: 1.5;
   color: var(--accent-text);
   letter-spacing: 1px;
 }
 
 .oak-sub {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--text-secondary);
 }
 
@@ -275,7 +276,7 @@
 .oak-ai-note {
   margin: 0;
   padding: 0 12px 10px;
-  font-size: 12px;
+  font-size: 14px;
   text-align: center;
   color: var(--text-secondary);
 }

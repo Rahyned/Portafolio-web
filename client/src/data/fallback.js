@@ -13,7 +13,6 @@ export const FALLBACK_DATA = {
     class: "Desarrollador de software",
     level: 22,
     maxLevel: 50,
-    expYears: "2+",
     completedProjects: "8",
     location: "Rosario, Argentina",
     status: "⚡ DISPONIBLE PARA PROYECTOS",

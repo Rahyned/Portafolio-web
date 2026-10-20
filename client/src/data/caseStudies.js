@@ -4,8 +4,8 @@ export const CASE_STUDIES = {
       title: "SolutionsCars",
       summary: "SolutionsCars es el sistema de gestión de escritorio de un taller mecánico, de GNC y lubricentro de Rosario. Lo usan todos los días desde marzo de 2026 y factura en producción con ARCA.",
       role: "Lo diseñé y desarrollé solo, usando herramientas de IA para programar; yo definí la arquitectura, revisé el código, armé los tests y tomé las decisiones técnicas.",
-      problem: "stock, facturas, recibos y vencimientos de obleas GNC/PH a mano; sin avisos a clientes.",
-      built: "clientes y vehículos, inventario, recepción, vencimientos, avisos por WhatsApp y mail, facturación electrónica, reportes PDF/Excel, backups.",
+      problem: "Stock, facturas, recibos y vencimientos de obleas GNC/PH a mano; sin avisos a clientes.",
+      built: "Clientes y vehículos, inventario, recepción, vencimientos, avisos por WhatsApp y mail, facturación electrónica, reportes PDF/Excel, backups.",
       architecture: [
         "Vistas en Flet → servicios → SQLite local (PostgreSQL opcional)",
         "Facturación con ARCA (WSFE) vía pyafipws",
@@ -44,8 +44,8 @@ export const CASE_STUDIES = {
       title: "SolutionsCars",
       summary: "SolutionsCars is the desktop management system for a mechanic shop in Rosario that also does CNG and lube work. They have used it every day since March 2026, and it invoices in production with ARCA.",
       role: "I designed and built it on my own, using AI tools to code. I defined the architecture, reviewed the code, wrote the tests, and made the technical calls.",
-      problem: "stock, invoices, receipts, and CNG/PH sticker expirations tracked by hand; no customer alerts.",
-      built: "customers and vehicles, inventory, intake, expirations, WhatsApp and email alerts, electronic invoicing, PDF/Excel reports, backups.",
+      problem: "Stock, invoices, receipts, and CNG/PH sticker expirations tracked by hand; no customer alerts.",
+      built: "Customers and vehicles, inventory, intake, expirations, WhatsApp and email alerts, electronic invoicing, PDF/Excel reports, backups.",
       architecture: [
         "Flet views → services → local SQLite (optional PostgreSQL)",
         "Invoicing with ARCA (WSFE) via pyafipws",

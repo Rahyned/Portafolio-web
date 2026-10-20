@@ -64,7 +64,8 @@
 }
 
 .boot-status {
-  font-size: 11px;
+  font-size: 12px;
+  line-height: 1.5;
   color: #FFFFFF;
   min-height: 18px;
 }
@@ -101,7 +102,8 @@
 }
 
 .boot-hint {
-  font-size: 10px;
+  font-size: 12px;
+  line-height: 1.5;
   color: #FFFFFF;
   opacity: 0.8;
 }
@@ -121,7 +123,7 @@
     font-size: 15px;
   }
   .boot-status {
-    font-size: 11px;
+    font-size: 12px;
   }
   .boot-bar {
     width: min(320px, 84vw);

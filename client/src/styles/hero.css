@@ -160,7 +160,7 @@
 }
 
 .btn-retro.btn-big {
-  font-size: 13px;
+  font-size: 14px;
   padding: 18px 30px;
 }
 
@@ -169,7 +169,7 @@
   align-items: center;
   gap: 12px;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 14px;
   color: var(--text-secondary);
 }
 
@@ -271,7 +271,7 @@
     font-size: 48px;
   }
   .hero-class {
-    font-size: 13px;
+    font-size: 14px;
   }
   .hero-tagline {
     font-size: 17px;

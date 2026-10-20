@@ -53,7 +53,7 @@
 
 .pokenav-lid-text {
   font-family: var(--font-pixel);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 2px;
 }
 
@@ -145,7 +145,7 @@
 
 .contact-item-label {
   font-family: var(--font-pixel);
-  font-size: 10px;
+  font-size: 12px;
   color: var(--text-secondary);
   margin-bottom: 8px;
 }
@@ -166,7 +166,7 @@
 
 .btn-mini {
   font-family: var(--font-pixel);
-  font-size: 10px;
+  font-size: 12px;
   color: var(--text-primary);
   background: var(--btn-bg);
   border: 2px solid var(--border);
@@ -197,7 +197,7 @@
 .form-group label {
   display: block;
   font-family: var(--font-pixel);
-  font-size: 10px;
+  font-size: 12px;
   color: var(--text-secondary);
   margin-bottom: 6px;
 }
@@ -205,7 +205,7 @@
 .form-group-label {
   display: block;
   font-family: var(--font-pixel);
-  font-size: 10px;
+  font-size: 12px;
   color: var(--text-secondary);
   margin-bottom: 6px;
 }
@@ -215,7 +215,7 @@
 .form-textarea {
   width: 100%;
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-primary);
   background: var(--bg-primary);
   border: 2px solid var(--border);
@@ -251,7 +251,7 @@
 
 .radio-option {
   font-family: var(--font-pixel);
-  font-size: 10px;
+  font-size: 12px;
   color: var(--text-secondary);
   border: 2px solid var(--border);
   border-radius: var(--radius);
@@ -310,7 +310,8 @@
 .btn-submit {
   width: 100%;
   font-family: var(--font-pixel);
-  font-size: 10px;
+  font-size: 14px;
+  line-height: 1.5;
   color: var(--action-text);
   background: var(--action-bg);
   border: 2px solid var(--action-bright);

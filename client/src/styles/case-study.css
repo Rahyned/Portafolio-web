@@ -27,7 +27,8 @@
 
 .case-kicker {
   font-family: var(--font-pixel);
-  font-size: 10px;
+  font-size: 12px;
+  line-height: 1.5;
   color: var(--accent-text);
   text-transform: uppercase;
   margin-bottom: 12px;
@@ -89,7 +90,7 @@
   background: var(--bg-secondary);
   color: var(--text-secondary);
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 14px;
   text-align: center;
   padding: 24px;
 }

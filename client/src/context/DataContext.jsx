@@ -17,6 +17,10 @@ export function localizeData(data, lang) {
     };
   }
 
+  if (Array.isArray(localized.BADGES) && Array.isArray(CONTENT_EN.BADGES)) {
+    localized.BADGES = CONTENT_EN.BADGES;
+  }
+
   if (Array.isArray(localized.FEATURED_PROJECTS) && CONTENT_EN.FEATURED_PROJECTS) {
     localized.FEATURED_PROJECTS = localized.FEATURED_PROJECTS.map((project) => {
       const projEn = CONTENT_EN.FEATURED_PROJECTS[project.id];

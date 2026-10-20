@@ -92,7 +92,7 @@
 
 .service-tag {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 14px;
   color: var(--accent-text);
   background: var(--bg-tertiary);
   border: 1px solid var(--border);

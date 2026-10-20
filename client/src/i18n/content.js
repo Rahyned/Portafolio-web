@@ -23,6 +23,16 @@ export const CONTENT_EN = {
     caja3: { label: "Desktop" }
   },
 
+  BADGES: [
+    { name: "Python", icon: "🐍" },
+    { name: "FastAPI", icon: "⚡" },
+    { name: "React", icon: "⚛️" },
+    { name: "Flet / PyQt", icon: "🖥️" },
+    { name: "Tauri", icon: "🦀" },
+    { name: "AI / RAG", icon: "🤖" },
+    { name: "Supabase", icon: "🟢" }
+  ],
+
   FEATURED_PROJECTS: {
     solutionscars: {
       status: "In use",

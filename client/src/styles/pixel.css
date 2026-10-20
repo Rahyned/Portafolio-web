@@ -56,7 +56,7 @@ html.pixel-cursor-on select {
   color: rgba(27, 27, 47, 0.85);
   margin: 0;
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 14px;
 }
 
 @media (max-width: 640px) {
