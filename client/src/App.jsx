@@ -8,6 +8,7 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Breadcrumb from "./components/Breadcrumb";
 import TrainerCard from "./components/TrainerCard";
+import FeaturedProjects from "./components/FeaturedProjects";
 import PCStorage from "./components/PCStorage";
 import Services from "./components/Services";
 import Contact from "./components/Contact";
@@ -98,6 +99,7 @@ export default function App() {
             <Breadcrumb />
             <TrainerCard />
             <Services />
+            <FeaturedProjects />
             <PCStorage />
             <Contact />
           </>

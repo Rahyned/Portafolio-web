@@ -1,0 +1,126 @@
+/* ============================================================
+   PROYECTOS DESTACADOS
+   ============================================================ */
+
+.featured-section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 70px 40px 30px;
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.featured-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--bg-secondary);
+  border: var(--border-thick) solid var(--border);
+  box-shadow: 4px 4px 0 var(--shadow);
+  padding: 24px;
+  color: var(--text-primary);
+}
+
+.featured-card-head {
+  border-bottom: 2px dashed var(--border);
+  padding-bottom: 12px;
+}
+
+.featured-card-title {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.featured-card-meta {
+  color: var(--accent-text);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: none;
+}
+
+.featured-media-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 160px;
+  padding: 24px;
+  border: 2px dashed var(--border);
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  text-align: center;
+}
+
+.featured-media {
+  width: 100%;
+  height: auto;
+  border: 2px solid var(--border);
+  object-fit: contain;
+  background: var(--bg-primary);
+}
+
+.featured-block h4 {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: var(--accent2);
+  margin-bottom: 8px;
+}
+
+.featured-block p {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.featured-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.featured-chip {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.featured-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.featured-links .btn-link {
+  display: inline-block;
+}
+
+.featured-private {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+@media (min-width: 1024px) {
+  .featured-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .featured-section {
+    padding: 50px 20px 20px;
+  }
+  .featured-card {
+    padding: 18px;
+  }
+}

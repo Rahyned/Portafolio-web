@@ -14,6 +14,7 @@ import "./styles/header.css";
 import "./styles/hero.css";
 import "./styles/breadcrumb.css";
 import "./styles/trainer-card.css";
+import "./styles/featured.css";
 import "./styles/pc-storage.css";
 import "./styles/services.css";
 import "./styles/contact.css";

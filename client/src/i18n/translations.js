@@ -52,9 +52,20 @@ export const translations = {
     "services.sub": "Lo que puedo construir para vos.",
     "services.cta": "INICIAR INTERCAMBIO →",
 
+    // Proyectos destacados
+    "featured.title": "Proyectos destacados",
+    "featured.sub": "Sistemas y productos que ya usan personas reales.",
+    "featured.problem": "Problema",
+    "featured.built": "Qué hice",
+    "featured.stack": "Stack",
+    "featured.result": "Resultado",
+    "featured.links": "Links",
+    "featured.repoPrivate": "Repo privado",
+    "featured.clientPrivate": "privado: datos de cliente",
+
     // PCStorage
-    "pc.title": "SISTEMA DE ALMACENAMIENTO PC",
-    "pc.sub": "Mis proyectos, guardados como en la PC de Bill.",
+    "pc.title": "Otros proyectos",
+    "pc.sub": "Más trabajos, experimentos y herramientas.",
     "pc.titlebar": "PC DE LAUTARO // PROYECTOS",
     "pc.aria.slotEmpty": "Slot vacío",
     "pc.aria.project": "Proyecto: {title}",
@@ -253,9 +264,20 @@ export const translations = {
     "services.sub": "What I can build for you.",
     "services.cta": "START TRADE →",
 
+    // Proyectos destacados
+    "featured.title": "Proyectos destacados",
+    "featured.sub": "Sistemas y productos que ya usan personas reales.",
+    "featured.problem": "Problema",
+    "featured.built": "Qué hice",
+    "featured.stack": "Stack",
+    "featured.result": "Resultado",
+    "featured.links": "Links",
+    "featured.repoPrivate": "Repo privado",
+    "featured.clientPrivate": "privado: datos de cliente",
+
     // PCStorage
-    "pc.title": "PC STORAGE SYSTEM",
-    "pc.sub": "My projects, stored like in Bill's PC.",
+    "pc.title": "Otros proyectos",
+    "pc.sub": "Más trabajos, experimentos y herramientas.",
     "pc.titlebar": "LAUTARO'S PC // PROJECTS",
     "pc.aria.slotEmpty": "Empty slot",
     "pc.aria.project": "Project: {title}",
