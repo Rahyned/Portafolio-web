@@ -13,6 +13,14 @@ permission:
     "npm run test*": allow
     "npm test*": allow
     "npm run build*": allow
+    "cd client && npm run lint*": allow
+    "cd client && npm run test*": allow
+    "cd client && npm test*": allow
+    "cd client && npm run build*": allow
+    "npm --prefix client run lint*": allow
+    "npm --prefix client run test*": allow
+    "npm --prefix client test*": allow
+    "npm --prefix client run build*": allow
 ---
 
 Sos un auditor. **Verificás, no arreglás.**
