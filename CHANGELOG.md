@@ -6,7 +6,8 @@
 
 - Cinco proyectos destacados con problema, qué se construyó, stack, resultado, estado y links reales en `data/projects.json`, `data/projects.js` y `client/src/data/fallback.js`.
 - Carrusel de proyectos destacados: 2 cartas en escritorio / 1 en celular, auto-avance cada 5 s con bucle sin salto, pausa en hover/foco, flechas, puntitos, swipe, y respeto de `prefers-reduced-motion`.
-- Espacio de media 16:9 en cada carta; si el proyecto declara video, se reproduce muteado en bucle solo cuando la carta está visible (SolutionsCars y STELLA pendientes).
+- Espacio de media 16:9 en cada carta; si el proyecto declara video, se reproduce muteado en bucle solo cuando la carta está visible.
+- Videos demo web de SolutionsCars y STELLA (`*-demo.mp4` + `*-poster.jpg`) en el carrusel.
 - Tests de la lógica del carrusel (avance, bucle y pausa) en `featuredCarouselLogic.test.js`.
 - Sección "Proyectos destacados" con tarjetas y capturas (`rag-demo.gif`, `pronostico.png`) antes de la PC.
 - Caso de estudio de SolutionsCars en `/proyectos/solutionscars` con arquitectura, decisiones, problemas y próximos pasos.

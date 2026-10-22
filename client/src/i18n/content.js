@@ -54,7 +54,7 @@ export const CONTENT_EN = {
         { label: "Releases", url: "https://github.com/Rahyned/SolutionsCars-releases-" },
         { label: "View case study", url: "/proyectos/solutionscars" }
       ],
-      media: { alt: "Screenshots and video coming soon" }
+      media: { alt: "SolutionsCars demo video" }
     },
     stella: {
       status: "In use at RioDent",
@@ -62,7 +62,7 @@ export const CONTENT_EN = {
       problem: "A dental lab tracked jobs on paper, with no status follow-up or customer accounts.",
       built: "A PyQt5 desktop app with a FastAPI backend: job statuses, running accounts, JWT roles, PDFs, and Google Drive backups.",
       result: "The lab uses it every day to track every job.",
-      media: { alt: "Screenshots and video coming soon" }
+      media: { alt: "STELLA demo video" }
     },
     rag: {
       title: "RAG Assistant",

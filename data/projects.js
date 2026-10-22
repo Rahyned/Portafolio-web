@@ -52,7 +52,7 @@ const DEFAULT_DATA = {
         { label: "Releases", url: "https://github.com/Rahyned/SolutionsCars-releases-" },
         { label: "Ver caso de estudio", url: "/proyectos/solutionscars" }
       ],
-      media: { type: "placeholder", src: null, alt: "Capturas y video próximamente" },
+      media: { type: "video", src: "/media/solutionscars-demo.mp4", poster: "/media/solutionscars-poster.jpg", alt: "Video demo de SolutionsCars" },
       private: true,
       caseStudy: "/proyectos/solutionscars"
     },
@@ -66,7 +66,7 @@ const DEFAULT_DATA = {
       stack: ["Python", "PyQt5", "FastAPI", "SQLModel", "JWT", "ReportLab"],
       result: "El laboratorio la usa todos los días para seguir cada trabajo.",
       links: [],
-      media: { type: "placeholder", src: null, alt: "Capturas y video próximamente" },
+      media: { type: "video", src: "/media/stella-demo.mp4", poster: "/media/stella-poster.jpg", alt: "Video demo de STELLA" },
       private: true,
       caseStudy: null
     },

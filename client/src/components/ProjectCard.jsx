@@ -4,7 +4,8 @@ import { useLanguage } from "../context/LanguageContext";
 const MEDIA_SIZE = {
   "/media/rag-demo.gif": { width: 780, height: 560 },
   "/media/pronostico.png": { width: 1320, height: 600 },
-  "/media/stella-16x9.mp4": { width: 1280, height: 720 }
+  "/media/solutionscars-demo.mp4": { width: 1280, height: 720 },
+  "/media/stella-demo.mp4": { width: 1280, height: 720 }
 };
 
 function FeaturedMedia({ media, active }) {
