@@ -63,6 +63,10 @@ export const translations = {
     "featured.links": "Links",
     "featured.repoPrivate": "Repo privado",
     "featured.clientPrivate": "privado: datos de cliente",
+    "featured.carousel.prev": "Proyecto anterior",
+    "featured.carousel.next": "Proyecto siguiente",
+    "featured.carousel.dots": "Ir a un proyecto destacado",
+    "featured.carousel.dot": "Ir al proyecto {n}: {title}",
 
     // PCStorage
     "pc.title": "Otros proyectos",
@@ -290,6 +294,10 @@ export const translations = {
     "featured.links": "Links",
     "featured.repoPrivate": "Private repo",
     "featured.clientPrivate": "private: client data",
+    "featured.carousel.prev": "Previous project",
+    "featured.carousel.next": "Next project",
+    "featured.carousel.dots": "Go to a featured project",
+    "featured.carousel.dot": "Go to project {n}: {title}",
 
     // PCStorage
     "pc.title": "Other projects",

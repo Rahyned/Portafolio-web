@@ -5,6 +5,9 @@
 ### Added
 
 - Cinco proyectos destacados con problema, qué se construyó, stack, resultado, estado y links reales en `data/projects.json`, `data/projects.js` y `client/src/data/fallback.js`.
+- Carrusel de proyectos destacados: 2 cartas en escritorio / 1 en celular, auto-avance cada 5 s con bucle sin salto, pausa en hover/foco, flechas, puntitos, swipe, y respeto de `prefers-reduced-motion`.
+- Espacio de media 16:9 en cada carta; si el proyecto declara video, se reproduce muteado en bucle solo cuando la carta está visible (SolutionsCars y STELLA pendientes).
+- Tests de la lógica del carrusel (avance, bucle y pausa) en `featuredCarouselLogic.test.js`.
 - Sección "Proyectos destacados" con tarjetas y capturas (`rag-demo.gif`, `pronostico.png`) antes de la PC.
 - Caso de estudio de SolutionsCars en `/proyectos/solutionscars` con arquitectura, decisiones, problemas y próximos pasos.
 - Test de datos de fallback: orden de destacados, links de perfil y ausencia de la palabra "tests".
@@ -41,6 +44,9 @@
 - `client/src/components/Hero.jsx`
 - `client/src/components/TrainerCard.jsx`
 - `client/src/components/FeaturedProjects.jsx`
+- `client/src/components/FeaturedCarousel.jsx`
+- `client/src/components/featuredCarouselLogic.js`
+- `client/src/components/featuredCarouselLogic.test.js`
 - `client/src/components/ProjectCard.jsx`
 - `client/src/components/CaseStudy.jsx`
 - `client/src/components/ProjectModal.jsx`
@@ -69,7 +75,7 @@
 
 - `npm run lint`, `npm test` y `npm run build` en `client/`: OK (solo warnings preexistentes de oxlint).
 - Verificación headless: portada con cinco tarjetas, caso de estudio sin 404, sin desborde horizontal en 375 px y 1440 px, footer con descarga de CV y PDF servido como `application/pdf`.
-- `FeaturedProjects.test.jsx` quedó pendiente: el proyecto no tiene `@testing-library/react`.
+- `featuredCarouselLogic.test.js`: avance, bucle sin salto y pausa por hover/reduced-motion.
 
 ## 2026-10-05 — fix/auditoria-2026-10-05
 

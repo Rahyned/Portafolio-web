@@ -1,6 +1,6 @@
 import { useData } from "../context/DataContext";
 import { useLanguage } from "../context/LanguageContext";
-import ProjectCard from "./ProjectCard";
+import FeaturedCarousel from "./FeaturedCarousel";
 
 export default function FeaturedProjects() {
   const { data } = useData();
@@ -16,11 +16,7 @@ export default function FeaturedProjects() {
         <p className="section-sub">{t("featured.sub")}</p>
       </div>
 
-      <div className="featured-grid">
-        {projects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
-        ))}
-      </div>
+      <FeaturedCarousel projects={projects} />
     </section>
   );
 }
