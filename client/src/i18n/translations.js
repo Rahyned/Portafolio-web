@@ -24,7 +24,6 @@ export const translations = {
     "hero.ctaContact": "CONTACTO",
     "hero.ctaCv": "Descargar CV ↓",
     "hero.exp": "EXP LOADING...",
-    "hero.level": "Nivel {level}/{max}",
 
     // Breadcrumb
     "nav.aria": "Navegación principal",
@@ -257,7 +256,6 @@ export const translations = {
     "hero.ctaContact": "CONTACT",
     "hero.ctaCv": "Download CV ↓",
     "hero.exp": "EXP LOADING...",
-    "hero.level": "Level {level}/{max}",
 
     // Breadcrumb
     "nav.aria": "Main navigation",

@@ -107,17 +107,6 @@
     0 0 10px color-mix(in srgb, var(--bg-primary) 55%, transparent);
 }
 
-.hero-fact-dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  margin-right: 8px;
-  vertical-align: 0.05em;
-  background: var(--success);
-  box-shadow: 1px 1px 0 color-mix(in srgb, var(--success) 55%, #000);
-  image-rendering: pixelated;
-}
-
 .hero-actions {
   display: flex;
   flex-direction: column;
@@ -231,19 +220,6 @@
   color: #FFFFFF;
 }
 
-.hero-badges {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-family: var(--font-mono);
-  font-size: 14px;
-  color: var(--text-secondary);
-}
-
-.hero-badges-text {
-  letter-spacing: 3px;
-}
-
 @keyframes ctaGlow {
   0%, 100% { box-shadow: 4px 4px 0 var(--border), 0 0 0 var(--glow); }
   50% { box-shadow: 4px 4px 0 var(--border), 0 0 26px var(--glow); }
@@ -263,8 +239,7 @@
 .hero:not(.hero-in) .hero-class,
 .hero:not(.hero-in) .hero-tagline,
 .hero:not(.hero-in) .hero-facts,
-.hero:not(.hero-in) .hero-actions,
-.hero:not(.hero-in) .hero-badges {
+.hero:not(.hero-in) .hero-actions {
   opacity: 0;
 }
 
@@ -299,10 +274,6 @@
   animation: heroIn 0.7s 0.36s var(--ease-out) backwards;
 }
 
-.hero-in .hero-badges {
-  animation: heroIn 0.7s 0.5s var(--ease-out) backwards;
-}
-
 /* Con reduced-motion el fade del boot es instantáneo pero onDone sigue
    esperando 450ms: sin esto, el hero estaría oculto ese rato. Directamente
    no lo animamos (tampoco hace falta: ya no hay movimiento). */
@@ -311,8 +282,7 @@
   .hero:not(.hero-in) .hero-class,
   .hero:not(.hero-in) .hero-tagline,
   .hero:not(.hero-in) .hero-facts,
-  .hero:not(.hero-in) .hero-actions,
-  .hero:not(.hero-in) .hero-badges {
+  .hero:not(.hero-in) .hero-actions {
     opacity: 1;
   }
 
@@ -320,8 +290,7 @@
   .hero-in .hero-class,
   .hero-in .hero-tagline,
   .hero-in .hero-facts,
-  .hero-in .hero-actions,
-  .hero-in .hero-badges {
+  .hero-in .hero-actions {
     animation: none;
   }
 }

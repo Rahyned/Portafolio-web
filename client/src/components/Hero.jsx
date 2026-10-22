@@ -6,7 +6,6 @@ export default function Hero({ ready = false }) {
   const { data, track } = useData();
   const { t } = useLanguage();
   const { PROFILE, CONTACT_INFO } = data;
-  const facts = PROFILE.quickFacts || [];
 
   return (
     <section className={`hero${ready ? " hero-in" : ""}`} id="inicio" aria-label={t("hero.aria")}>
@@ -17,24 +16,7 @@ export default function Hero({ ready = false }) {
           <h1 className="hero-name title-grad">{PROFILE.name}</h1>
           <h2 className="hero-class">{PROFILE.class}</h2>
           <p className="hero-tagline">{PROFILE.tagline}</p>
-          <p className="hero-facts">
-            {facts.map((fact, i) => {
-              const isAvailability = i === facts.length - 1;
-              return (
-                <span key={fact} className="hero-fact">
-                  {i > 0 && (
-                    <span className="hero-fact-sep" aria-hidden="true">
-                      {" · "}
-                    </span>
-                  )}
-                  {isAvailability && (
-                    <span className="hero-fact-dot" aria-hidden="true" />
-                  )}
-                  {fact}
-                </span>
-              );
-            })}
-          </p>
+          <p className="hero-facts">{PROFILE.quickFacts.join(" · ")}</p>
         </div>
 
         <div className="hero-actions">
@@ -62,10 +44,6 @@ export default function Hero({ ready = false }) {
           >
             {t("hero.ctaCv")}
           </a>
-        </div>
-
-        <div className="hero-badges" aria-hidden="true">
-          <span className="hero-badges-text">{t("hero.level", { level: PROFILE.level, max: PROFILE.maxLevel })}</span>
         </div>
       </div>
     </section>
