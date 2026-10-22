@@ -6,8 +6,7 @@ export default function Hero({ ready = false }) {
   const { data, track } = useData();
   const { t } = useLanguage();
   const { PROFILE, CONTACT_INFO } = data;
-
-  const mailto = (subject) => `mailto:${CONTACT_INFO.email}?subject=${subject}`;
+  const facts = PROFILE.quickFacts || [];
 
   return (
     <section className={`hero${ready ? " hero-in" : ""}`} id="inicio" aria-label={t("hero.aria")}>
@@ -18,26 +17,45 @@ export default function Hero({ ready = false }) {
           <h1 className="hero-name title-grad">{PROFILE.name}</h1>
           <h2 className="hero-class">{PROFILE.class}</h2>
           <p className="hero-tagline">{PROFILE.tagline}</p>
-          <p className="hero-facts">{PROFILE.quickFacts.join(" · ")}</p>
+          <p className="hero-facts">
+            {facts.map((fact, i) => {
+              const isAvailability = i === facts.length - 1;
+              return (
+                <span key={fact} className="hero-fact">
+                  {i > 0 && (
+                    <span className="hero-fact-sep" aria-hidden="true">
+                      {" · "}
+                    </span>
+                  )}
+                  {isAvailability && (
+                    <span className="hero-fact-dot" aria-hidden="true" />
+                  )}
+                  {fact}
+                </span>
+              );
+            })}
+          </p>
         </div>
 
         <div className="hero-actions">
+          <div className="hero-btns">
+            <a
+              className="btn-retro hero-btn hero-btn-primary"
+              href="#proyectos"
+              onClick={() => track("hero_projects_click")}
+            >
+              {t("hero.ctaProjects")}
+            </a>
+            <a
+              className="btn-retro hero-btn hero-btn-secondary"
+              href="#contacto"
+              onClick={() => track("hero_contact_click")}
+            >
+              {t("hero.ctaContact")}
+            </a>
+          </div>
           <a
-            className="btn-retro hero-btn"
-            href={mailto("Consulta%20por%20proyecto")}
-            onClick={() => track("hero_system_click")}
-          >
-            {t("hero.ctaSystem")}
-          </a>
-          <a
-            className="btn-retro hero-btn"
-            href={mailto("Trabajo%20%2F%20pasant%C3%ADa")}
-            onClick={() => track("hero_team_click")}
-          >
-            {t("hero.ctaTeam")}
-          </a>
-          <a
-            className="btn-retro hero-btn"
+            className="hero-cv-link"
             href={CONTACT_INFO.cvUrl}
             download
             onClick={() => track("hero_cv_click")}

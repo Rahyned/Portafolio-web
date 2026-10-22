@@ -102,25 +102,68 @@
   margin: 20px auto 0;
   max-width: 720px;
   color: var(--text-primary);
-  padding: 12px 18px;
-  background: color-mix(in srgb, var(--bg-primary) 88%, transparent);
-  border: 1px solid color-mix(in srgb, var(--border) 35%, transparent);
-  border-radius: var(--radius);
-  box-shadow: 0 1px 0 color-mix(in srgb, var(--bg-primary) 70%, transparent);
+  text-shadow:
+    0 1px 0 color-mix(in srgb, var(--bg-primary) 85%, transparent),
+    0 0 10px color-mix(in srgb, var(--bg-primary) 55%, transparent);
+}
+
+.hero-fact-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  vertical-align: 0.05em;
+  background: var(--success);
+  box-shadow: 1px 1px 0 color-mix(in srgb, var(--success) 55%, #000);
+  image-rendering: pixelated;
 }
 
 .hero-actions {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 14px;
-  width: min(100%, 360px);
+  width: min(100%, 560px);
+}
+
+.hero-btns {
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+  width: 100%;
 }
 
 .hero-btn {
   display: block;
-  width: 100%;
+  flex: 1;
+  min-width: 0;
   text-align: center;
   text-decoration: none;
+}
+
+.hero-btn:focus-visible {
+  outline: 3px solid var(--accent-bright);
+  outline-offset: 3px;
+}
+
+.hero-cv-link {
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+
+.hero-cv-link:hover,
+.hero-cv-link:focus-visible {
+  color: var(--accent-text);
+  text-decoration: underline;
+}
+
+.hero-cv-link:focus-visible {
+  outline: 3px solid var(--accent-bright);
+  outline-offset: 3px;
 }
 
 /* Botón CTA gigante con bevel 3D */
@@ -162,6 +205,30 @@
 .btn-retro.btn-big {
   font-size: 14px;
   padding: 18px 30px;
+}
+
+.btn-retro.hero-btn-primary {
+  background: var(--accent);
+  color: #FFFDF8;
+  box-shadow:
+    4px 4px 0 var(--border),
+    inset -3px -3px 0 rgba(27, 27, 47, 0.28),
+    inset 3px 3px 0 rgba(255, 255, 255, 0.35);
+}
+
+.btn-retro.hero-btn-primary:hover {
+  background: var(--accent-bright);
+  color: #FFFDF8;
+  box-shadow:
+    4px 4px 0 var(--border),
+    inset -3px -3px 0 rgba(27, 27, 47, 0.3),
+    inset 3px 3px 0 rgba(255, 255, 255, 0.4),
+    0 0 22px var(--glow);
+}
+
+.theme-dark .btn-retro.hero-btn-primary,
+.theme-dark .btn-retro.hero-btn-primary:hover {
+  color: #FFFFFF;
 }
 
 .hero-badges {
@@ -309,7 +376,6 @@
   }
   .hero-facts {
     font-size: 15px;
-    padding: 10px 14px;
   }
   .btn-retro {
     font-size: 14px;
@@ -318,10 +384,13 @@
 
 @media (max-width: 480px) {
   .hero-actions {
-    flex-direction: column;
     width: 100%;
+  }
+  .hero-btns {
+    flex-direction: column;
   }
   .hero-btn {
     width: 100%;
+    flex: none;
   }
 }

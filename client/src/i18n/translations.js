@@ -20,9 +20,9 @@ export const translations = {
     "hero.aria": "Presentación",
     "hero.typewriter": "Explora mis proyectos y servicios →",
     "hero.cta": "▶ ENTRAR A LA PC",
-    "hero.ctaSystem": "Necesito un sistema",
-    "hero.ctaTeam": "Busco sumarte al equipo",
-    "hero.ctaCv": "Descargar CV",
+    "hero.ctaProjects": "VER PROYECTOS",
+    "hero.ctaContact": "CONTACTO",
+    "hero.ctaCv": "Descargar CV ↓",
     "hero.exp": "EXP LOADING...",
     "hero.level": "Nivel {level}/{max}",
 
@@ -67,6 +67,8 @@ export const translations = {
     "featured.carousel.next": "Proyecto siguiente",
     "featured.carousel.dots": "Ir a un proyecto destacado",
     "featured.carousel.dot": "Ir al proyecto {n}: {title}",
+    "featured.video.expand": "Ampliar video",
+    "featured.video.close": "Cerrar video",
 
     // PCStorage
     "pc.title": "Otros proyectos",
@@ -251,9 +253,9 @@ export const translations = {
     "hero.aria": "Introduction",
     "hero.typewriter": "Explore my projects and services →",
     "hero.cta": "▶ ENTER THE PC",
-    "hero.ctaSystem": "I need a system",
-    "hero.ctaTeam": "I want to join your team",
-    "hero.ctaCv": "Download CV",
+    "hero.ctaProjects": "SEE PROJECTS",
+    "hero.ctaContact": "CONTACT",
+    "hero.ctaCv": "Download CV ↓",
     "hero.exp": "EXP LOADING...",
     "hero.level": "Level {level}/{max}",
 
@@ -298,6 +300,8 @@ export const translations = {
     "featured.carousel.next": "Next project",
     "featured.carousel.dots": "Go to a featured project",
     "featured.carousel.dot": "Go to project {n}: {title}",
+    "featured.video.expand": "Expand video",
+    "featured.video.close": "Close video",
 
     // PCStorage
     "pc.title": "Other projects",
