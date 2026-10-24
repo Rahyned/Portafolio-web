@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 2026-10-24 — fix(seo): título de pestaña lautaro.dev
+
+### Changed
+
+- `<title>`, `og:title`, `twitter:title` y `og:site_name` pasan a `lautaro.dev` (minúscula, sin “— Portafolio Retro”).
+
+### Files
+
+- `client/index.html`
+- `index.html`
+- `CHANGELOG.md`
+
+### Tests
+
+- `npm test` y `npm run build` en `client/` OK.
+
 ## 2026-10-22 — feat(hero): simplificar llamados a la acción
 
 ### Changed
