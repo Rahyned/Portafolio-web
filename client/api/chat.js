@@ -12,6 +12,7 @@
 // ============================================================
 
 import { FALLBACK_DATA } from "../src/data/fallback.js";
+import { OAK_PROJECTS_ES, OAK_PROJECTS_EN } from "../src/data/oakKnowledge.js";
 import { CONTENT_EN } from "../src/i18n/content.js";
 import { originAllowed } from "./_lib/origin.js";
 import { checkDailyLimit, checkWindowLimit, upstashConfigured } from "./_lib/rateLimit.js";
@@ -65,7 +66,7 @@ function validateBody(body) {
 // ---- Knowledge base: se serializa a texto plano desde los datos
 // canónicos del portafolio (mismos que consume la web).
 function knowledgeEs() {
-  const { PROFILE, PROJECT_BOXES, SERVICES, SKILLS_LIST, CONTACT_INFO } = FALLBACK_DATA;
+  const { PROFILE, SERVICES, SKILLS_LIST, CONTACT_INFO } = FALLBACK_DATA;
   const lines = [];
   lines.push("## Perfil");
   lines.push(
@@ -74,16 +75,7 @@ function knowledgeEs() {
   );
   lines.push(`Bio: ${PROFILE.bio}`);
   lines.push("");
-  lines.push("## Proyectos");
-  for (const box of PROJECT_BOXES) {
-    lines.push(`### ${box.label}`);
-    for (const p of box.projects) {
-      lines.push(
-        `- ${p.title} (${p.category}, ${p.timeline}, ${p.status}). Problema: ${p.problem} ` +
-        `Solución: ${p.solution} Resultado: ${p.result} Stack: ${p.stack.join(", ")}.`
-      );
-    }
-  }
+  lines.push(OAK_PROJECTS_ES.join("\n"));
   lines.push("");
   lines.push("## Servicios");
   for (const s of SERVICES) {
@@ -108,18 +100,7 @@ function knowledgeEn() {
   );
   lines.push(`Bio: ${en.PROFILE.bio}`);
   lines.push("");
-  lines.push("## Projects");
-  for (const box of base.PROJECT_BOXES) {
-    lines.push(`### ${en.BOXES[box.id] ? en.BOXES[box.id].label : box.label}`);
-    for (const p of box.projects) {
-      const e = en.PROJECTS[p.id] || {};
-      lines.push(
-        `- ${p.title} (${e.category || p.category}, ${e.timeline || p.timeline}, ${e.status || p.status}). ` +
-        `Problem: ${e.problem || p.problem} Solution: ${e.solution || p.solution} Result: ${e.result || p.result} ` +
-        `Stack: ${p.stack.join(", ")}.`
-      );
-    }
-  }
+  lines.push(OAK_PROJECTS_EN.join("\n"));
   lines.push("");
   lines.push("## Services");
   for (const s of base.SERVICES) {
