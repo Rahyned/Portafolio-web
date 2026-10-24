@@ -17,3 +17,7 @@ brag-output-*/
 
 # Windows: "nul" es un nombre reservado, un redirect fallido lo crea y cuelga git
 /nul
+
+# Material de trabajo local (renders, bocetos)
+demos/
+docs/
