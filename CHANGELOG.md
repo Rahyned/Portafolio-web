@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## 2026-10-22 — feat(hero): simplificar llamados a la acción
+
+### Changed
+
+- Hero con dos CTAs: "VER PROYECTOS" (scroll a `#proyectos`) y "CONTACTO" (scroll a `#contacto`), en fila en escritorio y apilados a ancho completo bajo 480 px.
+- "Descargar CV" pasó a link de texto pixel debajo de los botones.
+- Franja de datos rápidos sin caja; puntito verde pixel antes de la disponibilidad.
+
+### Files
+
+- `client/src/components/Hero.jsx`
+- `client/src/styles/hero.css`
+- `client/src/i18n/translations.js`
+
+### Tests
+
+- `npm run lint`, `npm test` y `npm run build` en `client/`.
+
 ## 2026-10-20 — feat/renovacion-portfolio
 
 ### Added
@@ -8,6 +26,8 @@
 - Carrusel de proyectos destacados: 2 cartas en escritorio / 1 en celular, auto-avance cada 5 s con bucle sin salto, pausa en hover/foco, flechas, puntitos, swipe, y respeto de `prefers-reduced-motion`.
 - Espacio de media 16:9 en cada carta; si el proyecto declara video, se reproduce muteado en bucle solo cuando la carta está visible.
 - Videos demo web de SolutionsCars y STELLA (`*-demo.mp4` + `*-poster.jpg`) en el carrusel.
+- Controles nativos en los videos del carrusel (play/pausa/seek) y botón para ampliar en lightbox; sin autoplay.
+- El carrusel pausa el auto-avance con la pestaña oculta y reancla el track al volver (evita que “desaparezca”).
 - Tests de la lógica del carrusel (avance, bucle y pausa) en `featuredCarouselLogic.test.js`.
 - Sección "Proyectos destacados" con tarjetas y capturas (`rag-demo.gif`, `pronostico.png`) antes de la PC.
 - Caso de estudio de SolutionsCars en `/proyectos/solutionscars` con arquitectura, decisiones, problemas y próximos pasos.

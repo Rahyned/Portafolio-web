@@ -10,6 +10,7 @@ import {
   logicalIndexFromTrack,
   normalizeTrackIndex,
   shouldAutoAdvance,
+  snapTrackIndex,
   stepWidthPx,
   swipeDeltaToStep,
   trackIndexFromLogical
@@ -32,6 +33,9 @@ export default function FeaturedCarousel({ projects }) {
   const [animate, setAnimate] = useState(true);
   const [paused, setPaused] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
+  const [documentHidden, setDocumentHidden] = useState(() =>
+    typeof document !== "undefined" ? document.hidden : false
+  );
   const [stepPx, setStepPx] = useState(0);
 
   const itemCount = projects.length;
@@ -47,10 +51,21 @@ export default function FeaturedCarousel({ projects }) {
     const viewport = viewportRef.current;
     if (!viewport) return;
     const width = viewport.clientWidth;
+    // Al volver de segundo plano el ancho puede ser 0 un instante: no pisar el layout.
+    if (width < 1) return;
     const nextPerView = getPerView(window.innerWidth);
     setPerView(nextPerView);
     setStepPx(stepWidthPx(width, nextPerView, TRACK_GAP_PX));
   }, []);
+
+  const restoreTrack = useCallback(() => {
+    setAnimate(false);
+    setTrackIndex((current) => snapTrackIndex(current, itemCount, perView));
+    measure();
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => setAnimate(true));
+    });
+  }, [itemCount, perView, measure]);
 
   useLayoutEffect(() => {
     measure();
@@ -84,6 +99,26 @@ export default function FeaturedCarousel({ projects }) {
     mq.addEventListener("change", sync);
     return () => mq.removeEventListener("change", sync);
   }, []);
+
+  // Si la pestaña está oculta, el intervalo sigue avanzando y el track se va
+  // a índices absurdos: al volver el carrusel parece vacío. Pausamos y reanclamos.
+  useEffect(() => {
+    const onVisibility = () => {
+      const hidden = document.hidden;
+      setDocumentHidden(hidden);
+      if (!hidden) restoreTrack();
+    };
+    const onPageShow = () => {
+      setDocumentHidden(false);
+      restoreTrack();
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+    window.addEventListener("pageshow", onPageShow);
+    return () => {
+      document.removeEventListener("visibilitychange", onVisibility);
+      window.removeEventListener("pageshow", onPageShow);
+    };
+  }, [restoreTrack]);
 
   const goBy = useCallback(
     (delta) => {
@@ -119,10 +154,12 @@ export default function FeaturedCarousel({ projects }) {
   );
 
   useEffect(() => {
-    if (!shouldAutoAdvance({ paused, reducedMotion, itemCount })) return undefined;
+    if (!shouldAutoAdvance({ paused, reducedMotion, itemCount, documentHidden })) {
+      return undefined;
+    }
     const id = window.setInterval(() => goBy(1), AUTO_ADVANCE_MS);
     return () => window.clearInterval(id);
-  }, [paused, reducedMotion, itemCount, goBy]);
+  }, [paused, reducedMotion, itemCount, documentHidden, goBy]);
 
   const handleBlur = (event) => {
     if (!event.currentTarget.contains(event.relatedTarget)) {
@@ -142,6 +179,8 @@ export default function FeaturedCarousel({ projects }) {
     if (step) goBy(step);
   };
 
+  const offsetPx = stepPx > 0 ? stepPx * trackIndex : 0;
+
   return (
     <div
       className="featured-carousel"
@@ -157,10 +196,10 @@ export default function FeaturedCarousel({ projects }) {
         onTouchEnd={onTouchEnd}
       >
         <div
-          className={`featured-carousel-track${animate ? " is-animated" : ""}`}
+          className={`featured-carousel-track${animate && stepPx > 0 ? " is-animated" : ""}`}
           style={{
             gap: TRACK_GAP_PX,
-            transform: `translate3d(-${stepPx * trackIndex}px, 0, 0)`
+            transform: `translate3d(-${offsetPx}px, 0, 0)`
           }}
           onTransitionEnd={handleTransitionEnd}
         >
@@ -173,10 +212,11 @@ export default function FeaturedCarousel({ projects }) {
                 key={`${project.id}-${index}`}
                 aria-hidden={!visible}
                 inert={!visible ? true : undefined}
-                style={{
-                  flex: `0 0 ${cardWidth}px`,
-                  width: `${cardWidth}px`
-                }}
+                style={
+                  cardWidth > 0
+                    ? { flex: `0 0 ${cardWidth}px`, width: `${cardWidth}px` }
+                    : { flex: `0 0 calc((100% - ${(perView - 1) * TRACK_GAP_PX}px) / ${perView})` }
+                }
               >
                 <ProjectCard project={project} mediaActive={visible} />
               </div>

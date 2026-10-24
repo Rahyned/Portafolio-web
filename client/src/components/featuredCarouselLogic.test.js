@@ -9,6 +9,7 @@ import {
   logicalIndexFromTrack,
   normalizeTrackIndex,
   shouldAutoAdvance,
+  snapTrackIndex,
   stepIndex,
   swipeDeltaToStep,
   trackIndexFromLogical,
@@ -63,11 +64,19 @@ describe("featuredCarouselLogic", () => {
     expect(extended).toEqual(["d", "e", "a", "b", "c", "d", "e", "a", "b"]);
   });
 
-  it("pausa el auto-avance con hover/foco o reduced-motion", () => {
+  it("pausa el auto-avance con hover/foco, reduced-motion o pestaña oculta", () => {
     expect(shouldAutoAdvance({ paused: false, reducedMotion: false, itemCount: 5 })).toBe(true);
     expect(shouldAutoAdvance({ paused: true, reducedMotion: false, itemCount: 5 })).toBe(false);
     expect(shouldAutoAdvance({ paused: false, reducedMotion: true, itemCount: 5 })).toBe(false);
     expect(shouldAutoAdvance({ paused: false, reducedMotion: false, itemCount: 1 })).toBe(false);
+    expect(shouldAutoAdvance({ paused: false, reducedMotion: false, itemCount: 5, documentHidden: true })).toBe(false);
+  });
+
+  it("reancla el track a la zona real tras índices muy altos (pestaña en segundo plano)", () => {
+    const snapped = snapTrackIndex(500, 5, 2);
+    expect(snapped).toBeGreaterThanOrEqual(2);
+    expect(snapped).toBeLessThan(2 + 5);
+    expect(logicalIndexFromTrack(snapped, 5, 2)).toBe(logicalIndexFromTrack(500, 5, 2));
   });
 
   it("marca visibles las cartas de la ventana actual", () => {

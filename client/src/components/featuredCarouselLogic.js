@@ -68,8 +68,15 @@ export function trackIndexFromLogical(logicalIndex, itemCount, perView) {
   return cloneCount(itemCount, perView) + wrapIndex(logicalIndex, itemCount);
 }
 
-export function shouldAutoAdvance({ paused, reducedMotion, itemCount }) {
-  return Boolean(!paused && !reducedMotion && itemCount > 1);
+export function shouldAutoAdvance({ paused, reducedMotion, itemCount, documentHidden = false }) {
+  return Boolean(!paused && !reducedMotion && !documentHidden && itemCount > 1);
+}
+
+/** Devuelve el trackIndex real equivalente (fuera de clones) para un índice cualquiera. */
+export function snapTrackIndex(trackIndex, itemCount, perView) {
+  if (!itemCount) return 0;
+  const logical = logicalIndexFromTrack(trackIndex, itemCount, perView);
+  return trackIndexFromLogical(logical, itemCount, perView);
 }
 
 /** Una carta (por id lógico) cae en la ventana [logicalIndex, logicalIndex + perView). */
