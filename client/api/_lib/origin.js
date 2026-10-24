@@ -1,4 +1,5 @@
 const STATIC_ALLOWED = [
+  "https://lautaro.is-a.dev",
   "https://portafolio-web-three-gamma.vercel.app",
   "http://localhost:5173"
 ];
