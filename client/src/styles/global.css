@@ -21,6 +21,7 @@ body {
 
 body {
   font-family: var(--font-body);
+  font-size: 16px;
   background-color: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
@@ -92,7 +93,10 @@ h1, h2, h3 {
   font-family: var(--font-pixel);
   font-weight: 400;
   line-height: 1.4;
-  text-transform: uppercase;
+}
+
+p {
+  line-height: 1.6;
 }
 
 ::selection {

@@ -20,6 +20,9 @@ export const translations = {
     "hero.aria": "Presentación",
     "hero.typewriter": "Explora mis proyectos y servicios →",
     "hero.cta": "▶ ENTRAR A LA PC",
+    "hero.ctaProjects": "VER PROYECTOS",
+    "hero.ctaContact": "CONTACTO",
+    "hero.ctaCv": "Descargar CV ↓",
     "hero.exp": "EXP LOADING...",
 
     // Breadcrumb
@@ -33,12 +36,12 @@ export const translations = {
     // TrainerCard
     "trainer.bio.skip": "PRESIONA CUALQUIER TECLA PARA CONTINUAR ▸",
     "trainer.avatar.alt": "Foto pixelada de Lautaro",
-    "trainer.block.data": "🎖️ DATOS DEL ENTRENADOR",
+    "trainer.block.data": "🎖️ DATOS",
     "trainer.stat.level": "NIVEL",
     "trainer.stat.exp": "EXPERIENCIA",
     "trainer.stat.projects": "PROYECTOS",
     "trainer.stat.location": "ZONA",
-    "trainer.block.exp": "⚡ EXPERIENCIA",
+    "trainer.block.exp": "⚡ BARRA DE EXP",
     "trainer.exp.label": "EXP",
     "trainer.exp.level": "Nv. {level}/{max}",
     "trainer.block.badges": "🥇 MEDALLAS — STACK PRINCIPAL",
@@ -49,9 +52,26 @@ export const translations = {
     "services.sub": "Lo que puedo construir para vos.",
     "services.cta": "INICIAR INTERCAMBIO →",
 
+    // Proyectos destacados
+    "featured.title": "Proyectos destacados",
+    "featured.sub": "Sistemas y productos que ya usan personas reales.",
+    "featured.problem": "Problema",
+    "featured.built": "Qué hice",
+    "featured.stack": "Stack",
+    "featured.result": "Resultado",
+    "featured.links": "Links",
+    "featured.repoPrivate": "Repo privado",
+    "featured.clientPrivate": "privado: datos de cliente",
+    "featured.carousel.prev": "Proyecto anterior",
+    "featured.carousel.next": "Proyecto siguiente",
+    "featured.carousel.dots": "Ir a un proyecto destacado",
+    "featured.carousel.dot": "Ir al proyecto {n}: {title}",
+    "featured.video.expand": "Ampliar video",
+    "featured.video.close": "Cerrar video",
+
     // PCStorage
-    "pc.title": "SISTEMA DE ALMACENAMIENTO PC",
-    "pc.sub": "Mis proyectos, guardados como en la PC de Bill.",
+    "pc.title": "Otros proyectos",
+    "pc.sub": "Más trabajos, experimentos y herramientas.",
     "pc.titlebar": "PC DE LAUTARO // PROYECTOS",
     "pc.aria.slotEmpty": "Slot vacío",
     "pc.aria.project": "Proyecto: {title}",
@@ -137,7 +157,6 @@ export const translations = {
     "term.about.name": "NOMBRE:",
     "term.about.class": "CLASE:",
     "term.about.level": "NIVEL:",
-    "term.about.exp": "EXP: {years} años | {projects} proyectos",
     "term.about.location": "ZONA:",
     "term.about.status": "ESTADO:",
     "term.contact.email": "EMAIL:",
@@ -173,7 +192,7 @@ export const translations = {
     "oak.chip.python": "¿Proyectos en Python?",
     "oak.chip.contact": "¿Cómo contactarlo?",
     "oak.medallas": "Medallas",
-    "oak.exp.header": "{class} · Nivel {level}/{max} · Exp: {years} años · {done} proyectos completados",
+    "oak.exp.header": "{class} · Nivel {level}/{max} · {done} proyectos completados",
     "oak.error.unavailable": "Las consultas libres con IA están pausadas. Usá el menú de abajo.",
     "oak.error.rate": "Demasiadas consultas seguidas. Esperá un minuto y probá de nuevo.",
     "oak.error.generic": "Ups, algo salió mal. Probá de nuevo en un momento.",
@@ -195,7 +214,22 @@ export const translations = {
     "notfound.cta": "◀ VOLVER AL INICIO",
 
     // Footer
-    "footer.cv": "📄 CV DESCARGABLE"
+    "footer.cv": "Descargar CV (PDF)",
+
+    // Caso de estudio
+    "case.back": "← Volver a proyectos",
+    "case.capture": "Captura próximamente",
+    "case.kicker": "Caso de estudio",
+    "case.summary": "Resumen",
+    "case.role": "Mi rol",
+    "case.problem": "El problema",
+    "case.built": "Qué construí",
+    "case.architecture": "Arquitectura",
+    "case.decisions": "Decisiones",
+    "case.problems": "Qué salió mal (y cómo lo resolví)",
+    "case.learned": "Qué aprendí",
+    "case.next": "Próximos pasos",
+    "case.captures": "Capturas"
   },
   en: {
     // Header
@@ -218,6 +252,9 @@ export const translations = {
     "hero.aria": "Introduction",
     "hero.typewriter": "Explore my projects and services →",
     "hero.cta": "▶ ENTER THE PC",
+    "hero.ctaProjects": "SEE PROJECTS",
+    "hero.ctaContact": "CONTACT",
+    "hero.ctaCv": "Download CV ↓",
     "hero.exp": "EXP LOADING...",
 
     // Breadcrumb
@@ -231,12 +268,12 @@ export const translations = {
     // TrainerCard
     "trainer.bio.skip": "PRESS ANY KEY TO CONTINUE ▸",
     "trainer.avatar.alt": "Pixel photo of Lautaro",
-    "trainer.block.data": "🎖️ TRAINER DATA",
+    "trainer.block.data": "🎖️ PROFILE",
     "trainer.stat.level": "LEVEL",
     "trainer.stat.exp": "YEARS OF EXP",
     "trainer.stat.projects": "PROJECTS",
     "trainer.stat.location": "LOCATION",
-    "trainer.block.exp": "⚡ EXPERIENCE",
+    "trainer.block.exp": "⚡ XP BAR",
     "trainer.exp.label": "EXP",
     "trainer.exp.level": "Lv. {level}/{max}",
     "trainer.block.badges": "🥇 BADGES — MAIN STACK",
@@ -247,9 +284,26 @@ export const translations = {
     "services.sub": "What I can build for you.",
     "services.cta": "START TRADE →",
 
+    // Featured projects
+    "featured.title": "Featured projects",
+    "featured.sub": "Systems and products people already use.",
+    "featured.problem": "Problem",
+    "featured.built": "What I built",
+    "featured.stack": "Stack",
+    "featured.result": "Result",
+    "featured.links": "Links",
+    "featured.repoPrivate": "Private repo",
+    "featured.clientPrivate": "private: client data",
+    "featured.carousel.prev": "Previous project",
+    "featured.carousel.next": "Next project",
+    "featured.carousel.dots": "Go to a featured project",
+    "featured.carousel.dot": "Go to project {n}: {title}",
+    "featured.video.expand": "Expand video",
+    "featured.video.close": "Close video",
+
     // PCStorage
-    "pc.title": "PC STORAGE SYSTEM",
-    "pc.sub": "My projects, stored like in Bill's PC.",
+    "pc.title": "Other projects",
+    "pc.sub": "More work, experiments, and tools.",
     "pc.titlebar": "LAUTARO'S PC // PROJECTS",
     "pc.aria.slotEmpty": "Empty slot",
     "pc.aria.project": "Project: {title}",
@@ -335,7 +389,6 @@ export const translations = {
     "term.about.name": "NAME:",
     "term.about.class": "CLASS:",
     "term.about.level": "LEVEL:",
-    "term.about.exp": "EXP: {years} yrs | {projects} projects",
     "term.about.location": "LOCATION:",
     "term.about.status": "STATUS:",
     "term.contact.email": "EMAIL:",
@@ -371,7 +424,7 @@ export const translations = {
     "oak.chip.python": "Python projects?",
     "oak.chip.contact": "How to contact him?",
     "oak.medallas": "Badges",
-    "oak.exp.header": "{class} · Level {level}/{max} · Exp: {years} yrs · {done} projects shipped",
+    "oak.exp.header": "{class} · Level {level}/{max} · {done} projects shipped",
     "oak.error.unavailable": "Free-form AI replies are paused. Use the menu below.",
     "oak.error.rate": "Too many requests in a row. Wait a minute and try again.",
     "oak.error.generic": "Oops, something went wrong. Try again in a moment.",
@@ -393,6 +446,21 @@ export const translations = {
     "notfound.cta": "◀ BACK TO HOME",
 
     // Footer
-    "footer.cv": "📄 DOWNLOADABLE CV"
+    "footer.cv": "Download CV (PDF)",
+
+    // Case study
+    "case.back": "← Back to projects",
+    "case.capture": "Screenshot coming soon",
+    "case.kicker": "Case study",
+    "case.summary": "Summary",
+    "case.role": "My role",
+    "case.problem": "The problem",
+    "case.built": "What I built",
+    "case.architecture": "Architecture",
+    "case.decisions": "Decisions",
+    "case.problems": "What went wrong (and how I fixed it)",
+    "case.learned": "What I learned",
+    "case.next": "Next steps",
+    "case.captures": "Screenshots"
   }
 };

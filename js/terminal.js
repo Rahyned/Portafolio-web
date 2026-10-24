@@ -39,7 +39,6 @@ const Terminal = (() => {
       { text: `NOMBRE: ${PROFILE.name}`, cls: "" },
       { text: `CLASE: ${PROFILE.class}`, cls: "" },
       { text: `NIVEL: ${PROFILE.level}/${PROFILE.maxLevel}`, cls: "" },
-      { text: `EXP: ${PROFILE.expYears} años | ${PROFILE.completedProjects} proyectos`, cls: "" },
       { text: `ZONA: ${PROFILE.location}`, cls: "" },
       { text: `ESTADO: ${PROFILE.status}`, cls: "term-warn" }
     ],

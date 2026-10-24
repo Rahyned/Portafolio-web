@@ -100,8 +100,6 @@
             <ul class="trainer-stats">
               <li class="trainer-stat"><span>CLASE</span><strong id="statClass">Desarrollador Web &amp; Sistemas</strong></li>
               <li class="trainer-stat"><span>NIVEL</span><strong id="statLevel">[22] / 30</strong></li>
-              <li class="trainer-stat"><span>EXPERIENCIA</span><strong id="statExp">2+</strong></li>
-              <li class="trainer-stat"><span>PROYECTOS</span><strong id="statProjects">8</strong></li>
               <li class="trainer-stat"><span>ZONA</span><strong id="statLocation">Rosario, Argentina</strong></li>
             </ul>
             <div class="exp-bar-wrap">
@@ -245,8 +243,8 @@
               <button type="submit" class="btn-submit" id="submitBtn">✅ CONFIRMAR INTERCAMBIO</button>
 
               <!-- Honeypot: oculto a humanos, los bots lo llenan -->
-              <div style="position: absolute; left: -9999px; height: 0; overflow: hidden;" aria-hidden="true">
-                <label for="fieldCompany">Company</label>
+              <div class="hp-field" aria-hidden="true">
+                <label for="fieldCompany"> </label>
                 <input type="text" id="fieldCompany" name="company" tabindex="-1" autocomplete="off" />
               </div>
             </form>

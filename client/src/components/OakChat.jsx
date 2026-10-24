@@ -90,7 +90,6 @@ export default function OakChat() {
             class: p.class,
             level: p.level,
             max: p.maxLevel,
-            years: p.expYears,
             done: p.completedProjects
           });
           return [header, p.bio, afip, p.status]

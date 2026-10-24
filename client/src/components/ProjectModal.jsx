@@ -12,12 +12,6 @@ const statusSlug = (status) => {
   return "";
 };
 
-const assistantHref = (p) => {
-  const h = typeof window !== "undefined" ? window.location.hostname : "";
-  const isLocal = !h || h === "localhost" || h === "127.0.0.1";
-  return isLocal ? "https://rag-proyectos.vercel.app/" : p.assistant;
-};
-
 export default function ProjectModal({ project, onClose }) {
   const { sfx } = useSound();
   const { t } = useLanguage();
@@ -119,20 +113,19 @@ export default function ProjectModal({ project, onClose }) {
             </div>
           </div>
 
-          <div className="modal-block">
-            <h4 className="modal-block-title">{t("modal.block.code")}</h4>
-            <div className="modal-actions">
-              {project.demo ? (
-                <a href={project.demo} target="_blank" rel="noopener noreferrer" className="btn-link" onClick={() => sfx("click")}>{t("modal.demo")}</a>
-              ) : (
-                <button type="button" className="btn-link" disabled aria-disabled="true">{t("modal.demo")}</button>
-              )}
-              {project.assistant ? (
-                <a href={assistantHref(project)} target="_blank" rel="noopener noreferrer" className="btn-link" onClick={() => sfx("click")}>{t("modal.assistant")}</a>
-              ) : null}
-              <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn-link" onClick={() => sfx("click")}>{t("modal.github")}</a>
+          {(project.demo || project.github) && (
+            <div className="modal-block">
+              <h4 className="modal-block-title">{t("modal.block.code")}</h4>
+              <div className="modal-actions">
+                {project.demo && (
+                  <a href={project.demo} target="_blank" rel="noopener noreferrer" className="btn-link" onClick={() => sfx("click")}>{t("modal.demo")}</a>
+                )}
+                {project.github && (
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn-link" onClick={() => sfx("click")}>{t("modal.github")}</a>
+                )}
+              </div>
             </div>
-          </div>
+          )}
 
           <p className="modal-timeline">{t("modal.completed")} <strong>{project.timeline}</strong></p>
         </div>

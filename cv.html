@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CV — Lautaro</title>
+  <title>CV — Lautaro Rodriguez</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/cv.css" />
 </head>
@@ -15,18 +15,15 @@
 
   <div class="cv-toolbar no-print">
     <a href="index.html" class="cv-btn">← VOLVER AL PORTAFOLIO</a>
-    <button type="button" class="cv-btn" onclick="window.print()">🖨 DESCARGAR PDF</button>
+    <a href="cv/Lautaro-Rodriguez-CV.pdf" class="cv-btn" download>DESCARGAR PDF</a>
   </div>
 
   <main class="cv-page" id="cvPage">
 
     <header class="cv-header">
-      <div class="cv-name-wrap">
-        <h1 id="cvName" class="cv-name">[LAUTARO]</h1>
-        <p id="cvClass" class="cv-class">Desarrollador Web &amp; Sistemas</p>
-      </div>
-      <div class="cv-avatar no-print" aria-hidden="true">👾</div>
-      <p class="cv-tagline" id="cvTagline">AUTOMATIZACION • ARQUITECTURA • APIS</p>
+      <h1 id="cvName" class="cv-name">Lautaro Rodriguez</h1>
+      <p id="cvClass" class="cv-class">Desarrollador de software</p>
+      <p id="cvMeta" class="cv-meta"></p>
     </header>
 
     <section class="cv-section">
@@ -34,20 +31,35 @@
       <p id="cvBio" class="cv-bio"></p>
       <dl class="cv-facts">
         <div><dt>Ubicación</dt><dd id="cvLocation"></dd></div>
-        <div><dt>Experiencia</dt><dd id="cvExp"></dd></div>
-        <div><dt>Proyectos</dt><dd id="cvProjects"></dd></div>
         <div><dt>Disponibilidad</dt><dd id="cvStatus"></dd></div>
       </dl>
     </section>
 
     <section class="cv-section">
-      <h2 class="cv-section-title">STACK TECNICO</h2>
-      <ul id="cvSkills" class="cv-list"></ul>
+      <h2 class="cv-section-title">EXPERIENCIA</h2>
+      <article class="cv-job">
+        <div class="cv-job-head">
+          <h3 class="cv-job-title">SolutionsCars</h3>
+          <span class="cv-project-date">marzo 2026 — actualidad</span>
+        </div>
+        <p class="cv-job-role">Desarrollador de software · Rosario, Argentina</p>
+        <ul class="cv-job-list">
+          <li>Sistema de gestión usado todos los días en un taller mecánico, de GNC y lubricentro: stock, vehículos, vencimientos y avisos automáticos.</li>
+          <li>Facturación electrónica con ARCA (WSFE) en producción, con la emisión condicionada a la respuesta del organismo.</li>
+          <li>Actualizador desde GitHub Releases, backups automáticos y modo mantenimiento para operar sin cortes.</li>
+          <li>Definí la arquitectura, revisé el código y armé las pruebas; hoy el sistema sostiene la operación diaria del negocio.</li>
+        </ul>
+      </article>
     </section>
 
     <section class="cv-section">
-      <h2 class="cv-section-title">PROYECTOS DESTACADOS</h2>
+      <h2 class="cv-section-title">PROYECTOS</h2>
       <div id="cvProjectsList" class="cv-projects"></div>
+    </section>
+
+    <section class="cv-section">
+      <h2 class="cv-section-title">STACK TÉCNICO</h2>
+      <ul id="cvSkills" class="cv-list"></ul>
     </section>
 
     <section class="cv-section">

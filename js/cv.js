@@ -3,16 +3,19 @@
 // ============================================================
 
 (() => {
+  const PORTFOLIO_URL = "https://portafolio-web-three-gamma.vercel.app/";
+  const PORTFOLIO_LABEL = "portafolio-web-three-gamma.vercel.app";
+
   document.addEventListener("DOMContentLoaded", () => {
-    document.title = `CV — ${PROFILE.name.replace(/[[\]]/g, "")}`;
+    document.title = `CV — ${PROFILE.name}`;
 
     document.getElementById("cvName").textContent = PROFILE.name;
     document.getElementById("cvClass").textContent = PROFILE.class;
-    document.getElementById("cvTagline").textContent = PROFILE.tagline;
+    document.getElementById("cvMeta").innerHTML =
+      `${PROFILE.location} · <a href="mailto:${CONTACT_INFO.email}">${CONTACT_INFO.email}</a> · ` +
+      `<a href="${PORTFOLIO_URL}">${PORTFOLIO_LABEL}</a>`;
     document.getElementById("cvBio").textContent = PROFILE.bio;
     document.getElementById("cvLocation").textContent = PROFILE.location;
-    document.getElementById("cvExp").textContent = `${PROFILE.expYears} años`;
-    document.getElementById("cvProjects").textContent = `${PROFILE.completedProjects} proyectos`;
     document.getElementById("cvStatus").textContent = PROFILE.status;
 
     // Skills
@@ -23,39 +26,39 @@
       skillsEl.appendChild(li);
     });
 
-    // Proyectos destacados (primero de cada caja)
+    // Proyectos: impacto, sin stack tecnológico
     const projEl = document.getElementById("cvProjectsList");
-    PROJECT_BOXES.forEach((box) => {
-      box.projects.forEach((p) => {
+    FEATURED_PROJECTS
+      .filter((p) => p.id !== "solutionscars")
+      .forEach((p) => {
         const item = document.createElement("article");
         item.className = "cv-project";
-        const stack = p.stack.join(" • ");
         item.innerHTML = `
           <div class="cv-project-head">
-            <h3 class="cv-project-title">${p.sprite} ${p.title}</h3>
-            <span class="cv-project-date">${p.timeline}</span>
+            <h3 class="cv-project-title">${p.title}</h3>
+            <span class="cv-project-date">${p.since || p.status}</span>
           </div>
+          <p class="cv-project-context">${p.problem}</p>
           <p class="cv-project-result"><strong>Resultado:</strong> ${p.result}</p>
-          <p class="cv-project-stack">${stack}</p>
         `;
         projEl.appendChild(item);
       });
-    });
 
     // Contacto
     const contactEl = document.getElementById("cvContact");
     const items = [
-      ["Email", CONTACT_INFO.email],
-      ["LinkedIn", String(CONTACT_INFO.linkedin).replace(/^https?:\/\//i, "")],
-      ["GitHub", String(CONTACT_INFO.github).replace(/^https?:\/\//i, "")],
-      ["Teléfono", CONTACT_INFO.phone]
+      ["Email", CONTACT_INFO.email, `mailto:${CONTACT_INFO.email}`],
+      ["Portfolio", PORTFOLIO_LABEL, PORTFOLIO_URL],
+      ["LinkedIn", String(CONTACT_INFO.linkedin).replace(/^https?:\/\//i, ""), CONTACT_INFO.linkedin],
+      ["GitHub", String(CONTACT_INFO.github).replace(/^https?:\/\//i, ""), CONTACT_INFO.github],
+      ["Teléfono", CONTACT_INFO.phone, `tel:${String(CONTACT_INFO.phone).replace(/\s+/g, "")}`]
     ];
-    items.forEach(([label, value]) => {
+    items.forEach(([label, value, href]) => {
       const li = document.createElement("li");
-      li.innerHTML = `<strong>${label}:</strong> ${value}`;
+      li.innerHTML = `<strong>${label}:</strong> <a href="${href}">${value}</a>`;
       contactEl.appendChild(li);
     });
 
-    document.getElementById("cvFooter").textContent = `© ${new Date().getFullYear()} ${PROFILE.name.replace(/[[\]]/g, "")} | Diseño & Código custom`;
+    document.getElementById("cvFooter").textContent = `© ${new Date().getFullYear()} ${PROFILE.name} | Diseño & Código custom`;
   });
 })();

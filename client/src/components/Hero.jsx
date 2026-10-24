@@ -1,17 +1,11 @@
-import { useTypewriter } from "../hooks/useTypewriter";
-import { useSound } from "../context/SoundContext";
 import { useData } from "../context/DataContext";
 import { useLanguage } from "../context/LanguageContext";
 import HeroParticles from "./HeroParticles";
 
 export default function Hero({ ready = false }) {
   const { data, track } = useData();
-  const { sfx } = useSound();
   const { t } = useLanguage();
-  const { displayed } = useTypewriter(t("hero.typewriter"), { speed: 38, start: true });
-
-  const [head, ...tail] = data.PROFILE.tagline.split("|");
-  const sub = tail.join("|");
+  const { PROFILE, CONTACT_INFO } = data;
 
   return (
     <section className={`hero${ready ? " hero-in" : ""}`} id="inicio" aria-label={t("hero.aria")}>
@@ -19,32 +13,38 @@ export default function Hero({ ready = false }) {
 
       <div className="hero-stage">
         <div className="hero-text">
-          <h1 className="hero-name title-grad">Lautaro Rodriguez</h1>
-          <h2 className="hero-tagline">
-            {head}
-            {sub && <><br /><span className="accent">{sub}</span></>}
-          </h2>
-          <p className="hero-sub" aria-live="polite">
-            {displayed}
-            <span className="typewriter-cursor" aria-hidden="true">▌</span>
-          </p>
+          <h1 className="hero-name title-grad">{PROFILE.name}</h1>
+          <h2 className="hero-class">{PROFILE.class}</h2>
+          <p className="hero-tagline">{PROFILE.tagline}</p>
+          <p className="hero-facts">{PROFILE.quickFacts.join(" · ")}</p>
         </div>
-      </div>
 
-      <button
-        type="button"
-        className="btn-retro btn-big hero-cta"
-        onClick={() => {
-          sfx("click");
-          track("enter_pc_click");
-          document.getElementById("pc").scrollIntoView({ behavior: "smooth" });
-        }}
-      >
-        {t("hero.cta")}
-      </button>
-
-      <div className="hero-badges" aria-hidden="true">
-        <span className="hero-badges-text">{t("hero.exp")}</span>
+        <div className="hero-actions">
+          <div className="hero-btns">
+            <a
+              className="btn-retro hero-btn hero-btn-primary"
+              href="#proyectos"
+              onClick={() => track("hero_projects_click")}
+            >
+              {t("hero.ctaProjects")}
+            </a>
+            <a
+              className="btn-retro hero-btn hero-btn-secondary"
+              href="#contacto"
+              onClick={() => track("hero_contact_click")}
+            >
+              {t("hero.ctaContact")}
+            </a>
+          </div>
+          <a
+            className="hero-cv-link"
+            href={CONTACT_INFO.cvUrl}
+            download
+            onClick={() => track("hero_cv_click")}
+          >
+            {t("hero.ctaCv")}
+          </a>
+        </div>
       </div>
     </section>
   );

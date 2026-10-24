@@ -3,31 +3,116 @@
     "ga4Id": ""
   },
   "PROFILE": {
-    "name": "Lautaro",
+    "name": "Lautaro Rodriguez",
     "displayName": "LAUTARO.DEV",
-    "class": "Desarrollador Web & Sistemas",
+    "class": "Desarrollador de software",
     "level": 22,
-    "maxLevel": 50, 
-    "expYears": "2+",
+    "maxLevel": 50,
     "completedProjects": "8",
     "location": "Rosario, Argentina",
     "status": "⚡ DISPONIBLE PARA PROYECTOS",
-    "tagline": "Desarrollador Web & Sistemas | AUTOMATIZACION • ARQUITECTURA • APIS",
-    "bio": "Soy desarrollador web & sistemas especializado en apps de escritorio (Tauri y Python), ERPs con facturación electrónica y sitios web en producción. Construyo soluciones de código limpio: automatizaciones, integraciones y desplegues."
+    "tagline": "Construyo sistemas que negocios reales usan todos los días, y aprendo a sacarles valor a sus datos.",
+    "quickFacts": [
+      "2 sistemas en uso diario (taller mecánico y laboratorio dental)",
+      "Rosario o remoto",
+      "Disponible para proyectos y pasantías"
+    ],
+    "bio": "Empecé a programar por los videojuegos: quería entender cómo funcionaban por dentro. Soy curioso y creativo, así que arranqué haciendo páginas web y de ahí pasé a proyectos cada vez más grandes. Mis primeros clientes llegaron casi de casualidad, pero confiaron en mí, y hoy un taller mecánico y un laboratorio dental usan todos los días los sistemas que hice para ellos. Me gusta tanto construir software como trabajar con datos, y la IA me atrapó: hoy la mayoría de mis proyectos pasan por ahí. Por eso en 2027 empiezo Ciencia de Datos en la UNR. Lo de Pokémon en este portfolio no es casualidad: es de donde viene todo."
   },
   "BADGES": [
     { "name": "Python", "icon": "🐍" },
-    { "name": "React", "icon": "⚛️" },
-    { "name": "Next.js", "icon": "▲" },
-    { "name": "Tauri", "icon": "🦀" },
     { "name": "FastAPI", "icon": "⚡" },
-    { "name": "TypeScript", "icon": "🔷" },
-    { "name": "Tailwind", "icon": "🌊" }
+    { "name": "React", "icon": "⚛️" },
+    { "name": "Flet / PyQt", "icon": "🖥️" },
+    { "name": "Tauri", "icon": "🦀" },
+    { "name": "IA / RAG", "icon": "🤖" },
+    { "name": "Supabase", "icon": "🟢" }
+  ],
+  "FEATURED_PROJECTS": [
+    {
+      "id": "solutionscars",
+      "title": "SolutionsCars",
+      "status": "En uso",
+      "since": "desde mar 2026",
+      "problem": "Un taller mecánico, de GNC y lubricentro manejaba stock, facturas y vencimientos a mano.",
+      "built": "Sistema de escritorio con clientes y vehículos, inventario, recepción, vencimientos de obleas, avisos por WhatsApp y mail, y facturación electrónica con ARCA.",
+      "stack": ["Python", "Flet", "SQLAlchemy + Alembic", "SQLite (PostgreSQL opcional)", "pyafipws", "ReportLab", "pytest", "GitHub Actions (100% cobertura)"],
+      "result": "En uso todos los días en el taller; factura en producción con ARCA.",
+      "links": [
+        { "label": "Releases", "url": "https://github.com/Rahyned/SolutionsCars-releases-" },
+        { "label": "Ver caso de estudio", "url": "/proyectos/solutionscars" }
+      ],
+      "media": { "type": "video", "src": "/media/solutionscars-demo.mp4", "poster": "/media/solutionscars-poster.jpg", "alt": "Video demo de SolutionsCars" },
+      "private": true,
+      "caseStudy": "/proyectos/solutionscars"
+    },
+    {
+      "id": "stella",
+      "title": "STELLA",
+      "status": "En uso en RioDent",
+      "since": "desde ene 2026",
+      "problem": "Un laboratorio dental llevaba los trabajos en papel, sin seguimiento ni cuentas corrientes.",
+      "built": "App de escritorio en PyQt5 con API FastAPI: trabajos con estados, cuentas corrientes, roles con JWT, PDFs y backup a Google Drive.",
+      "stack": ["Python", "PyQt5", "FastAPI", "SQLModel", "JWT", "ReportLab"],
+      "result": "El laboratorio la usa todos los días para seguir cada trabajo.",
+      "links": [],
+      "media": { "type": "video", "src": "/media/stella-demo.mp4", "poster": "/media/stella-poster.jpg", "alt": "Video demo de STELLA" },
+      "private": true,
+      "caseStudy": null
+    },
+    {
+      "id": "rag",
+      "title": "Asistente RAG",
+      "status": "Demo",
+      "since": null,
+      "problem": "Los clientes de SolutionsCars y STELLA tenían dudas que ya estaban respondidas en la documentación.",
+      "built": "Asistente que responde desde la documentación con búsqueda híbrida FAISS + BM25 combinada con RRF, cita la página del PDF, dice que no encontró nada si la pregunta es de otro tema, responde en streaming (SSE) y tiene fallbacks y rate limit.",
+      "stack": ["FastAPI", "Groq", "FAISS", "BM25", "React", "Vercel"],
+      "result": "Demo pública funcionando.",
+      "links": [
+        { "label": "Demo", "url": "https://rag-proyectos.vercel.app" },
+        { "label": "GitHub", "url": "https://github.com/Rahyned/Rag-Proyectos-" }
+      ],
+      "media": { "type": "gif", "src": "/media/rag-demo.gif", "alt": "Demo del asistente respondiendo con citas" },
+      "private": false,
+      "caseStudy": null
+    },
+    {
+      "id": "panel",
+      "title": "Panel",
+      "status": "Uso personal",
+      "since": null,
+      "problem": "Tenía notas, estudio, monitoreo de sitios y pruebas de datos repartidos en muchas herramientas.",
+      "built": "Centro de control con notas en Markdown + KaTeX, monitor de sitios con avisos a Discord, plan de estudio con flashcards SM-2 y Pomodoro, laboratorio de pandas en el navegador (Pyodide), el asistente RAG integrado y una sección de pronóstico.",
+      "stack": ["React", "Vite", "Tailwind", "Supabase", "Vercel"],
+      "result": "Lo uso todos los días.",
+      "links": [],
+      "media": { "type": "placeholder", "src": null, "alt": "Video próximamente (app privada con login)" },
+      "private": true,
+      "caseStudy": null
+    },
+    {
+      "id": "pronostico",
+      "title": "Pronóstico de autos",
+      "status": "Desplegado",
+      "since": null,
+      "problem": "Quería estimar cuántos autos se van a transferir por mes en Santa Fe.",
+      "built": "Con las transferencias mensuales de DNRPA Santa Fe (2000–2026) comparé un baseline estacional, SARIMA y Prophet. Ganó SARIMA(1,1,2)(1,1,1,12) con MAPE 5,29% contra 6,62% del baseline. El modelo pesa 9 KB y lo sirvo con una API FastAPI en Docker sobre Render.",
+      "stack": ["Python", "pandas", "statsmodels", "Prophet", "FastAPI", "Docker", "Render"],
+      "result": "API pública con documentación interactiva.",
+      "links": [
+        { "label": "API (/docs)", "url": "https://pronostico-autos.onrender.com/docs" },
+        { "label": "GitHub", "url": "https://github.com/Rahyned/pronostico-autos" }
+      ],
+      "media": { "type": "img", "src": "/media/pronostico.png", "alt": "Pronóstico vs. datos reales" },
+      "private": false,
+      "caseStudy": null
+    }
   ],
   "PROJECT_BOXES": [
     {
       "id": "caja1",
-      "label": "CAJA 1: DESARROLLO WEB",
+      "label": "Web",
       "icon": "🌐",
       "projects": [
         {
@@ -42,7 +127,7 @@
           "result": "Tienda v1.1.0 completa y lista para desplegar; pagos reales (MercadoPago) y feed de Instagram quedaron como roadmap.",
           "stack": ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS", "Sharp"],
           "demo": null,
-          "github": "https://github.com/Rahyned"
+          "github": null
         },
         {
           "id": "floreria-susi",
@@ -56,7 +141,7 @@
           "result": "Landing lista para publicar con canal de pedidos y consultas por WhatsApp integrado; SEO básico y estética acorde a la marca.",
           "stack": ["React 18", "Vite", "Tailwind CSS 4"],
           "demo": null,
-          "github": "https://github.com/Rahyned"
+          "github": null
         },
         {
           "id": "riodent",
@@ -70,7 +155,7 @@
           "result": "En producción en Railway: los pedidos y tomas de color llegan por email con PDF y adjuntos, con rate limiting y CSP.",
           "stack": ["React 19", "Vite", "MUI 7", "i18next", "Express 5", "Brevo", "Railway"],
           "demo": "https://www.riodent.com.ar",
-          "github": "https://github.com/Rahyned"
+          "github": null
         },
         {
           "id": "pixel-editor",
@@ -90,43 +175,28 @@
     },
     {
       "id": "caja2",
-      "label": "CAJA 2: SISTEMAS DE GESTION & ERPs",
+      "label": "Sistemas",
       "icon": "🖥️",
       "projects": [
         {
-          "id": "solutionscars",
-          "title": "SolutionsCars",
-          "sprite": "🔧",
-          "category": "Sistemas de Gestión & ERPs",
+          "id": "organizador",
+          "title": "Organizador personal",
+          "sprite": "🗂️",
+          "category": "Sistemas & Apps",
           "timeline": "2026",
-          "status": "En uso",
-          "problem": "Taller mecánico/GNC/lubricentro sin gestión digital: inventario descontrolado, facturación y recibos manuales, sin control de vencimientos de obleas GNC/P.H. ni avisos a clientes.",
-          "solution": "ERP de escritorio con gestión de clientes y vehículos, inventario con alertas de stock, facturación AFIP, recepción de vehículos, vencimientos, exportación PDF/Excel, motor de avisos por WhatsApp/mail y auditoría con roles.",
-          "result": "En uso real en el taller: 542 tests con CI automatizado; facturación, inventario, vencimientos y avisos digitalizados.",
-          "stack": ["Python", "Flet", "SQLAlchemy", "PostgreSQL/SQLite", "ReportLab", "PyAFIPWS", "WhatsApp API"],
+          "status": "Uso personal",
+          "problem": "Descripción próximamente",
+          "solution": "Descripción próximamente",
+          "result": "Descripción próximamente",
+          "stack": [],
           "demo": null,
-          "github": "https://github.com/Rahyned"
-        },
-        {
-          "id": "stella",
-          "title": "STELLA",
-          "sprite": "⭐",
-          "category": "Sistemas de Gestión & ERPs",
-          "timeline": "En curso (2026)",
-          "status": "En desarrollo",
-          "problem": "Laboratorio odontológico con órdenes de trabajo en papel, sin trazabilidad, sin control de cuentas corrientes ni de proveedores/productos.",
-          "solution": "ERP de escritorio (PyQt5) con API REST (FastAPI): clientes, proveedores, productos con precios diferenciados, trabajos con estados, cuentas corrientes, dashboard de métricas y generación de PDFs (comanda, ticket, comprobante), con roles y JWT.",
-          "result": "Sistema integral del laboratorio: 1234 tests pasando, con módulos de estación maestra, consulta y recepción.",
-          "stack": ["Python", "PyQt5", "FastAPI", "SQLModel", "SQLite", "JWT", "ReportLab"],
-          "demo": null,
-          "assistant": "/asistente/",
-          "github": "https://github.com/Rahyned"
+          "github": null
         }
       ]
     },
     {
       "id": "caja3",
-      "label": "CAJA 3: APPS DE ESCRITORIO (TAURI)",
+      "label": "Escritorio",
       "icon": "⚙️",
       "projects": [
         {
@@ -141,7 +211,7 @@
           "result": "Ejecutable .exe generado y verificado; app 100% local con temas claro/oscuro y atajos de teclado completos.",
           "stack": ["Tauri 2", "Rust", "React 19", "TypeScript", "rough.js", "Vite"],
           "demo": null,
-          "github": "https://github.com/Rahyned"
+          "github": null
         },
         {
           "id": "libreta",
@@ -156,7 +226,7 @@
           "stack": ["Tauri 2", "Rust", "SQLite", "React 18", "TypeScript", "Tailwind", "Zustand", "Framer Motion"],
           "demo": null,
           "video": null,
-          "github": "https://github.com/Rahyned"
+          "github": null
         }
       ]
     }
@@ -236,14 +306,15 @@
     "linkedin": "https://www.linkedin.com/in/lautaro-rodriguez-96a42b389/",
     "github": "https://github.com/Rahyned",
     "phone": "+54 341 6297638",
-    "cvUrl": "cv.html"
+    "cvUrl": "/cv/Lautaro-Rodriguez-CV.pdf"
   },
   "SKILLS_LIST": [
-    "Frontend: React, Next.js, Vite, Tailwind CSS, MUI, TypeScript, HTML5/CSS3",
-    "Desktop: Tauri (Rust), Flet, PyQt5",
-    "Backend: Python (FastAPI), Node.js (Express), APIs REST",
-    "Bases de datos: PostgreSQL, SQLite, SQLAlchemy, SQLModel",
-    "Sistemas: Facturación AFIP, emails transaccionales (Brevo), WhatsApp API, PDF/Excel",
-    "DevOps: Git/GitHub Actions, Railway, Vercel, PyInstaller/Inno Setup, pytest + CI"
+    "Lenguajes: Python, JavaScript, SQL",
+    "Backend: FastAPI, Node.js (Express), APIs REST",
+    "Frontend: React, Vite, Tailwind CSS, MUI",
+    "Escritorio: Tauri (Rust), Flet, PyQt5",
+    "IA & datos: IA / RAG, FAISS, BM25, pandas, Prophet",
+    "Bases de datos: PostgreSQL, SQLite, SQLModel, Supabase",
+    "Deploy: Railway, Render y Vercel; Docker, GitHub Actions"
   ]
 }

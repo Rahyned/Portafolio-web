@@ -69,8 +69,8 @@ function knowledgeEs() {
   const lines = [];
   lines.push("## Perfil");
   lines.push(
-    `${PROFILE.name} — ${PROFILE.class}. Nivel ${PROFILE.level}, ${PROFILE.expYears} años de experiencia, ` +
-    `${PROFILE.completedProjects} proyectos completados. Ubicación: ${PROFILE.location}. Estado: ${PROFILE.status}.`
+    `${PROFILE.name} — ${PROFILE.class}. Nivel ${PROFILE.level}. ` +
+    `Ubicación: ${PROFILE.location}. Estado: ${PROFILE.status}.`
   );
   lines.push(`Bio: ${PROFILE.bio}`);
   lines.push("");
@@ -103,8 +103,8 @@ function knowledgeEn() {
   const lines = [];
   lines.push("## Profile");
   lines.push(
-    `${base.PROFILE.name} — ${en.PROFILE.class}. Level ${base.PROFILE.level}, ${base.PROFILE.expYears}+ years of experience, ` +
-    `${base.PROFILE.completedProjects} completed projects. Location: ${base.PROFILE.location}. Status: ${en.PROFILE.status}.`
+    `${base.PROFILE.name} — ${en.PROFILE.class}. Level ${base.PROFILE.level}. ` +
+    `Location: ${base.PROFILE.location}. Status: ${en.PROFILE.status}.`
   );
   lines.push(`Bio: ${en.PROFILE.bio}`);
   lines.push("");

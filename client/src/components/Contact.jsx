@@ -334,8 +334,8 @@ export default function Contact() {
                   {status === "sending" ? t("contact.submit.sending") : t("contact.submit")}
                 </button>
 
-                <div style={{ position: "absolute", left: "-9999px", height: 0, overflow: "hidden" }} aria-hidden="true">
-                  <label htmlFor="fieldCompany">Company</label>
+                <div className="hp-field" aria-hidden="true">
+                  <label htmlFor="fieldCompany"> </label>
                   <input
                     type="text"
                     id="fieldCompany"

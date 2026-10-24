@@ -10,15 +10,17 @@
 
 .section-title {
   font-family: var(--font-pixel);
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 400;
   color: var(--text-primary);
   text-align: center;
   margin-bottom: 8px;
+  line-height: 1.5;
 }
 
 .section-sub {
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-secondary);
   text-align: center;
   margin-bottom: 28px;
@@ -47,7 +49,8 @@
 
 .pc-title {
   font-family: var(--font-pixel);
-  font-size: 10px;
+  font-size: 14px;
+  line-height: 1.5;
   color: var(--accent-text);
 }
 
@@ -70,8 +73,9 @@
 
 .pc-tab {
   font-family: var(--font-pixel);
-  font-size: 10px;
+  font-size: 14px;
   color: var(--text-secondary);
+  line-height: 1.5;
   background: var(--btn-bg);
   border: 2px solid var(--border);
   border-radius: var(--radius);
@@ -144,6 +148,7 @@
 .pc-slot {
   aspect-ratio: 1 / 1;
   min-width: 0;
+  font-family: var(--font-pixel);
   background: var(--bg-tertiary);
   border: 2px solid var(--border);
   border-radius: var(--radius);
@@ -189,7 +194,7 @@
   left: 6px;
   z-index: 3;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1;
   color: var(--text-primary);
   background: var(--bg-primary);
@@ -251,7 +256,7 @@
 /* Título del proyecto dentro de la ficha */
 .pc-slot .slot-title {
   font-family: var(--font-pixel);
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.5;
   text-align: center;
   color: var(--text-primary);
@@ -275,7 +280,8 @@
   background: var(--bg-primary);
   border: 2px solid var(--border);
   font-family: var(--font-pixel);
-  font-size: 10px;
+  font-size: 14px;
+  line-height: 1.5;
   color: var(--text-primary);
 }
 
@@ -325,7 +331,8 @@
 
 .pc-hint {
   font-family: var(--font-pixel);
-  font-size: 10px;
+  font-size: 14px;
+  line-height: 1.5;
   color: var(--text-secondary);
   margin-top: 14px;
   text-align: center;
@@ -437,7 +444,7 @@
 
 .modal-meta {
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-secondary);
   margin-top: 6px;
 }
@@ -445,7 +452,8 @@
 .modal-status {
   display: inline-block;
   font-family: var(--font-pixel);
-  font-size: 10px;
+  font-size: 12px;
+  line-height: 1.5;
   color: var(--accent-text);
   border: 1px solid var(--accent);
   padding: 4px 8px;
@@ -526,12 +534,13 @@
 
 .modal-block-title {
   font-family: var(--font-pixel);
-  font-size: 11px;
+  font-size: 14px;
   color: var(--accent-text);
   margin-bottom: 12px;
   display: flex;
   align-items: center;
   gap: 8px;
+  line-height: 1.5;
 }
 
 .modal-block p {
@@ -557,7 +566,7 @@
 
 .modal-stack .stack-chip {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 14px;
   color: var(--bg-primary);
   background: var(--text-primary);
   border: 1px solid var(--border);
@@ -580,7 +589,8 @@
 
 .btn-link {
   font-family: var(--font-pixel);
-  font-size: 11px;
+  font-size: 14px;
+  line-height: 1.5;
   color: var(--text-primary);
   background: var(--btn-bg);
   border: 2px solid var(--border);
@@ -608,7 +618,7 @@
 
 .modal-timeline {
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-secondary);
   border-top: 2px dashed var(--border);
   padding-top: 14px;
@@ -629,7 +639,7 @@
     padding: 60px 20px;
   }
   .pc-tab {
-    font-size: 11px;
+    font-size: 14px;
     padding: 8px;
   }
   .modal-header {
@@ -642,7 +652,7 @@
     font-size: 42px;
   }
   .modal-title {
-    font-size: 13px;
+    font-size: 14px;
   }
   .modal-body {
     padding: 16px;

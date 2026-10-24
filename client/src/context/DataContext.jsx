@@ -5,7 +5,7 @@ import { CONTENT_EN } from "../i18n/content";
 
 const DataContext = createContext(null);
 
-function localizeData(data, lang) {
+export function localizeData(data, lang) {
   if (lang !== "en" || !data) return data;
 
   const localized = JSON.parse(JSON.stringify(data));
@@ -15,6 +15,22 @@ function localizeData(data, lang) {
       ...localized.PROFILE,
       ...CONTENT_EN.PROFILE
     };
+  }
+
+  if (Array.isArray(localized.BADGES) && Array.isArray(CONTENT_EN.BADGES)) {
+    localized.BADGES = CONTENT_EN.BADGES;
+  }
+
+  if (Array.isArray(localized.FEATURED_PROJECTS) && CONTENT_EN.FEATURED_PROJECTS) {
+    localized.FEATURED_PROJECTS = localized.FEATURED_PROJECTS.map((project) => {
+      const projEn = CONTENT_EN.FEATURED_PROJECTS[project.id];
+      if (!projEn) return project;
+      const media = projEn.media
+        ? { ...project.media, ...projEn.media }
+        : project.media;
+      const links = Array.isArray(projEn.links) ? projEn.links : project.links;
+      return { ...project, ...projEn, media, links };
+    });
   }
 
   if (Array.isArray(localized.PROJECT_BOXES)) {

@@ -47,16 +47,16 @@
 
 .service-name {
   font-family: var(--font-pixel);
-  font-size: 10px;
+  font-size: 14px;
   color: var(--text-primary);
   line-height: 1.6;
 }
 
 .service-desc {
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-secondary);
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .service-includes {
@@ -71,7 +71,7 @@
 
 .service-include {
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 14px;
   color: var(--text-primary);
   display: flex;
   align-items: baseline;
@@ -81,7 +81,7 @@
 .service-include::before {
   content: "▸";
   color: var(--accent2);
-  font-size: 11px;
+  font-size: 14px;
 }
 
 .service-stack {
@@ -92,7 +92,7 @@
 
 .service-tag {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 14px;
   color: var(--accent-text);
   background: var(--bg-tertiary);
   border: 1px solid var(--border);

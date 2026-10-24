@@ -52,7 +52,8 @@
 
 .header-status {
   font-family: var(--font-pixel);
-  font-size: 10px;
+  font-size: 14px;
+  line-height: 1.5;
   color: var(--accent-text);
   border: 1px solid var(--border);
   background: var(--bg-secondary);
@@ -78,7 +79,7 @@
 
 .icon-btn.lang-btn {
   font-family: var(--font-pixel);
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .icon-btn:hover {
@@ -104,7 +105,7 @@
 
 .theme-btn {
   font-family: var(--font-pixel);
-  font-size: 10px;
+  font-size: 12px;
   padding: 7px 9px;
   border: 2px solid var(--border);
   background: var(--btn-bg);
@@ -155,7 +156,7 @@
     font-size: 13px;
   }
   .theme-btn {
-    font-size: 11px;
+    font-size: 12px;
     padding: 6px 5px;
   }
   .theme-switcher {
@@ -173,10 +174,10 @@
 
 @media (max-width: 420px) {
   .header-logo {
-    font-size: 11px;
+    font-size: 12px;
   }
   .theme-btn {
-    font-size: 11px;
+    font-size: 12px;
     padding: 6px 4px;
   }
   .theme-switcher {
