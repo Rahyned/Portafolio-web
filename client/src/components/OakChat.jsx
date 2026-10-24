@@ -340,7 +340,7 @@ export default function OakChat() {
             </p>
           )}
 
-          {messages.length > 0 && !busy && !answer && !error && (
+          {messages.length > 0 && messages.length <= 2 && !busy && !answer && !error && (
             <p className="oak-hint">{t("oak.hint")}</p>
           )}
         </div>
