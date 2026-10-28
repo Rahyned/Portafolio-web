@@ -177,6 +177,20 @@
           "stack": [],
           "demo": null,
           "github": null
+        },
+        {
+          "id": "rag",
+          "title": "Asistente RAG",
+          "sprite": "🤖",
+          "category": "IA & Datos",
+          "timeline": "2026",
+          "status": "Demo",
+          "problem": "Los clientes de SolutionsCars y STELLA tenían dudas que ya estaban respondidas en la documentación.",
+          "solution": "Asistente que responde desde la documentación con búsqueda híbrida FAISS + BM25 combinada con RRF, cita la página del PDF, dice que no encontró nada si la pregunta es de otro tema, responde en streaming (SSE) y tiene fallbacks y rate limit.",
+          "result": "Demo pública funcionando.",
+          "stack": ["FastAPI", "Groq", "FAISS", "BM25", "React", "Vercel"],
+          "demo": "https://rag-proyectos.vercel.app",
+          "github": "https://github.com/Rahyned/Rag-Proyectos-"
         }
       ]
     },

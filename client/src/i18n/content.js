@@ -122,6 +122,15 @@ export const CONTENT_EN = {
       solution: "Sprite editor in React 19 + Vite 8 with brush, eraser, fill, line, rectangle, ellipse and selection; layers with blend modes, animated frames with onion skin and per-frame duration, preset palettes (Pico-8, C64, DB32…), PNG/JPG import, symmetry, undo/redo and autosave.",
       result: "Deployed to GitHub Pages with CI (lint + unit + E2E) on every push; exports PNG, sprite sheet, animated GIF, SVG, JSON and copy-paste-ready JS code, plus a shareable link that embeds the project."
     },
+    rag: {
+      title: "RAG Assistant",
+      category: "AI & Data",
+      timeline: "2026",
+      status: "Demo",
+      problem: "SolutionsCars and STELLA clients kept asking questions that were already answered in the docs.",
+      solution: "An assistant that answers from the documentation with hybrid FAISS + BM25 search fused via RRF, cites the PDF page, says when nothing fits, streams replies (SSE), and includes fallbacks and rate limiting.",
+      result: "Public demo up and running."
+    },
     butterflies: {
       category: "Desktop Apps (Tauri)",
       timeline: "May 2026",

@@ -1,5 +1,27 @@
 # CHANGELOG
 
+## 2026-10-28 — feat(proyectos): agregar Asistente RAG a la PC
+
+### Added
+
+- Proyecto `rag` (repo `RAG-Proyectos-`) en la caja "Sistemas" con su demo y repositorio.
+- Sprite SVG 16×16 para el proyecto (`sprite-rag.svg`), registrado en el mapa de sprites.
+- Contenido EN para la ficha del proyecto.
+
+### Files
+
+- `data/projects.json`
+- `data/projects.js`
+- `client/src/data/fallback.js`
+- `client/src/i18n/content.js`
+- `client/src/sprites/registry.js`
+- `client/public/sprites/sprite-rag.svg`
+- `CHANGELOG.md`
+
+### Tests
+
+- `npm run lint`, `npm test` y `npm run build` en `client/`.
+
 ## 2026-10-27 — feat(proyectos): retirar Florería Susi
 
 ### Removed
