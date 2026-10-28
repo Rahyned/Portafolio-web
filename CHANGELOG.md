@@ -1,5 +1,44 @@
 # CHANGELOG
 
+## 2026-10-27 — feat(proyectos): retirar Florería Susi
+
+### Removed
+
+- Proyecto `floreria-susi` de la caja "Web" en los datos canónicos, el fallback embebido y el contenido EN.
+- Su sprite (`sprite-floreria-susi.svg`), su registro en el mapa de sprites y su mención en el contexto de Oak.
+
+### Files
+
+- `data/projects.json`
+- `data/projects.js`
+- `client/src/data/fallback.js`
+- `client/src/data/oakKnowledge.js`
+- `client/src/i18n/content.js`
+- `client/src/sprites/registry.js`
+- `client/src/sprites/projects.js`
+- `client/public/sprites/sprite-floreria-susi.svg`
+- `CHANGELOG.md`
+
+### Tests
+
+- `npm run lint`, `npm test` y `npm run build` en `client/`.
+
+## 2026-10-27 — feat(proyectos): icono pixel-art del Organizador
+
+### Added
+
+- Sprite SVG 16×16 para el proyecto `organizador` (`sprite-organizador.svg`), registrado en el mapa de sprites de proyectos.
+
+### Files
+
+- `client/public/sprites/sprite-organizador.svg`
+- `client/src/sprites/registry.js`
+- `CHANGELOG.md`
+
+### Tests
+
+- `npm run lint`, `npm test` y `npm run build` en `client/`.
+
 ## 2026-10-24 — fix(seo): título de pestaña lautaro.dev
 
 ### Changed

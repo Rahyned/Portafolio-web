@@ -106,14 +106,6 @@ export const CONTENT_EN = {
       solution: "Next.js store with filterable catalog (category, price, color, size), product page with gallery and SEO, cart and favorites, WhatsApp checkout, dark mode and JSON-editable data.",
       result: "Store v1.1.0 complete and ready to deploy; real payments (MercadoPago) and Instagram feed left as roadmap."
     },
-    "floreria-susi": {
-      category: "Web Development",
-      timeline: "Aug 2026",
-      status: "Completed",
-      problem: "Neighborhood flower shop with a solid reputation but no digital presence: orders only by phone, no catalog or visible WhatsApp.",
-      solution: "Responsive landing with hero, featured bouquets and plants, opening hours, WhatsApp/Instagram contact, form and floating WhatsApp button.",
-      result: "Landing ready to publish with an integrated order and inquiry channel via WhatsApp; basic SEO and aesthetics matching the brand."
-    },
     riodent: {
       category: "Web Development",
       timeline: "2025 – 2026",

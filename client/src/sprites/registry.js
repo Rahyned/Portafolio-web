@@ -48,8 +48,8 @@ export const getSprite = (key) => SPRITES[key] || null;
 // Los sprites de proyectos se cargan como SVG desde public/sprites/.
 // Cada archivo se llama sprite-<id>.svg (ej: sprite-riodent.svg).
 const PROJECT_IDS = [
+  "organizador",
   "abstractoshopp",
-  "floreria-susi",
   "riodent",
   "pixel-editor",
   "solutionscars",

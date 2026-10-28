@@ -130,20 +130,6 @@
           "github": null
         },
         {
-          "id": "floreria-susi",
-          "title": "Florería Susi",
-          "sprite": "🌷",
-          "category": "Desarrollo Web",
-          "timeline": "Ago 2026",
-          "status": "Completado",
-          "problem": "Florería de barrio con sólida reputación pero sin presencia digital: pedidos solo por teléfono, sin catálogo ni WhatsApp visible.",
-          "solution": "Landing responsive con hero, ramos y plantas destacados, horarios, contacto con WhatsApp/Instagram, formulario y botón WhatsApp flotante.",
-          "result": "Landing lista para publicar con canal de pedidos y consultas por WhatsApp integrado; SEO básico y estética acorde a la marca.",
-          "stack": ["React 18", "Vite", "Tailwind CSS 4"],
-          "demo": null,
-          "github": null
-        },
-        {
           "id": "riodent",
           "title": "Laboratorio RioDent",
           "sprite": "🦷",

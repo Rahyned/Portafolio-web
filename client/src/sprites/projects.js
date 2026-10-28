@@ -20,26 +20,6 @@ export const ABSTRACT_SHOPP = P([
   "................"
 ]);
 
-// Florería Susi — flor.
-export const FLORERIA_SUSI = P([
-  "......OOOO..OOO.",
-  ".....OYYGGOOYYYO",
-  "...OOOGGGOOYYGGO",
-  ".OOYGGOGOGYYGGO.",
-  "OGYYGGGOOGGOOOO.",
-  ".OOOOOGOGGGOGGGO",
-  "..OGGGOOGGOGGGOO",
-  "OOOYYYGGOYYOOO..",
-  "OGGGYYOGLOYYYGO.",
-  ".OOOYOLLL.OOGGO.",
-  "...OO.NLN...OO..",
-  ".......L........",
-  ".......L.L......",
-  ".......LL.......",
-  ".......N........",
-  ".......N........"
-]);
-
 // Laboratorio RioDent — diente.
 export const RIODENT = P([
   "....FFWWKWWF....",
