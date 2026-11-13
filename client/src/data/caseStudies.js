@@ -1,5 +1,11 @@
 export const CASE_STUDIES = {
   solutionscars: {
+    seo: {
+      title: "SolutionsCars | Caso de estudio — Lautaro Rodríguez",
+      description:
+        "Sistema de gestión para taller mecánico en Rosario: inventario, vencimientos GNC, avisos WhatsApp y facturación electrónica ARCA. Caso de estudio de Lautaro Rodríguez.",
+      canonical: "https://lautaro.is-a.dev/proyectos/solutionscars"
+    },
     es: {
       title: "SolutionsCars",
       summary: "SolutionsCars es el sistema de gestión de escritorio de un taller mecánico, de GNC y lubricentro de Rosario. Lo usan todos los días desde marzo de 2026 y factura en producción con ARCA.",

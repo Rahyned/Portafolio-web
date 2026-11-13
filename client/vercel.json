@@ -28,6 +28,14 @@
       ]
     }
   ],
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "portafolio-web-three-gamma.vercel.app" }],
+      "destination": "https://lautaro.is-a.dev/:path*",
+      "statusCode": 301
+    }
+  ],
   "rewrites": [
     { "source": "/asistente/", "destination": "https://rag-proyectos.vercel.app/" },
     { "source": "/asistente/:path*", "destination": "https://rag-proyectos.vercel.app/:path*" },

@@ -3,8 +3,8 @@
 // ============================================================
 
 (() => {
-  const PORTFOLIO_URL = "https://portafolio-web-three-gamma.vercel.app/";
-  const PORTFOLIO_LABEL = "portafolio-web-three-gamma.vercel.app";
+  const PORTFOLIO_URL = "https://lautaro.is-a.dev/";
+  const PORTFOLIO_LABEL = "lautaro.is-a.dev";
 
   document.addEventListener("DOMContentLoaded", () => {
     document.title = `CV — ${PROFILE.name}`;

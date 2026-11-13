@@ -5,11 +5,19 @@ export default function CaseStudy({ id = "solutionscars" }) {
   const { lang, t } = useLanguage();
   const entry = CASE_STUDIES[id];
   const cs = entry?.[lang] ?? entry?.es;
+  const seo = entry?.seo;
 
   if (!cs) return null;
 
   return (
     <main className="case-study" id="main">
+      {seo && (
+        <>
+          <title>{seo.title}</title>
+          <meta name="description" content={seo.description} />
+          <link rel="canonical" href={seo.canonical} />
+        </>
+      )}
       <article className="case-wrap">
         <a className="case-back" href="/#proyectos">{t("case.back")}</a>
 
