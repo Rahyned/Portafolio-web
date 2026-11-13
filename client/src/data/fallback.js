@@ -262,7 +262,7 @@ export const FALLBACK_DATA = {
       type: "Sistema",
       description: "ERPs y apps de escritorio que reemplazan planillas y papel por control real de tu negocio, con reportes y auditoría.",
       includes: [
-        "Facturación electrónica AFIP",
+        "Facturación electrónica ARCA",
         "Inventario, clientes y cuentas corrientes",
         "Reportes exportables PDF/Excel",
         "Apps desktop offline para Windows"

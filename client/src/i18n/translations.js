@@ -34,7 +34,7 @@ export const translations = {
     "nav.contacto": "CONTACTO",
 
     // TrainerCard
-    "trainer.bio.skip": "PRESIONA CUALQUIER TECLA PARA CONTINUAR ▸",
+    "trainer.bio.skip": "PRESIONÁ CUALQUIER TECLA PARA CONTINUAR ▸",
     "trainer.avatar.alt": "Foto pixelada de Lautaro",
     "trainer.block.data": "🎖️ DATOS",
     "trainer.stat.level": "NIVEL",
@@ -75,11 +75,11 @@ export const translations = {
     "pc.titlebar": "PC DE LAUTARO // PROYECTOS",
     "pc.aria.slotEmpty": "Slot vacío",
     "pc.aria.project": "Proyecto: {title}",
-    "pc.hint": "💡 PRESIONA [T] PARA ABRIR LA TERMINAL",
-    "pc.select": "SELECCIONA UN PROYECTO ▸",
+    "pc.hint": "💡 PRESIONÁ [T] PARA ABRIR LA TERMINAL",
+    "pc.select": "SELECCIONÁ UN PROYECTO ▸",
 
     // Contact
-    "contact.sub": "Elige un medio o inicia un intercambio.",
+    "contact.sub": "Elegí un medio o iniciá un intercambio.",
     "contact.pokenav.title": "📡 CONTACTOS",
     "contact.pokenav.lid": "POKENAV v2",
     "contact.email": "📧 EMAIL",
@@ -90,7 +90,7 @@ export const translations = {
     "contact.action.linkedin": "ABRIR",
     "contact.action.github": "VER PERFIL",
     "contact.action.whatsapp": "ABRIR CHAT",
-    "contact.trade.title": "🤝 ¿TIENES UN PROYECTO?<br />INICIA UN INTERCAMBIO",
+    "contact.trade.title": "🤝 ¿TENÉS UN PROYECTO?<br />INICIÁ UN INTERCAMBIO",
     "contact.field.name": "NOMBRE",
     "contact.field.name.ph": "Tu nombre",
     "contact.field.name.err": "Ingresá tu nombre.",
@@ -142,7 +142,7 @@ export const translations = {
     "term.title": "RETRO_TERMINAL.EXE",
     "term.aria.close": "Cerrar terminal",
     "term.aria.input": "Comando de terminal",
-    "term.placeholder": "escribe 'help'...",
+    "term.placeholder": "escribí 'help'...",
     "term.boot": "LAUTARO.SYS — TERMINAL RETRO v2.0",
     "term.help.title": "COMANDOS DISPONIBLES:",
     "term.help.help": "  help       - esta ayuda",
@@ -164,7 +164,7 @@ export const translations = {
     "term.contact.github": "GITHUB:",
     "term.contact.phone": "TELEFONO:",
     "term.cv.opening": "ABRIENDO CV (imprimible)...",
-    "term.error": "ERROR: '{cmd}' no es un comando válido. Usa 'help'.",
+    "term.error": "ERROR: '{cmd}' no es un comando válido. Usá 'help'.",
     "term.help.oak": "  oak        - chat con el Profesor Oak",
     "term.oak.opening": "ABRIENDO CHAT CON EL PROFESOR OAK...",
 

@@ -86,7 +86,7 @@ const Terminal = (() => {
         body.scrollTop = body.scrollHeight;
       });
     } else {
-      writeLine({ text: `ERROR: '${cmdRaw}' no es un comando válido. Usa 'help'.`, cls: "term-warn" });
+      writeLine({ text: `ERROR: '${cmdRaw}' no es un comando válido. Usá 'help'.`, cls: "term-warn" });
     }
   }
 
@@ -96,7 +96,7 @@ const Terminal = (() => {
     SoundManager.sfx.open();
     body.innerHTML = "";
     writeLine({ text: "LAUTARO.SYS — TERMINAL RETRO v1.0", cls: "term-ok" });
-    writeLine({ text: "Escribe 'help' para ver los comandos disponibles.", cls: "" });
+    writeLine({ text: "Escribí 'help' para ver los comandos disponibles.", cls: "" });
     writeLine({ text: "", cls: "" });
     overlay.classList.add("open");
     setTimeout(() => input.focus(), 100);
