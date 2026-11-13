@@ -164,7 +164,7 @@ export const CONTENT_EN = {
       title: "MANAGEMENT SYSTEMS",
       description: "ERPs and desktop apps that replace spreadsheets and paper with real control of your business, with reports and auditing.",
       includes: [
-        "AFIP electronic invoicing",
+        "ARCA electronic invoicing (Argentina)",
         "Inventory, customers and current accounts",
         "PDF/Excel exportable reports",
         "Offline desktop apps for Windows"

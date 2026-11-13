@@ -85,14 +85,20 @@ export default function OakChat() {
         const p = data.PROFILE;
         const again = t("oak.menu.again");
         if (key === "exp") {
-          const afip = data.SKILLS_LIST.find((s) => s.includes("AFIP")) || "";
+          // ARCA vive en includes de servicios (no en SKILLS_LIST).
+          const arca =
+            data.SKILLS_LIST.find((s) => s.includes("ARCA")) ||
+            (data.SERVICES || [])
+              .flatMap((s) => s.includes || [])
+              .find((line) => line.includes("ARCA")) ||
+            "";
           const header = fill(t("oak.exp.header"), {
             class: p.class,
             level: p.level,
             max: p.maxLevel,
             done: p.completedProjects
           });
-          return [header, p.bio, afip, p.status]
+          return [header, p.bio, arca, p.status]
             .filter(Boolean)
             .join("\n\n") + `\n\n${again}`;
         }
