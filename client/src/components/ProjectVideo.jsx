@@ -6,7 +6,12 @@ const MEDIA_SIZE = {
   "/media/pronostico.png": { width: 1320, height: 600 },
   "/media/solutionscars-demo.mp4": { width: 1280, height: 720 },
   "/media/stella-demo.mp4": { width: 1280, height: 720 },
-  "/media/rag-demo.mp4": { width: 1280, height: 720 }
+  "/media/rag-demo.mp4": { width: 1280, height: 720 },
+  "/media/riodent-demo.mp4": { width: 1280, height: 720 },
+  "/media/pixel-editor-demo.mp4": { width: 1280, height: 720 },
+  "/media/organizador-demo.mp4": { width: 1280, height: 720 },
+  "/media/butterflies-demo.mp4": { width: 1280, height: 720 },
+  "/media/libreta-demo.mp4": { width: 1280, height: 720 }
 };
 
 function stopCarouselGesture(event) {
