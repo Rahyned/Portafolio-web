@@ -82,40 +82,42 @@ export default function ProjectModal({ project, onClose }) {
     }
   };
 
-  const details = (
-    <>
-      <div className="modal-block">
-        <h4 className="modal-block-title">{t("modal.block.details")}</h4>
-        <p><strong>{t("modal.problem")}</strong> {project.problem}</p>
-        <p><strong>{t("modal.solution")}</strong> {project.solution}</p>
-        <p><strong>{t("modal.result")}</strong> {project.result}</p>
+  const detailBlock = (
+    <div className="modal-block">
+      <h4 className="modal-block-title">{t("modal.block.details")}</h4>
+      <p><strong>{t("modal.problem")}</strong> {project.problem}</p>
+      <p><strong>{t("modal.solution")}</strong> {project.solution}</p>
+      <p><strong>{t("modal.result")}</strong> {project.result}</p>
+    </div>
+  );
+
+  const stackBlock = (
+    <div className="modal-block">
+      <h4 className="modal-block-title">{t("modal.block.stack")}</h4>
+      <div className="modal-stack">
+        {project.stack.map((tech) => (
+          <span key={tech} className="stack-chip">{tech}</span>
+        ))}
       </div>
+    </div>
+  );
 
-      <div className="modal-block">
-        <h4 className="modal-block-title">{t("modal.block.stack")}</h4>
-        <div className="modal-stack">
-          {project.stack.map((tech) => (
-            <span key={tech} className="stack-chip">{tech}</span>
-          ))}
-        </div>
+  const linksBlock = (project.demo || project.github) ? (
+    <div className="modal-block modal-block-links">
+      <h4 className="modal-block-title">{t("modal.block.code")}</h4>
+      <div className="modal-actions">
+        {project.demo && (
+          <a href={project.demo} target="_blank" rel="noopener noreferrer" className="btn-link" onClick={() => sfx("click")}>{t("modal.demo")}</a>
+        )}
+        {project.github && (
+          <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn-link" onClick={() => sfx("click")}>{t("modal.github")}</a>
+        )}
       </div>
+    </div>
+  ) : null;
 
-      {(project.demo || project.github) && (
-        <div className="modal-block">
-          <h4 className="modal-block-title">{t("modal.block.code")}</h4>
-          <div className="modal-actions">
-            {project.demo && (
-              <a href={project.demo} target="_blank" rel="noopener noreferrer" className="btn-link" onClick={() => sfx("click")}>{t("modal.demo")}</a>
-            )}
-            {project.github && (
-              <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn-link" onClick={() => sfx("click")}>{t("modal.github")}</a>
-            )}
-          </div>
-        </div>
-      )}
-
-      <p className="modal-timeline">{t("modal.completed")} <strong>{project.timeline}</strong></p>
-    </>
+  const timelineBlock = (
+    <p className="modal-timeline">{t("modal.completed")} <strong>{project.timeline}</strong></p>
   );
 
   return (
@@ -145,19 +147,25 @@ export default function ProjectModal({ project, onClose }) {
 
         {withVideo ? (
           <div className="modal-body modal-body--with-media">
-            <div className="modal-body-media">
+            <div className="modal-body-col modal-body-col--main">
+              {detailBlock}
+              {stackBlock}
+              {timelineBlock}
+            </div>
+            <div className="modal-body-col modal-body-col--media">
               <ProjectVideo
                 media={project.media}
                 onExpandedChange={setVideoLightboxOpen}
               />
-            </div>
-            <div className="modal-body-main">
-              {details}
+              {linksBlock}
             </div>
           </div>
         ) : (
           <div className="modal-body">
-            {details}
+            {detailBlock}
+            {stackBlock}
+            {linksBlock}
+            {timelineBlock}
           </div>
         )}
       </div>

@@ -4,7 +4,7 @@
 
 ### Changed
 
-- Modal del PC más ancho con el video demo a la derecha; Asistente RAG con video.
+- Modal del PC más ancho con el video demo a la derecha; demo/código bajo el video y columnas más equilibradas; Asistente RAG con video.
 - Asistente RAG: el GIF viejo se reemplaza por un video demo con poster (datos ficticios).
 
 ### Removed

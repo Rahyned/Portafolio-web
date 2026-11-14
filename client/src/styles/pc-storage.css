@@ -526,36 +526,57 @@
   }
 }
 
-/* Con video demo: columna izquierda con detalles, derecha 16:9 */
+/* Con video: izquierda detalles + stack + timeline; derecha video + demo */
 @media (min-width: 769px) {
   .modal-body--with-media {
     flex: 1;
     min-height: 0;
-    grid-template-columns: minmax(0, 1fr) minmax(300px, 44%);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
     grid-template-rows: 1fr;
-    align-items: start;
-  }
-
-  .modal-body--with-media .modal-body-main {
-    grid-column: 1;
-    grid-row: 1;
-    display: grid;
-    gap: 20px;
-    align-content: start;
+    align-items: stretch;
     max-height: calc(92vh - 160px);
     overflow-y: auto;
     padding-right: 4px;
   }
 
-  .modal-body--with-media .modal-body-media {
-    grid-column: 2;
+  .modal-body--with-media .modal-body-col--main {
+    grid-column: 1;
     grid-row: 1;
-    position: sticky;
-    top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 0;
+    min-height: 100%;
   }
 
-  .modal-body--with-media .modal-body-media .featured-media-frame {
+  .modal-body--with-media .modal-body-col--main > .modal-block:first-child {
+    flex: 1;
+  }
+
+  .modal-body--with-media .modal-body-col--main > .modal-timeline {
+    margin-top: auto;
+  }
+
+  .modal-body--with-media .modal-body-col--media {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: stretch;
+    min-width: 0;
+    min-height: 100%;
+  }
+
+  .modal-body--with-media .modal-body-col--media .featured-media-frame {
     order: 0;
+    flex-shrink: 0;
+    width: 100%;
+  }
+
+  .modal-body--with-media .modal-body-col--media .modal-block-links {
+    flex: 1;
+    width: 100%;
   }
 }
 
@@ -700,11 +721,20 @@
   .modal-body--with-media {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
   }
 
-  .modal-body--with-media .modal-body-media {
+  .modal-body--with-media .modal-body-col--media {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     order: -1;
+  }
+
+  .modal-body--with-media .modal-body-col--main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
 }
 
