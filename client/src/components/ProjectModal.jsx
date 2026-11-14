@@ -82,8 +82,10 @@ export default function ProjectModal({ project, onClose }) {
     }
   };
 
-  const detailBlock = (
-    <div className="modal-block">
+  const gridClass = (base, extra) => [base, extra].filter(Boolean).join(" ");
+
+  const detailBlock = (extra = "") => (
+    <div className={gridClass("modal-block", extra === "modal-grid-details" ? "modal-block-details modal-grid-details" : extra)}>
       <h4 className="modal-block-title">{t("modal.block.details")}</h4>
       <p><strong>{t("modal.problem")}</strong> {project.problem}</p>
       <p><strong>{t("modal.solution")}</strong> {project.solution}</p>
@@ -91,8 +93,8 @@ export default function ProjectModal({ project, onClose }) {
     </div>
   );
 
-  const stackBlock = (
-    <div className="modal-block">
+  const stackBlock = (extra = "") => (
+    <div className={gridClass("modal-block modal-grid-stack", extra)}>
       <h4 className="modal-block-title">{t("modal.block.stack")}</h4>
       <div className="modal-stack">
         {project.stack.map((tech) => (
@@ -102,8 +104,8 @@ export default function ProjectModal({ project, onClose }) {
     </div>
   );
 
-  const linksBlock = (project.demo || project.github) ? (
-    <div className="modal-block modal-block-links">
+  const linksBlock = (extra = "") => ((project.demo || project.github) ? (
+    <div className={gridClass("modal-block modal-block-links modal-grid-links", extra)}>
       <h4 className="modal-block-title">{t("modal.block.code")}</h4>
       <div className="modal-actions">
         {project.demo && (
@@ -114,10 +116,10 @@ export default function ProjectModal({ project, onClose }) {
         )}
       </div>
     </div>
-  ) : null;
+  ) : null);
 
-  const timelineBlock = (
-    <p className="modal-timeline">{t("modal.completed")} <strong>{project.timeline}</strong></p>
+  const timelineBlock = (extra = "") => (
+    <p className={gridClass("modal-timeline modal-grid-timeline", extra)}>{t("modal.completed")} <strong>{project.timeline}</strong></p>
   );
 
   return (
@@ -147,25 +149,23 @@ export default function ProjectModal({ project, onClose }) {
 
         {withVideo ? (
           <div className="modal-body modal-body--with-media">
-            <div className="modal-body-col modal-body-col--main">
-              {detailBlock}
-              {stackBlock}
-              {timelineBlock}
-            </div>
-            <div className="modal-body-col modal-body-col--media">
+            {detailBlock("modal-grid-details")}
+            <div className="modal-grid-video">
               <ProjectVideo
                 media={project.media}
                 onExpandedChange={setVideoLightboxOpen}
               />
-              {linksBlock}
             </div>
+            {stackBlock()}
+            {linksBlock()}
+            {timelineBlock()}
           </div>
         ) : (
           <div className="modal-body">
-            {detailBlock}
-            {stackBlock}
-            {linksBlock}
-            {timelineBlock}
+            {detailBlock()}
+            {stackBlock()}
+            {linksBlock()}
+            {timelineBlock()}
           </div>
         )}
       </div>
