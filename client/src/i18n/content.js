@@ -98,14 +98,6 @@ export const CONTENT_EN = {
   },
 
   PROJECTS: {
-    abstractoshopp: {
-      category: "Web Development",
-      timeline: "Aug 2026",
-      status: "Completed",
-      problem: "Physical urban clothing and accessories store (gothic/Y2K) in Rosario with no online presence: sales only at the store and Instagram, no catalog or bookings.",
-      solution: "Next.js store with filterable catalog (category, price, color, size), product page with gallery and SEO, cart and favorites, WhatsApp checkout, dark mode and JSON-editable data.",
-      result: "Store v1.1.0 complete and ready to deploy; real payments (MercadoPago) and Instagram feed left as roadmap."
-    },
     riodent: {
       category: "Web Development",
       timeline: "2025 – 2026",

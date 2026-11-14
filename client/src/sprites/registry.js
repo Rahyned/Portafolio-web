@@ -49,7 +49,6 @@ export const getSprite = (key) => SPRITES[key] || null;
 // Cada archivo se llama sprite-<id>.svg (ej: sprite-riodent.svg).
 const PROJECT_IDS = [
   "organizador",
-  "abstractoshopp",
   "riodent",
   "pixel-editor",
   "rag",

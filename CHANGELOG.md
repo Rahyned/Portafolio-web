@@ -6,6 +6,10 @@
 
 - Asistente RAG: el GIF viejo se reemplaza por un video demo con poster (datos ficticios).
 
+### Removed
+
+- Proyecto `abstractoshopp` (Abstractoshop) de la caja "Web" en la PC, del fallback, del contenido EN, del contexto de Oak y de su sprite.
+
 ## 2026-10-28 — feat(proyectos): agregar Asistente RAG a la PC
 
 ### Added

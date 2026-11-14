@@ -116,20 +116,6 @@
       "icon": "🌐",
       "projects": [
         {
-          "id": "abstractoshopp",
-          "title": "Abstractoshop",
-          "sprite": "🛍️",
-          "category": "Desarrollo Web",
-          "timeline": "Ago 2026",
-          "status": "Completado",
-          "problem": "Tienda física de ropa y accesorios urbana (gótico/Y2K) en Rosario sin presencia online: ventas solo por local e Instagram, sin catálogo ni reservas.",
-          "solution": "Tienda Next.js con catálogo filtrable (categoría, precio, color, talle), página de producto con galería y SEO, carrito y favoritos, checkout por WhatsApp, dark mode y datos editables en JSON.",
-          "result": "Tienda v1.1.0 completa y lista para desplegar; pagos reales (MercadoPago) y feed de Instagram quedaron como roadmap.",
-          "stack": ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS", "Sharp"],
-          "demo": null,
-          "github": null
-        },
-        {
           "id": "riodent",
           "title": "Laboratorio RioDent",
           "sprite": "🦷",

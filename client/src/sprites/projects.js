@@ -1,25 +1,5 @@
 import { P } from "./palette";
 
-// Abstractoshop — bolsa de compras.
-export const ABSTRACT_SHOPP = P([
-  "................",
-  "...LLN....NLL...",
-  "..LLLLNNNNLLLL..",
-  ".LLLLLLLLLLLLLL.",
-  ".LLLKKKLLKKKLLL.",
-  ".LLLKKKLLKKKLLL.",
-  "LLLLKKKLLKKKLLLL",
-  "LLLLLLLLLLLLLLLL",
-  "LLLLLLLLLLLLLLLL",
-  "LLL.LLKKKKLL.LLL",
-  "NLL.LKKKKKKL.LLN",
-  ".NN.LKKLLKKL.NN.",
-  "....LLLLLLLL....",
-  "....LLLLLLLL....",
-  "....NNNNNNNN....",
-  "................"
-]);
-
 // Laboratorio RioDent — diente.
 export const RIODENT = P([
   "....FFWWKWWF....",
