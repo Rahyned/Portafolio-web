@@ -538,6 +538,7 @@
 
   .modal-body--with-media .modal-body-main {
     grid-column: 1;
+    grid-row: 1;
     display: grid;
     gap: 20px;
     align-content: start;
@@ -548,6 +549,7 @@
 
   .modal-body--with-media .modal-body-media {
     grid-column: 2;
+    grid-row: 1;
     position: sticky;
     top: 0;
   }
