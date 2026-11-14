@@ -39,7 +39,11 @@ export function localizeData(data, lang) {
       const projects = Array.isArray(box.projects)
         ? box.projects.map((project) => {
             const projEn = CONTENT_EN.PROJECTS?.[project.id];
-            return projEn ? { ...project, ...projEn } : project;
+            if (!projEn) return project;
+            const media = projEn.media
+              ? { ...project.media, ...projEn.media }
+              : project.media;
+            return { ...project, ...projEn, media };
           })
         : box.projects;
       return boxEn ? { ...box, ...boxEn, projects } : { ...box, projects };

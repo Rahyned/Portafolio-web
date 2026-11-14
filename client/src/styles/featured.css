@@ -173,7 +173,7 @@
 .featured-video-lightbox {
   position: fixed;
   inset: 0;
-  z-index: 1200;
+  z-index: 3000;
   display: flex;
   align-items: center;
   justify-content: center;
