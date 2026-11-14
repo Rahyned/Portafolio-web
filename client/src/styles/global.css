@@ -14,8 +14,7 @@ html {
   scroll-behavior: smooth;
 }
 
-html,
-body {
+#root {
   overflow-x: clip;
 }
 
