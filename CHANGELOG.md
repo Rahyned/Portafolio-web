@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Sin publicar
+
+### Changed
+
+- Asistente RAG: el GIF viejo se reemplaza por un video demo con poster (datos ficticios).
+
 ## 2026-10-28 — feat(proyectos): agregar Asistente RAG a la PC
 
 ### Added

@@ -3,10 +3,10 @@ import { createPortal } from "react-dom";
 import { useLanguage } from "../context/LanguageContext";
 
 const MEDIA_SIZE = {
-  "/media/rag-demo.gif": { width: 780, height: 560 },
   "/media/pronostico.png": { width: 1320, height: 600 },
   "/media/solutionscars-demo.mp4": { width: 1280, height: 720 },
-  "/media/stella-demo.mp4": { width: 1280, height: 720 }
+  "/media/stella-demo.mp4": { width: 1280, height: 720 },
+  "/media/rag-demo.mp4": { width: 1280, height: 720 }
 };
 
 function stopCarouselGesture(event) {

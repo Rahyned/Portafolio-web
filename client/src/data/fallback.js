@@ -80,7 +80,7 @@ export const FALLBACK_DATA = {
         { label: "Demo", url: "https://rag-proyectos.vercel.app" },
         { label: "GitHub", url: "https://github.com/Rahyned/Rag-Proyectos-" }
       ],
-      media: { type: "gif", src: "/media/rag-demo.gif", alt: "Demo del asistente respondiendo con citas" },
+      media: { type: "video", src: "/media/rag-demo.mp4", poster: "/media/rag-poster.jpg", alt: "Video demo del asistente RAG respondiendo con citas" },
       private: false,
       caseStudy: null
     },

@@ -74,7 +74,7 @@ export const CONTENT_EN = {
         { label: "Demo", url: "https://rag-proyectos.vercel.app" },
         { label: "GitHub", url: "https://github.com/Rahyned/Rag-Proyectos-" }
       ],
-      media: { alt: "Demo of the assistant answering with citations" }
+      media: { alt: "RAG assistant demo video answering with citations" }
     },
     panel: {
       status: "Personal use",
