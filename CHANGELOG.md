@@ -2,6 +2,10 @@
 
 ## Sin publicar
 
+### Added
+
+- Videos demo en el PC para RioDent, Pixel Sprite Editor, Organizador, Butterflies y Libreta.
+
 ### Changed
 
 - Modal del PC más ancho con el video demo a la derecha; demo/código bajo el video y columnas más equilibradas; Asistente RAG con video.

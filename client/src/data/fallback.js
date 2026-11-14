@@ -135,7 +135,13 @@ export const FALLBACK_DATA = {
           result: "En producción en Railway: los pedidos y tomas de color llegan por email con PDF y adjuntos, con rate limiting y CSP.",
           stack: ["React 19", "Vite", "MUI 7", "i18next", "Express 5", "Brevo", "Railway"],
           demo: "https://www.riodent.com.ar",
-          github: null
+          github: null,
+          media: {
+            type: "video",
+            src: "/media/riodent-demo.mp4",
+            poster: "/media/riodent-poster.jpg",
+            alt: "Video demo de la web de RioDent: catálogo, orden de trabajo con mapa dental y cambio de idioma"
+          }
         },
         {
           id: "pixel-editor",
@@ -149,7 +155,13 @@ export const FALLBACK_DATA = {
           result: "Desplegado en GitHub Pages con CI (lint + unit + E2E) en cada push; exporta PNG, sprite-sheet, GIF animado, SVG, JSON y código JS listo para pegar, con link compartible que embebe el proyecto.",
           stack: ["React 19", "Vite 8", "gifenc", "pako", "Vitest", "Playwright"],
           demo: "https://rahyned.github.io/pixel-editor/",
-          github: "https://github.com/Rahyned/pixel-editor"
+          github: "https://github.com/Rahyned/pixel-editor",
+          media: {
+            type: "video",
+            src: "/media/pixel-editor-demo.mp4",
+            poster: "/media/pixel-editor-poster.jpg",
+            alt: "Video demo del Pixel Sprite Editor dibujando y animando un sprite"
+          }
         }
       ]
     },
@@ -170,7 +182,13 @@ export const FALLBACK_DATA = {
           result: "Descripción próximamente",
           stack: [],
           demo: null,
-          github: null
+          github: null,
+          media: {
+            type: "video",
+            src: "/media/organizador-demo.mp4",
+            poster: "/media/organizador-poster.jpg",
+            alt: "Video demo del Organizador clasificando fotos en carpetas por caso"
+          }
         },
         {
           id: "rag",
@@ -211,7 +229,13 @@ export const FALLBACK_DATA = {
           result: "Ejecutable .exe generado y verificado; app 100% local con temas claro/oscuro y atajos de teclado completos.",
           stack: ["Tauri 2", "Rust", "React 19", "TypeScript", "rough.js", "Vite"],
           demo: null,
-          github: null
+          github: null,
+          media: {
+            type: "video",
+            src: "/media/butterflies-demo.mp4",
+            poster: "/media/butterflies-poster.jpg",
+            alt: "Video demo de Butterflies dibujando formas, zoom y tema claro"
+          }
         },
         {
           id: "libreta",
@@ -225,7 +249,13 @@ export const FALLBACK_DATA = {
           result: "App funcional con backend Rust/SQLite local; comparación y estadísticas 'en pareja' implementadas.",
           stack: ["Tauri 2", "Rust", "SQLite", "React 18", "TypeScript", "Tailwind", "Zustand", "Framer Motion"],
           demo: null,
-          github: null
+          github: null,
+          media: {
+            type: "video",
+            src: "/media/libreta-demo.mp4",
+            poster: "/media/libreta-poster.jpg",
+            alt: "Video demo de Libreta agregando una película y calificándola entre dos"
+          }
         }
       ]
     }

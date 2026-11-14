@@ -104,7 +104,8 @@ export const CONTENT_EN = {
       status: "In production",
       problem: "Dental laboratory without a professional website: orders by phone/paper, no online catalog or shade-matching channel, Spanish only.",
       solution: "Trilingual SPA (ES/EN/PT) with material catalogs, work order with interactive dental SVG map (11–48) and attachments (photos + STL), shade-matching form with PDF, searchable FAQ, courses and contact with map/WhatsApp. Express backend with transactional emails (Brevo).",
-      result: "In production on Railway: orders and shade matches arrive by email with PDF and attachments, with rate limiting and CSP."
+      result: "In production on Railway: orders and shade matches arrive by email with PDF and attachments, with rate limiting and CSP.",
+      media: { alt: "RioDent website demo: catalog, work order with dental map and language switch" }
     },
     "pixel-editor": {
       category: "Web Development",
@@ -112,7 +113,11 @@ export const CONTENT_EN = {
       status: "Completed",
       problem: "I needed a tool to create animated pixel-art sprites directly in the browser, with no installs and no accounts.",
       solution: "Sprite editor in React 19 + Vite 8 with brush, eraser, fill, line, rectangle, ellipse and selection; layers with blend modes, animated frames with onion skin and per-frame duration, preset palettes (Pico-8, C64, DB32…), PNG/JPG import, symmetry, undo/redo and autosave.",
-      result: "Deployed to GitHub Pages with CI (lint + unit + E2E) on every push; exports PNG, sprite sheet, animated GIF, SVG, JSON and copy-paste-ready JS code, plus a shareable link that embeds the project."
+      result: "Deployed to GitHub Pages with CI (lint + unit + E2E) on every push; exports PNG, sprite sheet, animated GIF, SVG, JSON and copy-paste-ready JS code, plus a shareable link that embeds the project.",
+      media: { alt: "Pixel Sprite Editor demo drawing and animating a sprite" }
+    },
+    organizador: {
+      media: { alt: "Organizer demo sorting photos into folders by case" }
     },
     rag: {
       title: "RAG Assistant",
@@ -130,7 +135,8 @@ export const CONTENT_EN = {
       status: "Completed",
       problem: "Need for a vector drawing editor as an offline desktop executable: lightweight, no accounts, no internet and without Electron's weight.",
       solution: "Tauri vector editor with 8 tools (select, rect, ellipse, line, arrow, text, free draw, eraser), zoom/pan, undo/redo (50 states), layers with zIndex, grid/minimap, PNG export, native-dialog save/load and hand-drawn style via rough.js.",
-      result: "Generated and verified .exe; 100% local app with light/dark themes and full keyboard shortcuts."
+      result: "Generated and verified .exe; 100% local app with light/dark themes and full keyboard shortcuts.",
+      media: { alt: "Butterflies demo drawing shapes, zooming and light theme" }
     },
     libreta: {
       category: "Desktop Apps (Tauri)",
@@ -138,7 +144,8 @@ export const CONTENT_EN = {
       status: "In development",
       problem: "Record, rank and compare the movies watched as a couple in a private, 100% local way, without accounts or cloud.",
       solution: "Tauri movie journal with CRUD, poster autocomplete (TMDB + Wikipedia), per-user ratings (stars, emoji and handwritten note), side-by-side comparison, stats, watchlist and JSON export, with a pastel notebook aesthetic.",
-      result: "Functional app with local Rust/SQLite backend; couple comparison and stats implemented."
+      result: "Functional app with local Rust/SQLite backend; couple comparison and stats implemented.",
+      media: { alt: "Libreta demo adding a movie and rating it as a couple" }
     }
   },
 
