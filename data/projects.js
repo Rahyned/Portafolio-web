@@ -187,7 +187,13 @@ const DEFAULT_DATA = {
           result: "Demo pública funcionando.",
           stack: ["FastAPI", "Groq", "FAISS", "BM25", "React", "Vercel"],
           demo: "https://rag-proyectos.vercel.app",
-          github: "https://github.com/Rahyned/Rag-Proyectos-"
+          github: "https://github.com/Rahyned/Rag-Proyectos-",
+          media: {
+            type: "video",
+            src: "/media/rag-demo.mp4",
+            poster: "/media/rag-poster.jpg",
+            alt: "Video demo del asistente RAG respondiendo con citas"
+          }
         }
       ]
     },
@@ -222,7 +228,6 @@ const DEFAULT_DATA = {
           result: "App funcional con backend Rust/SQLite local; comparación y estadísticas 'en pareja' implementadas.",
           stack: ["Tauri 2", "Rust", "SQLite", "React 18", "TypeScript", "Tailwind", "Zustand", "Framer Motion"],
           demo: null,
-          video: null,
           github: null
         }
       ]

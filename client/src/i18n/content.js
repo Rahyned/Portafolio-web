@@ -121,7 +121,8 @@ export const CONTENT_EN = {
       status: "Demo",
       problem: "SolutionsCars and STELLA clients kept asking questions that were already answered in the docs.",
       solution: "An assistant that answers from the documentation with hybrid FAISS + BM25 search fused via RRF, cites the PDF page, says when nothing fits, streams replies (SSE), and includes fallbacks and rate limiting.",
-      result: "Public demo up and running."
+      result: "Public demo up and running.",
+      media: { alt: "RAG assistant demo video answering with citations" }
     },
     butterflies: {
       category: "Desktop Apps (Tauri)",
